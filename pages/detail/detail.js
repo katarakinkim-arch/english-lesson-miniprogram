@@ -28,17 +28,22 @@ function buildDesc(p) {
   return d;
 }
 
+const CN_NUM = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
 function buildSections(p) {
   const s = [];
-  if (p.overview) s.push({ key: 'overview', title: '教案概述', type: 'text', body: p.overview });
-  if (p.objectives && p.objectives.length) s.push({ key: 'objectives', title: '教学目标', type: 'list', items: p.objectives });
-  if (p.keyPoints) s.push({ key: 'keyPoints', title: '教学重点', type: 'text', body: p.keyPoints });
-  if (p.difficulties) s.push({ key: 'difficulties', title: '教学难点', type: 'text', body: p.difficulties });
-  if (p.preparation) s.push({ key: 'preparation', title: '课前准备', type: 'text', body: p.preparation });
-  if (p.process && p.process.length) s.push({ key: 'process', title: '教学过程', type: 'steps', steps: p.process });
-  if (p.blackboard) s.push({ key: 'blackboard', title: '板书设计', type: 'pre', body: p.blackboard });
-  if (p.exercises) s.push({ key: 'exercises', title: '课后练习', type: 'text', body: p.exercises });
-  if (p.reflection) s.push({ key: 'reflection', title: '教学反思', type: 'text', body: p.reflection });
+  let i = 0;
+  const add = (key, name, type, payload) => {
+    if (payload) { i++; s.push(Object.assign({ key: key, no: CN_NUM[i - 1], title: name, type: type }, payload)); }
+  };
+  add('overview', '教材分析与学情', 'text', p.overview && { body: p.overview });
+  add('objectives', '教学目标', 'list', p.objectives && p.objectives.length && { items: p.objectives });
+  add('keyPoints', '教学重点', 'text', p.keyPoints && { body: p.keyPoints });
+  add('difficulties', '教学难点', 'text', p.difficulties && { body: p.difficulties });
+  add('preparation', '课前准备', 'text', p.preparation && { body: p.preparation });
+  add('process', '教学过程', 'steps', p.process && p.process.length && { steps: p.process });
+  add('blackboard', '板书设计', 'pre', p.blackboard && { body: p.blackboard });
+  add('exercises', '课后练习', 'text', p.exercises && { body: p.exercises });
+  add('reflection', '教学反思', 'text', p.reflection && { body: p.reflection });
   return s;
 }
 

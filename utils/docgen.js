@@ -1,6 +1,7 @@
 // utils/docgen.js
 // 端上文件生成：Word(.doc) / PPT(.pptx) / PDF —— 无需服务器
 // 依赖：wx.* 小程序 API；FileSystemManager 写入临时目录后用 wx.openDocument 打开
+// 风格：精美教案（封面页 + 中文序号分节 + 品牌深蓝 #1a365d）
 
 /* ============ 工具 ============ */
 function utf8Encode(str) {
@@ -27,40 +28,76 @@ function safeName(id) {
   return String(id || 'lesson').replace(/[\\/:*?"<>|]/g, '_');
 }
 
+/* ============ 章节结构（中文序号，匹配精美教案） ============ */
+const CN_NUM = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
+function planSections(plan) {
+  const out = [];
+  let i = 0;
+  const add = (key, name, type, payload) => {
+    if (payload) { i++; out.push(Object.assign({ key: key, title: CN_NUM[i - 1] + '、' + name, type: type }, payload)); }
+  };
+  add('overview', '教材分析与学情', 'text', plan.overview && { body: plan.overview });
+  add('objectives', '教学目标', 'list', plan.objectives && plan.objectives.length && { items: plan.objectives });
+  add('keyPoints', '教学重点', 'text', plan.keyPoints && { body: plan.keyPoints });
+  add('difficulties', '教学难点', 'text', plan.difficulties && { body: plan.difficulties });
+  add('preparation', '课前准备', 'text', plan.preparation && { body: plan.preparation });
+  add('process', '教学过程', 'steps', plan.process && plan.process.length && { steps: plan.process });
+  add('blackboard', '板书设计', 'pre', plan.blackboard && { body: plan.blackboard });
+  add('exercises', '课后练习', 'text', plan.exercises && { body: plan.exercises });
+  add('reflection', '教学反思', 'text', plan.reflection && { body: plan.reflection });
+  return out;
+}
+
+function planCover(plan) {
+  return {
+    title: plan.title || '高中英语教案',
+    sub: (plan.grade || '高中') + ' · ' + (plan.subject || '英语') + ' · ' + (plan.textbook || '') +
+         '\n第' + (plan.unitNumber || 1) + '单元 ' + (plan.unitTitle || '') +
+         '\n' + (plan.lessonTypeName || '') + ' · ' + (plan.duration || 45) + '分钟'
+  };
+}
+
 /* ============ Word (.doc HTML) ============ */
 function buildWordHtml(plan) {
+  const cover = planCover(plan);
+  const sections = planSections(plan);
   let h = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">';
   h += '<head><meta charset="utf-8"><title>' + esc(plan.title) + '</title>';
-  h += '<style>body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;color:#1a1a2e;line-height:1.8;}';
-  h += 'h1{color:#1a365d;font-size:22pt;} h2{color:#1a365d;border-bottom:2px solid #1a365d;font-size:15pt;margin-top:18pt;}';
-  h += 'h3{color:#2c5282;font-size:13pt;} .meta{color:#666;font-size:11pt;margin-bottom:10pt;}';
-  h += '.section{margin:8pt 0;} pre{font-family:Consolas,monospace;background:#f0f7eb;padding:8pt;white-space:pre-wrap;}</style></head><body>';
-  h += '<h1>' + esc(plan.title) + '</h1>';
-  h += '<div class="meta">' + esc(plan.grade) + ' · ' + esc(plan.subject) + ' · ' + esc(plan.textbook || '') +
-       ' · 第' + (plan.unitNumber || 1) + '单元 · ' + esc(plan.lessonTypeName || '') + ' · ' + (plan.duration || 45) + '分钟</div>';
-  if (plan.overview) h += '<h2>【教案概述】</h2><div class="section">' + esc(plan.overview) + '</div>';
-  if (plan.objectives && plan.objectives.length) {
-    h += '<h2>【教学目标】</h2>';
-    plan.objectives.forEach((o, i) => { h += '<div>' + (i + 1) + '. ' + esc(o) + '</div>'; });
-  }
-  if (plan.keyPoints) h += '<h2>【教学重点】</h2><div class="section">' + esc(plan.keyPoints) + '</div>';
-  if (plan.difficulties) h += '<h2>【教学难点】</h2><div class="section">' + esc(plan.difficulties) + '</div>';
-  if (plan.preparation) h += '<h2>【课前准备】</h2><div class="section">' + esc(plan.preparation) + '</div>';
-  if (plan.process && plan.process.length) {
-    h += '<h2>【教学过程】</h2>';
-    plan.process.forEach((s, i) => {
-      h += '<h3>步骤' + (i + 1) + '：' + esc(s.step) + '（' + s.time + '分钟）</h3>';
-      h += '<div class="section">' + esc(s.content) + '</div>';
-    });
-  }
-  if (plan.blackboard) h += '<h2>【板书设计】</h2><pre>' + esc(plan.blackboard) + '</pre>';
-  if (plan.exercises) h += '<h2>【课后练习】</h2><div class="section">' + esc(plan.exercises) + '</div>';
-  if (plan.reflection) h += '<h2>【教学反思】</h2><div class="section">' + esc(plan.reflection) + '</div>';
-  h += '</body></html>';
+  h += '<style>'
+    + 'body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;color:#2a2f3a;line-height:1.85;margin:0;padding:0;}'
+    + '.cover{background:linear-gradient(135deg,#0d1b2a,#1a365d 60%,#2c5282);color:#fff;padding:46pt 36pt;border-radius:10pt;margin-bottom:22pt;}'
+    + '.cover h1{color:#fff;font-size:24pt;margin:0 0 14pt;line-height:1.35;font-weight:800;}'
+    + '.cover .sub{color:rgba(255,255,255,.82);font-size:12.5pt;white-space:pre-line;line-height:1.7;}'
+    + '.wrap{padding:0 12pt 24pt;}'
+    + 'h2{color:#1a365d;border-left:8pt solid #1a365d;padding:6pt 0 6pt 12pt;font-size:15pt;margin:20pt 0 10pt;background:#f4f7fc;border-radius:0 6pt 6pt 0;}'
+    + 'h3{color:#2c5282;font-size:12.5pt;margin:10pt 0 4pt;}'
+    + '.meta{color:#666;font-size:11pt;margin-bottom:8pt;}'
+    + '.section{margin:6pt 0 6pt;}'
+    + 'ol{margin:4pt 0;padding-left:22pt;} li{margin:3pt 0;}'
+    + 'pre{font-family:"Courier New",Consolas,monospace;background:#f0f7eb;color:#2d5016;padding:10pt;border-radius:6pt;white-space:pre-wrap;font-size:10.5pt;line-height:1.5;}'
+    + '.foot{margin-top:18pt;color:#999;font-size:9.5pt;text-align:center;border-top:1pt solid #ddd;padding-top:8pt;}'
+    + '</style></head><body>';
+  // 封面
+  h += '<div class="cover"><h1>' + esc(cover.title) + '</h1><div class="sub">' + esc(cover.sub) + '</div></div>';
+  h += '<div class="wrap">';
+  // 章节
+  sections.forEach((s) => {
+    h += '<h2>' + esc(s.title) + '</h2>';
+    if (s.type === 'text') h += '<div class="section">' + esc(s.body) + '</div>';
+    else if (s.type === 'list') { h += '<ol>'; s.items.forEach((o) => { h += '<li>' + esc(o) + '</li>'; }); h += '</ol>'; }
+    else if (s.type === 'steps') {
+      s.steps.forEach((st, i) => {
+        h += '<h3>步骤' + (i + 1) + '：' + esc(st.step || '') + '（' + (st.time || '') + '分钟）</h3>';
+        h += '<div class="section">' + esc(st.content || '') + '</div>';
+      });
+    } else if (s.type === 'pre') h += '<pre>' + esc(s.body) + '</pre>';
+  });
+  h += '<div class="foot">本教案由「高中英语教案库」小程序端上生成 · 人教版（2019版）</div>';
+  h += '</div></body></html>';
   return h;
 }
 
-/* ============ PPT (.pptx) ============ */
+/* ============ ZIP / CRC32 / PPTX 基础设施 ============ */
 function crc32Table() {
   const t = new Uint32Array(256);
   for (let i = 0; i < 256; i++) { let c = i; for (let j = 0; j < 8; j++) { c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1); } t[i] = c >>> 0; }
@@ -108,24 +145,33 @@ function createZip(files) {
 }
 
 function splitParas(text) { return String(text || '').split(/\r\n|\n|\r/).filter(l => l.trim() !== ''); }
-function buildParas(text, sz) {
+function buildParas(text, sz, color) {
   let xml = '';
-  for (const line of splitParas(text)) xml += '<a:p><a:r><a:rPr lang="zh-CN" sz="' + sz + '"/><a:t>' + esc(line) + '</a:t></a:r><a:endParaRPr lang="zh-CN"/></a:p>';
+  const fill = color ? '<a:solidFill><a:srgbClr val="' + color + '"/></a:solidFill>' : '';
+  for (const line of splitParas(text)) xml += '<a:p><a:r><a:rPr lang="zh-CN" sz="' + sz + '"' + (color ? ' b="1"' : '') + '>' + fill + '</a:rPr><a:t>' + esc(line) + '</a:t></a:r><a:endParaRPr lang="zh-CN"/></a:p>';
   return xml;
 }
 
+// 品牌色
+const BRAND = '1A365D';
+const BRAND2 = '2C5282';
+
 function buildPPTX(plan) {
+  const cover = planCover(plan);
+  const sections = planSections(plan);
   const slides = [];
-  slides.push({ title: plan.title, content: (plan.grade || '') + ' · ' + (plan.subject || '') + ' · ' + (plan.textbook || '') + '\n第' + (plan.unitNumber || 1) + '单元 ' + (plan.unitTitle || '') + '\n' + (plan.lessonTypeName || '') + ' · ' + (plan.duration || 45) + '分钟', isTitle: true });
-  if (plan.overview) slides.push({ title: '教案概述', content: plan.overview });
-  if (plan.objectives && plan.objectives.length) { let t = ''; plan.objectives.forEach((o, i) => { t += (i + 1) + '. ' + o + '\n'; }); slides.push({ title: '教学目标', content: t }); }
-  if (plan.keyPoints) slides.push({ title: '教学重点', content: plan.keyPoints });
-  if (plan.difficulties) slides.push({ title: '教学难点', content: plan.difficulties });
-  if (plan.preparation) slides.push({ title: '课前准备', content: plan.preparation });
-  if (plan.process && plan.process.length) plan.process.forEach((s, i) => slides.push({ title: '步骤' + (i + 1) + '：' + s.step + '（' + s.time + '分钟）', content: s.content }));
-  if (plan.blackboard) slides.push({ title: '板书设计', content: plan.blackboard });
-  if (plan.exercises) slides.push({ title: '课后练习', content: plan.exercises });
-  if (plan.reflection) slides.push({ title: '教学反思', content: plan.reflection });
+  slides.push({ title: cover.title, content: cover.sub, isTitle: true });
+  sections.forEach((s) => {
+    if (s.type === 'steps') {
+      s.steps.forEach((st, i) => {
+        slides.push({ title: s.title + '（步骤' + (i + 1) + '/' + s.steps.length + '）', content: '【' + (st.step || '') + '】 ' + (st.time ? '（' + st.time + '分钟）\n' : '') + (st.content || '') });
+      });
+    } else if (s.type === 'list') {
+      slides.push({ title: s.title, content: s.items.map((o, i) => (i + 1) + '. ' + o).join('\n') });
+    } else {
+      slides.push({ title: s.title, content: s.body });
+    }
+  });
 
   const files = [];
   const nowDate = new Date().toISOString().replace(/\.\d+Z$/, 'Z');
@@ -166,11 +212,12 @@ function buildPPTX(plan) {
   presRels += '</Relationships>';
   files.push({ name: 'ppt/_rels/presentation.xml.rels', data: utf8Encode(presRels) });
 
-  files.push({ name: 'ppt/slideMasters/slideMaster1.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sldMaster xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><p:cSld><p:bg><p:bgRef idx="1001"><a:schemeClr val="bg1"/></p:bgRef></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr></p:spTree></p:cSld><p:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/><p:sldLayoutIdLst><p:sldLayoutId id="2147483649" r:id="rId1"/></p:sldLayoutIdLst><p:txStyles><p:titleStyle><a:lvl1pPr algn="l"><a:defRPr sz="4400" kern="1200"><a:solidFill><a:schemeClr val="tx1"/></a:solidFill><a:latin typeface="+mj-lt"/><a:ea typeface="+mj-ea"/></a:defRPr></a:lvl1pPr></p:titleStyle><p:bodyStyle><a:lvl1pPr marL="342900" indent="-342900"><a:defRPr sz="2800" kern="1200"><a:solidFill><a:schemeClr val="tx1"/></a:solidFill><a:latin typeface="+mn-lt"/><a:ea typeface="+mn-ea"/></a:defRPr></a:lvl1pPr></p:bodyStyle><p:otherStyle><a:lvl1pPr marL="342900" indent="-342900"><a:defRPr sz="2400" kern="1200"><a:solidFill><a:schemeClr val="tx1"/></a:solidFill><a:latin typeface="+mn-lt"/><a:ea typeface="+mn-ea"/></a:defRPr></a:lvl1pPr></p:otherStyle></p:txStyles></p:sldMaster>') });
+  // slideMaster 增强：标题用品牌蓝
+  files.push({ name: 'ppt/slideMasters/slideMaster1.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sldMaster xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><p:cSld><p:bg><p:bgRef idx="1001"><a:schemeClr val="bg1"/></p:bgRef></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr></p:spTree></p:cSld><p:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/><p:sldLayoutIdLst><p:sldLayoutId id="2147483649" r:id="rId1"/></p:sldLayoutIdLst><p:txStyles><p:titleStyle><a:lvl1pPr algn="l"><a:defRPr sz="4400" kern="1200"><a:solidFill><a:srgbClr val="' + BRAND + '"/></a:solidFill><a:latin typeface="+mj-lt"/><a:ea typeface="+mj-ea"/></a:defRPr></a:lvl1pPr></p:titleStyle><p:bodyStyle><a:lvl1pPr marL="342900" indent="-342900"><a:defRPr sz="2800" kern="1200"><a:solidFill><a:schemeClr val="tx1"/></a:solidFill><a:latin typeface="+mn-lt"/><a:ea typeface="+mn-ea"/></a:defRPr></a:lvl1pPr></p:bodyStyle><p:otherStyle><a:lvl1pPr marL="342900" indent="-342900"><a:defRPr sz="2400" kern="1200"><a:solidFill><a:schemeClr val="tx1"/></a:solidFill><a:latin typeface="+mn-lt"/><a:ea typeface="+mn-ea"/></a:defRPr></a:lvl1pPr></p:otherStyle></p:txStyles></p:sldMaster>') });
   files.push({ name: 'ppt/slideMasters/_rels/slideMaster1.xml.rels', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/slideLayout1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="../theme/theme1.xml"/></Relationships>') });
   files.push({ name: 'ppt/slideLayouts/slideLayout1.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sldLayout xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sldLayout>') });
   files.push({ name: 'ppt/slideLayouts/_rels/slideLayout1.xml.rels', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster" Target="../slideMasters/slideMaster1.xml"/></Relationships>') });
-  files.push({ name: 'ppt/theme/theme1.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Office Theme"><a:themeElements><a:clrScheme name="Office"><a:dk1><a:sysClr val="windowText" lastClr="000000"/></a:dk1><a:lt1><a:sysClr val="window" lastClr="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="44546A"/></a:dk2><a:lt2><a:srgbClr val="E7E6E6"/></a:lt2><a:accent1><a:srgbClr val="4472C4"/></a:accent1><a:accent2><a:srgbClr val="ED7D31"/></a:accent2><a:accent3><a:srgbClr val="A5A5A5"/></a:accent3><a:accent4><a:srgbClr val="FFC000"/></a:accent4><a:accent5><a:srgbClr val="5B9BD5"/></a:accent5><a:accent6><a:srgbClr val="70AD47"/></a:accent6><a:hlink><a:srgbClr val="0563C1"/></a:hlink><a:folHlink><a:srgbClr val="954F72"/></a:folHlink></a:clrScheme><a:fontScheme name="Office"><a:majorFont><a:latin typeface="Calibri Light"/><a:ea typeface=""/></a:majorFont><a:minorFont><a:latin typeface="Calibri"/><a:ea typeface=""/></a:minorFont></a:fontScheme><a:fmtScheme name="Office"><a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:lumMod val="110000"/><a:satMod val="105000"/><a:tint val="67000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:lumMod val="105000"/><a:satMod val="103000"/><a:tint val="73000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:lumMod val="105000"/><a:satMod val="109000"/><a:tint val="81000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:satMod val="103000"/><a:lumMod val="102000"/><a:tint val="94000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:satMod val="110000"/><a:lumMod val="100000"/><a:shade val="100000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:lumMod val="99000"/><a:satMod val="120000"/><a:shade val="78000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill></a:fillStyleLst><a:lnStyleLst><a:ln w="6350" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln><a:ln w="12700" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln><a:ln w="19050" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"><a:tint val="95000"/><a:satMod val="170000"/></a:schemeClr></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:tint val="93000"/><a:satMod val="150000"/><a:shade val="98000"/><a:lumMod val="102000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:tint val="98000"/><a:satMod val="130000"/><a:shade val="90000"/><a:lumMod val="103000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:shade val="63000"/><a:satMod val="120000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements><a:objectDefaults/><a:extraClrSchemeLst/></a:theme>') });
+  files.push({ name: 'ppt/theme/theme1.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Office Theme"><a:themeElements><a:clrScheme name="Office"><a:dk1><a:srgbClr val="1A365D"/></a:dk1><a:lt1><a:srgbClr val="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="44546A"/></a:dk2><a:lt2><a:srgbClr val="E7E6E6"/></a:lt2><a:accent1><a:srgbClr val="1A365D"/></a:accent1><a:accent2><a:srgbClr val="2C5282"/></a:accent2><a:accent3><a:srgbClr val="A5A5A5"/></a:accent3><a:accent4><a:srgbClr val="FFC000"/></a:accent4><a:accent5><a:srgbClr val="5B9BD5"/></a:accent5><a:accent6><a:srgbClr val="70AD47"/></a:accent6><a:hlink><a:srgbClr val="1A365D"/></a:hlink><a:folHlink><a:srgbClr val="954F72"/></a:folHlink></a:clrScheme><a:fontScheme name="Office"><a:majorFont><a:latin typeface="Calibri Light"/><a:ea typeface=""/></a:majorFont><a:minorFont><a:latin typeface="Calibri"/><a:ea typeface=""/></a:minorFont></a:fontScheme><a:fmtScheme name="Office"><a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:lumMod val="110000"/><a:satMod val="105000"/><a:tint val="67000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:lumMod val="105000"/><a:satMod val="103000"/><a:tint val="73000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:lumMod val="105000"/><a:satMod val="109000"/><a:tint val="81000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:satMod val="103000"/><a:lumMod val="102000"/><a:tint val="94000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:satMod val="110000"/><a:lumMod val="100000"/><a:shade val="100000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:lumMod val="99000"/><a:satMod val="120000"/><a:shade val="78000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill></a:fillStyleLst><a:lnStyleLst><a:ln w="6350" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln><a:ln w="12700" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln><a:ln w="19050" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"><a:tint val="95000"/><a:satMod val="170000"/></a:schemeClr></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:tint val="93000"/><a:satMod val="150000"/><a:shade val="98000"/><a:lumMod val="102000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:tint val="98000"/><a:satMod val="130000"/><a:shade val="90000"/><a:lumMod val="103000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:shade val="63000"/><a:satMod val="120000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements><a:objectDefaults/><a:extraClrSchemeLst/></a:theme>') });
   files.push({ name: 'ppt/presProps.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:presentationPr xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"/>') });
   files.push({ name: 'ppt/viewProps.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:viewPr xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:normalViewPr><p:restoredLeft sz="15620"/><p:restoredTop sz="94660" autoAdjust="0"/></p:normalViewPr><p:slideViewPr><p:cSldViewPr><p:cViewPr varScale="1"><p:scale><a:sx n="64" d="100"/><a:sy n="64" d="100"/></p:scale><p:origin x="-1392" y="-96"/></p:cViewPr><p:guideLst/></p:cSldViewPr></p:slideViewPr></p:viewPr>') });
   files.push({ name: 'ppt/tableStyles.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><a:tblStyleLst xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" def="{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}"/>') });
@@ -179,9 +226,19 @@ function buildPPTX(plan) {
   for (let i = 0; i < slides.length; i++) {
     const s = slides[i];
     const titleSize = s.isTitle ? '4400' : '3600';
-    const titleXml = buildParas(s.title, titleSize);
-    const contentXml = buildParas(s.content, '1800');
-    const slideXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><p:cSld><p:bg><p:bgPr><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill><a:effectLst/></p:bgPr></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="274638"/><a:ext cx="8230125" cy="1143000"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square" rtlCol="0"><a:spAutoFit/></a:bodyPr><a:lstStyle/>' + titleXml + '</p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Content"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="1600200"/><a:ext cx="8230125" cy="4658375"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square" rtlCol="0"><a:spAutoFit/></a:bodyPr><a:lstStyle/>' + contentXml + '</p:txBody></p:sp></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>';
+    const titleColor = s.isTitle ? 'FFFFFF' : BRAND;
+    const titleXml = buildParas(s.title, titleSize, titleColor);
+    // 封面页白色文字 + 蓝色底；内容页深色文字
+    const bg = s.isTitle
+      ? '<p:bg><p:bgPr><a:solidFill><a:srgbClr val="' + BRAND + '"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>'
+      : '<p:bg><p:bgPr><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>';
+    const contentColor = s.isTitle ? 'FFFFFF' : '333333';
+    const contentXml = buildParas(s.content, s.isTitle ? '2000' : '1800', contentColor);
+    const titleOff = s.isTitle ? '457200' : '457200';
+    const titleExt = s.isTitle ? '8230125' : '8230125';
+    const titleCy = s.isTitle ? '1600200' : '1143000';
+    const contentOff = s.isTitle ? '1600200' : '1600200';
+    const slideXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">' + bg + '<p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="274638"/><a:ext cx="' + titleExt + '" cy="' + titleCy + '"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square" rtlCol="0"><a:spAutoFit/></a:bodyPr><a:lstStyle/>' + titleXml + '</p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Content"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="' + contentOff + '"/><a:ext cx="8230125" cy="4658375"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square" rtlCol="0"><a:spAutoFit/></a:bodyPr><a:lstStyle/>' + contentXml + '</p:txBody></p:sp></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>';
     files.push({ name: 'ppt/slides/slide' + (i + 1) + '.xml', data: utf8Encode(slideXml) });
     files.push({ name: 'ppt/slides/_rels/slide' + (i + 1) + '.xml.rels', data: utf8Encode(slideLayoutRel) });
   }
@@ -199,7 +256,10 @@ function buildPDF(plan) {
       const W = 595, H = 842;
       canvas.width = W; canvas.height = H;
 
-      // 收集绘制行
+      const sections = planSections(plan);
+      const cover = planCover(plan);
+
+      // 收集内容绘制行（不含封面）
       const lines = [];
       const pushHead = (t) => lines.push({ type: 'head', text: t });
       const pushBody = (t) => {
@@ -213,16 +273,12 @@ function buildPDF(plan) {
         }
         if (cur) lines.push({ type: 'body', text: cur });
       };
-      lines.push({ type: 'title', text: plan.title });
-      if (plan.overview) { pushHead('教案概述'); pushBody(plan.overview); }
-      if (plan.objectives && plan.objectives.length) { pushHead('教学目标'); plan.objectives.forEach((o, i) => pushBody((i + 1) + '. ' + o)); }
-      if (plan.keyPoints) { pushHead('教学重点'); pushBody(plan.keyPoints); }
-      if (plan.difficulties) { pushHead('教学难点'); pushBody(plan.difficulties); }
-      if (plan.preparation) { pushHead('课前准备'); pushBody(plan.preparation); }
-      if (plan.process && plan.process.length) { pushHead('教学过程'); plan.process.forEach((s, i) => { pushHead('步骤' + (i + 1) + '：' + s.step + '（' + s.time + '分钟）'); pushBody(s.content); }); }
-      if (plan.blackboard) { pushHead('板书设计'); pushBody(plan.blackboard); }
-      if (plan.exercises) { pushHead('课后练习'); pushBody(plan.exercises); }
-      if (plan.reflection) { pushHead('教学反思'); pushBody(plan.reflection); }
+      sections.forEach((s) => {
+        pushHead(s.title);
+        if (s.type === 'list') s.items.forEach((o, i) => pushBody((i + 1) + '. ' + o));
+        else if (s.type === 'steps') s.steps.forEach((st, i) => { pushHead('  步骤' + (i + 1) + '：' + (st.step || '') + '（' + (st.time || '') + '分钟）'); pushBody(st.content || ''); });
+        else pushBody(s.body);
+      });
 
       const lineH = { title: 32, head: 26, body: 19 };
       const MARGIN = 44;
@@ -234,24 +290,65 @@ function buildPDF(plan) {
       }
       if (cur.length) pages.push(cur);
 
+      // 封面页绘制
+      const drawCover = () => new Promise((res2, rej2) => {
+        ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+        // 顶部品牌色块
+        const grad = ctx.createLinearGradient(0, 0, W, 260);
+        grad.addColorStop(0, '#0d1b2a'); grad.addColorStop(0.55, '#1a365d'); grad.addColorStop(1, '#2c5282');
+        ctx.fillStyle = grad; ctx.fillRect(0, 0, W, 300);
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = '#ffffff'; ctx.font = 'bold 26px sans-serif';
+        // 标题自动换行（按宽度）
+        const titleLines = [];
+        let line = '';
+        const maxTW = W - 88;
+        for (const ch of String(cover.title).split('')) {
+          if (ctx.measureText(line + ch).width > maxTW && line) { titleLines.push(line); line = ch; }
+          else line += ch;
+        }
+        if (line) titleLines.push(line);
+        let ty = 90;
+        titleLines.forEach((tl) => { ctx.fillText(tl, 44, ty); ty += 36; });
+        // 副标题
+        ctx.font = '14px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.85)';
+        let sy = ty + 18;
+        String(cover.sub).split('\n').forEach((sl) => { ctx.fillText(sl, 44, sy); sy += 24; });
+        // 底部信息条
+        ctx.fillStyle = '#1a365d'; ctx.fillRect(0, H - 120, W, 120);
+        ctx.fillStyle = '#ffffff'; ctx.font = '13px sans-serif';
+        ctx.fillText('高中英语教案库 · 精美教案（人教版 2019版）', 44, H - 88);
+        ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.font = '11px sans-serif';
+        ctx.fillText('本文件由小程序端上生成', 44, H - 60);
+        wx.canvasToTempFilePath({ canvas, fileType: 'jpg', quality: 0.92, success: (r) => res2(r.tempFilePath), fail: rej2 });
+      });
+
       const drawPage = (pageLines) => new Promise((res2, rej2) => {
         ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
         let yy = MARGIN; ctx.textBaseline = 'top';
         for (const ln of pageLines) {
           if (ln.type === 'title') { ctx.fillStyle = '#1a365d'; ctx.font = 'bold 20px sans-serif'; ctx.fillText(ln.text, MARGIN, yy); yy += 32; }
-          else if (ln.type === 'head') { ctx.fillStyle = '#1a365d'; ctx.font = 'bold 15px sans-serif'; ctx.fillText(ln.text, MARGIN, yy); yy += 26; }
-          else { ctx.fillStyle = '#333333'; ctx.font = '13px sans-serif'; ctx.fillText(ln.text, MARGIN, yy); yy += 19; }
+          else if (ln.type === 'head') {
+            // 蓝色序号标题 + 左侧色条
+            ctx.fillStyle = '#1a365d'; ctx.fillRect(MARGIN, yy + 4, 5, 18);
+            ctx.fillStyle = '#1a365d'; ctx.font = 'bold 15px sans-serif'; ctx.fillText(ln.text, MARGIN + 14, yy); yy += 26;
+          } else { ctx.fillStyle = '#333333'; ctx.font = '13px sans-serif'; ctx.fillText(ln.text, MARGIN, yy); yy += 19; }
         }
         wx.canvasToTempFilePath({ canvas, fileType: 'jpg', quality: 0.92, success: (r) => res2(r.tempFilePath), fail: rej2 });
       });
 
-      Promise.all(pages.map(drawPage)).then((paths) => {
-        const reads = paths.map((p) => new Promise((r, j) => {
-          wx.getFileSystemManager().readFile({ filePath: p, success: (d) => r(new Uint8Array(d.data)), fail: j });
-        }));
-        Promise.all(reads).then((jpegs) => {
-          try { resolve(buildPdfFromJpegs(W, H, jpegs)); }
-          catch (e) { reject(e); }
+      drawCover().then((coverPath) => {
+        const readsC = new Promise((r, j) => {
+          wx.getFileSystemManager().readFile({ filePath: coverPath, success: (d) => r(new Uint8Array(d.data)), fail: j });
+        });
+        Promise.all(pages.map(drawPage)).then((paths) => {
+          const reads = paths.map((p) => new Promise((r, j) => {
+            wx.getFileSystemManager().readFile({ filePath: p, success: (d) => r(new Uint8Array(d.data)), fail: j });
+          }));
+          Promise.all([readsC].concat(reads)).then((jpegs) => {
+            try { resolve(buildPdfFromJpegs(W, H, jpegs)); }
+            catch (e) { reject(e); }
+          }).catch(reject);
         }).catch(reject);
       }).catch(reject);
     });
@@ -334,4 +431,4 @@ function generateDoc(plan, fmt) {
   return Promise.reject(new Error('unknown format: ' + fmt));
 }
 
-module.exports = { generateDoc };
+module.exports = { generateDoc, planSections, planCover };

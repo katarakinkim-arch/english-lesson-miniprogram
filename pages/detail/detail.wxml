@@ -28,7 +28,10 @@
 
   <!-- 内容分区 -->
   <view class="card section" wx:for="{{sections}}" wx:key="key">
-    <view class="section-h">{{item.title}}</view>
+    <view class="section-h">
+      <text class="section-no">{{item.no}}</text>
+      <text class="section-name">{{item.title}}</text>
+    </view>
 
     <view wx:if="{{item.type==='text'}}" class="section-body">{{item.body}}</view>
 
@@ -37,8 +40,8 @@
     </view>
 
     <view wx:if="{{item.type==='steps'}}" class="steps">
-      <view class="step" wx:for="{{item.steps}}" wx:for-item="st" wx:key="step">
-        <view class="step-h">{{st.step}}<text class="step-time">{{st.time}}分钟</text></view>
+      <view class="step" wx:for="{{item.steps}}" wx:for-item="st" wx:for-index="si" wx:key="step">
+        <view class="step-h"><text class="step-no">{{si + 1}}</text>{{st.step}}<text class="step-time">{{st.time}}分钟</text></view>
         <view class="step-body">{{st.content}}</view>
       </view>
     </view>

@@ -40,33 +40,53 @@
 
 /* Section */
 .section-h {
+  display: flex; align-items: center; gap: 16rpx;
   font-size: 30rpx; font-weight: 700; color: #1a365d;
-  padding-left: 18rpx; border-left: 8rpx solid #1a365d; margin-bottom: 18rpx; line-height: 1.3;
+  margin-bottom: 20rpx; line-height: 1.3;
 }
+.section-no {
+  flex-shrink: 0; width: 46rpx; height: 46rpx; line-height: 46rpx; text-align: center;
+  background: linear-gradient(135deg, #1a365d, #2c5282); color: #fff;
+  border-radius: 50%; font-size: 25rpx; font-weight: 700;
+  box-shadow: 0 3rpx 10rpx rgba(26, 54, 93, .28);
+}
+.section-name { flex: 1; }
+
 .section-body {
-  font-size: 26rpx; color: #4a4a5a; line-height: 1.8;
+  font-size: 26rpx; color: #4a4a5a; line-height: 1.85;
   white-space: pre-wrap; word-break: break-word;
 }
 .list-box { display: flex; flex-direction: column; gap: 14rpx; }
 .list-item {
-  font-size: 26rpx; color: #4a4a5a; line-height: 1.8; padding-left: 24rpx;
+  font-size: 26rpx; color: #4a4a5a; line-height: 1.85; padding-left: 28rpx;
   position: relative; white-space: pre-wrap;
 }
 .list-item::before {
-  content: ''; position: absolute; left: 4rpx; top: 18rpx;
-  width: 10rpx; height: 10rpx; border-radius: 50%; background: #2c5282;
+  content: ''; position: absolute; left: 6rpx; top: 18rpx;
+  width: 11rpx; height: 11rpx; border-radius: 50%; background: #2c5282;
 }
 
 /* Steps */
-.steps { display: flex; flex-direction: column; gap: 22rpx; }
-.step { border-left: 4rpx solid #e8f0fe; padding-left: 22rpx; }
-.step-h { font-size: 27rpx; font-weight: 700; color: #1a365d; margin-bottom: 10rpx; }
+.steps { display: flex; flex-direction: column; gap: 24rpx; }
+.step {
+  background: #f7f9fc; border-radius: 16rpx; padding: 20rpx 22rpx;
+  border-left: 6rpx solid #2c5282;
+}
+.step-h {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 12rpx;
+  font-size: 27rpx; font-weight: 700; color: #1a365d; margin-bottom: 12rpx;
+}
+.step-no {
+  flex-shrink: 0; width: 40rpx; height: 40rpx; line-height: 40rpx; text-align: center;
+  background: #1a365d; color: #fff; border-radius: 50%;
+  font-size: 23rpx; font-weight: 700;
+}
 .step-time {
-  font-size: 22rpx; color: #fff; background: #2c5282; border-radius: 8rpx;
-  padding: 2rpx 12rpx; margin-left: 12rpx; font-weight: 400;
+  font-size: 21rpx; color: #fff; background: #2c5282; border-radius: 8rpx;
+  padding: 3rpx 12rpx; font-weight: 400;
 }
 .step-body {
-  font-size: 25rpx; color: #4a4a5a; line-height: 1.8;
+  font-size: 25rpx; color: #4a4a5a; line-height: 1.85;
   white-space: pre-wrap; word-break: break-word;
 }
 
