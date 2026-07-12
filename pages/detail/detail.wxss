@@ -89,8 +89,15 @@
   color: #4a4a5a; background: #f0f1f5; border-radius: 14rpx; border: 2rpx solid transparent;
 }
 .dl-fmt.active { color: #1a365d; background: #e8f0fe; border-color: #1a365d; font-weight: 600; }
+.dl-fav {
+  width: 88rpx; height: 88rpx; line-height: 88rpx; text-align: center;
+  font-size: 44rpx; color: #888; background: #f0f1f5; border-radius: 16rpx;
+  margin-right: 16rpx; flex-shrink: 0;
+}
+.dl-fav.on { color: #f7b500; background: #fff7e0; }
+.dl-bar-row { display: flex; align-items: center; }
 .dl-btn {
-  background: #1a365d; color: #fff; text-align: center; font-size: 30rpx; font-weight: 600;
+  flex: 1; background: #1a365d; color: #fff; text-align: center; font-size: 30rpx; font-weight: 600;
   padding: 24rpx 0; border-radius: 16rpx; letter-spacing: 2rpx;
 }
 .dl-btn.loading { opacity: .7; }

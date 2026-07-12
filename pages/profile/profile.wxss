@@ -1,0 +1,68 @@
+/* pages/profile/profile.wxss */
+.page { padding: 24rpx; }
+
+.profile-card {
+  display: flex; align-items: center; gap: 28rpx;
+  background: #fff; border-radius: 24rpx; padding: 36rpx 32rpx;
+  box-shadow: 0 2rpx 12rpx rgba(26, 54, 93, 0.06);
+}
+.avatar-btn {
+  padding: 0; margin: 0; width: 120rpx; height: 120rpx; border-radius: 50%;
+  overflow: hidden; background: #f0f1f5; line-height: 1;
+}
+.avatar-btn::after { border: none; }
+.avatar { width: 120rpx; height: 120rpx; border-radius: 50%; }
+.info { flex: 1; }
+.nick { font-size: 34rpx; font-weight: 700; color: #1a365d; height: 50rpx; }
+.nick-ph { color: #b0b0b8; font-weight: 400; }
+.uid { font-size: 22rpx; color: #9aa0ab; margin-top: 8rpx; }
+
+.tip {
+  margin: 20rpx 0; padding: 18rpx 22rpx; font-size: 23rpx; color: #8a6d3b;
+  background: #fff7e0; border-radius: 14rpx; line-height: 1.6;
+}
+
+.stats {
+  display: flex; margin: 20rpx 0; background: #fff; border-radius: 24rpx;
+  padding: 28rpx 0; box-shadow: 0 2rpx 12rpx rgba(26, 54, 93, 0.06);
+}
+.stat { flex: 1; text-align: center; position: relative; }
+.stat::after {
+  content: ''; position: absolute; right: 0; top: 12rpx; bottom: 12rpx;
+  width: 1rpx; background: #eef0f4;
+}
+.stat:last-child::after { display: none; }
+.stat .n { font-size: 40rpx; font-weight: 800; color: #1a365d; }
+.stat .l { font-size: 23rpx; color: #9aa0ab; margin-top: 6rpx; }
+
+.block {
+  background: #fff; border-radius: 24rpx; padding: 26rpx 26rpx 12rpx;
+  margin-bottom: 20rpx; box-shadow: 0 2rpx 12rpx rgba(26, 54, 93, 0.06);
+}
+.block-h {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 30rpx; font-weight: 700; color: #1a365d; margin-bottom: 12rpx;
+}
+.clear { font-size: 24rpx; color: #c0392b; font-weight: 400; }
+
+.empty { font-size: 25rpx; color: #9aa0ab; padding: 32rpx 0; text-align: center; }
+
+.fav-item {
+  display: flex; align-items: center; padding: 22rpx 0;
+  border-top: 1rpx solid #f0f1f5;
+}
+.fav-main { flex: 1; min-width: 0; }
+.fav-title { font-size: 28rpx; color: #2d3142; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fav-sub { font-size: 22rpx; color: #9aa0ab; margin-top: 6rpx; }
+.fav-del {
+  font-size: 24rpx; color: #c0392b; background: #fdecea; border-radius: 10rpx;
+  padding: 8rpx 20rpx; margin-left: 16rpx; flex-shrink: 0;
+}
+
+.op-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 26rpx 0; font-size: 28rpx; color: #2d3142;
+  border-top: 1rpx solid #f0f1f5;
+}
+.op-row:first-of-type { border-top: none; }
+.arrow { color: #c5cad3; font-size: 36rpx; }

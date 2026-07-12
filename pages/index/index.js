@@ -1,4 +1,5 @@
 const app = getApp();
+const clouduser = require('../../utils/clouduser.js');
 
 Page({
   data: {
@@ -73,7 +74,7 @@ Page({
 
   openDetail(e) {
     const id = e.currentTarget.dataset.id;
-    app.addRecent(id);
+    clouduser.addAction('recent', { lessonId: id });
     wx.navigateTo({ url: '/pages/detail/detail?id=' + id });
   }
 });

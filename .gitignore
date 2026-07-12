@@ -19,6 +19,9 @@ desktop.ini
 dist/
 build/
 
+# Cloud function dependencies (installed on deploy)
+cloudfunctions/**/node_modules/
+
 # Temp / cache
 *.tmp
 *.temp

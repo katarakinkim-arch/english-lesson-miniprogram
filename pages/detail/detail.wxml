@@ -51,13 +51,16 @@
 
 <!-- 底部下载栏 -->
 <view class="dl-bar" wx:if="{{!loading && plan}}">
-  <view class="dl-fmts">
-    <view class="dl-fmt {{fmt==='word'?'active':''}}" data-f="word" bindtap="selectFmt">📝 Word</view>
-    <view class="dl-fmt {{fmt==='pdf'?'active':''}}" data-f="pdf" bindtap="selectFmt">📄 PDF</view>
-    <view class="dl-fmt {{fmt==='ppt'?'active':''}}" data-f="ppt" bindtap="selectFmt">📊 PPT</view>
-  </view>
-  <view class="dl-btn {{generating?'loading':''}}" bindtap="onDownload">
-    {{generating ? '生成中...' : '📥 下载' + (fmt==='word'?' Word':fmt==='pdf'?' PDF':' PPT')}}
+  <view class="dl-fav {{favorited?'on':''}}" bindtap="toggleFavorite">{{favorited ? '★' : '☆'}}</view>
+  <view class="dl-bar-row">
+    <view class="dl-fmts">
+      <view class="dl-fmt {{fmt==='word'?'active':''}}" data-f="word" bindtap="selectFmt">📝 Word</view>
+      <view class="dl-fmt {{fmt==='pdf'?'active':''}}" data-f="pdf" bindtap="selectFmt">📄 PDF</view>
+      <view class="dl-fmt {{fmt==='ppt'?'active':''}}" data-f="ppt" bindtap="selectFmt">📊 PPT</view>
+    </view>
+    <view class="dl-btn {{generating?'loading':''}}" bindtap="onDownload">
+      {{generating ? '生成中...' : '📥 下载' + (fmt==='word'?' Word':fmt==='pdf'?' PDF':' PPT')}}
+    </view>
   </view>
 </view>
 

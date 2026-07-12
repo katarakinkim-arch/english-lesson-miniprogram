@@ -1,0 +1,49 @@
+<view class="page">
+  <!-- 用户信息卡 -->
+  <view class="profile-card">
+    <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image class="avatar" src="{{avatarUrl || '/images/tabbar/person.png'}}" mode="aspectFill"></image>
+    </button>
+    <view class="info">
+      <input class="nick" type="nickname" placeholder="点击设置昵称" placeholder-class="nick-ph" value="{{nickName}}" bindblur="onNickname" bindconfirm="onNickname" />
+      <view class="uid">ID: {{openid || '----'}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{isLocal}}" class="tip">游客模式：数据仅保存在本机。配置云开发后可在多设备同步。</view>
+
+  <!-- 统计 -->
+  <view class="stats">
+    <view class="stat"><view class="n">{{stats.downloads}}</view><view class="l">下载</view></view>
+    <view class="stat"><view class="n">{{stats.recents}}</view><view class="l">最近</view></view>
+    <view class="stat"><view class="n">{{stats.favorites}}</view><view class="l">收藏</view></view>
+  </view>
+
+  <!-- 我的收藏 -->
+  <view class="block">
+    <view class="block-h">
+      <text>⭐ 我的收藏</text>
+      <text wx:if="{{favorites.length}}" class="clear" bindtap="clearFav">清空</text>
+    </view>
+
+    <view wx:if="{{!favorites.length}}" class="empty">还没有收藏，去教案详情页点 ☆ 收藏吧</view>
+
+    <view wx:for="{{favorites}}" wx:key="id" class="fav-item" data-id="{{item.id}}" bindtap="openDetail">
+      <view class="fav-main">
+        <view class="fav-title">{{item.title}}</view>
+        <view class="fav-sub">{{item.sub}}</view>
+      </view>
+      <view class="fav-del" catchtap="removeFav" data-id="{{item.id}}">移除</view>
+    </view>
+  </view>
+
+  <view class="block">
+    <view class="block-h"><text>⚙️ 数据管理</text></view>
+    <view class="op-row" bindtap="clearAll">
+      <text>清空全部云端数据</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <view style="height:40rpx"></view>
+</view>

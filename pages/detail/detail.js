@@ -1,4 +1,5 @@
 const app = getApp();
+const clouduser = require('../../utils/clouduser.js');
 
 function calcPages(p) {
   const text = [
@@ -55,7 +56,8 @@ Page({
     sections: [],
     fmt: 'word',
     loading: true,
-    generating: false
+    generating: false,
+    favorited: false
   },
 
   onLoad(options) {
@@ -65,7 +67,6 @@ Page({
       setTimeout(() => wx.navigateBack(), 800);
       return;
     }
-    app.addRecent(plan.id);
     this.setData({
       plan: plan,
       pages: calcPages(plan),
@@ -74,6 +75,29 @@ Page({
       loading: false
     });
     wx.setNavigationBarTitle({ title: plan.lessonTypeName || '教案详情' });
+
+    // 记录最近浏览（云端，失败自动本地）
+    clouduser.addAction('recent', { lessonId: plan.id });
+    // 读取收藏态
+    clouduser.getActions().then((a) => {
+      const fav = (a && a.favorites) || [];
+      this.setData({ favorited: fav.indexOf(plan.id) >= 0 });
+    }).catch(() => {});
+  },
+
+  // 收藏 / 取消收藏
+  async toggleFavorite() {
+    const plan = this.data.plan;
+    if (!plan) return;
+    const willFav = !this.data.favorited;
+    this.setData({ favorited: willFav });
+    try {
+      if (willFav) await clouduser.addAction('favorite', { lessonId: plan.id });
+      else await clouduser.removeAction('favorite', plan.id);
+    } catch (e) {
+      this.setData({ favorited: !willFav });
+      wx.showToast({ title: '操作失败', icon: 'none' });
+    }
   },
 
   selectFmt(e) {
@@ -99,14 +123,7 @@ Page({
           wx.showToast({ title: '打开失败，请重试', icon: 'none' });
         }
       });
-      app.addDownload({
-        id: Date.now() + '',
-        lessonId: plan.id,
-        lessonTitle: plan.title,
-        grade: plan.grade,
-        format: fmt,
-        time: fmtTime()
-      });
+      clouduser.addAction('download', { lessonId: plan.id, format: fmt });
     } catch (err) {
       wx.hideLoading();
       console.error('generateDoc error', err);

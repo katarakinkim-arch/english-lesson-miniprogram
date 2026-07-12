@@ -1,44 +1,29 @@
-// app.js — 小程序入口，管理全局数据与本地存储
+// app.js — 小程序入口：加载教案数据、初始化云开发、登录用户
 const lessons = require('./data/lessons.js');
+const clouduser = require('./utils/clouduser.js');
 
 App({
   globalData: {
-    lessons: lessons,           // 全部 30 课英语教案
-    downloadLimit: 10,          // 每日下载额度（演示用）
-    downloads: [],              // 下载记录
-    recentlyViewed: []          // 最近浏览
+    lessons: lessons,        // 内置 30 课英语教案
+    user: null               // 当前云端用户（含 downloads/recents/favorites）
   },
 
   onLaunch() {
-    try {
-      this.globalData.downloads = wx.getStorageSync('downloads') || [];
-      this.globalData.recentlyViewed = wx.getStorageSync('recentlyViewed') || [];
-    } catch (e) {
-      this.globalData.downloads = [];
-      this.globalData.recentlyViewed = [];
-    }
+    // 云端登录（未配置云环境时内部自动降级，不影响启动）
+    clouduser.login()
+      .then((u) => { this.globalData.user = u; })
+      .catch(() => {});
   },
 
-  // 记录最近浏览（最多保存 20 条，去重）
-  addRecent(id) {
-    let list = this.globalData.recentlyViewed.filter(x => x !== id);
-    list.unshift(id);
-    if (list.length > 20) list = list.slice(0, 20);
-    this.globalData.recentlyViewed = list;
-    wx.setStorageSync('recentlyViewed', list);
+  // 按 id 取单课
+  getLessonById(id) {
+    return (this.globalData.lessons || []).find((l) => l.id === id);
   },
 
-  // 记录下载（去重，更新时间）
-  addDownload(record) {
-    const list = this.globalData.downloads.filter(d => !(d.lessonId === record.lessonId && d.format === record.format));
-    list.unshift(record);
-    this.globalData.downloads = list;
-    wx.setStorageSync('downloads', list);
-  },
-
-  removeDownload(id) {
-    const list = this.globalData.downloads.filter(d => d.id !== id);
-    this.globalData.downloads = list;
-    wx.setStorageSync('downloads', list);
+  // 按 id 数组取多课（顺序保持入参顺序）
+  getLessonsByIds(ids) {
+    const map = {};
+    (this.globalData.lessons || []).forEach((l) => { map[l.id] = l; });
+    return (ids || []).map((id) => map[id]).filter(Boolean);
   }
 });

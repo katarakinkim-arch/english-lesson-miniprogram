@@ -1,31 +1,41 @@
-// pages/recent/recent.js — 最近浏览（本地存储，无需服务器）
+// pages/recent/recent.js — 最近浏览（云端，自动降级本地）
 const app = getApp();
+const clouduser = require('../../utils/clouduser.js');
 
 Page({
   data: {
-    list: []
+    list: [],
+    loading: true
   },
 
   onShow() {
     this.refresh();
   },
 
-  refresh() {
-    const ids = app.globalData.recentlyViewed || [];
-    const all = app.globalData.lessons || [];
-    const map = {};
-    all.forEach((l) => { map[l.id] = l; });
+  async refresh() {
+    this.setData({ loading: true });
+    try {
+      const a = await clouduser.getActions();
+      const ids = (a && a.recents) || [];
+      const all = app.globalData.lessons || [];
+      const map = {};
+      all.forEach((l) => { map[l.id] = l; });
 
-    const list = ids
-      .map((id) => map[id])
-      .filter((l) => l)
-      .map((l) => ({
-        id: l.id,
-        title: l.title,
-        sub: '第' + l.unitNumber + '单元 · ' + l.lessonTypeName,
-        desc: (l.overview || '').substring(0, 46) + ((l.overview || '').length > 46 ? '…' : '')
-      }));
-    this.setData({ list });
+      const list = ids
+        .slice()
+        .reverse() // 云端按时间追加，最新在前
+        .map((id) => map[id])
+        .filter((l) => l)
+        .map((l) => ({
+          id: l.id,
+          title: l.title,
+          sub: '第' + l.unitNumber + '单元 · ' + l.lessonTypeName,
+          desc: (l.overview || '').substring(0, 46) + ((l.overview || '').length > 46 ? '…' : '')
+        }));
+      this.setData({ list, loading: false });
+    } catch (e) {
+      this.setData({ list: [], loading: false });
+    }
   },
 
   openDetail(e) {
@@ -40,10 +50,9 @@ Page({
       content: '确定要清空最近浏览记录吗？此操作不可恢复。',
       confirmText: '清空',
       confirmColor: '#c0392b',
-      success: (res) => {
+      success: async (res) => {
         if (res.confirm) {
-          app.globalData.recentlyViewed = [];
-          wx.setStorageSync('recentlyViewed', []);
+          await clouduser.clear('recent');
           this.refresh();
         }
       }
