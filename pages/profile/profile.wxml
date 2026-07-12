@@ -14,29 +14,46 @@
 
   <!-- 统计 -->
   <view class="stats">
+    <view class="stat"><view class="n">{{stats.favorites}}</view><view class="l">收藏</view></view>
     <view class="stat"><view class="n">{{stats.downloads}}</view><view class="l">下载</view></view>
     <view class="stat"><view class="n">{{stats.recents}}</view><view class="l">最近</view></view>
-    <view class="stat"><view class="n">{{stats.favorites}}</view><view class="l">收藏</view></view>
   </view>
 
-  <!-- 我的收藏 -->
+  <!-- 下载记录 -->
   <view class="block">
     <view class="block-h">
-      <text>⭐ 我的收藏</text>
-      <text wx:if="{{favorites.length}}" class="clear" bindtap="clearFav">清空</text>
+      <text>📥 下载记录</text>
+      <text wx:if="{{downloads.length}}" class="clear" bindtap="clearDownloads">清空</text>
     </view>
-
-    <view wx:if="{{!favorites.length}}" class="empty">还没有收藏，去教案详情页点 ☆ 收藏吧</view>
-
-    <view wx:for="{{favorites}}" wx:key="id" class="fav-item" data-id="{{item.id}}" bindtap="openDetail">
-      <view class="fav-main">
-        <view class="fav-title">{{item.title}}</view>
-        <view class="fav-sub">{{item.sub}}</view>
+    <view wx:if="{{!downloads.length}}" class="empty">暂无下载记录</view>
+    <view wx:for="{{downloads}}" wx:key="id" class="doc-card card-hover" data-id="{{item.id}}" bindtap="openDetail">
+      <view class="doc-card-icon">📄</view>
+      <view class="doc-card-body">
+        <view class="doc-card-title">{{item.title}}</view>
+        <view class="doc-card-sub">{{item.sub}}</view>
       </view>
-      <view class="fav-del" catchtap="removeFav" data-id="{{item.id}}">移除</view>
+      <view class="doc-card-arrow">›</view>
     </view>
   </view>
 
+  <!-- 浏览历史 -->
+  <view class="block">
+    <view class="block-h">
+      <text>🕘 浏览历史</text>
+      <text wx:if="{{recents.length}}" class="clear" bindtap="clearRecents">清空</text>
+    </view>
+    <view wx:if="{{!recents.length}}" class="empty">暂无浏览记录</view>
+    <view wx:for="{{recents}}" wx:key="id" class="doc-card card-hover" data-id="{{item.id}}" bindtap="openDetail">
+      <view class="doc-card-icon">📄</view>
+      <view class="doc-card-body">
+        <view class="doc-card-title">{{item.title}}</view>
+        <view class="doc-card-sub">{{item.sub}}</view>
+      </view>
+      <view class="doc-card-arrow">›</view>
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
   <view class="block">
     <view class="block-h"><text>⚙️ 数据管理</text></view>
     <view class="op-row" bindtap="clearAll">

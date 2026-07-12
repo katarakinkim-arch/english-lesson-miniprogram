@@ -2,8 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/detail/detail",
-    "pages/downloads/downloads",
-    "pages/recent/recent",
+    "pages/favorites/favorites",
     "pages/profile/profile"
   ],
   "window": {
@@ -22,20 +21,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "教案库",
-        "iconPath": "images/tabbar/book.png",
-        "selectedIconPath": "images/tabbar/book-active.png"
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/home-active.png"
       },
       {
-        "pagePath": "pages/downloads/downloads",
-        "text": "我的下载",
-        "iconPath": "images/tabbar/download.png",
-        "selectedIconPath": "images/tabbar/download-active.png"
-      },
-      {
-        "pagePath": "pages/recent/recent",
-        "text": "最近",
-        "iconPath": "images/tabbar/clock.png",
-        "selectedIconPath": "images/tabbar/clock-active.png"
+        "pagePath": "pages/favorites/favorites",
+        "text": "收藏",
+        "iconPath": "images/tabbar/star.png",
+        "selectedIconPath": "images/tabbar/star-active.png"
       },
       {
         "pagePath": "pages/profile/profile",

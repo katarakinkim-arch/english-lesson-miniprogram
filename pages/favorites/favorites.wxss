@@ -1,0 +1,10 @@
+/* pages/favorites/favorites.wxss */
+.clear-all {
+  font-size: 24rpx;
+  color: #c0392b;
+  font-weight: 400;
+}
+.fav-del {
+  color: #c0392b !important;
+  font-size: 36rpx !important;
+}

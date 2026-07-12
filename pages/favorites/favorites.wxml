@@ -1,0 +1,40 @@
+<view class="page-wrap">
+  <!-- 错误态 -->
+  <view wx:if="{{error}}" class="error-state">
+    <view class="error-ico">⚠️</view>
+    <view class="error-text">数据加载失败</view>
+    <view class="error-tip">请检查网络后重试</view>
+    <view class="error-btn" bindtap="refresh">点击重试</view>
+  </view>
+
+  <!-- 加载中 -->
+  <view wx:elif="{{loading}}" class="empty">
+    <view class="empty-ico">⏳</view>
+    <view class="empty-text">加载中…</view>
+  </view>
+
+  <!-- 有数据 -->
+  <block wx:elif="{{list.length}}">
+    <view class="group-label flex-between">
+      <text>已收藏 {{list.length}} 篇</text>
+      <text class="clear-all" bindtap="clearAll">清空</text>
+    </view>
+    <view class="list">
+      <view wx:for="{{list}}" wx:key="id" class="doc-card card-hover" data-id="{{item.id}}" bindtap="openDetail">
+        <view class="doc-card-icon">📄</view>
+        <view class="doc-card-body">
+          <view class="doc-card-title">{{item.title}}</view>
+          <view class="doc-card-sub">{{item.sub}}</view>
+        </view>
+        <view class="doc-card-arrow fav-del" catchtap="removeFav" data-id="{{item.id}}">✕</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 空态 -->
+  <view wx:else class="empty">
+    <view class="empty-ico">⭐</view>
+    <view class="empty-text">还没有收藏</view>
+    <view class="empty-tip">在教案详情页点 ☆ 即可收藏到这里</view>
+  </view>
+</view>
