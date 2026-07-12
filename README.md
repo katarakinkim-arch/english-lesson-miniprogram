@@ -62,7 +62,13 @@ miniprogram/
 │   ├── favorites/  # 我的收藏（独立 tab）
 │   └── profile/     # 个人中心（我的，含下载记录/浏览历史子模块）
 └── images/tabbar/  # 底部导航图标（home / star / person，描边风）
+└── tools/          # 开发辅助工具（不参与小程序构建）
+    ├── generate-preview.js      # 生成浏览器预览页 miniprogram-preview.html
+    ├── miniprogram-preview.html # 浏览器里直接看效果（无需开发者工具）
+    └── check-formats.js         # 校验全部30课 × Word/PPT/PDF 均生成合法
 ```
+
+> **`tools/` 目录说明**：仅用于本地开发预览与校验，微信开发者工具构建小程序时会忽略它，不影响真机运行。换电脑 clone 后，浏览器直接打开 `miniprogram-preview.html` 即可看效果；改了 `data/lessons.js` 后跑 `node tools/generate-preview.js` 重新生成、`node tools/check-formats.js` 验证格式兼容性。
 
 ## 五、隐私合规（提交审核前必看）
 
