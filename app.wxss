@@ -1,0 +1,61 @@
+/* app.wxss — 全局样式 + TDesign 主题变量 */
+page {
+  /* TDesign 品牌色定制为深蓝（与教案品牌一致） */
+  --td-brand-color: #1a365d;
+  --td-brand-color-light: #2c5282;
+  --td-brand-color-light-active: #e8f0fe;
+  --td-success-color: #2d5016;
+  --td-warning-color: #b8860b;
+  --td-error-color: #c0392b;
+
+  background-color: #f5f6fa;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, sans-serif;
+  color: #1a1a2e;
+  font-size: 28rpx;
+  line-height: 1.7;
+}
+
+view, text, scroll-view {
+  box-sizing: border-box;
+}
+
+/* 通用辅助类 */
+.muted { color: #888; }
+.center { text-align: center; }
+.flex { display: flex; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+
+/* 页面容器 */
+.page-wrap {
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ===== 通用卡片（recent / downloads 等页面复用） ===== */
+.doc-card {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(26, 54, 93, 0.06);
+}
+.card-hover { background: #f7f9fc; }
+.doc-card-icon {
+  width: 80rpx; height: 80rpx;
+  border-radius: 16rpx; background: #e8f0fe;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40rpx; margin-right: 20rpx; flex-shrink: 0;
+}
+.doc-card-body { flex: 1; min-width: 0; }
+.doc-card-title { font-size: 30rpx; font-weight: 600; color: #1a1a2e; line-height: 1.4; }
+.doc-card-sub { font-size: 23rpx; color: #1a365d; margin-top: 6rpx; }
+.doc-card-arrow { margin-left: 8rpx; font-size: 44rpx; color: #cfcfcf; flex-shrink: 0; align-self: center; }
+.list { padding: 8rpx 24rpx 40rpx; }
+.group-label { font-size: 26rpx; color: #888; padding: 24rpx 24rpx 8rpx; }
+.empty { text-align: center; padding: 120rpx 40rpx; }
+.empty-ico { font-size: 90rpx; }
+.empty-text { font-size: 28rpx; color: #4a4a5a; margin-top: 20rpx; }
+.empty-tip { font-size: 23rpx; color: #aaa; margin-top: 10rpx; }

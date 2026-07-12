@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# WeChat DevTools
+miniprogram_npm/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build output
+dist/
+build/
+
+# Temp / cache
+*.tmp
+*.temp
+*.log
+.cache/

@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/downloads/downloads",
+    "pages/recent/recent"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1a365d",
+    "navigationBarTitleText": "英语教案库",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f6fa",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#1a365d",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "教案库",
+        "iconPath": "images/tabbar/book.png",
+        "selectedIconPath": "images/tabbar/book-active.png"
+      },
+      {
+        "pagePath": "pages/downloads/downloads",
+        "text": "我的下载",
+        "iconPath": "images/tabbar/download.png",
+        "selectedIconPath": "images/tabbar/download-active.png"
+      },
+      {
+        "pagePath": "pages/recent/recent",
+        "text": "最近",
+        "iconPath": "images/tabbar/clock.png",
+        "selectedIconPath": "images/tabbar/clock-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

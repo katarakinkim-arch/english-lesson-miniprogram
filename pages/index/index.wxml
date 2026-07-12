@@ -1,0 +1,53 @@
+<view class="page-wrap">
+  <view class="top-bar">
+    <view class="search-box">
+      <text class="search-ico">🔍</text>
+      <input class="search-input" value="{{keyword}}" placeholder="搜索教案 / 单元 / 关键词"
+             confirm-type="search" bindinput="onSearch" />
+      <text wx:if="{{keyword}}" class="search-clear" bindtap="clearSearch">✕</text>
+    </view>
+  </view>
+
+  <view class="filter-row">
+    <view wx:for="{{books}}" wx:key="value"
+          class="filter-chip {{bookFilter===item.value?'active':''}}"
+          data-v="{{item.value}}" bindtap="onBookTap">{{item.label}}</view>
+  </view>
+
+  <scroll-view scroll-x enable-flex class="type-scroll">
+    <view class="type-row">
+      <view wx:for="{{types}}" wx:key="value"
+            class="type-chip {{typeFilter===item.value?'active':''}}"
+            data-v="{{item.value}}" bindtap="onTypeTap">{{item.label}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="list" wx:if="{{!loading && list.length > 0}}">
+    <view class="doc-card" wx:for="{{list}}" wx:key="id"
+          data-id="{{item.id}}" bindtap="openDetail" hover-class="card-hover">
+      <view class="doc-card-icon">📄</view>
+      <view class="doc-card-body">
+        <view class="doc-card-title">{{item.title}}</view>
+        <view class="doc-card-sub">{{item.sub}} · {{item.duration}}分钟</view>
+        <view class="doc-card-desc">{{item.desc}}</view>
+        <view class="doc-card-meta">
+          <text class="fmt-badge word">Word</text>
+          <text class="fmt-badge pdf">PDF</text>
+          <text class="fmt-badge ppt">PPT</text>
+          <text class="doc-stat">浏览 {{item.views}} · 下载 {{item.dls}}</text>
+        </view>
+      </view>
+      <view class="doc-card-arrow">›</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="list">
+    <view class="doc-card skel" wx:for="{{[1,2,3,4]}}" wx:key="*this"></view>
+  </view>
+
+  <view wx:if="{{!loading && list.length === 0}}" class="empty">
+    <view class="empty-ico">📭</view>
+    <view class="empty-text">没有找到匹配的教案</view>
+    <view class="empty-tip">换个关键词或筛选条件试试</view>
+  </view>
+</view>

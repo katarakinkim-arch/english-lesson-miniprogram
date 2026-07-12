@@ -1,0 +1,19 @@
+{
+  "description": "高中英语教案小程序（人教版2019 必修一二册）",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "packNpmManually": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.0.0",
+  "appid": "touristappid",
+  "projectname": "english-lesson-plans",
+  "condition": {}
+}
