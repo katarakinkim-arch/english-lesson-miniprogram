@@ -130,5 +130,23 @@ Page({
       wx.showToast({ title: '生成失败', icon: 'none' });
     }
     this.setData({ generating: false });
+  },
+
+  onShareAppMessage() {
+    const p = this.data.plan;
+    if (!p) return { title: '高中英语教案库', path: '/pages/index/index' };
+    return {
+      title: p.title + '｜' + (p.lessonTypeName || '教案') + '（人教版' + (p.book || '') + '）',
+      path: '/pages/detail/detail?id=' + p.id
+    };
+  },
+
+  onShareTimeline() {
+    const p = this.data.plan;
+    if (!p) return { title: '高中英语教案库', query: '' };
+    return {
+      title: p.title + '｜' + (p.lessonTypeName || '教案'),
+      query: 'id=' + p.id
+    };
   }
 });

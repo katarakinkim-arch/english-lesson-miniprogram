@@ -59,3 +59,15 @@ view, text, scroll-view {
 .empty-ico { font-size: 90rpx; }
 .empty-text { font-size: 28rpx; color: #4a4a5a; margin-top: 20rpx; }
 .empty-tip { font-size: 23rpx; color: #aaa; margin-top: 10rpx; }
+
+/* 通用错误态（网络失败/云未就绪） */
+.error-state { text-align: center; padding: 120rpx 40rpx; }
+.error-ico { font-size: 90rpx; }
+.error-text { font-size: 28rpx; color: #4a4a5a; margin-top: 20rpx; }
+.error-tip { font-size: 23rpx; color: #aaa; margin-top: 10rpx; }
+.error-btn {
+  display: inline-block; margin-top: 30rpx; padding: 14rpx 44rpx;
+  font-size: 26rpx; color: #1a365d; background: #e8f0fe;
+  border-radius: 40rpx; border: 2rpx solid #1a365d;
+}
+.error-btn:active { background: #d6e4fb; }

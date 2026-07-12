@@ -12,7 +12,8 @@ Page({
   data: {
     list: [],
     total: 0,
-    loading: true
+    loading: true,
+    error: false
   },
 
   onShow() {
@@ -20,7 +21,7 @@ Page({
   },
 
   async refresh() {
-    this.setData({ loading: true });
+    this.setData({ loading: true, error: false });
     try {
       const a = await clouduser.getActions();
       const raw = (a && a.downloads) || [];
@@ -40,10 +41,18 @@ Page({
             time: d.time ? formatTime(d.time) : ''
           };
         });
-      this.setData({ list, total: list.length, loading: false });
+      this.setData({ list, total: list.length, loading: false, error: false });
     } catch (e) {
-      this.setData({ list: [], total: 0, loading: false });
+      this.setData({ list: [], total: 0, loading: false, error: true });
     }
+  },
+
+  onRetry() {
+    this.refresh();
+  },
+
+  onPullDownRefresh() {
+    this.refresh().then(() => wx.stopPullDownRefresh());
   },
 
   openDetail(e) {

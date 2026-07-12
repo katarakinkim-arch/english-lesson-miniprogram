@@ -76,5 +76,21 @@ Page({
     const id = e.currentTarget.dataset.id;
     clouduser.addAction('recent', { lessonId: id });
     wx.navigateTo({ url: '/pages/detail/detail?id=' + id });
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '高中英语教案库｜人教版2019 必修一二册 30课，Word/PPT/PDF 一键生成',
+      path: '/pages/index/index'
+    };
+  },
+
+  onPullDownRefresh() {
+    this.setData({ loading: true });
+    this.applyFilter();
+    setTimeout(() => {
+      this.setData({ loading: false });
+      wx.stopPullDownRefresh();
+    }, 300);
   }
 });

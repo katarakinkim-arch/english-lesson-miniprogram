@@ -5,7 +5,8 @@ const clouduser = require('../../utils/clouduser.js');
 Page({
   data: {
     list: [],
-    loading: true
+    loading: true,
+    error: false
   },
 
   onShow() {
@@ -13,7 +14,7 @@ Page({
   },
 
   async refresh() {
-    this.setData({ loading: true });
+    this.setData({ loading: true, error: false });
     try {
       const a = await clouduser.getActions();
       const ids = (a && a.recents) || [];
@@ -32,10 +33,18 @@ Page({
           sub: '第' + l.unitNumber + '单元 · ' + l.lessonTypeName,
           desc: (l.overview || '').substring(0, 46) + ((l.overview || '').length > 46 ? '…' : '')
         }));
-      this.setData({ list, loading: false });
+      this.setData({ list, loading: false, error: false });
     } catch (e) {
-      this.setData({ list: [], loading: false });
+      this.setData({ list: [], loading: false, error: true });
     }
+  },
+
+  onRetry() {
+    this.refresh();
+  },
+
+  onPullDownRefresh() {
+    this.refresh().then(() => wx.stopPullDownRefresh());
   },
 
   openDetail(e) {

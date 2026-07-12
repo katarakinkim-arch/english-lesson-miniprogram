@@ -58,6 +58,7 @@
       <view class="dl-fmt {{fmt==='pdf'?'active':''}}" data-f="pdf" bindtap="selectFmt">📄 PDF</view>
       <view class="dl-fmt {{fmt==='ppt'?'active':''}}" data-f="ppt" bindtap="selectFmt">📊 PPT</view>
     </view>
+    <button class="dl-share" open-type="share">📤</button>
     <view class="dl-btn {{generating?'loading':''}}" bindtap="onDownload">
       {{generating ? '生成中...' : '📥 下载' + (fmt==='word'?' Word':fmt==='pdf'?' PDF':' PPT')}}
     </view>

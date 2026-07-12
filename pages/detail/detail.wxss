@@ -102,3 +102,10 @@
 }
 .dl-btn.loading { opacity: .7; }
 .dl-btn:active { background: #142844; }
+.dl-share {
+  width: 88rpx; height: 88rpx; line-height: 88rpx; text-align: center;
+  font-size: 38rpx; color: #1a365d; background: #f0f1f5; border-radius: 16rpx;
+  margin-right: 16rpx; padding: 0; flex-shrink: 0;
+}
+.dl-share::after { border: none; }
+.dl-share:active { background: #e3e5ea; }

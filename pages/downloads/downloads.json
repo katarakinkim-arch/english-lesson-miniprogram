@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "我的下载"
+  "navigationBarTitleText": "我的下载",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

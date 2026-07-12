@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "英语教案库",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }
