@@ -223,12 +223,16 @@ function renderIndex() {
     .join('');
 
   // 卡片列表（使用模板字符串避免引号地狱）
+  const TYPE_ICON = { reading:'📖', grammar:'✏️', writing:'✍️' };
+  const TYPE_BG = { reading:'#1a365d', grammar:'#1a6840', writing:'#7b341e' };
   const cards = list.map(l => {
     const fav = state.favorites.includes(l.id);
+    const ico = TYPE_ICON[l.lessonType] || '📄';
+    const bg = TYPE_BG[l.lessonType] || '#555';
     return `
     <div class="card" onclick="openDetail(\`${escAttr(l.id)}\`)">
       <div class="row1">
-        <div class="docico">&#128196;</div>
+        <div class="docico" style="background:linear-gradient(135deg,${bg},${bg}dd)">${ico}</div>
         <div style="flex:1">
           <div class="ttl">${escAttr(l.title)}</div>
           <div class="sub">${escAttr(l.book.replace('必修',''))} · ${escAttr(l.unitTitle)} · ${escAttr(l.lessonTypeName)} · ${l.duration}分钟</div>

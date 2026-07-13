@@ -31,7 +31,7 @@
   <view class="list" wx:if="{{!loading && list.length > 0}}">
     <view class="doc-card" wx:for="{{list}}" wx:key="id"
           data-id="{{item.id}}" bindtap="openDetail" hover-class="card-hover">
-      <view class="doc-card-icon">📄</view>
+      <view class="doc-card-icon" style="background: linear-gradient(135deg, {{item.iconBg}}, {{item.iconBg}}dd)">{{item.icon}}</view>
       <view class="doc-card-body">
         <view class="doc-card-title">{{item.title}}</view>
         <view class="doc-card-sub">{{item.sub}} · {{item.duration}}分钟</view>

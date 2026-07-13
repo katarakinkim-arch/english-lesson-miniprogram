@@ -94,7 +94,6 @@
 .doc-card-icon {
   width: 72rpx; height: 72rpx;
   border-radius: 16rpx;
-  background: linear-gradient(135deg, #1a365d, #2a4a7d);
   color: #fff;
   display: flex; align-items: center; justify-content: center;
   font-size: 36rpx;

@@ -112,7 +112,9 @@ Page({
       id: l.id,
       title: l.title,
       sub: l.book.replace('必修', '') + ' · ' + l.unitTitle + ' · ' + l.lessonTypeName,
-      duration: l.duration || 45
+      duration: l.duration || 45,
+      icon: ({ reading: '📖', grammar: '✏️', writing: '✍️' }[l.lessonType] || '📄'),
+      iconBg: ({ reading: '#1a365d', grammar: '#1a6840', writing: '#7b341e' }[l.lessonType] || '#555')
     }));
     this.setData({ list });
   },
