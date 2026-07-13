@@ -12,13 +12,23 @@ function pushHistory(kw) {
   wx.setStorageSync('search_history', h);
 }
 
+const BOOK_ORDER = { '必修第一册': 1, '必修第二册': 2, '必修第三册': 3 };
+const BOOK_SHORT = { '必修第一册': '必修一', '必修第二册': '必修二', '必修第三册': '必修三' };
+const ICON = {
+  'listening-speaking': '🎧', 'reading': '📖', 'grammar': '✏️',
+  'listening-talking': '💬', 'writing': '✍️', 'project': '🎯'
+};
+const ICON_BG = {
+  'listening-speaking': '#6b46c1', 'reading': '#1a365d', 'grammar': '#1a6840',
+  'listening-talking': '#b7791f', 'writing': '#7b341e', 'project': '#2c5282'
+};
+
 Page({
   data: {
     keyword: '',
     bookFilter: '0',
-    typeFilter: 'all',
     loading: true,
-    list: [],
+    groups: [],
     showHistory: false,
     history: [],
     books: [
@@ -26,15 +36,6 @@ Page({
       { value: '1', label: '必修一' },
       { value: '2', label: '必修二' },
       { value: '3', label: '必修三' }
-    ],
-    types: [
-      { value: 'all', label: '全部课型' },
-      { value: 'listening-speaking', label: '听与说' },
-      { value: 'reading', label: '阅读' },
-      { value: 'grammar', label: '语法' },
-      { value: 'listening-talking', label: '听与谈' },
-      { value: 'writing', label: '写作' },
-      { value: 'project', label: '项目复习' }
     ]
   },
 
@@ -87,20 +88,17 @@ Page({
     this.applyFilter();
   },
 
-  onTypeTap(e) {
-    this.setData({ typeFilter: e.currentTarget.dataset.v });
-    this.applyFilter();
-  },
-
   applyFilter() {
     const kw = this.data.keyword.trim().toLowerCase();
     const bf = this.data.bookFilter;
-    const tf = this.data.typeFilter;
-    const list = this.all.filter((l) => {
+    const filtered = this.all.slice().sort((a, b) =>
+      (BOOK_ORDER[a.book] - BOOK_ORDER[b.book]) ||
+      (a.unitNumber - b.unitNumber) ||
+      ((a.periodNumber || 0) - (b.periodNumber || 0))
+    ).filter((l) => {
       if (bf === '1' && l.book !== '必修第一册') return false;
       if (bf === '2' && l.book !== '必修第二册') return false;
       if (bf === '3' && l.book !== '必修第三册') return false;
-      if (tf !== 'all' && l.lessonType !== tf) return false;
       if (kw) {
         const hay = (
           l.title + ' ' + l.unitTitle + ' ' + (l.tags || []).join(' ') + ' ' + (l.textbookAnalysis || '') + ' ' + (l.overview || '') + ' ' +
@@ -111,15 +109,35 @@ Page({
         if (hay.indexOf(kw) === -1) return false;
       }
       return true;
-    }).map((l) => ({
-      id: l.id,
-      title: l.title,
-      sub: '第' + (l.periodNumber || '?') + '节 · ' + l.book.replace('必修', '') + ' · ' + l.unitTitle + ' · ' + l.lessonTypeName,
-      duration: l.duration || 45,
-      icon: ({ 'listening-speaking': '🎧', reading: '📖', grammar: '✏️', 'listening-talking': '💬', writing: '✍️', project: '🎯' }[l.lessonType] || '📄'),
-      iconBg: ({ 'listening-speaking': '#6b46c1', reading: '#1a365d', grammar: '#1a6840', 'listening-talking': '#b7791f', writing: '#7b341e', project: '#2c5282' }[l.lessonType] || '#555')
-    }));
-    this.setData({ list });
+    });
+
+    // 按 册+单元 分组（"全部"时 unitNumber 会跨册重复，必须用 册 区分）
+    const map = {};
+    filtered.forEach((l) => {
+      const key = l.book + '|' + l.unitNumber;
+      if (!map[key]) {
+        map[key] = {
+          key: key,
+          book: l.book,
+          bookShort: BOOK_SHORT[l.book] || l.book,
+          unitNumber: l.unitNumber,
+          unitTitle: l.unitTitle,
+          lessons: []
+        };
+      }
+      map[key].lessons.push({
+        id: l.id,
+        title: l.title,
+        sub: (l.lessonTypeName || '') + ' · ' + (l.duration || 45) + '分钟',
+        icon: ICON[l.lessonType] || '📄',
+        iconBg: ICON_BG[l.lessonType] || '#555'
+      });
+    });
+
+    const groups = Object.keys(map).map((k) => map[k]).sort((a, b) =>
+      (BOOK_ORDER[a.book] - BOOK_ORDER[b.book]) || (a.unitNumber - b.unitNumber)
+    );
+    this.setData({ groups });
   },
 
   openDetail(e) {
@@ -132,7 +150,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: '高中英语教案库｜人教版2019 必修一二册 30课，Word/PPT/PDF 一键生成',
+      title: '高中英语教案库｜人教版2019 必修一至三，按教材单元排列',
       path: '/pages/index/index',
       imageUrl: '/images/share-cover.png'
     };

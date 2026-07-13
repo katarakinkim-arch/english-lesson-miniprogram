@@ -20,23 +20,21 @@
           data-v="{{item.value}}" bindtap="onBookTap">{{item.label}}</view>
   </view>
 
-  <scroll-view scroll-x enable-flex class="type-scroll">
-    <view class="type-row">
-      <view wx:for="{{types}}" wx:key="value"
-            class="type-chip {{typeFilter===item.value?'active':''}}"
-            data-v="{{item.value}}" bindtap="onTypeTap">{{item.label}}</view>
-    </view>
-  </scroll-view>
-
-  <view class="list" wx:if="{{!loading && list.length > 0}}">
-    <view class="doc-card" wx:for="{{list}}" wx:key="id"
-          data-id="{{item.id}}" bindtap="openDetail" hover-class="card-hover">
-      <view class="doc-card-icon" style="background: linear-gradient(135deg, {{item.iconBg}}, {{item.iconBg}}dd)">{{item.icon}}</view>
-      <view class="doc-card-body">
-        <view class="doc-card-title">{{item.title}}</view>
-        <view class="doc-card-sub">{{item.sub}} · {{item.duration}}分钟</view>
+  <view class="list" wx:if="{{!loading && groups.length > 0}}">
+    <view class="unit-group" wx:for="{{groups}}" wx:key="key" wx:for-item="group">
+      <view class="unit-head">
+        <text class="unit-no">{{group.bookShort}} · Unit {{group.unitNumber}}</text>
+        <text class="unit-name">{{group.unitTitle}}</text>
       </view>
-      <view class="doc-card-arrow">›</view>
+      <view class="doc-card" wx:for="{{group.lessons}}" wx:for-item="lesson" wx:key="id"
+            data-id="{{lesson.id}}" bindtap="openDetail" hover-class="card-hover">
+        <view class="doc-card-icon" style="background: linear-gradient(135deg, {{lesson.iconBg}}, {{lesson.iconBg}}dd)">{{lesson.icon}}</view>
+        <view class="doc-card-body">
+          <view class="doc-card-title">{{lesson.title}}</view>
+          <view class="doc-card-sub">{{lesson.sub}}</view>
+        </view>
+        <view class="doc-card-arrow">›</view>
+      </view>
     </view>
   </view>
 
@@ -44,7 +42,7 @@
     <view class="doc-card skel" wx:for="{{[1,2,3,4]}}" wx:key="*this"></view>
   </view>
 
-  <view wx:if="{{!loading && list.length === 0}}" class="empty">
+  <view wx:if="{{!loading && groups.length === 0}}" class="empty">
     <view class="empty-ico">📭</view>
     <view class="empty-text">没有找到匹配的教案</view>
     <view class="empty-tip">换个关键词或筛选条件试试</view>

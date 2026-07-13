@@ -1,17 +1,16 @@
 // 生成浏览器可预览的小程序模拟版 HTML
-// 核心修复：生成的 JS 使用模板字符串（backtick）拼接 HTML，彻底避免嵌套引号问题
+// 说明：<script> 内的动态 HTML 一律用单引号字符串拼接；内联 onclick 的属性值里的引号用 &quot; 实体，
+// 避免反斜杠转义（在模板字符串里 \' 会被吞成 '）也避免反引号（会提前结束外层模板字符串）。
+// 整段脚本内不含反引号与 ${}（除顶部注入数据那一行），本文件写在最外层模板字符串中也很安全。
 const fs = require('fs');
 const path = require('path');
 
 const miniDir = path.join(__dirname, '..');
 const lessons = require(path.join(miniDir, 'data', 'lessons.js'));
 
-// 安全嵌入 JSON 到 JS：转义 </ 防止闭合 script 标签，转义反引号和 ${ 防止破坏模板字符串
+// 安全嵌入 JSON 到 JS：转义 < 防止闭合 script 标签
 function safeJsonStr(obj) {
-  return JSON.stringify(obj)
-    .replace(/</g, '\\x3c')
-    .replace(/`/g, '\\`')
-    .replace(/\$\{/g, '\\${');
+  return JSON.stringify(obj).replace(/</g, '\\x3c');
 }
 
 const html = `<!DOCTYPE html>
@@ -52,6 +51,10 @@ const html = `<!DOCTYPE html>
   .empty .e{ font-size:54px; }
   .empty .t{ margin-top:12px; font-size:15px; }
   .empty .p{ margin-top:6px; font-size:12px; color:#b3b8c4; }
+  .unit-group{ margin-top:12px; }
+  .unit-head{ display:flex; align-items:baseline; gap:8px; padding:12px 2px 8px; position:sticky; top:0; background:var(--bg); z-index:5; }
+  .unit-no{ font-size:12px; font-weight:700; color:#fff; background:var(--brand); padding:3px 9px; border-radius:6px; flex-shrink:0; }
+  .unit-name{ font-size:15px; font-weight:600; color:var(--txt); }
   .hero{ margin:-14px -14px 14px; padding:26px 18px 20px; background:linear-gradient(160deg,var(--brand),var(--brand2)); color:#fff; border-radius:0 0 22px 22px; }
   .hero .badges2{ display:flex; gap:8px; margin-bottom:14px; }
   .hero .badge2{ font-size:12px; padding:4px 11px; border-radius:9px; background:rgba(255,255,255,.18); }
@@ -107,9 +110,9 @@ const html = `<!DOCTYPE html>
   <div class="navbar"><span class="back" id="backBtn" style="display:none">&#8249;</span><span id="navTitle">英语教案库</span></div>
   <div class="content" id="content"></div>
   <div class="tabbar" id="tabbar">
-    <div class="tab on" data-tab="index" onclick="switchTab('index')"><div class="ico">&#128218;</div>教案库</div>
-    <div class="tab" data-tab="favorites" onclick="switchTab('favorites')"><div class="ico">&#11088;</div>收藏</div>
-    <div class="tab" data-tab="profile" onclick="switchTab('profile')"><div class="ico">&#128100;</div>我的</div>
+    <div class="tab on" data-tab="index" onclick="switchTab(&quot;index&quot;)"><div class="ico">&#128218;</div>教案库</div>
+    <div class="tab" data-tab="favorites" onclick="switchTab(&quot;favorites&quot;)"><div class="ico">&#11088;</div>收藏</div>
+    <div class="tab" data-tab="profile" onclick="switchTab(&quot;profile&quot;)"><div class="ico">&#128100;</div>我的</div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -117,14 +120,14 @@ const html = `<!DOCTYPE html>
 // ===== 数据（JSON安全嵌入）=====
 const LESSONS = ${safeJsonStr(lessons)};
 
-const BOOKS = [...new Set(LESSONS.map(l => l.book))];
-const TYPES = [...new Set(LESSONS.map(l => l.lessonType))];
+const BOOKS = [...new Set(LESSONS.map(function(l){ return l.book; }))];
+const BOOK_ORDER = { '必修第一册':1, '必修第二册':2, '必修第三册':3 };
+const BOOK_SHORT = { '必修第一册':'必修一', '必修第二册':'必修二', '必修第三册':'必修三' };
 
 // ===== 状态管理 =====
 let state = {
   tab: 'index',
   filterBook: '',
-  filterType: '',
   detailId: null,
   privacy: false,
   keyword: '',
@@ -143,18 +146,12 @@ function toast(msg) {
   const t = $('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 1400);
+  setTimeout(function(){ t.classList.remove('show'); }, 1400);
 }
 
-function getLesson(id) { return LESSONS.find(l => l.id === id); }
-
-function clip(s, n) {
-  s = String(s || '').replace(/\\s+/g, ' ').trim();
-  return s.length > n ? s.slice(0, n) + '\u2026' : s;
-}
+function getLesson(id) { return LESSONS.find(function(l){ return l.id === id; }); }
 
 function escAttr(s) {
-  // 转义HTML属性值中的特殊字符，防止XSS和属性断裂
   return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
@@ -168,9 +165,8 @@ function switchTab(tab) {
   state.tab = tab;
   state.detailId = null;
   state.privacy = false;
-  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.tab === tab));
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('on', t.dataset.tab === tab); });
   setNav('英语教案库', false);
-  // 清除下载栏残留
   const bar = document.querySelector('.dlbar');
   if (bar) bar.remove();
   render();
@@ -184,7 +180,7 @@ function goBack() {
 
 function openDetail(id) {
   state.detailId = id;
-  if (!state.recents.includes(id)) {
+  if (state.recents.indexOf(id) < 0) {
     state.recents.unshift(id);
     if (state.recents.length > 50) state.recents.pop();
   }
@@ -198,7 +194,7 @@ function toggleFav(id) {
     toast('已取消收藏');
   } else {
     state.favorites.unshift(id);
-    toast('\u2605 已收藏');
+    toast('★ 已收藏');
   }
   render();
 }
@@ -213,72 +209,89 @@ function render() {
   else if (tab === 'profile') renderProfile();
 }
 
-// ===== 教案库页面 =====
+// ===== 教案库页面（册 → 单元 → 板块，按书本顺序）=====
 function renderIndex() {
   setNav('英语教案库', false);
   let list = LESSONS.slice();
-  if (state.filterBook) list = list.filter(l => l.book === state.filterBook);
-  if (state.filterType) list = list.filter(l => l.lessonType === state.filterType);
+  if (state.filterBook) list = list.filter(function(l){ return l.book === state.filterBook; });
   if (state.keyword.trim()) {
     const kw = state.keyword.trim().toLowerCase();
-    list = list.filter(l => {
+    list = list.filter(function(l) {
       const hay = (l.title + ' ' + l.unitTitle + ' ' + (l.tags || []).join(' ') + ' ' + (l.overview || '') + ' ' +
         (l.keyPoints || '') + ' ' + (l.difficulties || '') + ' ' + (l.preparation || '') + ' ' +
-        (l.objectives || []).join(' ') + ' ' + (l.process || []).map(s => s.step + ' ' + s.content).join(' ') + ' ' +
+        (l.objectives || []).join(' ') + ' ' + (l.process || []).map(function(s){ return s.step + ' ' + s.content; }).join(' ') + ' ' +
         (l.exercises || '') + ' ' + (l.reflection || '') + ' ' + (l.blackboard || '')).toLowerCase();
       return hay.indexOf(kw) !== -1;
     });
   }
 
-  // 筛选标签
-  const bookChips = [\`<div class="chip \${!state.filterBook ? 'on' : ''}" onclick="setBook('')">全部</div>\`]
-    .concat(BOOKS.map(b => \`<div class="chip \${state.filterBook === b ? 'on' : ''}" onclick="setBook(\\\`\${escAttr(b)}\\\`)">\${escAttr(b)}</div>\`))
-    .join('');
-  const typeChips = [\`<div class="chip \${!state.filterType ? 'on' : ''}" onclick="setType('')">全部</div>\`]
-    .concat(TYPES.map(t => \`<div class="chip \${state.filterType === t ? 'on' : ''}" onclick="setType(\\\`\${escAttr(t)}\\\`)">\${escAttr(t)}</div>\`))
-    .join('');
+  list = list.slice().sort(function(a, b) {
+    return ((BOOK_ORDER[a.book] || 0) - (BOOK_ORDER[b.book] || 0)) ||
+      (a.unitNumber - b.unitNumber) ||
+      ((a.periodNumber || 0) - (b.periodNumber || 0));
+  });
 
-  // 卡片列表（使用模板字符串避免引号地狱）
-  const TYPE_ICON = { 'listening-speaking':'🎧', reading:'📖', grammar:'✏️', 'listening-talking':'💬', writing:'✍️', project:'🎯' };
-  const TYPE_BG = { 'listening-speaking':'#6b46c1', reading:'#1a365d', grammar:'#1a6840', 'listening-talking':'#b7791f', writing:'#7b341e', project:'#2c5282' };
-  const cards = list.map(l => {
-    const fav = state.favorites.includes(l.id);
-    const ico = TYPE_ICON[l.lessonType] || '📄';
-    const bg = TYPE_BG[l.lessonType] || '#555';
-    return \`
-    <div class="card" onclick="openDetail(\\\`\${escAttr(l.id)}\\\`)">
-      <div class="row1">
-        <div class="docico" style="background:linear-gradient(135deg,\${bg},\${bg}dd)">\${ico}</div>
-        <div style="flex:1">
-          <div class="ttl">\${escAttr(l.title)}</div>
-          <div class="sub">\${escAttr(l.book.replace('\u5FC5\u4FEE',''))} \u00B7 \${escAttr(l.unitTitle)} \u00B7 \${escAttr(l.lessonTypeName)} \u00B7 \${l.duration}\u5206\u949F</div>
-        </div>
-        \${fav ? '<div style="color:#e6a23c;font-size:20px">\u2605</div>' : ''}
-        <div class="card-arrow">\u2039</div>
-      </div>
-    </div>\`;
+  // 按 册+单元 分组（"全部"时 unitNumber 跨册重复，必须用册区分）
+  const map = {};
+  list.forEach(function(l) {
+    const key = l.book + '|' + l.unitNumber;
+    if (!map[key]) map[key] = { key: key, book: l.book, bookShort: BOOK_SHORT[l.book] || l.book, unitNumber: l.unitNumber, unitTitle: l.unitTitle, lessons: [] };
+    map[key].lessons.push(l);
+  });
+  const groups = Object.keys(map).map(function(k){ return map[k]; }).sort(function(a, b) {
+    return ((BOOK_ORDER[a.book] || 0) - (BOOK_ORDER[b.book] || 0)) || (a.unitNumber - b.unitNumber);
+  });
+
+  const TYPE_ICON = { 'listening-speaking':'🎧', 'reading':'📖', 'grammar':'✏️', 'listening-talking':'💬', 'writing':'✍️', 'project':'🎯' };
+  const TYPE_BG = { 'listening-speaking':'#6b46c1', 'reading':'#1a365d', 'grammar':'#1a6840', 'listening-talking':'#b7791f', 'writing':'#7b341e', 'project':'#2c5282' };
+
+  const bookChips = '<div class="chip ' + (state.filterBook ? '' : 'on') + '" onclick="setBook(&quot;&quot;)">全部</div>' +
+    BOOKS.map(function(b) {
+      return '<div class="chip ' + (state.filterBook === b ? 'on' : '') + '" onclick="setBook(&quot;' + escAttr(b) + '&quot;)">' + escAttr(b) + '</div>';
+    }).join('');
+
+  const groupHtml = groups.map(function(g) {
+    const cards = g.lessons.map(function(l) {
+      const fav = state.favorites.indexOf(l.id) >= 0;
+      const ico = TYPE_ICON[l.lessonType] || '📄';
+      const bg = TYPE_BG[l.lessonType] || '#555';
+      const star = fav ? '<div style="color:#e6a23c;font-size:20px">★</div>' : '';
+      return '<div class="card" onclick="openDetail(&quot;' + escAttr(l.id) + '&quot;)">' +
+        '<div class="row1">' +
+          '<div class="docico" style="background:linear-gradient(135deg,' + bg + ',' + bg + 'dd)">' + ico + '</div>' +
+          '<div style="flex:1">' +
+            '<div class="ttl">' + escAttr(l.title) + '</div>' +
+            '<div class="sub">' + escAttr(l.lessonTypeName) + ' · ' + l.duration + '分钟</div>' +
+          '</div>' +
+          star +
+          '<div class="card-arrow">›</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    return '<div class="unit-group">' +
+      '<div class="unit-head"><span class="unit-no">' + escAttr(g.bookShort) + ' · Unit ' + g.unitNumber + '</span><span class="unit-name">' + escAttr(g.unitTitle) + '</span></div>' +
+      cards +
+    '</div>';
   }).join('');
 
   const histHtml = (!state.keyword.trim() && state.history.length)
-    ? '<div class="chips">' + state.history.map(h => \`<div class="chip" onclick="onPrevHistory('\${escAttr(h)}')">\${escAttr(h)}</div>\`).join('') + '</div>'
+    ? '<div class="chips">' + state.history.map(function(h){ return '<div class="chip" onclick="onPrevHistory(&quot;' + escAttr(h) + '&quot;)">' + escAttr(h) + '</div>'; }).join('') + '</div>'
     : '';
   const searchVal = escAttr(state.keyword);
-  $('content').innerHTML = \`
-    <div class="search">&#128269; <input class="sin" placeholder="搜索教案/单元/关键词" value="\${searchVal}" onchange="onPrevSearch(this.value)"> \${state.keyword ? '<span class="searchx" onclick="onPrevClear()">&#10005;</span>' : ''}</div>
-    \${histHtml}
-    <div class="chips">\${bookChips}</div>
-    <div class="chips">\${typeChips}</div>
-    \${cards || '<div class="empty"><div class="e">&#128420;</div><div class="t">没有匹配的教案</div><div class="p">换个关键词或筛选条件试试</div></div>'}
-  \`;
+  $('content').innerHTML =
+    '<div class="search">🔍 <input class="sin" placeholder="搜索教案/单元/关键词" value="' + searchVal + '" onchange="onPrevSearch(this.value)"> ' + (state.keyword ? '<span class="searchx" onclick="onPrevClear()">✕</span>' : '') + '</div>' +
+    histHtml +
+    '<div class="chips">' + bookChips + '</div>' +
+    (groupHtml || '<div class="empty"><div class="e">📭</div><div class="t">没有匹配的教案</div><div class="p">换个关键词或筛选条件试试</div></div>');
 }
 
 function setBook(b) { state.filterBook = b; renderIndex(); }
-function setType(t) { state.filterType = t; renderIndex(); }
 function onPrevSearch(kw) {
   state.keyword = kw;
   const t = kw.trim();
   if (t && state.history[0] !== t) {
-    state.history = [t].concat(state.history.filter(x => x !== t)).slice(0, 10);
+    state.history = [t].concat(state.history.filter(function(x){ return x !== t; })).slice(0, 10);
   }
   renderIndex();
 }
@@ -288,121 +301,74 @@ function onPrevClear() { state.keyword = ''; renderIndex(); }
 // ===== 收藏页面 =====
 function renderFavorites() {
   setNav('我的收藏', false);
-  const cards = state.favorites.map(id => {
+  let cards = '';
+  state.favorites.forEach(function(id) {
     const l = getLesson(id);
-    if (!l) return '';
-    return \`
-    <div class="card" onclick="openDetail(\\\`\${escAttr(l.id)}\\\`)">
-      <div class="row1">
-        <div class="docico">&#128196;</div>
-        <div style="flex:1">
-          <div class="ttl">\${escAttr(l.title)}</div>
-          <div class="sub">\${escAttr(l.book)} \u00B7 \${escAttr(l.unitTitle)} \u00B7 \${escAttr(l.lessonTypeName)}</div>
-        </div>
-        <div style="color:#c0392b;font-size:22px;cursor:pointer"
-             onclick="event.stopPropagation();toggleFav(\\\`\${escAttr(l.id)}\\\`)">\u2715</div>
-      </div>
-    </div>\`;
-  }).join('');
-
-  $('content').innerHTML = \`
-    <div class="glabel"><span>已收藏 \${state.favorites.length} \u7BC7</span>\${state.favorites.length ? '<span class="clr" onclick="clearAll(\\'fav\\')">清空</span>' : ''}</div>
-    \${cards || '<div class="empty"><div class="e">&#11088;</div><div class="t">还没有收藏</div><div class="p">在教案详情页点 \u2606 即可收藏</div></div>'}
-  \`;
+    if (!l) return;
+    cards += '<div class="card" onclick="openDetail(&quot;' + escAttr(l.id) + '&quot;)">' +
+      '<div class="row1"><div class="docico">📄</div>' +
+      '<div style="flex:1"><div class="ttl">' + escAttr(l.title) + '</div><div class="sub">' + escAttr(l.book) + ' · ' + escAttr(l.unitTitle) + ' · ' + escAttr(l.lessonTypeName) + '</div></div>' +
+      '<div style="color:#c0392b;font-size:22px;cursor:pointer" onclick="event.stopPropagation();toggleFav(&quot;' + escAttr(l.id) + '&quot;)">✕</div>' +
+      '</div></div>';
+  });
+  $('content').innerHTML =
+    '<div class="glabel"><span>已收藏 ' + state.favorites.length + ' 篇</span>' + (state.favorites.length ? '<span class="clr" onclick="clearAll(&quot;fav&quot;)">清空</span>' : '') + '</div>' +
+    (cards || '<div class="empty"><div class="e">★</div><div class="t">还没有收藏</div><div class="p">在教案详情页点 ☆ 即可收藏</div></div>');
 }
 
 // ===== 我的页面 =====
 function renderProfile() {
   setNav('我的', false);
   const p = state.profile;
-
-  const dl = state.downloads.map(id => {
-    const l = getLesson(id);
-    if (!l) return '';
-    return \`<div class="favitem" onclick="openDetail(\\\`\${escAttr(l.id)}\\\`)"><div class="fi">&#128196;</div><div class="ft">\${escAttr(l.title)}</div></div>\`;
-  }).join('');
-
-  const rl = state.recents.map(id => {
-    const l = getLesson(id);
-    if (!l) return '';
-    return \`<div class="favitem" onclick="openDetail(\\\`\${escAttr(l.id)}\\\`)"><div class="fi">&#128196;</div><div class="ft">\${escAttr(l.title)}</div></div>\`;
-  }).join('');
-
-  $('content').innerHTML = \`
-    <div class="phead">
-      <div class="pavatar">\${p.avatarUrl ? '<img src="' + escAttr(p.avatarUrl) + '">' : '&#128100;'}</div>
-      <div>
-        <div class="pname">\${escAttr(p.nickName)}</div>
-        <div class="psub">微信用户 \u00B7 云端已同步</div>
-      </div>
-    </div>
-    <div class="stats3">
-      <div class="stat"><div class="num">\${state.favorites.length}</div><div class="lbl">收藏</div></div>
-      <div class="stat"><div class="num">\${state.downloads.length}</div><div class="lbl">下载</div></div>
-      <div class="stat"><div class="num">\${state.recents.length}</div><div class="lbl">最近</div></div>
-    </div>
-    <div class="block">
-      <h3>&#128229; 下载记录 <span class="clear" onclick="clearAll(\\'dl\\')">清空</span></h3>
-      \${dl || '<div class="hint">暂无下载记录</div>'}
-    </div>
-    <div class="block">
-      <h3>&#128340; 浏览历史 <span class="clear" onclick="clearAll(\\'rc\\')">清空</span></h3>
-      \${rl || '<div class="hint">暂无浏览记录</div>'}
-    </div>
-    <div class="block">
-      <h3>&#9881; 设置</h3>
-      <div class="favitem" onclick="showPrivacy()"><div class="fi">&#128274;</div><div class="ft">隐私保护说明</div></div>
-      <div class="favitem" onclick="clearAll(\\'all\\')"><div class="fi">&#128465;</div><div class="ft">清空全部本地数据</div></div>
-    </div>
-    <div class="hint">此预览版数据仅存于当前页面，刷新即丢失。真机数据存储于微信云开发。</div>
-  \`;
+  let dl = '';
+  state.downloads.forEach(function(id) {
+    const l = getLesson(id); if (!l) return;
+    dl += '<div class="favitem" onclick="openDetail(&quot;' + escAttr(l.id) + '&quot;)"><div class="fi">📄</div><div class="ft">' + escAttr(l.title) + '</div></div>';
+  });
+  let rl = '';
+  state.recents.forEach(function(id) {
+    const l = getLesson(id); if (!l) return;
+    rl += '<div class="favitem" onclick="openDetail(&quot;' + escAttr(l.id) + '&quot;)"><div class="fi">📄</div><div class="ft">' + escAttr(l.title) + '</div></div>';
+  });
+  let html = '';
+  html += '<div class="phead"><div class="pavatar">' + (p.avatarUrl ? '<img src="' + escAttr(p.avatarUrl) + '">' : '👤') + '</div><div><div class="pname">' + escAttr(p.nickName) + '</div><div class="psub">微信用户 · 云端已同步</div></div></div>';
+  html += '<div class="stats3"><div class="stat"><div class="num">' + state.favorites.length + '</div><div class="lbl">收藏</div></div><div class="stat"><div class="num">' + state.downloads.length + '</div><div class="lbl">下载</div></div><div class="stat"><div class="num">' + state.recents.length + '</div><div class="lbl">最近</div></div></div>';
+  html += '<div class="block"><h3>📥 下载记录 <span class="clear" onclick="clearAll(&quot;dl&quot;)">清空</span></h3>' + (dl || '<div class="hint">暂无下载记录</div>') + '</div>';
+  html += '<div class="block"><h3>🕑 浏览历史 <span class="clear" onclick="clearAll(&quot;rc&quot;)">清空</span></h3>' + (rl || '<div class="hint">暂无浏览历史</div>') + '</div>';
+  html += '<div class="block"><h3>⚙ 设置</h3><div class="favitem" onclick="showPrivacy()"><div class="fi">🔒</div><div class="ft">隐私保护说明</div></div><div class="favitem" onclick="clearAll(&quot;all&quot;)"><div class="fi">🗑</div><div class="ft">清空全部本地数据</div></div></div>';
+  html += '<div class="hint">此预览版数据仅存于当前页面，刷新即丢失。真机数据存储于微信云开发。</div>';
+  $('content').innerHTML = html;
 }
 
-// ===== 隐私说明页（预览内联展示）=====
-function showPrivacy() {
-  state.privacy = true;
-  render();
-}
+// ===== 隐私说明页 =====
+function showPrivacy() { state.privacy = true; render(); }
 
 function renderPrivacy() {
   setNav('隐私保护说明', true);
   const blocks = [
-    { h: '我们收集哪些信息', p: [
-      '· 昵称、头像：你主动设置，用于「我的」页身份展示。',
-      '· 收藏 / 下载记录 / 浏览历史：使用教案库时产生的操作记录，用于多设备同步与个性化展示。',
-      '· 错误日志：应用崩溃时的堆栈摘要，仅用于修复问题，不含任何教学内容。'
-    ]},
-    { h: '信息存储在哪里', p: [
-      '所有数据默认存储于微信云开发（腾讯云）或本机缓存。我们不自建服务器，不向任何第三方出售或共享你的个人信息。'
-    ]},
-    { h: '你有哪些权利', p: [
-      '· 可随时在「我的」页清空下载记录、浏览历史或收藏。',
-      '· 可一键清空全部个人数据。',
-      '· 可在微信「设置 › 隐私 › 授权管理」中撤回本小程序的信息授权。'
-    ]},
-    { h: '联系方式', p: [
-      '如对本说明有疑问，可通过小程序内反馈渠道联系开发者。'
-    ]}
+    { h: '我们收集哪些信息', p: [ '· 昵称、头像：你主动设置，用于「我的」页身份展示。', '· 收藏 / 下载记录 / 浏览历史：使用教案库时产生的操作记录，用于多设备同步与个性化展示。', '· 错误日志：应用崩溃时的堆栈摘要，仅用于修复问题，不含任何教学内容。' ] },
+    { h: '信息存储在哪里', p: [ '所有数据默认存储于微信云开发（腾讯云）或本机缓存。我们不自建服务器，不向任何第三方出售或共享你的个人信息。' ] },
+    { h: '你有哪些权利', p: [ '· 可随时在「我的」页清空下载记录、浏览历史或收藏。', '· 可一键清空全部个人数据。', '· 可在微信「设置 › 隐私 › 授权管理」中撤回本小程序的信息授权。' ] },
+    { h: '联系方式', p: [ '如对本说明有疑问，可通过小程序内反馈渠道联系开发者。' ] }
   ];
-  const html = blocks.map(b => \`<div class="block"><h3>\${b.h}</h3>\${b.p.map(x => '<p class="rp">' + escAttr(x) + '</p>').join('')}</div>\`).join('');
-  \$('content').innerHTML = \`
-    <div class="hint" style="text-align:left;padding:4px 2px 10px">最后更新：2026-07</div>
-    \${html}
-    <div class="tip">本说明依据《中华人民共和国个人信息保护法》及微信平台隐私规范编写。</div>
-  \`;
+  let html = '<div class="hint" style="text-align:left;padding:4px 2px 10px">最后更新：2026-07</div>';
+  blocks.forEach(function(b) {
+    html += '<div class="block"><h3>' + b.h + '</h3>' + b.p.map(function(x){ return '<p class="rp">' + escAttr(x) + '</p>'; }).join('') + '</div>';
+  });
+  html += '<div class="tip">本说明依据《中华人民共和国个人信息保护法》及微信平台隐私规范编写。</div>';
+  $('content').innerHTML = html;
 }
 
 // ===== 详情页 =====
 function renderDetail() {
   const l = getLesson(state.detailId);
   if (!l) { state.detailId = null; render(); return; }
-  setNav(l.lessonTypeName || '教案详情', true);
+  setNav((l.lessonTypeName || '教案详情'), true);
 
-  // 构建各板块（中文序号，与小程序精美版一致）
   const CN = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
   const secs = [];
   let si = 0;
-  const add = (name, payload) => { if (payload) { si++; secs.push(Object.assign({ no: CN[si - 1], name: name, key: name }, payload)); } };
+  const add = function(name, payload) { if (payload) { si++; secs.push(Object.assign({ no: CN[si - 1], name: name, key: name }, payload)); } };
   add('教材分析', l.textbookAnalysis && { body: l.textbookAnalysis });
   add('学情分析', l.overview && { body: l.overview });
   add('教学目标', l.objectives && l.objectives.length && { list: l.objectives });
@@ -410,58 +376,54 @@ function renderDetail() {
   add('教学难点', l.difficulties && { body: l.difficulties });
   add('教学方法', l.teachingMethods && { body: l.teachingMethods });
   add('课前准备', l.preparation && { body: l.preparation });
-  add('教学过程', l.process && l.process.length && { steps: l.process.map((s, i) => ({ n: i + 1, name: s.step || s.name || ('步骤' + (i + 1)), time: s.time || '', content: s.content || '' })) });
+  add('教学过程', l.process && l.process.length && { steps: l.process.map(function(s, i){ return { n: i + 1, name: s.step || s.name || ('步骤' + (i + 1)), time: s.time || '', content: s.content || '' }; }) });
   add('板书设计', l.blackboard && { body: l.blackboard });
   add('课后练习', l.exercises && { body: l.exercises });
   add('教学反思', l.reflection && { body: l.reflection });
 
-  const secHtml = secs.map(sec => {
+  let secHtml = '';
+  secs.forEach(function(sec) {
     if (sec.list) {
-      return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}<span class="scopy" onclick="copySection('\${escAttr(sec.key)}')">复制</span></h3><ul>\${sec.list.map(x => '<li>' + escAttr(x) + '</li>').join('')}</ul></div>\`;
+      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" onclick="copySection(&quot;' + escAttr(sec.key) + '&quot;)">复制</span></h3><ul>' + sec.list.map(function(x){ return '<li>' + escAttr(x) + '</li>'; }).join('') + '</ul></div>';
+    } else if (sec.steps) {
+      let stepsHtml = '';
+      sec.steps.forEach(function(s) {
+        stepsHtml += '<div class="step"><div class="sn"><span class="sno sm">' + s.n + '</span>' + escAttr(s.name) + '<span class="st">' + escAttr(s.time) + '</span></div><p>' + escAttr(s.content) + '</p></div>';
+      });
+      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" onclick="copySection(&quot;' + escAttr(sec.key) + '&quot;)">复制</span></h3>' + stepsHtml + '</div>';
+    } else {
+      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" onclick="copySection(&quot;' + escAttr(sec.key) + '&quot;)">复制</span></h3><p>' + escAttr(sec.body) + '</p></div>';
     }
-    if (sec.steps) {
-      return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}<span class="scopy" onclick="copySection('\${escAttr(sec.key)}')">复制</span></h3>\${
-        sec.steps.map(s =>
-          \`<div class="step"><div class="sn"><span class="sno sm">\${s.n}</span>\${escAttr(s.name)}<span class="st">\${escAttr(s.time)}</span></div><p>\${escAttr(s.content)}</p></div>\`
-        ).join('')
-      }</div>\`;
-    }
-    return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}<span class="scopy" onclick="copySection('\${escAttr(sec.key)}')">复制</span></h3><p>\${escAttr(sec.body)}</p></div>\`;
-  }).join('');
+  });
 
-  const fav = state.favorites.includes(l.id);
+  const fav = state.favorites.indexOf(l.id) >= 0;
   const fid = escAttr(l.id);
 
-  \$('content').innerHTML = \`
-    <div class="hero">
-      <div class="badges2">
-        <span class="badge2">\${escAttr(l.book)}</span>
-        <span class="badge2">\${escAttr(l.lessonTypeName)}</span>
-        <span class="badge2">\${l.duration}\u5206\u949F</span>
-      </div>
-      <h1>\${escAttr(l.title)}</h1>
-      <div class="hsub">\${escAttr(l.unitTitle)}</div>
-      <div class="hstat">\uD83D\uDCC1 \${l.viewCount||0} 浏览 \u00B7 \u2B07 \${l.downloadCount||0} 下载</div>
-    </div>
-    \${secHtml}
-    <div class="hint" style="margin-top:8px">\u2014 以下为小程序下载栏，预览中点击会提示效果 \u2014</div>
-    <div style="height:70px"></div>
-  \`;
+  let html = '';
+  html += '<div class="hero">';
+  html += '  <div class="badges2"><span class="badge2">' + escAttr(l.book) + '</span><span class="badge2">' + escAttr(l.lessonTypeName) + '</span><span class="badge2">' + l.duration + '分钟</span></div>';
+  html += '  <h1>' + escAttr(l.title) + '</h1>';
+  html += '  <div class="hsub">' + escAttr(l.unitTitle) + '</div>';
+  html += '  <div class="hstat">浏览 ' + (l.viewCount || 0) + ' · 下载 ' + (l.downloadCount || 0) + '</div>';
+  html += '</div>';
+  html += secHtml;
+  html += '<div class="hint" style="margin-top:8px">— 以下为小程序下载栏，预览中点击会提示效果 —</div><div style="height:70px"></div>';
 
-  // 底部操作栏
+  $('content').innerHTML = html;
+
   let bar = document.querySelector('.dlbar');
   if (bar) bar.remove();
   bar = document.createElement('div');
   bar.className = 'dlbar';
   bar.innerHTML =
-    '<span class="fav ' + (fav ? '' : '') + '" onclick="toggleFav(\\'' + fid + '\\')">' + (fav ? '\\u2605' : '\\u2606') + '</span>' +
+    '<span class="fav" onclick="toggleFav(&quot;' + fid + '&quot;)">' + (fav ? '★' : '☆') + '</span>' +
     '<div class="fmts">' +
-      '<span class="fmt ' + (state.favFmt === 'word' ? 'on' : '') + '" onclick="setFmt(\\'word\\')">Word</span>' +
-      '<span class="fmt ' + (state.favFmt === 'pdf' ? 'on' : '') + '" onclick="setFmt(\\'pdf\\')">PDF</span>' +
-      '<span class="fmt ' + (state.favFmt === 'ppt' ? 'on' : '') + '" onclick="setFmt(\\'ppt\\')">PPT</span>' +
+      '<span class="fmt ' + (state.favFmt === 'word' ? 'on' : '') + '" onclick="setFmt(&quot;word&quot;)">Word</span>' +
+      '<span class="fmt ' + (state.favFmt === 'pdf' ? 'on' : '') + '" onclick="setFmt(&quot;pdf&quot;)">PDF</span>' +
+      '<span class="fmt ' + (state.favFmt === 'ppt' ? 'on' : '') + '" onclick="setFmt(&quot;ppt&quot;)">PPT</span>' +
     '</div>' +
-    '<div class="btn" onclick="doDownload(\\'' + fid + '\\')">\\uD83D\\uDCE5 下载 ' + state.favFmt.toUpperCase() + '</div>';
-  \$('content').appendChild(bar);
+    '<div class="btn" onclick="doDownload(&quot;' + fid + '&quot;)">⬇ 下载 ' + state.favFmt.toUpperCase() + '</div>';
+  $('content').appendChild(bar);
 }
 
 function setFmt(f) { state.favFmt = f; renderDetail(); }
@@ -469,7 +431,7 @@ function copySection(key) { toast('已复制本节（预览版）'); }
 
 function doDownload(id) {
   const l = getLesson(id);
-  if (l && !state.downloads.includes(id)) state.downloads.unshift(id);
+  if (l && state.downloads.indexOf(id) < 0) state.downloads.unshift(id);
   toast('已生成 ' + state.favFmt.toUpperCase() + '（预览：实际会在微信中打开文件）');
   renderDetail();
 }
@@ -502,9 +464,9 @@ const scriptMatch = outHtml.match(/<script>([\s\S]*?)<\/script>/);
 if (scriptMatch) {
   try {
     new Function(scriptMatch[1]);
-    console.log('\u2705 JS syntax check: PASSED');
-  } catch(e) {
-    console.error('\u274C JS syntax check: FAILED -', e.message);
+    console.log('✅ JS syntax check: PASSED');
+  } catch (e) {
+    console.error('❌ JS syntax check: FAILED -', e.message);
   }
 }
 
