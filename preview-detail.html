@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reading and Thinking: My First Day at Senior High (Ⅰ) — 整体理解</title>
+<style>
+<style>
+/* 手机模拟器外壳 */
+html { background:#e5e7eb; }
+body {
+  max-width: 375px;
+  margin: 20px auto;
+  min-height:100vh;
+  box-shadow:0 0 40px rgba(0,0,0,.15);
+  border-radius:36px;
+  overflow:hidden;
+  position:relative;
+  background:#f0f2f5;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f0f2f5; color:#1a1a2e; line-height:1.75; -webkit-font-smoothing:antialiased; }
+
+/* ===== 微信小程序外壳模拟 ===== */
+/* 状态栏 + 微信胶囊 */
+.phone { width:375px; max-width:100%; margin:0 auto; position:relative; min-height:100vh; display:flex; flex-direction:column; background:#f0f2f5; }
+
+/* 状态栏 */
+.statusbar { height:44px; background:#1a365d; display:flex; align-items:center; justify-content:space-between; padding:0 20px; color:#fff; font-size:14px; font-weight:600; flex-shrink:0; }
+.statusbar .time { letter-spacing:.5px; }
+.statusbar .icons { display:flex; gap:5px; align-items:center; }
+.statusbar .icons svg { display:block; }
+
+/* 微信导航栏（替代原生胶囊的模拟） */
+.wxnav { height:44px; background:#1a365d; display:flex; align-items:center; padding:0 12px; color:#fff; position:relative; flex-shrink:0; }
+.wxnav .back { font-size:22px; line-height:1; margin-right:6px; }
+.wxnav .title { font-size:17px; font-weight:600; position:absolute; left:50%; transform:translateX(-50%); max-width:60%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.wxnav .capsule { position:absolute; right:10px; top:50%; transform:translateY(-50%); width:87px; height:32px; background:rgba(255,255,255,.25); border:1px solid rgba(255,255,255,.4); border-radius:16px; display:flex; align-items:center; justify-content:space-around; }
+.wxnav .capsule .dot { width:4px; height:4px; border-radius:50%; background:#fff; }
+.wxnav .capsule .oval { width:16px; height:16px; position:relative; }
+.wxnav .capsule .oval:before, .wxnav .capsule .oval:after { content:''; position:absolute; background:#fff; }
+.wxnav .capsule .oval:before { width:7px; height:7px; border:1.5px solid #fff; border-radius:50%; top:2px; left:0; background:transparent; }
+.wxnav .capsule .oval:after { width:1.5px; height:11px; background:#fff; top:3px; left:13px; }
+
+/* 内容滚动区 */
+.screen { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+
+/* 底部 tabBar */
+.tabbar { height:52px; background:#fff; border-top:1px solid #e5e7eb; display:flex; flex-shrink:0; padding-bottom:env(safe-area-inset-bottom); }
+.tabbar .tab { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; font-size:10px; color:#888; }
+.tabbar .tab.active { color:#1a365d; font-weight:600; }
+.tabbar .tab svg { width:24px; height:24px; }
+
+/* Hero — 紧接导航栏下方 */
+.hero { background:linear-gradient(135deg,#0f172a,#1e3a8a); color:#fff; padding:16px 16px 18px; margin-bottom:12px; border-radius:0 0 16px 16px; }
+.hero-badge { display:inline-block; font-size:12px; opacity:.8; margin-bottom:6px; letter-spacing:.3px; }
+.hero h1 { font-size:21px; font-weight:800; line-height:1.35; margin-bottom:8px; }
+.hero-meta { font-size:13px; opacity:.75; display:flex; flex-wrap:wrap; gap:10px; }
+.hero-meta span { background:rgba(255,255,255,.15); padding:2px 8px; border-radius:6px; }
+
+.wrap { padding:0 12px 20px; }
+
+/* Cards */
+.card { background:#fff; border-radius:16px; overflow:hidden; margin-bottom:13px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+.card-h { padding:11px 15px; font-size:15px; font-weight:700; color:#1e3a8a; background:#eff4ff; border-left:4px solid #2563eb; }
+.card-b { padding:14px 15px; font-size:14px; line-height:1.85; }
+
+/* Overview — 学情分析结构化 */
+.overview-box { background:#fff; border-radius:16px; overflow:hidden; margin-bottom:13px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+.ov-header { padding:11px 15px; font-size:15px; font-weight:700; color:#166534; background:#f0fdf4; border-left:4px solid #22c55e; }
+.ov-body { padding:14px 15px; }
+.ov-row { display:flex; gap:10px; align-items:flex-start; margin-bottom:9px; }
+.ov-label { flex:none; width:52px; text-align:center; font-size:12px; font-weight:700; padding:3px 0; border-radius:7px; }
+.ov-a { background:#dbeafe; color:#1e40af; }
+.ov-b { background:#fef3c7; color:#92400e; }
+.ov-c { background:#fce7f3; color:#be185d; }
+.ov-text { font-size:14px; color:#374151; flex:1; }
+
+/* Objectives 4维 */
+.obj { background:#f8fafc; border-radius:12px; padding:11px 13px; margin-bottom:9px; display:flex; gap:10px; align-items:flex-start; border-left:3px solid #cbd5e1; }
+.obj-tag { flex:none; min-width:56px; text-align:center; font-size:12px; font-weight:700; color:#fff; padding:3px 8px; border-radius:7px; background:linear-gradient(135deg,#2563eb,#1e3a8a); }
+.obj:nth-child(1) .obj-tag { background:linear-gradient(135deg,#2563eb,#1d4ed8); } /* 语言能力 */
+.obj:nth-child(2) .obj-tag { background:linear-gradient(135deg,#7c3aed,#6d28d9); } /* 文化意识 */
+.obj:nth-child(3) .obj-tag { background:linear-gradient(135deg,#0891b2,#0e7490); } /* 思维品质 */
+.obj:nth-child(4) .obj-tag { background:linear-gradient(135deg,#dc2626,#b91c1c); } /* 学习能力 */
+
+/* Sub cards (inside card) */
+.sub-card { margin-bottom:10px; border-radius:10px; overflow:hidden; border:1px solid #eef2f7; }
+.sub-h { font-size:13px; font-weight:600; color:#475569; background:#f8fafc; padding:7px 12px; border-left:3px solid #94a3b8; }
+.sub-b { padding:9px 12px; font-size:14px; line-height:1.85; }
+
+/* Key Points / Difficulties */
+.kp-item { position:relative; padding-left:22px; margin-bottom:9px; font-size:14px; }
+.kp-item:before { content:''; position:absolute; left:4px; top:8px; width:8px; height:8px; border-radius:50%; background:#2563eb; }
+.kp-item:last-child { margin-bottom:0; }
+
+/* Process Steps */
+.step { background:#fff; border-radius:14px; margin-bottom:12px; box-shadow:0 1px 4px rgba(0,0,0,.06); overflow:hidden; }
+.step-head { display:flex; align-items:center; gap:10px; padding:10px 14px; background:#fafbfd; border-bottom:1px solid #f0f1f3; }
+.step-no { width:28px; height:28px; border-radius:50%; background:#2563eb; color:#fff; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.step-name { font-weight:700; font-size:14px; color:#1e293b; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.step-time { font-size:12px; color:#64748b; background:#f1f5f9; padding:2px 9px; border-radius:7px; flex-shrink:0; }
+.step-body { padding:13px 14px; font-size:14px; line-height:1.95; color:#334155; word-break:break-word; }
+
+/* Tags */
+.tag { display:inline-block; padding:1px 6px; border-radius:5px; font-size:12.5px; font-weight:500; margin:1px 1px; vertical-align:middle; }
+.tag-ppt { background:#dbeafe; color:#1e40af; border:1px solid #bfdbfe; }
+.tag-teacher { background:#fee2e2; color:#991b1b; border:1px solid #fecaca; }
+.tag-ans { background:#dcfce7; color:#166534; border:1px solid #bbf7d0; }
+.tag-board { background:#fef9c3; color:#854d0e; border:1px solid #fde047; }
+.tag-diff { background:#ede9fe; color:#5b21b6; border:1px solid #ddd6fe; }
+.tag-warn { background:#ffedd5; color:#9a3412; border:1px solid #fed7aa; }
+.tag-audio { background:#e0f2fe; color:#0369a1; border:1px solid #bae6fd; }
+
+/* Blackboard */
+.board-wrap { background:#fff; border-radius:14px; overflow:hidden; margin-bottom:13px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+.board { font-family:"Cascadia Code","Fira Code",Consolas,monospace; white-space:pre; background:#0f172a; color:#e2e8f0; padding:16px; font-size:12.5px; line-height:1.65; border-radius:0; overflow-x:auto; }
+
+/* Answers */
+.ans-box { background:#fefce8; border:1px solid #fde68a; border-radius:8px; padding:10px 12px; font-size:13.5px; color:#854d0e; }
+
+/* 详情页导出按钮（嵌在内容底部，不占 tabBar 位置） */
+.actions { display:flex; gap:8px; padding:14px 0 8px; }
+.btn { flex:1; text-align:center; background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; padding:12px 8px; border-radius:10px; font-size:13px; font-weight:700; }
+.btn-ppt { background:linear-gradient(135deg,#7c3aed,#6d28d9); }
+.btn-pdf { background:linear-gradient(135deg,#dc2626,#b91c1c); }
+</style></head>
+<body>
+
+<div class="phone">
+
+  <!-- iOS 状态栏 -->
+  <div class="statusbar">
+    <span class="time">9:41</span>
+    <span class="icons">
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><path d="M1 4h2v6H1zM5 3h2v7H5zM9 2h2v8H9zM13 0h2v10h-2z" fill="#fff" opacity=".4"/><path d="M1 4h2v6H1zM5 3h2v7H5zM9 2h2v8H9zM13 0h2v10h-2z" fill="#fff"/></svg>
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M8 2C4.5 2 1.8 4 .5 5.5l1 1C2.7 5.2 5 3.5 8 3.5s5.3 1.7 6.5 3l1-1C14.2 4 11.5 2 8 2z" fill="#fff" opacity=".5"/><path d="M8 5.5c-1.8 0-3.3 1-4 1.8l1 1c.6-.6 1.7-1.3 3-1.3s2.4.7 3 1.3l1-1c-.7-.8-2.2-1.8-4-1.8z" fill="#fff"/><circle cx="8" cy="9.5" r="1" fill="#fff"/></svg>
+      <svg width="27" height="12" viewBox="0 0 27 12" fill="none"><rect x=".5" y=".5" width="22" height="11" rx="2.5" stroke="#fff" opacity=".5" fill="none"/><rect x="2" y="2" width="19" height="8" rx="1" fill="#fff"/><rect x="23.5" y="3.5" width="1.5" height="5" rx=".5" fill="#fff" opacity=".5"/></svg>
+    </span>
+  </div>
+
+  <!-- 微信导航栏（含胶囊） -->
+  <div class="wxnav">
+    <span class="back">‹</span>
+    <span class="title">教案详情</span>
+    <div class="capsule">
+      <div style="display:flex;gap:2px;align-items:center;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="oval"></div>
+    </div>
+  </div>
+
+  <!-- 内容滚动区 -->
+  <div class="screen">
+
+<div class="hero">
+  <div class="hero-badge">必修第一册 · 单元1 Teenage Life</div>
+  <h1>Reading and Thinking: My First Day at Senior High (Ⅰ) — 整体理解</h1>
+  <div class="hero-meta">
+    <span>阅读</span><span>第2课时</span><span>45分钟</span><span>阅读</span><span>读与思</span><span>记叙文</span><span>情感变化</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- 学情分析 -->
+  <div class="overview-box">
+    <div class="ov-header">📊 学情分析</div>
+    <div class="ov-body"><div class="ov-row"><span class="ov-label ov-a">A 班</span><span class="ov-text">能略读抓主旨，但易忽略作者情感线索。</span></div><div class="ov-row"><span class="ov-label ov-b">B 班</span><span class="ov-text">长句（含定语从句）读不懂，易卡在逐词翻译。</span></div><div class="ov-row"><span class="ov-label ov-c">共同问题</span><span class="ov-text">把「找主旨」等同于「翻译每段第一句」；对 implied feeling（隐含情感）不敏感。</span></div></div>
+  </div>
+
+  <!-- 教学目标 -->
+  <div class="card">
+    <div class="card-h">🎯 教学目标（4 维）</div>
+    <div class="card-b" style="padding:10px;"><div class="obj"><span class="obj-tag">语言能力</span>语言能力：用略读获取博客主旨（Adam's first day），用扫读提取时间线与情感变化的关键信息。</div><div class="obj"><span class="obj-tag">文化意识</span>文化意识：对比中外高中「第一天」的异同，理解「挑战即成长」的积极态度。</div><div class="obj"><span class="obj-tag">思维品质</span>思维品质：梳理 Adam 情感变化弧线（nervous→happy），推断变化原因，培养逻辑梳理能力。</div><div class="obj"><span class="obj-tag">学习能力</span>学习能力：借助「情感时间轴」图表自主梳理叙事结构，并复述课文要点。</div></div>
+  </div>
+
+  <!-- 教材分析 -->
+  <div class="card"><div class="card-h">📖 教材分析</div><div class="card-b">本课为 Unit 1 第二课时（Reading and Thinking Ⅰ），语篇是新生 Adam 的博客式记叙文，记录高中第一天从紧张到开心的变化。文本类型为第一人称叙事，含时间顺序与心理描写，是训练「略读抓主旨、扫读抓细节」的 ideal 素材。语言承载「senior, challenge, confident, explore」等单元核心词，并为写作课的人物描写埋下范式。</div></div>
+
+  <!-- 教学重点 -->
+  <div class="card"><div class="card-h">💡 教学重点</div><div class="card-b"><div class="kp-item">① 阅读技能：skimming 抓主旨 / scanning 抓细节（情感+事件）。</div><div class="kp-item">② 核心词汇：senior, challenge, confident, explore, look forward to。</div><div class="kp-item">③ 文本结构：时间顺序 + 情感变化双线。</div></div></div>
+
+  <!-- 教学难点 -->
+  <div class="card"><div class="card-h">⚠️ 教学难点</div><div class="card-b"><div class="kp-item">① 长难句：「The teachers are very enthusiastic women called Ms Li...」 含过去分词作后置定语。原因：B班未建立「分词修饰名词」意识，需拆解。</div><div class="kp-item">② 隐含情感推断：学生常只找 explicit（明确）词。原因：缺乏「从行为推情感」的训练，需示范。</div><div class="kp-item">③ 主旨概括过宽/过窄。原因：未区分 main idea 与 detail，需给句式支架。</div></div></div>
+
+  <!-- 教学方法 -->
+  <div class="card"><div class="card-h">🔧 教学方法</div><div class="card-b"><br>① PWP 阅读模式（Pre/While/Post）。<br><br>② 图表支架：情感时间轴（Timeline）可视化结构。<br><br>③ 合作学习：两人互述情感变化，降低复述焦虑。<br><br>④ 追问式提问：用 Why do you think so? 逼出推断依据。</div></div>
+
+  <!-- 教学准备 -->
+  <div class="card"><div class="card-h">🛠 教学准备</div><div class="card-b" style="padding:10px;"><div class="sub-card"><div class="sub-h">PPT课件</div><div class="sub-b"><span class="tag tag-ppt">P1</span> 课文标题+作者视角（blog）<br><span class="tag tag-ppt">P2</span> 略读任务（选主旨）<br><span class="tag tag-ppt">P3</span> 情感时间轴空表<br><span class="tag tag-ppt">P4</span> 长难句拆解<br><span class="tag tag-ppt">P5</span> 讨论题。</div></div><div class="sub-card"><div class="sub-h">实物教具</div><div class="sub-b">情感时间轴工作单（每人一份，用于 While-reading 填写）。</div></div><div class="sub-card"><div class="sub-h">音频</div><div class="sub-b">课文朗读音频（供跟读）。</div></div></div></div>
+
+  <!-- 教学过程 -->
+  <div class="card">
+    <div class="card-h">📝 教学过程</div>
+    <div style="padding:8px 0"><div class="step"><div class="step-head"><span class="step-no">1</span><span class="step-name">导入 Lead-in</span><span class="step-time">4分钟</span></div><div class="step-body"><span class="tag tag-ppt">【PPT P1】</span><span class="tag tag-teacher">教师：「Your first day of senior high — how did you feel?」 请 2 生用中文/英文说一个词</span>。<span class="tag tag-ans">预设回答：「Nervous! / Excited!」 <span class="tag tag-board">板书时机：黑板左侧写 nervous / excited / curious</span></span>。<span class="tag tag-diff">差异化提示：B班说中文词，A班说英文形容词</span>。<span class="tag tag-warn">易错点提醒：senior 指「高年级/高中」，不是「老的」</span>。</div></div><div class="step"><div class="step-head"><span class="step-no">2</span><span class="step-name">读前预测 Pre-reading</span><span class="step-time">4分钟</span></div><div class="step-body"><span class="tag tag-ppt">【PPT P2 标题】</span><span class="tag tag-teacher">教师：「A blog titled 'My First Day at Senior High'. What will it talk about?」 <span class="tag tag-ans">预设回答：「His feelings / what he did.」 <span class="tag tag-board">板书时机：黑板中部写预测框架（feelings / activities）</span></span></span>。<span class="tag tag-diff">差异化提示：A班用英语预测；B班用「√/×」选是否包含某内容</span>。<span class="tag tag-warn">易错点提醒：blog 是叙事而非说明，提醒看文体</span>。</div></div><div class="step"><div class="step-head"><span class="step-no">3</span><span class="step-name">略读抓主旨 Skimming</span><span class="step-time">8分钟</span></div><div class="step-body"><span class="tag tag-ppt">【PPT P5 主旨选择】</span><span class="tag tag-teacher">教师：「Read fast (2 min). What is the main idea?」 给三选项</span>。<span class="tag tag-ans">预设回答：「A — Adam's first-day experience and feelings.」 <span class="tag tag-board">板书时机：确认主旨写黑板中央</span></span>。<span class="tag tag-diff">差异化提示：B班先看每段首句再选；A班限时2分钟盲选后验证</span>。<span class="tag tag-warn">易错点提醒：区分 main idea（整体）与 detail（某段）</span>。</div></div><div class="step"><div class="step-head"><span class="step-no">4</span><span class="step-name">扫读情感线 Scanning</span><span class="step-time">14分钟</span></div><div class="step-body"><span class="tag tag-ppt">【PPT P6 时间轴】</span>【工作单 时间轴】<span class="tag tag-teacher">教师：「Find: when did he feel nervous? when happy? why?」 学生填轴</span>。<span class="tag tag-ans">预设回答：「Nervous at start (new school); happy after making friends &amp; good teachers.」 <span class="tag tag-board">板书时机：黑板画 ↘↗ 情感弧线并标注原因</span></span>。<span class="tag tag-diff">差异化提示：B班只需标两个情绪词；A班补「原因句」</span>。<span class="tag tag-warn">易错点提醒：enthusiastic 形容老师「热情的」，别误读为「精力」</span>。</div></div><div class="step"><div class="step-head"><span class="step-no">5</span><span class="step-name">长难句拆解 Language focus</span><span class="step-time">9分钟</span></div><div class="step-body"><span class="tag tag-ppt">【PPT P4】</span>拆解 「The teachers are very enthusiastic women called Ms Li...」 <span class="tag tag-teacher">教师：「called = who are called，修饰 women</span>。」 <span class="tag tag-ans">预设回答：「Ms Li is an enthusiastic teacher.」 <span class="tag tag-board">板书时机：黑板右下方写 「n. + called/ named + 名字」</span></span>。<span class="tag tag-diff">差异化提示：B班仿写1句；A班用该结构描述自己老师</span>。<span class="tag tag-warn">易错点提醒：called 过去分词表「被叫做」</span>。</div></div><div class="step"><div class="step-head"><span class="step-no">6</span><span class="step-name">复述+作业 Post-reading</span><span class="step-time">6分钟</span></div><div class="step-body"><span class="tag tag-ppt">【PPT P9 情感弧线】</span>两人一组用时间轴复述 Adam 的一天。教师巡视纠音。<span class="tag tag-teacher">教师：「Use past tense! He felt nervous, then...」 <span class="tag tag-ans">预设回答：「He felt nervous, but later he became confident.」 <span class="tag tag-board">板书时机：留下情感弧线供复述参考</span></span></span>。<span class="tag tag-diff">差异化提示：B班给关键词连句；A班脱稿复述</span>。<span class="tag tag-warn">易错点提醒：复述用过去时，提醒动词变化</span>。</div></div></div>
+  </div>
+
+  <!-- 板书设计 -->
+  <div class="board-wrap"><div class="card-h" style="background:#1e293b;color:#e2e8f0;border-color:#475569;">📐 板书设计</div><div class="board">┌─ My First Day @ Senior High ─┐
+│ Main: exp + feelings of D1  │
+│ Emotion arc:                │
+│  start: nervous (new)       │
+│   ↓ make friends            │
+│   ↓ good teachers           │
+│  end: happy / confident     │
+│ Key words:                 │
+│  senior / challenge         │
+│  confident / explore        │
+│  n. + called + name         │
+└──────────────────────────────┘</div></div>
+
+  <!-- 课后作业 -->
+  <div class="card"><div class="card-h">📚 课后作业</div><div class="card-b" style="padding:10px;"><div class="sub-card"><div class="sub-h">基础作业</div><div class="sub-b"><b>1.</b> 完成课本 Comprehension 第1题（判断Adam情感）。<b>2.</b> 抄写并背诵 senior/challenge/confident/explore 各2遍+1个例句。</div></div><div class="sub-card"><div class="sub-h">提高作业</div><div class="sub-b">用「时间轴」写自己初中最后一天或高中第一天的 5 句话英文日记（用至少2个本课词汇）。
+【参考答案——教师用】基础1：T/F 判读依课文；提高作业评价：5句连贯、含情感变化、用对2词即满分；用 looked forward to 加分。</div></div><div class="sub-card"><div class="sub-h">参考答案——教师用</div><div class="sub-b"><div class="ans-box">基础1：T/F 判读依课文；提高作业评价：5句连贯、含情感变化、用对2词即满分；用 looked forward to 加分。</div></div></div></div></div>
+
+  <!-- 教学反思 -->
+  <div class="card"><div class="card-h">💭 教学反思</div><div class="card-b" style="padding:10px;"><div class="sub-card"><div class="sub-h">✅ 亮点</div><div class="sub-b">情感时间轴把抽象「心理变化」变可视，B班也能说出变化原因；长难句拆解后 A班仿写质量高。</div></div><div class="sub-card"><div class="sub-h">⚠️ 需改进</div><div class="sub-b">Skimming 限时2分钟对B班偏紧，部分未读完；下次改为「先读首段+末段」再选主旨。</div></div><div class="sub-card"><div class="sub-h">📌 下节课衔接</div><div class="sub-b">下一节深入语言点（confident/explore 等），本课时间轴可作写作人物描写的雏形。</div></div></div></div>
+
+</div>
+
+  <!-- 导出按钮 -->
+  <div class="actions">
+    <div class="btn">📄 Word</div>
+    <div class="btn btn-ppt">📊 PPT</div>
+    <div class="btn btn-pdf">📑 PDF</div>
+  </div>
+
+  </div><!-- /screen -->
+
+  <!-- 底部 tabBar -->
+  <div class="tabbar">
+    <div class="tab active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>教案库</span>
+    </div>
+    <div class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>收藏</span>
+    </div>
+    <div class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>我的</span>
+    </div>
+  </div>
+
+</div><!-- /phone -->
+
+</body></html>
