@@ -82,40 +82,29 @@
 
 .doc-card {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   background: #fff;
   border-radius: 20rpx;
-  padding: 28rpx 24rpx;
-  margin-bottom: 20rpx;
+  padding: 24rpx 24rpx;
+  margin-bottom: 16rpx;
   box-shadow: 0 2rpx 12rpx rgba(26, 54, 93, 0.06);
 }
 .card-hover { background: #f7f9fc; }
 
 .doc-card-icon {
-  width: 80rpx; height: 80rpx;
+  width: 72rpx; height: 72rpx;
   border-radius: 16rpx;
-  background: #e8f0fe;
+  background: linear-gradient(135deg, #1a365d, #2a4a7d);
+  color: #fff;
   display: flex; align-items: center; justify-content: center;
-  font-size: 40rpx;
+  font-size: 36rpx;
   margin-right: 20rpx;
   flex-shrink: 0;
 }
 .doc-card-body { flex: 1; min-width: 0; }
-.doc-card-title { font-size: 30rpx; font-weight: 600; color: #1a1a2e; line-height: 1.4; }
-.doc-card-sub { font-size: 23rpx; color: #1a365d; margin-top: 6rpx; }
-.doc-card-desc {
-  font-size: 24rpx; color: #888; margin-top: 10rpx; line-height: 1.6;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-.doc-card-meta { display: flex; align-items: center; gap: 10rpx; margin-top: 16rpx; flex-wrap: wrap; }
-.fmt-badge {
-  font-size: 20rpx; padding: 3rpx 12rpx; border-radius: 8rpx; font-weight: 500;
-}
-.fmt-badge.word { color: #1a365d; background: #e8f0fe; }
-.fmt-badge.pdf { color: #b8860b; background: #fffdf5; }
-.fmt-badge.ppt { color: #c0392b; background: #fdf2f2; }
-.doc-stat { font-size: 22rpx; color: #aaa; margin-left: auto; }
-.doc-card-arrow { margin-left: 8rpx; font-size: 44rpx; color: #cfcfcf; flex-shrink: 0; align-self: center; }
+.doc-card-title { font-size: 30rpx; font-weight: 600; color: #1a1a2e; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.doc-card-sub { font-size: 23rpx; color: #8a90a0; margin-top: 6rpx; line-height: 1.3; }
+.doc-card-arrow { margin-left: 12rpx; font-size: 40rpx; color: #d0d4dc; flex-shrink: 0; align-self: center; }
 
 /* 空状态 */
 .empty { text-align: center; padding: 120rpx 40rpx; }
@@ -124,5 +113,5 @@
 .empty-tip { font-size: 23rpx; color: #aaa; margin-top: 10rpx; }
 
 /* 骨架 */
-.doc-card.skel { height: 150rpx; background: #f2f3f7; animation: pulse 1.2s ease-in-out infinite; }
+.doc-card.skel { height: 90rpx; background: #f2f3f7; animation: pulse 1.2s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:1} }

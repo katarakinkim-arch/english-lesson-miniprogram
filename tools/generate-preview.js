@@ -41,17 +41,13 @@ const html = `<!DOCTYPE html>
   .chips{ display:flex; gap:8px; margin:12px 0; flex-wrap:wrap; }
   .chip{ background:var(--chip); color:var(--sub); font-size:13px; padding:7px 14px; border-radius:20px; cursor:pointer; white-space:nowrap; }
   .chip.on{ background:var(--brand); color:#fff; }
-  .card{ background:#fff; border-radius:16px; padding:15px; margin-bottom:12px; box-shadow:0 2px 10px rgba(20,40,80,.05); cursor:pointer; transition:transform .15s; }
+  .card{ background:#fff; border-radius:16px; padding:16px; margin-bottom:10px; box-shadow:0 2px 10px rgba(20,40,80,.05); cursor:pointer; transition:transform .15s; display:flex; align-items:center; }
   .card:active{ transform:scale(.98); }
-  .card .row1{ display:flex; gap:12px; }
-  .card .docico{ width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
-  .card .ttl{ font-size:15px; font-weight:600; line-height:1.35; }
-  .card .sub{ font-size:12px; color:var(--sub); margin-top:5px; }
-  .card .desc{ font-size:12px; color:#8a90a0; margin-top:9px; line-height:1.5; }
-  .card .foot{ display:flex; align-items:center; justify-content:space-between; margin-top:11px; }
-  .badges{ display:flex; gap:6px; }
-  .badge{ font-size:11px; padding:3px 9px; border-radius:8px; background:#eef2f8; color:var(--brand); }
-  .stats{ font-size:11px; color:#aab; }
+  .card .row1{ display:flex; gap:12px; align-items:center; width:100%; }
+  .card .docico{ width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .card .ttl{ font-size:15px; font-weight:600; line-height:1.35; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; min-width:0; }
+  .card .sub{ font-size:12px; color:#8a90a0; margin-top:4px; line-height:1.3; }
+  .card-arrow{ font-size:24px; color:#d0d4dc; flex-shrink:0; }
   .empty{ text-align:center; color:var(--sub); padding:60px 20px; }
   .empty .e{ font-size:54px; }
   .empty .t{ margin-top:12px; font-size:15px; }
@@ -251,16 +247,10 @@ function renderIndex() {
         <div class="docico">&#128196;</div>
         <div style="flex:1">
           <div class="ttl">\${escAttr(l.title)}</div>
-          <div class="sub">\${escAttr(l.book)} \u00B7 \${escAttr(l.unitTitle)} \u00B7 \${escAttr(l.lessonTypeName)} \u00B7 \${l.duration}\u5206\u949F</div>
+          <div class="sub">\${escAttr(l.book.replace('\u5FC5\u4FEE',''))} \u00B7 \${escAttr(l.unitTitle)} \u00B7 \${escAttr(l.lessonTypeName)} \u00B7 \${l.duration}\u5206\u949F</div>
         </div>
         \${fav ? '<div style="color:#e6a23c;font-size:20px">\u2605</div>' : ''}
-      </div>
-      <div class="desc">\${escAttr(clip(l.overview, 70))}</div>
-      <div class="foot">
-        <div class="badges">
-          <span class="badge">Word</span><span class="badge">PDF</span><span class="badge">PPT</span>
-        </div>
-        <div class="stats">\uD83D\uDCC1 \${l.viewCount||0} \u00B7 \u2B07 \${l.downloadCount||0}</div>
+        <div class="card-arrow">\u2039</div>
       </div>
     </div>\`;
   }).join('');

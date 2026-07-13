@@ -111,10 +111,7 @@ Page({
     }).map((l) => ({
       id: l.id,
       title: l.title,
-      sub: '第' + l.unitNumber + '单元 · ' + l.lessonTypeName,
-      desc: (l.overview || '').substring(0, 46) + ((l.overview || '').length > 46 ? '…' : ''),
-      views: l.viewCount || 0,
-      dls: l.downloadCount || 0,
+      sub: l.book.replace('必修', '') + ' · ' + l.unitTitle + ' · ' + l.lessonTypeName,
       duration: l.duration || 45
     }));
     this.setData({ list });
