@@ -41,27 +41,27 @@ module.exports = [
       {
         "step": "Step 2 听前预测 Pre-listening",
         "time": "5分钟",
-        "content": "【PPT P7 题支】教师：「A new student is choosing a club. Guess: which club will he join?」 让学生圈可能答案。预设回答：「Maybe the Science Club.」 板书时机：黑板左侧列预测词。差异化提示：基础弱的学生只圈社团名；A班需说预测理由（because he likes...）。"
+        "content": "【PPT P7 题支】教师：「A new student is choosing a club. Guess: which club will he join?」 让学生圈可能答案。预设回答：「Maybe the Science Club.」 板书时机：黑板左侧列预测词。差异化提示：基础弱的学生只圈社团名；A班需说预测理由（because he likes...）。易错点提醒：join 与 attend 区别 — join club/attend class，板书对比标搭配。"
       },
       {
         "step": "Step 3 听力1 对话 While-listening",
         "time": "10分钟",
-        "content": "【音频1】第一遍抓「去了哪个社团」（skimming）；第二遍填题支细节（社团+时间）。教师：「Listen for the club name and the day.」 预设回答：「He joined the Radio Club on Friday.」 易错点提醒：Friday 易误听为 「free day」，强调 /fraɪ/。差异化提示：B班用表格只填社团名；A班填社团+时间+原因。"
+        "content": "【PPT P8 听力题】【音频1】第一遍抓「去了哪个社团」（skimming）；第二遍填题支细节（社团+时间）。教师：「Listen for the club name and the day.」 板书时机：答案填于黑板社团矩阵。预设回答：「He joined the Radio Club on Friday.」 易错点提醒：Friday 易误听为 「free day」，强调 /fraɪ/。差异化提示：B班用表格只填社团名；A班填社团+时间+原因。"
       },
       {
         "step": "Step 4 听力2 广播 While-listening",
         "time": "9分钟",
-        "content": "【音频2 社团广播】任务：记录 3 个社团的名称与招新对象。教师：「Take notes: name + who can join.」 预设回答：「Debate Club — for students who like arguing!」 板书时机：黑板中央列社团矩阵（名称|对象|时间）。易错点提醒：volunteer 名词「志愿者」、动词「自愿做」，板书对比两种用法。"
+        "content": "【PPT P9 听力题】【音频2 社团广播】任务：记录 3 个社团的名称与招新对象。教师：「Take notes: name + who can join.」 差异化提示：B班只填社团名；A班补填招新要求。预设回答：「Debate Club — for students who like arguing!」 板书时机：黑板中央列社团矩阵（名称|对象|时间）。易错点提醒：volunteer 名词「志愿者」、动词「自愿做」，板书对比两种用法。"
       },
       {
         "step": "Step 5 口语输出 Pair work",
         "time": "8分钟",
-        "content": "【PPT P8 句型菜单】两人一组：A 扮新生、B 扮社长，用菜单句型完成「入社咨询」。教师示范：「—Which club do you recommend? —I'd recommend the Literature Club, it's...」 预设回答：「I'm keen on photography, so I'll join the Photo Club.」 差异化提示：B班照读菜单；A班脱稿并追加理由。易错点提醒：recommend 后接名词或 doing，不接 to do。"
+        "content": "【PPT P8 句型菜单】两人一组：A 扮新生、B 扮社长，用菜单句型完成「入社咨询」。教师示范：「—Which club do you recommend? —I'd recommend the Literature Club, it's...」 预设回答：「I'm keen on photography, so I'll join the Photo Club.」 板书时机：补充新词至社团矩阵。差异化提示：B班照读菜单；A班脱稿并追加理由。易错点提醒：recommend 后接名词或 doing，不接 to do。"
       },
       {
         "step": "Step 6 小结+作业 Summary",
         "time": "4分钟",
-        "content": "带学生回顾黑板社团矩阵，总结「表达意愿三句型」。作业见课后练习。板书时机：彩色笔圈出三句型。易错点提醒：下节课 Reading 会用到这些社团词，提醒复习。"
+        "content": "【PPT P10 总结】带学生回顾黑板社团矩阵，总结「表达意愿三句型」。教师：「Can you name the three patterns?」 预设回答：「I would like to / I am interested in / I recommend!」 板书时机：彩色笔圈出三句型。差异化提示：B班看黑板回答；A班闭眼回忆。易错点提醒：下节课 Reading 会用到这些社团词，提醒复习。"
       }
     ],
     "blackboard": "┌─ U1 Listening & Speaking ─┐\n│ Campus: lib / canteen / gym │\n│ Clubs (name | who)          │\n│  Radio — Fri / anyone       │\n│  Debate — lovers of argue   │\n│  Volunteer — helpers        │\n│ 表达意愿:                  │\n│  I'd like to join...        │\n│  I'm interested in...       │\n│  Which club recommend?      │\n└─────────────────────────────┘",
@@ -120,12 +120,12 @@ module.exports = [
       {
         "step": "Step 3 略读抓主旨 Skimming",
         "time": "8分钟",
-        "content": "教师：「Read fast (2 min). What is the main idea?」 给三选项。预设回答：「A — Adam's first-day experience and feelings.」 板书时机：确认主旨写黑板中央。差异化提示：B班先看每段首句再选；A班限时2分钟盲选后验证。易错点提醒：区分 main idea（整体）与 detail（某段）。"
+        "content": "【PPT P5 主旨选择】教师：「Read fast (2 min). What is the main idea?」 给三选项。预设回答：「A — Adam's first-day experience and feelings.」 板书时机：确认主旨写黑板中央。差异化提示：B班先看每段首句再选；A班限时2分钟盲选后验证。易错点提醒：区分 main idea（整体）与 detail（某段）。"
       },
       {
         "step": "Step 4 扫读情感线 Scanning",
         "time": "14分钟",
-        "content": "【工作单 时间轴】教师：「Find: when did he feel nervous? when happy? why?」 学生填轴。预设回答：「Nervous at start (new school); happy after making friends & good teachers.」 板书时机：黑板画 ↘↗ 情感弧线并标注原因。差异化提示：B班只需标两个情绪词；A班补「原因句」。易错点提醒：enthusiastic 形容老师「热情的」，别误读为「精力」。"
+        "content": "【PPT P6 时间轴】【工作单 时间轴】教师：「Find: when did he feel nervous? when happy? why?」 学生填轴。预设回答：「Nervous at start (new school); happy after making friends & good teachers.」 板书时机：黑板画 ↘↗ 情感弧线并标注原因。差异化提示：B班只需标两个情绪词；A班补「原因句」。易错点提醒：enthusiastic 形容老师「热情的」，别误读为「精力」。"
       },
       {
         "step": "Step 5 长难句拆解 Language focus",
@@ -135,7 +135,7 @@ module.exports = [
       {
         "step": "Step 6 复述+作业 Post-reading",
         "time": "6分钟",
-        "content": "两人一组用时间轴复述 Adam 的一天。教师巡视纠音。作业见课后练习。板书时机：留下情感弧线供复述参考。易错点提醒：复述用过去时，提醒动词变化。"
+        "content": "【PPT P9 情感弧线】两人一组用时间轴复述 Adam 的一天。教师巡视纠音。教师：「Use past tense! He felt nervous, then...」 预设回答：「He felt nervous, but later he became confident.」 板书时机：留下情感弧线供复述参考。差异化提示：B班给关键词连句；A班脱稿复述。易错点提醒：复述用过去时，提醒动词变化。"
       }
     ],
     "blackboard": "┌─ My First Day @ Senior High ─┐\n│ Main: exp + feelings of D1  │\n│ Emotion arc:                │\n│  start: nervous (new)       │\n│   ↓ make friends            │\n│   ↓ good teachers           │\n│  end: happy / confident     │\n│ Key words:                 │\n│  senior / challenge         │\n│  confident / explore        │\n│  n. + called + name         │\n└──────────────────────────────┘",
@@ -203,7 +203,7 @@ module.exports = [
       {
         "step": "Step 5 产出+清单 Build & List",
         "time": "10分钟",
-        "content": "用本课词写 3 句「介绍自己高中期待」。随后填「易混词清单」（confident/confidence, look forward to doing）。教师巡视。作业见课后练习。板书时机：留构词公式供参考。易错点提醒：清单要写「错在哪+正确例」。"
+        "content": "【PPT P7 产出任务】用本课词写 3 句「介绍自己高中期待」。随后填「易混词清单」（confident/confidence, look forward to doing）。教师巡视。教师：「Write 3 sentences about your expectations.」 预设回答：「I am looking forward to making new friends.」 板书时机：留关键词供参考。差异化提示：B班照黑板词造句；A班独立写并用至少2个新词。易错点提醒：look forward to + doing，to 是介词不是不定式。"
       }
     ],
     "blackboard": "┌─ Language Focus U1 ─┐\n│ 6 words:               │\n│  senior / challenge     │\n│  confident / explore    │\n│  enthusiastic / forward │\n│ look forward to + doing │\n│  (to = prep!)           │\n│ n. + called/named +名   │\n│ en- + thusiast + -ic    │\n│ 易混: confid(ent/ence)  │\n└─────────────────────────┘",
@@ -271,7 +271,7 @@ module.exports = [
       {
         "step": "Step 5 产出+作业 Produce",
         "time": "5分钟",
-        "content": "用至少2类短语写3句描述同学。作业见课后练习。板书时机：留公式供写时参考。易错点提醒：写后自判中心词。"
+        "content": "【PPT P6 产出任务】用至少2类短语写3句描述同学。教师：「Describe 3 classmates using what we learned.」 预设回答：「Li Hua plays the guitar very well. / Zhang Wei is the boy whose hair is curly.」 板书时机：留公式供写时参考。差异化提示：B班给填空式句型；A班自由造句。易错点提醒：写后自判中心词——圈出名词短语和定语从句连接点。"
       }
     ],
     "blackboard": "┌─ Phrases U1 ─┐\n│ NP: (det) adj N  │\n│  a confident boy  │\n│ AdjP: adj + compl │\n│  good at English  │\n│ AdvP: adv + mod   │\n│  quite confidently │\n│ 口诀:找中心词!   │\n└────────────────────┘",
@@ -325,12 +325,12 @@ module.exports = [
       {
         "step": "Step 2 听力抓计划 While-listening",
         "time": "12分钟",
-        "content": "【音频】听两遍：第一遍抓「他们打算去哪、做什么」；第二遍填计划单。教师：「Catch: be going to = 打算。」 预设回答：「They are going to camp by the lake.」 板书时机：黑板中写 be going to + v. 公式。差异化提示：B班只填地点；A班填地点+活动。易错点提醒：going 读 /ɡoʊɪŋ/ 注意双元音。"
+        "content": "【PPT P3 听力任务】【音频】听两遍：第一遍抓「他们打算去哪、做什么」；第二遍填计划单。教师：「Catch: be going to = 打算。」 预设回答：「They are going to camp by the lake.」 板书时机：黑板中写 be going to + v. 公式。差异化提示：B班只填地点；A班填地点+活动。易错点提醒：going 读 /ɡoʊɪŋ/ 注意双元音。"
       },
       {
         "step": "Step 3 听力抓建议 Catch suggestions",
         "time": "8分钟",
-        "content": "【音频 重听】教师：「What suggestions did they make?」 预设回答：「Why don't we bring a map?」 板书时机：黑板写建议三句型。差异化提示：A班听后默写1句；B班听后圈出。易错点提醒：How about 后接 doing/名词，不接动词原形。"
+        "content": "【PPT P4 听力任务】【音频 重听】教师：「What suggestions did they make?」 预设回答：「Why don't we bring a map?」 板书时机：黑板写建议三句型。差异化提示：A班听后默写1句；B班听后圈出。易错点提醒：How about 后接 doing/名词，不接动词原形。"
       },
       {
         "step": "Step 4 角色扮演 Role-play",
@@ -340,7 +340,7 @@ module.exports = [
       {
         "step": "Step 5 汇报+作业 Report",
         "time": "6分钟",
-        "content": "一组上台 1 分钟英文汇报计划。作业见课后练习。板书时机：留 be going to 公式。易错点提醒：汇报用 are going to 复数一致。"
+        "content": "【PPT P6 汇报框架】一组上台 1 分钟英文汇报计划。教师：「One minute per group. Be loud and clear.」 预设回答：「We are going to visit the museum and then eat lunch.」 板书时机：留 be going to 公式。差异化提示：B班看稿读；A班脱稿。易错点提醒：汇报用 are going to / will，注意主语复数一致。"
       }
     ],
     "blackboard": "┌─ Plan a Camp ─┐\n│ plan: be going to + v │\n│  (打算, 事前)        │\n│ will (当场决定)       │\n│ suggest:             │\n│  Why don't we...?    │\n│  How about...?       │\n│ respond:             │\n│  Good idea! / Rather │\n└───────────────────────┘",
@@ -408,7 +408,7 @@ module.exports = [
       {
         "step": "Step 5 小结+作业 Wrap",
         "time": "5分钟",
-        "content": "总结结构+语库。作业：完善语块银行，预习下节课写自己 profile。板书时机：留结构树。易错点提醒：下节课直接套用，别现编。"
+        "content": "【PPT P6 总结】总结结构+语库。教师：「Remember: 4 paragraphs, 3+ chunks.」 预设回答：「We know the structure now: interests, strengths, weakness, goal.」 板书时机：留结构树。差异化提示：B班再读一遍语库；A班自己说一遍结构。易错点提醒：下节课直接套用，别现编——课上写过的句子就是最好的素材。"
       }
     ],
     "blackboard": "┌─ Student Profile ─┐\n│ 1 Basic info       │\n│ 2 Personality      │\n│   outgoing/confident│\n│ 3 Hobbies          │\n│   keen on / good at│\n│ 4 Abilities&Wishes │\n│   can / look fwd to│\n│ 衔接: and/also/besid│\n└─────────────────────┘",
@@ -457,27 +457,27 @@ module.exports = [
       {
         "step": "Step 1 起草 Draft",
         "time": "15分钟",
-        "content": "教师：「Use last lesson's structure + bank. 80-100 words, 4 paragraphs.」 学生静写。预设回答：（习作）「I'm Li Hua, a confident senior student...」 板书时机：黑板左写字数红线 80-100。差异化提示：B班可参考语库照填；A班脱稿+用2单元词。易错点提醒：三单（he goes / she likes）；be good at doing。"
+        "content": "【PPT P5 计时写作】 教师：「Use last lesson's structure + bank. 80-100 words, 4 paragraphs.」 学生静写。预设回答：（习作）「I'm Li Hua, a confident senior student...」 板书时机：黑板左写字数红线 80-100。差异化提示：B班可参考语库照填；A班脱稿+用2单元词。易错点提醒：三单（he goes / she likes）；be good at doing。"
       },
       {
         "step": "Step 2 互评 Peer review",
         "time": "10分钟",
-        "content": "【量表 P2】同桌互换，按三维勾选：结构4段？语块≥3？语法（三单/介词）。教师：「Don't just count words!」 预设回答：「He missed the wishes paragraph.」 板书时机：黑板中写共性错。差异化提示：B班只查结构+字数；A班查三单+搭配。易错点提醒：互评用铅笔，留修改空间。"
+        "content": "【PPT P6 互评量表】 【量表 P2】同桌互换，按三维勾选：结构4段？语块≥3？语法（三单/介词）。教师：「Don't just count words!」 预设回答：「He missed the wishes paragraph.」 板书时机：黑板中写共性错。差异化提示：B班只查结构+字数；A班查三单+搭配。易错点提醒：互评用铅笔，留修改空间。"
       },
       {
         "step": "Step 3 修改 Revise",
         "time": "10分钟",
-        "content": "学生据反馈改自己的稿。教师巡视。预设回答：「I add: I look forward to exploring clubs.」 板书时机：留量表参考。差异化提示：A班补单元词；B班补缺失段落。易错点提醒：改后重读一遍查三单。"
+        "content": "【PPT P7 修改指南】 学生据反馈改自己的稿。教师巡视。预设回答：「I add: I look forward to exploring clubs.」 板书时机：留量表参考。差异化提示：A班补单元词；B班补缺失段落。易错点提醒：改后重读一遍查三单。"
       },
       {
         "step": "Step 4 讲评+展示 Feedback",
         "time": "8分钟",
-        "content": "【P3 共性错】教师集中讲：三单漏、at doing 错。展示1-2优秀句。预设回答：「Oh! I wrote 'he like' — wrong.」 板书时机：黑板右写红线句。差异化提示：全体订正自己同类错。易错点提醒：讲评后本人稿再自查一遍。"
+        "content": "【PPT P8 讲评】 【P3 共性错】教师集中讲：三单漏、at doing 错。展示1-2优秀句。预设回答：「Oh! I wrote 'he like' — wrong.」 板书时机：黑板右写红线句。差异化提示：全体订正自己同类错。易错点提醒：讲评后本人稿再自查一遍。"
       },
       {
         "step": "Step 5 结课 Wrap",
         "time": "2分钟",
-        "content": "总结「写—评—改」闭环。作业：抄正终稿交。板书时机：留红线句。易错点提醒：终稿用规范书写。"
+        "content": "【PPT P9 结课】总结「写—评—改」闭环。教师：「Great writers revise. Next time you will write even better.」 预设回答：「I will check my tenses next time!」 板书时机：留红线句。差异化提示：B班朗读红线句；A班自己找出自己稿子的红线亮点。易错点提醒：终稿用规范书写——卷面分在考试中真实存在。"
       }
     ],
     "blackboard": "┌─ Writing: Profile ─┐\n│ 80-100 words      │\n│ 4 paras:          │\n│  info/persona/hobby│\n│  /ability&wish    │\n│ 红线:             │\n│  三单! at doing!  │\n│ 互评3维:结/块/法  │\n└────────────────────┘",
@@ -531,22 +531,22 @@ module.exports = [
       {
         "step": "Step 2 视频拓展 Video",
         "time": "8分钟",
-        "content": "【视频】教师：「What's different from our school life?」 预设回答：「They have more clubs after school.」 板书时机：黑板中写异同。差异化提示：B班说1个异同；A班写2句英文。易错点提醒：video 信息快，提醒抓关键词。"
+        "content": "【PPT P2 视频链接】【视频】教师：「What's different from our school life?」 预设回答：「They have more clubs after school.」 板书时机：黑板中写异同。差异化提示：B班说1个异同；A班写2句英文。易错点提醒：video 信息快，提醒抓关键词。"
       },
       {
         "step": "Step 3 小组制作 Make",
         "time": "18分钟",
-        "content": "【A3纸】各组完成手册：profile（用写作课稿）+社团推荐（听与说词）+露营计划（听与谈句）。质检员查语言。教师巡视。预设产出：「Our club: Photo Club — we are going to...」 板书时机：留模块清单。差异化提示：B班填模板空；A班自由发挥+用单元词。易错点提醒：质检查三单/at doing。"
+        "content": "【PPT P3 手册结构】【A3纸】各组完成手册：profile（用写作课稿）+社团推荐（听与说词）+露营计划（听与谈句）。质检员查语言。教师巡视。预设产出：「Our club: Photo Club — we are going to...」 教师：「Which part are you working on?」 预设回答：「The club recommendation!」 板书时机：留模块清单。差异化提示：B班填模板空；A班自由发挥+用单元词。易错点提醒：质检查三单/at doing。"
       },
       {
         "step": "Step 4 展示评价 Show",
         "time": "9分钟",
-        "content": "【P5 量规】2-3组上台展示。全班用量规评（内容/语言/合作）。预设回答：「Their profile used confident and explore — great!」 板书时机：留亮点句。差异化提示：每组汇报员脱稿1分钟。易错点提醒：展示用 are going to 复数。"
+        "content": "【PPT P4 展示量规】【P5 量规】2-3组上台展示。全班用量规评（内容/语言/合作）。预设回答：「Their profile used confident and explore — great!」 板书时机：留亮点句。差异化提示：每组汇报员脱稿1分钟。易错点提醒：展示用 are going to 复数。"
       },
       {
         "step": "Step 5 单元自评 Review",
         "time": "5分钟",
-        "content": "【P4 自评表】学生勾选四维薄弱项并写1条补强计划。作业见课后练习。板书时机：留自评维度。易错点提醒：自评要诚实，计划要具体（如「每天背5个单元词」）。"
+        "content": "【PPT P4 自评表】学生勾选四维薄弱项并写1条补强计划。教师：「Be honest — this is for yourself.」 预设回答：「I need more speaking practice. I will talk in English for 5 minutes every day.」 板书时机：留自评维度。差异化提示：B班中文写计划、A班英文写。易错点提醒：自评要诚实，计划要具体（如「每天背5个单元词」而不是「多背单词」）。"
       }
     ],
     "blackboard": "┌─ U1 Project & Review ─┐\n│ Brochure:             │\n│  profile / club / plan │\n│ Roles: lead/record/QA/ │\n│  report               │\n│ Video: 中外校园异同   │\n│ Self-check 4维:       │\n│  词/读/法/写          │\n└────────────────────────┘",
@@ -2525,7 +2525,7 @@ module.exports = [
       {
         "step": "听中填表",
         "time": "10",
-        "content": "【音频 段一】播放听力，学生填清单。教师：What did he book? 预设回答：A hotel room and a flight. 板书时机：核对答案时板书关键词。差异化提示：B班听两遍；A班一遍后复述。易错点提醒：flight /flaɪt/ 与 fright 区分。"
+        "content": "【PPT P5 表格】【音频 段一】播放听力，学生填清单。教师：What did he book? 预设回答：A hotel room and a flight. 板书时机：核对答案时板书关键词。差异化提示：B班听两遍；A班一遍后复述。易错点提醒：flight /flaɪt/ 与 fright 区分。"
       },
       {
         "step": "听后核对+句型",
@@ -2608,7 +2608,7 @@ module.exports = [
       {
         "step": "小结",
         "time": "5",
-        "content": "【总结】教师带学生回顾 brochure 特征+四路线。预设回答跟读。板书时机：圈重点。差异化提示：B班跟读；A班自述。易错点提醒：ancient /eɪnʃənt/ t 不发音。"
+        "content": "【PPT P7 总结回顾】教师带学生回顾 brochure 特征+四路线。预设回答跟读。板书时机：圈重点。差异化提示：B班跟读；A班自述。易错点提醒：ancient /eɪnʃənt/ t 不发音。"
       }
     ],
     "blackboard": "┌─ U2 Reading Ⅰ: Travel Peru ─┐\n│ Type: travel brochure           │\n│ ① Amazon ② Machu Picchu        │\n│ ③ Cusco  ④ Lake Titicaca       │\n│ (duration / transport / highlight)│\n└──────────────────────────────────┘",
@@ -2671,7 +2671,7 @@ module.exports = [
       {
         "step": "语料库搭建",
         "time": "10",
-        "content": "【PPT P4 模板】学生分类填语料卡：描述词/号召语/句式。板书时机：巡视指导。差异化提示：B班填词；A班造句。易错点提醒：a unique（不是 an unique）。"
+        "content": "【PPT P4 模板】学生分类填语料卡：描述词/号召语/句式。预设回答：按旅行目的地模板分类填写词条。板书时机：巡视指导。差异化提示：B班填词；A班造句。易错点提醒：a unique（不是 an unique）。"
       },
       {
         "step": "仿写",
@@ -2739,7 +2739,7 @@ module.exports = [
       {
         "step": "时间轴归纳",
         "time": "8",
-        "content": "【PPT P4 时间轴】归纳将来表达：be doing / will / be going to。板书时机：画轴。差异化提示：B班填词；A班举例。易错点提醒：be going to 表打算+迹象。"
+        "content": "【PPT P4 时间轴】归纳将来表达：be doing / will / be going to。预设回答：be doing已安排/will临时决定/be going to意图板书时机：画轴。差异化提示：B班填词；A班举例。易错点提醒：be going to 表打算+迹象。"
       },
       {
         "step": "操练",
@@ -2802,7 +2802,7 @@ module.exports = [
       {
         "step": "听中记录",
         "time": "10",
-        "content": "【音频】播放，学生填信息卡。教师：How much is the room? 预设回答：120 dollars. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍。易错点提醒：a hundred and twenty 连读。"
+        "content": "【PPT P4 听力任务卡】【音频】播放，学生填信息卡。教师：How much is the room? 预设回答：120 dollars. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍。易错点提醒：a hundred and twenty 连读。"
       },
       {
         "step": "句型输入",
@@ -2875,7 +2875,7 @@ module.exports = [
       {
         "step": "积语料",
         "time": "8",
-        "content": "【PPT P4 语料库】学生填目的地/交通/活动/期待语料卡。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：look forward to + doing。"
+        "content": "【PPT P4 语料库】学生填目的地/交通/活动/期待语料卡。预设回答：按旅行分类卡填写词条。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：look forward to + doing。"
       },
       {
         "step": "搭提纲",
@@ -2933,7 +2933,7 @@ module.exports = [
       {
         "step": "起草",
         "time": "15",
-        "content": "【写作】学生依提纲起草 80 词。教师巡视面批。板书时机：无。差异化提示：B班给句型框；A班自由。易错点提醒：衔接词适度。"
+        "content": "【PPT P6 写作提纲】学生依提纲起草 80 词。教师巡视面批。预设回答：（学生静写中，此处无口头回答）板书时机：无。差异化提示：B班给句型框；A班自由。易错点提醒：衔接词适度。"
       },
       {
         "step": "互评",
@@ -2943,7 +2943,7 @@ module.exports = [
       {
         "step": "修改",
         "time": "8",
-        "content": "【修改】学生据互评修改。教师聚焦时态错误。板书时机：无。差异化提示：B班改错；A班润色。易错点提醒：滑回 will 须改 be doing。"
+        "content": "【PPT P9 修改清单】学生据互评修改。教师聚焦时态错误。预设回答：（学生自修中，教师口头提示共性错误）板书时机：无。差异化提示：B班改错；A班润色。易错点提醒：滑回 will 须改 be doing。"
       },
       {
         "step": "展示",
@@ -3006,7 +3006,7 @@ module.exports = [
       {
         "step": "制作路线卡",
         "time": "12",
-        "content": "【实物 路线卡】小组图文制作。教师指导文体与语言。板书时机：无。差异化提示：B班配图；A班写文案。易错点提醒：号召语收尾。"
+        "content": "【PPT P7 范例参考】【实物 路线卡】小组图文制作。教师指导文体与语言。预设回答：（小组讨论制作中，教师巡视指导）板书时机：无。差异化提示：B班配图；A班写文案。易错点提醒：号召语收尾。"
       },
       {
         "step": "展示",
@@ -3079,7 +3079,7 @@ module.exports = [
       {
         "step": "听中填卡",
         "time": "10",
-        "content": "【音频 段一】播放，学生填信息卡。教师：What sport and when? 预设回答：Badminton, Saturday morning. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍后复述。易错点提醒：Saturday 拼写。"
+        "content": "【PPT P5 表格】【音频 段一】播放，学生填信息卡。教师：What sport and when? 预设回答：Badminton, Saturday morning. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍后复述。易错点提醒：Saturday 拼写。"
       },
       {
         "step": "句型输入",
@@ -3162,7 +3162,7 @@ module.exports = [
       {
         "step": "小结",
         "time": "5",
-        "content": "【总结】回顾传奇=技艺+精神+榜样。预设回答跟读。板书时机：圈重点。差异化提示：B班跟读；A班自述。易错点提醒：set an example for 树立榜样。"
+        "content": "【PPT P7 总结回顾】回顾传奇=技艺+精神+榜样。预设回答跟读。板书时机：圈重点。差异化提示：B班跟读；A班自述。易错点提醒：set an example for 树立榜样。"
       }
     ],
     "blackboard": "┌─ U3 Reading Ⅰ: Living Legends ┐\n│ Lang Ping: player/coach/person  │\n│ Jordan: Air Jordan, mental str. │\n│ 品质: determination/teamwork/    │\n│       share success              │\n└──────────────────────────────────┘",
@@ -3225,7 +3225,7 @@ module.exports = [
       {
         "step": "语料库",
         "time": "8",
-        "content": "【PPT P4 模板】学生填语料卡：结构/短语/品质词。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：the secret to + 名词/doing。"
+        "content": "【PPT P4 模板】学生填语料卡：结构/短语/品质词。预设回答：按体育传奇模板分类填写词条。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：the secret to + 名词/doing。"
       },
       {
         "step": "仿写",
@@ -3356,7 +3356,7 @@ module.exports = [
       {
         "step": "听中记录",
         "time": "10",
-        "content": "【音频】播放，学生填习惯+频度。教师：How often does he work out? 预设回答：Every day. 板书时机：核对填表。差异化提示：B班听两遍；A班一遍。易错点提醒：work out=锻炼。"
+        "content": "【PPT P4 听力任务卡】【音频】播放，学生填习惯+频度。教师：How often does he work out? 预设回答：Every day. 板书时机：核对填表。差异化提示：B班听两遍；A班一遍。易错点提醒：work out=锻炼。"
       },
       {
         "step": "句型输入",
@@ -3429,7 +3429,7 @@ module.exports = [
       {
         "step": "积语料",
         "time": "7",
-        "content": "【PPT P4 语料库】学生填品质/事迹/启示语料卡。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：make sb.+adj。"
+        "content": "【PPT P4 语料库】学生填品质/事迹/启示语料卡。预设回答：按体育传奇分类卡填写词条。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：make sb.+adj。"
       },
       {
         "step": "搭提纲",
@@ -3487,7 +3487,7 @@ module.exports = [
       {
         "step": "起草",
         "time": "15",
-        "content": "【写作】学生依提纲起草 80 词。教师巡视面批。板书时机：无。差异化提示：B班给句型框；A班自由。易错点提醒：时态切换。"
+        "content": "【PPT P6 写作提纲】学生依提纲起草 80 词。教师巡视面批。预设回答：（学生静写中，此处无口头回答）板书时机：无。差异化提示：B班给句型框；A班自由。易错点提醒：时态切换。"
       },
       {
         "step": "互评",
@@ -3497,7 +3497,7 @@ module.exports = [
       {
         "step": "修改",
         "time": "8",
-        "content": "【修改】学生据互评修改。教师聚焦时态。板书时机：无。差异化提示：B班改错；A班润色。易错点提醒：滑回现在须改过去。"
+        "content": "【PPT P9 修改清单】学生据互评修改。教师聚焦时态。预设回答：（学生自修中，教师口头提示共性错误）板书时机：无。差异化提示：B班改错；A班润色。易错点提醒：滑回现在须改过去。"
       },
       {
         "step": "展示",
@@ -3560,7 +3560,7 @@ module.exports = [
       {
         "step": "制作海报",
         "time": "12",
-        "content": "【实物 海报】小组图文制作。教师指导文体与语言。板书时机：无。差异化提示：B班配图；A班写文案。易错点提醒：号召语收尾。"
+        "content": "【PPT P7 范例参考】【实物 海报】小组图文制作。教师指导文体与语言。预设回答：（小组讨论制作中，教师巡视指导）板书时机：无。差异化提示：B班配图；A班写文案。易错点提醒：号召语收尾。"
       },
       {
         "step": "展示",
@@ -3633,7 +3633,7 @@ module.exports = [
       {
         "step": "听中填卡",
         "time": "10",
-        "content": "【音频】播放新闻，学生填 5W。教师：When and where did it happen? 预设回答：July, in the south. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍。易错点提醒：affect /əfekt/ 重音。"
+        "content": "【PPT P5 表格】【音频】播放新闻，学生填 5W。教师：When and where did it happen? 预设回答：July, in the south. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍。易错点提醒：affect /əfekt/ 重音。"
       },
       {
         "step": "句型输入",
@@ -3716,7 +3716,7 @@ module.exports = [
       {
         "step": "小结",
         "time": "5",
-        "content": "【总结】回顾三阶段+团结互助。预设回答跟读。板书时机：圈重点。差异化提示：B班跟读；A班自述。易错点提醒：rescue /reskjuː/。"
+        "content": "【PPT P7 总结回顾】回顾三阶段+团结互助。预设回答跟读。板书时机：圈重点。差异化提示：B班跟读；A班自述。易错点提醒：rescue /reskjuː/。"
       }
     ],
     "blackboard": "┌─ U4 Reading Ⅰ: 唐山大地震 ┐\n│ before: 征兆(井水/动物)   │\n│ during: 3:42 爆发, in ruins │\n│ after: 救援/重建/希望       │\n│ in ruins / in shock / as if │\n└──────────────────────────────┘",
@@ -3779,7 +3779,7 @@ module.exports = [
       {
         "step": "语料库",
         "time": "8",
-        "content": "【PPT P4 模板】学生填灾害词/短语/句式语料卡。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：trap→trapped 双写。"
+        "content": "【PPT P4 模板】学生填灾害词/短语/句式语料卡。预设回答：按灾害报道模板分类填写词条。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：trap→trapped 双写。"
       },
       {
         "step": "仿写",
@@ -3910,7 +3910,7 @@ module.exports = [
       {
         "step": "听中记录",
         "time": "10",
-        "content": "【音频】播放，学生填应急清单。教师：What should you keep? 预设回答：A first-aid kit. 板书时机：核对填表。差异化提示：B班听两遍；A班一遍。易错点提醒：first-aid 连字符。"
+        "content": "【PPT P4 听力任务卡】【音频】播放，学生填应急清单。教师：What should you keep? 预设回答：A first-aid kit. 板书时机：核对填表。差异化提示：B班听两遍；A班一遍。易错点提醒：first-aid 连字符。"
       },
       {
         "step": "指令句型",
@@ -3983,7 +3983,7 @@ module.exports = [
       {
         "step": "积语料",
         "time": "7",
-        "content": "【PPT P4 语料库】学生填事件/影响/救援语料卡。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：affect+数字。"
+        "content": "【PPT P4 语料库】学生填事件/影响/救援语料卡。预设回答：按灾害报道分类卡填写词条。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：affect+数字。"
       },
       {
         "step": "搭提纲",
@@ -4041,7 +4041,7 @@ module.exports = [
       {
         "step": "起草",
         "time": "15",
-        "content": "【写作】学生依提纲起草 80 词。教师巡视面批。板书时机：无。差异化提示：B班给句型框；A班自由。易错点提醒：时态一致。"
+        "content": "【PPT P6 写作提纲】学生依提纲起草 80 词。教师巡视面批。预设回答：（学生静写中，此处无口头回答）板书时机：无。差异化提示：B班给句型框；A班自由。易错点提醒：时态一致。"
       },
       {
         "step": "互评",
@@ -4051,7 +4051,7 @@ module.exports = [
       {
         "step": "修改",
         "time": "8",
-        "content": "【修改】学生据互评修改。教师聚焦时态。板书时机：无。差异化提示：B班改错；A班润色。易错点提醒：滑回现在须改过去。"
+        "content": "【PPT P9 修改清单】学生据互评修改。教师聚焦时态。预设回答：（学生自修中，教师口头提示共性错误）板书时机：无。差异化提示：B班改错；A班润色。易错点提醒：滑回现在须改过去。"
       },
       {
         "step": "展示",
@@ -4114,7 +4114,7 @@ module.exports = [
       {
         "step": "制作海报",
         "time": "12",
-        "content": "【实物 海报】小组图文制作。教师指导文体与语言。板书时机：无。差异化提示：B班配图；A班写文案。易错点提醒：指令语收尾。"
+        "content": "【PPT P7 范例参考】【实物 海报】小组图文制作。教师指导文体与语言。预设回答：（小组讨论制作中，教师巡视指导）板书时机：无。差异化提示：B班配图；A班写文案。易错点提醒：指令语收尾。"
       },
       {
         "step": "展示",
@@ -4187,7 +4187,7 @@ module.exports = [
       {
         "step": "听中填卡",
         "time": "10",
-        "content": "【音频】播放，学生填语言+理由。教师：Why does she learn Spanish? 预设回答：To travel. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍。易错点提醒：Portuguese 拼读。"
+        "content": "【PPT P5 表格】【音频】播放，学生填语言+理由。教师：Why does she learn Spanish? 预设回答：To travel. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍。易错点提醒：Portuguese 拼读。"
       },
       {
         "step": "句型输入",
@@ -4270,7 +4270,7 @@ module.exports = [
       {
         "step": "小结",
         "time": "5",
-        "content": "【总结】回顾演变+文化意义。预设回答跟读。板书时机：圈重点。差异化提示：B班跟读；A班自述。易错点提醒：represent /reprɪzent/。"
+        "content": "【PPT P7 总结回顾】回顾演变+文化意义。预设回答跟读。板书时机：圈重点。差异化提示：B班跟读；A班自述。易错点提醒：represent /reprɪzent/。"
       }
     ],
     "blackboard": "┌─ U5 Reading Ⅰ: 汉字书写体系 ┐\n│ Shang: oracle bones (carve)  │\n│ → later forms → today        │\n│ date back to / represent     │\n│ 连接古今 / 团结民族 / 传文化 │\n└────────────────────────────────┘",
@@ -4333,7 +4333,7 @@ module.exports = [
       {
         "step": "语料库",
         "time": "8",
-        "content": "【PPT P4 模板】学生填文化词/短语/句式语料卡。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：appreciate /əpriːʃieɪt/。"
+        "content": "【PPT P4 模板】学生填文化词/短语/句式语料卡。预设回答：按语言文化模板分类填写词条。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：appreciate /əpriːʃieɪt/。"
       },
       {
         "step": "仿写",
@@ -4464,7 +4464,7 @@ module.exports = [
       {
         "step": "听中记录",
         "time": "10",
-        "content": "【音频】播放，学生填困难+策略。教师：How does she memorize words? 预设回答：By reviewing often. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍。易错点提醒：memorize /meməraɪz/。"
+        "content": "【PPT P4 听力任务卡】【音频】播放，学生填困难+策略。教师：How does she memorize words? 预设回答：By reviewing often. 板书时机：核对填卡。差异化提示：B班听两遍；A班一遍。易错点提醒：memorize /meməraɪz/。"
       },
       {
         "step": "建议句型",
@@ -4537,7 +4537,7 @@ module.exports = [
       {
         "step": "积语料",
         "time": "7",
-        "content": "【PPT P4 语料库】学生填起因/方法/收获语料卡。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：broaden horizons 短语。"
+        "content": "【PPT P4 语料库】学生填起因/方法/收获语料卡。预设回答：按语言学习分类卡填写词条。板书时机：巡视。差异化提示：B班填词；A班造句。易错点提醒：broaden horizons 短语。"
       },
       {
         "step": "搭提纲",
@@ -4595,7 +4595,7 @@ module.exports = [
       {
         "step": "起草",
         "time": "15",
-        "content": "【写作】学生依提纲起草 80 词。教师巡视面批。板书时机：无。差异化提示：B班给句型框；A班自由。易错点提醒：时态切换。"
+        "content": "【PPT P6 写作提纲】学生依提纲起草 80 词。教师巡视面批。预设回答：（学生静写中，此处无口头回答）板书时机：无。差异化提示：B班给句型框；A班自由。易错点提醒：时态切换。"
       },
       {
         "step": "互评",
@@ -4605,7 +4605,7 @@ module.exports = [
       {
         "step": "修改",
         "time": "8",
-        "content": "【修改】学生据互评修改。教师聚焦时态。板书时机：无。差异化提示：B班改错；A班润色。易错点提醒：滑回现在须改过去。"
+        "content": "【PPT P9 修改清单】学生据互评修改。教师聚焦时态。预设回答：（学生自修中，教师口头提示共性错误）板书时机：无。差异化提示：B班改错；A班润色。易错点提醒：滑回现在须改过去。"
       },
       {
         "step": "展示",
@@ -4668,7 +4668,7 @@ module.exports = [
       {
         "step": "制作海报",
         "time": "12",
-        "content": "【实物 海报】小组图文制作。教师指导文体与语言。板书时机：无。差异化提示：B班配图；A班写文案。易错点提醒：号召语收尾。"
+        "content": "【PPT P7 范例参考】【实物 海报】小组图文制作。教师指导文体与语言。预设回答：（小组讨论制作中，教师巡视指导）板书时机：无。差异化提示：B班配图；A班写文案。易错点提醒：号召语收尾。"
       },
       {
         "step": "展示",
