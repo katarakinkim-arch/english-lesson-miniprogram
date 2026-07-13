@@ -102,6 +102,10 @@ Page({
     });
   },
 
+  openPrivacy() {
+    wx.navigateTo({ url: '/pages/privacy/privacy' });
+  },
+
   clearAll() {
     wx.showModal({
       title: '清空全部云端数据',

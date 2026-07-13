@@ -3,8 +3,14 @@
     <view class="search-box">
       <text class="search-ico">🔍</text>
       <input class="search-input" value="{{keyword}}" placeholder="搜索教案 / 单元 / 关键词"
-             confirm-type="search" bindinput="onSearch" />
+             confirm-type="search" bindinput="onSearch" bindfocus="onSearchFocus" bindconfirm="onSearchConfirm" />
       <text wx:if="{{keyword}}" class="search-clear" bindtap="clearSearch">✕</text>
+    </view>
+    <view wx:if="{{showHistory && history.length}}" class="hist-panel">
+      <view class="hist-h"><text>搜索历史</text><text class="hist-clear" catchtap="clearHistory">清空</text></view>
+      <view class="hist-tags">
+        <view wx:for="{{history}}" wx:key="*this" class="hist-tag" data-kw="{{item}}" catchtap="onHistoryTap">{{item}}</view>
+      </view>
     </view>
   </view>
 

@@ -31,11 +31,13 @@ const html = `<!DOCTYPE html>
   .navbar .back{ position:absolute; left:14px; font-size:22px; line-height:1; cursor:pointer; pointer-events:auto; }
   .content{ flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:14px; }
   .content::-webkit-scrollbar{ width:0; }
-  .tabbar{ height:60px; background:#fff; border-top:1px solid var(--line); display:flex; flex-shrink:0; }
+  .tabbar{ height:60px; background:#fff; border-top:1px solid var(--line); display:flex; flex-shrink:0; position:relative; z-index:20; }
   .tab{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#9aa1ad; font-size:11px; gap:3px; cursor:pointer; -webkit-user-select:none; user-select:none; }
   .tab .ico{ font-size:21px; }
   .tab.on{ color:var(--brand); }
   .search{ background:#fff; border-radius:14px; padding:11px 14px; display:flex; align-items:center; gap:8px; color:var(--sub); font-size:14px; box-shadow:0 2px 10px rgba(20,40,80,.05); }
+  .search .sin{ flex:1; border:none; background:transparent; outline:none; font-size:14px; color:var(--txt); min-width:0; }
+  .search .searchx{ color:#aab; font-size:16px; cursor:pointer; padding:0 2px; }
   .chips{ display:flex; gap:8px; margin:12px 0; flex-wrap:wrap; }
   .chip{ background:var(--chip); color:var(--sub); font-size:13px; padding:7px 14px; border-radius:20px; cursor:pointer; white-space:nowrap; }
   .chip.on{ background:var(--brand); color:#fff; }
@@ -62,6 +64,7 @@ const html = `<!DOCTYPE html>
   .hero .hstat{ font-size:12px; opacity:.8; margin-top:12px; }
   .sec{ background:#fff; border-radius:16px; padding:16px; margin-bottom:12px; box-shadow:0 2px 10px rgba(20,40,80,.05); }
   .sec h3{ margin:0 0 12px; font-size:15px; display:flex; align-items:center; gap:8px; color:var(--brand); }
+  .sec .scopy{ margin-left:auto; font-size:11px; color:var(--brand); background:var(--chip); border-radius:8px; padding:3px 9px; cursor:pointer; flex-shrink:0; }
   .sno{ flex-shrink:0; width:24px; height:24px; line-height:24px; text-align:center; background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; border-radius:50%; font-size:13px; font-weight:700; }
   .sno.sm{ width:20px; height:20px; line-height:20px; font-size:12px; }
   .sec p{ margin:0; font-size:13px; line-height:1.7; color:#3a4150; white-space:pre-wrap; word-break:break-word; }
@@ -71,7 +74,7 @@ const html = `<!DOCTYPE html>
   .step .sn{ font-size:13px; font-weight:600; color:var(--brand); display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
   .step .st{ font-size:11px; color:#fff; background:var(--brand2); border-radius:7px; padding:1px 8px; margin-left:4px; }
   .step p{ margin:6px 0 0; font-size:12.5px; line-height:1.6; color:#444; white-space:pre-wrap; word-break:break-word; }
-  .dlbar{ position:sticky; bottom:0; background:#fff; border-top:1px solid var(--line); padding:10px 12px; display:flex; align-items:center; gap:8px; z-index:10; }
+  .dlbar{ position:sticky; bottom:0; background:#fff; border-top:1px solid var(--line); padding:10px 12px; display:flex; align-items:center; gap:8px; z-index:5; }
   .dlbar .fmts{ display:flex; gap:5px; }
   .dlbar .fmt{ font-size:12px; padding:7px 9px; border-radius:10px; background:var(--chip); color:var(--sub); cursor:pointer; }
   .dlbar .fmt.on{ background:var(--brand); color:#fff; }
@@ -98,6 +101,10 @@ const html = `<!DOCTYPE html>
   .toast{ position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,.78); color:#fff; padding:12px 22px; border-radius:12px; font-size:14px; z-index:999; opacity:0; transition:opacity .25s; pointer-events:none; }
   .toast.show{ opacity:1; }
   .hint{ text-align:center; font-size:11px; color:#aab; padding:10px 0 4px; }
+  .block p.rp{ margin:8px 0 0; font-size:13px; line-height:1.7; color:#3a4150; }
+  .tip{ font-size:11px; color:#aab; text-align:center; margin-top:14px; line-height:1.6; }
+  .relate{ background:#fff; border-radius:16px; padding:16px; margin-bottom:12px; box-shadow:0 2px 10px rgba(20,40,80,.05); }
+  .relate h3{ margin:0 0 10px; font-size:15px; color:var(--brand); }
 </style>
 </head>
 <body>
@@ -125,6 +132,9 @@ let state = {
   filterBook: '',
   filterType: '',
   detailId: null,
+  privacy: false,
+  keyword: '',
+  history: [],
   favFmt: 'word',
   downloads: [],
   recents: [],
@@ -162,12 +172,19 @@ function setNav(title, showBack) {
 // ===== 导航 =====
 function switchTab(tab) {
   state.tab = tab;
+  state.detailId = null;
+  state.privacy = false;
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.tab === tab));
+  setNav('英语教案库', false);
+  // 清除下载栏残留
+  const bar = document.querySelector('.dlbar');
+  if (bar) bar.remove();
   render();
 }
 
 function goBack() {
-  state.detailId = null;
+  if (state.detailId) state.detailId = null;
+  else if (state.privacy) state.privacy = false;
   render();
 }
 
@@ -196,6 +213,7 @@ function toggleFav(id) {
 function render() {
   const tab = state.tab;
   if (state.detailId) { renderDetail(); return; }
+  if (state.privacy) { renderPrivacy(); return; }
   if (tab === 'index') renderIndex();
   else if (tab === 'favorites') renderFavorites();
   else if (tab === 'profile') renderProfile();
@@ -207,6 +225,16 @@ function renderIndex() {
   let list = LESSONS.slice();
   if (state.filterBook) list = list.filter(l => l.book === state.filterBook);
   if (state.filterType) list = list.filter(l => l.lessonType === state.filterType);
+  if (state.keyword.trim()) {
+    const kw = state.keyword.trim().toLowerCase();
+    list = list.filter(l => {
+      const hay = (l.title + ' ' + l.unitTitle + ' ' + (l.tags || []).join(' ') + ' ' + (l.overview || '') + ' ' +
+        (l.keyPoints || '') + ' ' + (l.difficulties || '') + ' ' + (l.preparation || '') + ' ' +
+        (l.objectives || []).join(' ') + ' ' + (l.process || []).map(s => s.step + ' ' + s.content).join(' ') + ' ' +
+        (l.exercises || '') + ' ' + (l.reflection || '') + ' ' + (l.blackboard || '')).toLowerCase();
+      return hay.indexOf(kw) !== -1;
+    });
+  }
 
   // 筛选标签
   const bookChips = [\`<div class="chip \${!state.filterBook ? 'on' : ''}" onclick="setBook('')">全部</div>\`]
@@ -239,16 +267,31 @@ function renderIndex() {
     </div>\`;
   }).join('');
 
+  const histHtml = (!state.keyword.trim() && state.history.length)
+    ? '<div class="chips">' + state.history.map(h => \`<div class="chip" onclick="onPrevHistory('\${escAttr(h)}')">\${escAttr(h)}</div>\`).join('') + '</div>'
+    : '';
+  const searchVal = escAttr(state.keyword);
   $('content').innerHTML = \`
-    <div class="search">&#128269; 搜索教案（预览版无实际搜索）</div>
+    <div class="search">&#128269; <input class="sin" placeholder="搜索教案/单元/关键词" value="\${searchVal}" onchange="onPrevSearch(this.value)"> \${state.keyword ? '<span class="searchx" onclick="onPrevClear()">&#10005;</span>' : ''}</div>
+    \${histHtml}
     <div class="chips">\${bookChips}</div>
     <div class="chips">\${typeChips}</div>
-    \${cards || '<div class="empty"><div class="e">&#128420;</div><div class="t">没有匹配的教案</div></div>'}
+    \${cards || '<div class="empty"><div class="e">&#128420;</div><div class="t">没有匹配的教案</div><div class="p">换个关键词或筛选条件试试</div></div>'}
   \`;
 }
 
 function setBook(b) { state.filterBook = b; renderIndex(); }
 function setType(t) { state.filterType = t; renderIndex(); }
+function onPrevSearch(kw) {
+  state.keyword = kw;
+  const t = kw.trim();
+  if (t && state.history[0] !== t) {
+    state.history = [t].concat(state.history.filter(x => x !== t)).slice(0, 10);
+  }
+  renderIndex();
+}
+function onPrevHistory(h) { state.keyword = h; renderIndex(); }
+function onPrevClear() { state.keyword = ''; renderIndex(); }
 
 // ===== 收藏页面 =====
 function renderFavorites() {
@@ -315,10 +358,45 @@ function renderProfile() {
       \${rl || '<div class="hint">暂无浏览记录</div>'}
     </div>
     <div class="block">
-      <h3>&#9881; 数据管理</h3>
+      <h3>&#9881; 设置</h3>
+      <div class="favitem" onclick="showPrivacy()"><div class="fi">&#128274;</div><div class="ft">隐私保护说明</div></div>
       <div class="favitem" onclick="clearAll(\\'all\\')"><div class="fi">&#128465;</div><div class="ft">清空全部本地数据</div></div>
     </div>
     <div class="hint">此预览版数据仅存于当前页面，刷新即丢失。真机数据存储于微信云开发。</div>
+  \`;
+}
+
+// ===== 隐私说明页（预览内联展示）=====
+function showPrivacy() {
+  state.privacy = true;
+  render();
+}
+
+function renderPrivacy() {
+  setNav('隐私保护说明', true);
+  const blocks = [
+    { h: '我们收集哪些信息', p: [
+      '· 昵称、头像：你主动设置，用于「我的」页身份展示。',
+      '· 收藏 / 下载记录 / 浏览历史：使用教案库时产生的操作记录，用于多设备同步与个性化展示。',
+      '· 错误日志：应用崩溃时的堆栈摘要，仅用于修复问题，不含任何教学内容。'
+    ]},
+    { h: '信息存储在哪里', p: [
+      '所有数据默认存储于微信云开发（腾讯云）或本机缓存。我们不自建服务器，不向任何第三方出售或共享你的个人信息。'
+    ]},
+    { h: '你有哪些权利', p: [
+      '· 可随时在「我的」页清空下载记录、浏览历史或收藏。',
+      '· 可一键清空全部个人数据。',
+      '· 可在微信「设置 › 隐私 › 授权管理」中撤回本小程序的信息授权。'
+    ]},
+    { h: '联系方式', p: [
+      '如对本说明有疑问，可通过小程序内反馈渠道联系开发者。'
+    ]}
+  ];
+  const html = blocks.map(b => \`<div class="block"><h3>\${b.h}</h3>\${b.p.map(x => '<p class="rp">' + escAttr(x) + '</p>').join('')}</div>\`).join('');
+  \$('content').innerHTML = \`
+    <div class="hint" style="text-align:left;padding:4px 2px 10px">最后更新：2026-07</div>
+    \${html}
+    <div class="tip">本说明依据《中华人民共和国个人信息保护法》及微信平台隐私规范编写。</div>
   \`;
 }
 
@@ -332,7 +410,7 @@ function renderDetail() {
   const CN = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
   const secs = [];
   let si = 0;
-  const add = (name, payload) => { if (payload) { si++; secs.push(Object.assign({ no: CN[si - 1], name: name }, payload)); } };
+  const add = (name, payload) => { if (payload) { si++; secs.push(Object.assign({ no: CN[si - 1], name: name, key: name }, payload)); } };
   add('教材分析与学情', l.overview && { body: l.overview });
   add('教学目标', l.objectives && l.objectives.length && { list: l.objectives });
   add('教学重点', l.keyPoints && { body: l.keyPoints });
@@ -345,17 +423,24 @@ function renderDetail() {
 
   const secHtml = secs.map(sec => {
     if (sec.list) {
-      return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}</h3><ul>\${sec.list.map(x => '<li>' + escAttr(x) + '</li>').join('')}</ul></div>\`;
+      return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}<span class="scopy" onclick="copySection('\${escAttr(sec.key)}')">复制</span></h3><ul>\${sec.list.map(x => '<li>' + escAttr(x) + '</li>').join('')}</ul></div>\`;
     }
     if (sec.steps) {
-      return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}</h3>\${
+      return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}<span class="scopy" onclick="copySection('\${escAttr(sec.key)}')">复制</span></h3>\${
         sec.steps.map(s =>
           \`<div class="step"><div class="sn"><span class="sno sm">\${s.n}</span>\${escAttr(s.name)}<span class="st">\${escAttr(s.time)}</span></div><p>\${escAttr(s.content)}</p></div>\`
         ).join('')
       }</div>\`;
     }
-    return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}</h3><p>\${escAttr(sec.body)}</p></div>\`;
+    return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}<span class="scopy" onclick="copySection('\${escAttr(sec.key)}')">复制</span></h3><p>\${escAttr(sec.body)}</p></div>\`;
   }).join('');
+
+  const related = (() => {
+    const sameUnit = LESSONS.filter(x => x.id !== l.id && x.book === l.book && x.unitNumber === l.unitNumber);
+    const sameType = LESSONS.filter(x => x.id !== l.id && x.lessonType === l.lessonType && x.book !== l.book);
+    return sameUnit.concat(sameType).slice(0, 6).map(x => ({ id: x.id, title: x.title, sub: '第' + x.unitNumber + '单元 · ' + x.lessonTypeName }));
+  })();
+  const relHtml = related.length ? \`<div class="relate"><h3>&#128218; 相关推荐</h3>\${related.map(r => \`<div class="favitem" onclick="openDetail('\${escAttr(r.id)}')"><div class="fi">&#128196;</div><div class="ft">\${escAttr(r.title)}</div></div>\`).join('')}</div>\` : '';
 
   const fav = state.favorites.includes(l.id);
   const fid = escAttr(l.id);
@@ -372,7 +457,9 @@ function renderDetail() {
       <div class="hstat">\uD83D\uDCC1 \${l.viewCount||0} 浏览 \u00B7 \u2B07 \${l.downloadCount||0} 下载</div>
     </div>
     \${secHtml}
+    \${relHtml}
     <div class="hint" style="margin-top:8px">\u2014 以下为小程序下载栏，预览中点击会提示效果 \u2014</div>
+    <div style="height:70px"></div>
   \`;
 
   // 底部操作栏
@@ -392,6 +479,7 @@ function renderDetail() {
 }
 
 function setFmt(f) { state.favFmt = f; renderDetail(); }
+function copySection(key) { toast('已复制本节（预览版）'); }
 
 function doDownload(id) {
   const l = getLesson(id);
@@ -410,6 +498,7 @@ function clearAll(kind) {
 }
 
 // ===== 初始化演示数据 & 首次渲染 =====
+$('backBtn').addEventListener('click', goBack);
 state.downloads = ['l-eng-b1-u1-reading', 'l-eng-b1-u1-grammar'];
 state.recents = ['l-eng-b1-u1-reading', 'l-eng-b1-u2-writing', 'l-eng-b2-u1-reading'];
 state.favorites = ['l-eng-b1-u1-grammar'];

@@ -1925,4 +1925,69 @@ module.exports = [
   "downloadCount": 26,
   "createdAt": "2026-07-08T10:00:00Z"
  }
+,
+// 样本：必修第三册 U1 Reading and Thinking（仅用于质量评审，评审通过后并入 lessons.js）
+module.exports = {
+  "id": "l-eng-b3-u1-reading",
+  "lessonId": "l-eng-b3-u1-reading",
+  "title": "Reading and Thinking: Why Do We Celebrate Festivals?",
+  "grade": "高中",
+  "subject": "英语",
+  "textbook": "人教版（2019版）",
+  "book": "必修第三册",
+  "unitNumber": 1,
+  "unitTitle": "Festivals and Celebrations",
+  "lessonType": "reading",
+  "lessonTypeName": "阅读课",
+  "lessonNumber": 1,
+  "duration": 40,
+  "tags": [
+    "阅读",
+    "文化",
+    "议论文",
+    "小组讨论",
+    "对比",
+    "无脑可用"
+  ],
+  "overview": "人教版（2019版）必修第三册 Unit 1 Reading and Thinking 课文 Why Do We Celebrate Festivals? 这是一篇议论文，探讨世界各地节日背后的共同精神——丰收感恩、纪念先人、家庭团聚、迎接新年。文本从现象上升到本质，在 diversity（多样性）中找到 unity（共性），语言正式、逻辑清晰。\n\n【学情分析】学生对节日话题高度熟悉（春节、中秋、清明），容易有话可说，但停留在\"好吃好玩\"的表层。A班能理解议论文的\"现象→本质\"结构，但容易忽略文本中\"商业化的转折\"这一论证层次；B班对 festival, harvest, origin, gratitude, commercial 等情感/抽象类词汇陌生，且对\"从具体现象归纳普遍规律\"的思维方式缺乏训练。两班共同问题：用母语能聊节日，但用英语表达\"节日的精神内核\"时词汇匮乏，且易把 commercialised 误读为纯贬义。\n\n本教案为\"无脑可用\"完整版——教师可直接打印上台，每步操作、教师台词、预设回答、板书时机均已标注。全程40分钟，零准备即可授课。",
+  "objectives": [
+    "语言能力：掌握 festival, celebrate, harvest, origin, figure, gather, gratitude, commercial 等核心词汇；理解 -ing 形式作定语与表语的语法点",
+    "文化意识：对比中外节日（春节/中秋/清明 vs Christmas/Halloween/Day of the Dead），理解不同文化节日的共性与差异，增强文化自信",
+    "思维品质：从具体节日现象归纳普遍规律——所有节日都满足人类基本情感需求（gratitude, memory, love, hope）",
+    "学习能力：用\"具体→抽象\"递进法阅读议论文；掌握\"提出命题→文本验证→反思迁移\"的阅读路径"
+  ],
+  "keyPoints": "①理解世界各地节日的四种\"精神内核\"（Harvest / Ancestors / Reunion / New Beginning）及文中例证\n②掌握核心词汇：festival, harvest, origin, figure, gather, gratitude, commercial, no matter how/who/what\n③把握文章论证主线：diversity of festivals → unity of human needs（多样性下的共性）",
+  "difficulties": "①commercial / commercialised 的情感色彩——学生易误判为贬义，实际课文仅客观指出\"节日日趋商业化\"的趋势，并未批评；需引导学生读出作者\"核心精神未变\"的隐含态度\n②\"no matter how/who/what\" 让步状语从句——B班易与 \"no matter + 疑问词\" 固定结构混淆，且难与 however/whoever/whatever 转换\n③从\"读文章\"迁移到\"写一句关于节日的本质定义\"——学生能中文脱口而出，但用英语凝练成一句抽象陈述（如 Festivals are about who we are.）有难度，需搭建句式支架",
+  "preparation": "【PPT课件】共10页\n01-封面：Why Do We Celebrate Festivals? + 各国节日拼图背景\n02-导入：春节/中秋/清明三图 + \"WHY do you like it? Dig deeper.\"\n03-命题板：\"Every festival, in every culture, is about the same things.\"\n04-阅读任务卡：四人组各认领一种 Spirit（Harvest/Ancestors/Reunion/New Beginning）\n05-文本证据表：Group / Spirit / Examples from text / Chinese equivalent\n06-精读 Para 5：\"commercialised\" 转折句高亮 + 态度判断题\n07-争论框架：Is Spring Festival too commercial?（Pro / Con 两栏）\n08-反思写作：\"Why do we celebrate festivals?\" ONE-sentence 支架\n09-课堂检测：3道选择题（主旨/态度/推断）\n10-作业布置\n\n【实物教具】\n- 课文文本打印件（每生一份，A/B班分色：A班白色，B班黄色附词汇注释）\n- 四人组任务卡（A4，四种 Spirit 各一栏，含文中例词提示）\n- 争论两栏板贴（红=Pro 商业化好 / 蓝=Con 年味淡），用于 Step 3 分组站位\n\n【音频】无（本课以阅读与讨论为主，不播放音频）",
+  "process": [
+    {
+      "step": "一、Lead-in 导入——\"WHY\"",
+      "time": 5,
+      "content": "【PPT 02 三图：春节团圆 / 中秋月饼 / 清明扫墓】\n\n【教师台词】\"Your favorite festival is Spring Festival. But WHY do you like it? Not 'because there's no school'. Dig deeper.\"\n\n▲ 学生快速 brainstorm → 红包、团圆饭、烟花、新衣服……\n\n【教师追问】\"All of these — what's the ONE thing they have in common?\"（引导学生答出：家人在一起）\n\n【预设回答】\n- \"Because of the food!\"（教师笑：\"Me too, but dig deeper.\"）\n- \"Family together.\"（教师：\"Yes! That's the real answer.\"）\n- B班沉默——教师用中文搭桥：\"为什么中秋要吃月饼？——因为团圆。为什么清明扫墓？——因为纪念先人。\"\n\n【板书时机】黑板中央写大字：WHY? → Family / Memory / Gratitude\n\n【差异化提示】A班直接用英文追问；B班英文指令后用中文重复关键词。\n\n【易错点提醒】学生易把\"喜欢节日\"归因为\"好吃/好玩\"，教师需把答案逼向情感层面（陪伴、感恩、记忆）。"
+    },
+    {
+      "step": "二、First Reading——Find the Common Thread",
+      "time": 14,
+      "content": "【PPT 03 命题板 + PPT 04 四人组任务】\n\n【教师台词】\"Here's my claim: Every festival, in every culture, is about the same things. Let's TEST it.\"\n\n▲ 全班分四人组，每组认领一种 Spirit：\n| Group | Spirit | 任务 |\n| 1 | Harvest | 从课文找丰收类节日例证 |\n| 2 | Ancestors | 找纪念先人的节日 |\n| 3 | Reunion | 找家庭团聚的节日 |\n| 4 | New Beginning | 找迎新的节日 |\n\n【学生活动】速读全文，填 PPT 05 证据表（Examples from text / Chinese equivalent）。\n\n【预设回答】\n- Group 1：\"Ancient Egypt, European harvest festivals.\"（教师：\"对应中国什么？\"→ 中秋节/丰收节）\n- Group 2：\"Halloween, Day of the Dead, Qingming.\"（教师：\"都是纪念谁？\"→ 先人）\n- Group 3：\"Christmas, Spring Festival.\"（教师点头）\n- Group 4：\"New Year celebrations worldwide.\"（教师：\"元旦、春节都算\"）\n\n【教师总结】\"Different festivals, different cultures — but the SAME four spirits. Diversity on the surface, unity underneath.\"\n\n【易错点提醒】学生可能把 \"figure\" 理解为\"数字/人物\"，此处意为\"figure in history（历史人物）\"，需点明。"
+    },
+    {
+      "step": "三、Deep Reading——The 'Commercial' Turn",
+      "time": 8,
+      "content": "【PPT 06 Para 5 高亮】\n\n【教师台词】\"Para 5 is a turn. The writer says 'Festivals are becoming more and more commercial.' Is the writer saying this is BAD?\"\n\n▲ 引导学生读态度：课文没有明确批评商业化，只是指出趋势，并暗示\"节日的核心精神没有变\"。\n\n【追问争论】\"Do you agree? Is Spring Festival becoming too commercial?\"\n\n▲ 学生分两派，用 PPT 07 两栏板贴站位（红=Pro / 蓝=Con）。\n\n【预设回答】\n- \"红包越来越大，但年味越来越淡。\"（Con 派，教师：\"Strong point.\"）\n- \"红包大了说明生活好了，年味是心里的事。\"（Pro 派，教师：\"Also true.\"）\n- 允许情感浓度高时切换中文表达，更真实。\n\n【易错点提醒】务必纠正 commercialised 不是纯贬义——作者态度是\"客观描述+隐含欣慰（精神未变）\"，避免学生一刀切批判。"
+    },
+    {
+      "step": "四、Reflection——One Sentence",
+      "time": 10,
+      "content": "【PPT 08 反思支架】\n\n【教师台词】\"Go back to the question: 'Why do we celebrate festivals?' Write your answer in ONE sentence.\"\n\n▲ 学生写，挑3位朗读。\n\n【预设回答】\n- \"To remember where we come from.\"（教师：\"Memory.\"）\n- \"To be with the people we love.\"（教师：\"Love.\"）\n- \"To stop and be grateful.\"（教师：\"Gratitude.\"）\n\n【教师总结】\"Look at your answers. Not one of you said 'to get red packets' or 'to eat mooncakes'. You all went deeper. Festivals are not about the THINGS we do — they're about the PEOPLE we are. That's why a Mexican celebrating Day of the Dead, a Chinese family eating reunion dinner, and a European harvest festival — they're all doing the same thing. They're being human.\"\n\n【板书时机】补全黑板底部金句：\"Different cultures, same heart.\"\n\n【差异化提示】A班挑战用 no matter how/who/what 改写金句；B班先用中文说清，再给英文支架仿写。"
+    },
+    {
+      "step": "五、Summary & Homework",
+      "time": 3,
+      "content": "【PPT 09-10】\n\n【教师台词】\"Today we tested one claim and found it true: festivals look different, but they meet the same human needs. Next class we'll learn the -ing form to describe them.\"\n\n【作业布置】见【课后练习】。\n\n【易错点提醒】提醒学生下节课语法点是 -ing 作定语/表语，可预习课文中的 celebrating / gathering 等词。"
+    }
+  ],
+  "blackboard": "┌──────────────────────────────────────────────┐\n│  U1 Why Do We Celebrate Festivals?           │\n│                                              │\n│  Four Spirits of Festivals:                  │\n│  🌾 Harvest   👻 Ancestors                   │\n│  👨‍👩‍👧‍👦 Reunion   🎆 New Beginning              │\n│                                              │\n│  World Festivals → Common Human Needs:       │\n│  Gratitude • Memory • Love • Hope            │\n│                                              │\n│  \"Different cultures, same heart.\"           │\n│                                              │\n│  Key: celebrate, harvest, origin, figure     │\n│       gather, gratitude, commercial          │\n│       no matter how / who / what             │\n│                                              │\n│  💡 Festivals are not about what we DO.      │\n│     They're about who we ARE.                │\n└──────────────────────────────────────────────┘",
+  "exercises": "【基础作业】（全体必做）\nI. 用所给词汇完成句子（festival, harvest, origin, gratitude, commercial）：\n1. The _______ of this custom can be traced back to the Ming Dynasty.\n2. People show _______ to their ancestors during Qingming.\n3. Mid-Autumn Festival is a time of family _______. \n4. The _______ of this crop saved the village from hunger.\n5. Some people worry that festivals are too _______ nowadays.\n\nII. 用 no matter + 疑问词 合并句子：\n6. It may rain. We will go. → _______ it _______, we will go.\n7. Who calls. Please answer. → _______ _______, please answer.\n8. How hard it is. Don't give up. → _______ _______, don't give up.\n\n【提高作业】（A班必做，B班选做）\nIII. 用 ONE 句英文写出\"你心中节日的定义\"，至少用上 gather / gratitude / love 中的一个词。\n\n【参考答案——教师用】\nI. 1. origin  2. gratitude  3. reunion  4. harvest  5. commercial\nII. 6. No matter how; rains  7. No matter who calls  8. No matter how hard\nIII. 评分标准：①为完整英文单句 ②表达\"节日的精神内核\"而非表层活动 ③用词准确。\n示例：Festivals are when we gather with the people we love and show our gratitude.",
+  "reflection": "✅ \"春节是否太商业化\"的争论环节异常精彩——学生自发切换中文表达更真实，情感浓度高时不必强求英文。\n⚠️ commercialised 的情感色彩需提前铺垫，否则约1/3学生先入为主判为贬义，影响对 Para 5 态度题的判断。\n📌 下节课衔接：课文中的 celebrating / gathering 等 -ing 形式正好引出 U1 语法 Discovering Useful Structures（-ing 作定语与表语），可让学生先圈出这些词。"
+}
 ];

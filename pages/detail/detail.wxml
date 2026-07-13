@@ -27,10 +27,11 @@
   </view>
 
   <!-- 内容分区 -->
-  <view class="card section" wx:for="{{sections}}" wx:key="key">
+  <view class="card section" wx:for="{{sections}}" wx:key="key" bindlongpress="onCopySection" data-key="{{item.key}}">
     <view class="section-h">
       <text class="section-no">{{item.no}}</text>
       <text class="section-name">{{item.title}}</text>
+      <text class="section-copy" catchtap="onCopySection" data-key="{{item.key}}">复制</text>
     </view>
 
     <view wx:if="{{item.type==='text'}}" class="section-body">{{item.body}}</view>
@@ -47,6 +48,18 @@
     </view>
 
     <view wx:if="{{item.type==='pre'}}" class="pre-box">{{item.body}}</view>
+  </view>
+
+  <!-- 相关推荐 -->
+  <view class="card relate" wx:if="{{related.length}}">
+    <view class="relate-h">📚 相关推荐</view>
+    <view class="relate-item" wx:for="{{related}}" wx:key="id" data-id="{{item.id}}" bindtap="openRelated">
+      <view class="relate-main">
+        <view class="relate-title">{{item.title}}</view>
+        <view class="relate-sub">{{item.sub}}</view>
+      </view>
+      <view class="relate-arrow">›</view>
+    </view>
   </view>
 
   <view style="height:200rpx"></view>

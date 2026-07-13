@@ -1,5 +1,6 @@
 const app = getApp();
 const clouduser = require('../../utils/clouduser.js');
+const analytics = require('../../utils/analytics.js');
 
 function calcPages(p) {
   const text = [
@@ -35,16 +36,28 @@ function buildSections(p) {
   const add = (key, name, type, payload) => {
     if (payload) { i++; s.push(Object.assign({ key: key, no: CN_NUM[i - 1], title: name, type: type }, payload)); }
   };
-  add('overview', '教材分析与学情', 'text', p.overview && { body: p.overview });
-  add('objectives', '教学目标', 'list', p.objectives && p.objectives.length && { items: p.objectives });
-  add('keyPoints', '教学重点', 'text', p.keyPoints && { body: p.keyPoints });
-  add('difficulties', '教学难点', 'text', p.difficulties && { body: p.difficulties });
-  add('preparation', '课前准备', 'text', p.preparation && { body: p.preparation });
-  add('process', '教学过程', 'steps', p.process && p.process.length && { steps: p.process });
-  add('blackboard', '板书设计', 'pre', p.blackboard && { body: p.blackboard });
-  add('exercises', '课后练习', 'text', p.exercises && { body: p.exercises });
-  add('reflection', '教学反思', 'text', p.reflection && { body: p.reflection });
+  add('overview', '教材分析与学情', 'text', p.overview && { body: p.overview, copyText: p.overview || '' });
+  add('objectives', '教学目标', 'list', p.objectives && p.objectives.length && { items: p.objectives, copyText: (p.objectives || []).join('\n') });
+  add('keyPoints', '教学重点', 'text', p.keyPoints && { body: p.keyPoints, copyText: p.keyPoints || '' });
+  add('difficulties', '教学难点', 'text', p.difficulties && { body: p.difficulties, copyText: p.difficulties || '' });
+  add('preparation', '课前准备', 'text', p.preparation && { body: p.preparation, copyText: p.preparation || '' });
+  add('process', '教学过程', 'steps', p.process && p.process.length && { steps: p.process, copyText: (p.process || []).map((s) => s.step + '\n' + s.content).join('\n\n') });
+  add('blackboard', '板书设计', 'pre', p.blackboard && { body: p.blackboard, copyText: p.blackboard || '' });
+  add('exercises', '课后练习', 'text', p.exercises && { body: p.exercises, copyText: p.exercises || '' });
+  add('reflection', '教学反思', 'text', p.reflection && { body: p.reflection, copyText: p.reflection || '' });
   return s;
+}
+
+// 相关推荐：优先同单元，其次同课型，凑足 6 条
+function buildRelated(plan) {
+  const all = (app.globalData.lessons || []);
+  const sameUnit = all.filter((l) => l.id !== plan.id && l.book === plan.book && l.unitNumber === plan.unitNumber);
+  const sameType = all.filter((l) => l.id !== plan.id && l.lessonType === plan.lessonType && l.book !== plan.book);
+  return sameUnit.concat(sameType).slice(0, 6).map((l) => ({
+    id: l.id,
+    title: l.title,
+    sub: '第' + l.unitNumber + '单元 · ' + l.lessonTypeName
+  }));
 }
 
 function fmtTime() {
@@ -59,6 +72,7 @@ Page({
     pages: 0,
     desc: [],
     sections: [],
+    related: [],
     fmt: 'word',
     loading: true,
     generating: false,
@@ -77,6 +91,7 @@ Page({
       pages: calcPages(plan),
       desc: buildDesc(plan),
       sections: buildSections(plan),
+      related: buildRelated(plan),
       loading: false
     });
     wx.setNavigationBarTitle({ title: plan.lessonTypeName || '教案详情' });
@@ -99,6 +114,7 @@ Page({
     try {
       if (willFav) await clouduser.addAction('favorite', { lessonId: plan.id });
       else await clouduser.removeAction('favorite', plan.id);
+      analytics.track('favorite', { id: plan.id, on: willFav });
     } catch (e) {
       this.setData({ favorited: !willFav });
       wx.showToast({ title: '操作失败', icon: 'none' });
@@ -129,6 +145,7 @@ Page({
         }
       });
       clouduser.addAction('download', { lessonId: plan.id, format: fmt });
+      analytics.track('download', { id: plan.id, format: fmt });
     } catch (err) {
       wx.hideLoading();
       console.error('generateDoc error', err);
@@ -137,21 +154,44 @@ Page({
     this.setData({ generating: false });
   },
 
+  // 单段复制（长按或点"复制"按钮）
+  onCopySection(e) {
+    const key = e.currentTarget.dataset.key;
+    const sec = (this.data.sections || []).find((s) => s.key === key);
+    const text = sec && sec.copyText;
+    if (!text) { wx.showToast({ title: '暂无内容', icon: 'none' }); return; }
+    wx.setClipboardData({
+      data: text,
+      success: () => { wx.showToast({ title: '已复制本节', icon: 'none' }); },
+      fail: () => { wx.showToast({ title: '复制失败', icon: 'none' }); }
+    });
+  },
+
+  // 点击相关推荐跳转
+  openRelated(e) {
+    const id = e.currentTarget.dataset.id;
+    clouduser.addAction('recent', { lessonId: id });
+    analytics.track('open_related', { id });
+    wx.navigateTo({ url: '/pages/detail/detail?id=' + id });
+  },
+
   onShareAppMessage() {
     const p = this.data.plan;
-    if (!p) return { title: '高中英语教案库', path: '/pages/index/index' };
+    if (!p) return { title: '高中英语教案库', path: '/pages/index/index', imageUrl: '/images/share-cover.png' };
     return {
       title: p.title + '｜' + (p.lessonTypeName || '教案') + '（人教版' + (p.book || '') + '）',
-      path: '/pages/detail/detail?id=' + p.id
+      path: '/pages/detail/detail?id=' + p.id,
+      imageUrl: '/images/share-cover.png'
     };
   },
 
   onShareTimeline() {
     const p = this.data.plan;
-    if (!p) return { title: '高中英语教案库', query: '' };
+    if (!p) return { title: '高中英语教案库', query: '', imageUrl: '/images/share-cover.png' };
     return {
       title: p.title + '｜' + (p.lessonTypeName || '教案'),
-      query: 'id=' + p.id
+      query: 'id=' + p.id,
+      imageUrl: '/images/share-cover.png'
     };
   }
 });

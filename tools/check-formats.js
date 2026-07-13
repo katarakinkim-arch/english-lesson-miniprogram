@@ -1,4 +1,4 @@
-// 兼容性测试：全部 30 课 × Word/PPT/PDF 三种格式
+// 兼容性测试：全部课程 × Word/PPT/PDF 三种格式
 const fs = require('fs');
 
 // ---- 模拟 wx 环境 ----
@@ -88,7 +88,7 @@ async function run() {
     console.log('\n失败明细:');
     failures.forEach((f) => console.log('  -', f));
   } else {
-    console.log('✅ 全部 30 课 × 3 种格式均生成成功且产物合法！');
+    console.log('✅ 全部 ' + lessons.length + ' 课 × 3 种格式均生成成功且产物合法！');
   }
 }
 

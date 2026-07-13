@@ -55,7 +55,11 @@
 
   <!-- 数据管理 -->
   <view class="block">
-    <view class="block-h"><text>⚙️ 数据管理</text></view>
+    <view class="block-h"><text>⚙️ 设置</text></view>
+    <view class="op-row" bindtap="openPrivacy">
+      <text>隐私保护说明</text>
+      <text class="arrow">›</text>
+    </view>
     <view class="op-row" bindtap="clearAll">
       <text>清空全部云端数据</text>
       <text class="arrow">›</text>

@@ -24,6 +24,24 @@
   width: 40rpx; text-align: center;
 }
 
+/* 搜索历史面板 */
+.hist-panel {
+  position: absolute; left: 24rpx; right: 24rpx; top: 96rpx;
+  background: #fff; border-radius: 16rpx; padding: 20rpx 22rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.12); z-index: 20;
+}
+.hist-h {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 24rpx; color: #9aa0ab; margin-bottom: 16rpx;
+}
+.hist-clear { color: #c0392b; font-size: 23rpx; }
+.hist-tags { display: flex; flex-wrap: wrap; gap: 14rpx; }
+.hist-tag {
+  font-size: 25rpx; color: #4a4a5a; background: #f0f1f5;
+  padding: 12rpx 24rpx; border-radius: 999rpx;
+}
+.hist-tag:active { background: #e8f0fe; }
+
 /* 筛选 */
 .filter-row {
   display: flex;
