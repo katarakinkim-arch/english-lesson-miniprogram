@@ -103,8 +103,6 @@ const html = `<!DOCTYPE html>
   .hint{ text-align:center; font-size:11px; color:#aab; padding:10px 0 4px; }
   .block p.rp{ margin:8px 0 0; font-size:13px; line-height:1.7; color:#3a4150; }
   .tip{ font-size:11px; color:#aab; text-align:center; margin-top:14px; line-height:1.6; }
-  .relate{ background:#fff; border-radius:16px; padding:16px; margin-bottom:12px; box-shadow:0 2px 10px rgba(20,40,80,.05); }
-  .relate h3{ margin:0 0 10px; font-size:15px; color:var(--brand); }
 </style>
 </head>
 <body>
@@ -435,13 +433,6 @@ function renderDetail() {
     return \`<div class="sec"><h3><span class="sno">\${sec.no}</span>\${sec.name}<span class="scopy" onclick="copySection('\${escAttr(sec.key)}')">复制</span></h3><p>\${escAttr(sec.body)}</p></div>\`;
   }).join('');
 
-  const related = (() => {
-    const sameUnit = LESSONS.filter(x => x.id !== l.id && x.book === l.book && x.unitNumber === l.unitNumber);
-    const sameType = LESSONS.filter(x => x.id !== l.id && x.lessonType === l.lessonType && x.book !== l.book);
-    return sameUnit.concat(sameType).slice(0, 6).map(x => ({ id: x.id, title: x.title, sub: '第' + x.unitNumber + '单元 · ' + x.lessonTypeName }));
-  })();
-  const relHtml = related.length ? \`<div class="relate"><h3>&#128218; 相关推荐</h3>\${related.map(r => \`<div class="favitem" onclick="openDetail('\${escAttr(r.id)}')"><div class="fi">&#128196;</div><div class="ft">\${escAttr(r.title)}</div></div>\`).join('')}</div>\` : '';
-
   const fav = state.favorites.includes(l.id);
   const fid = escAttr(l.id);
 
@@ -457,7 +448,6 @@ function renderDetail() {
       <div class="hstat">\uD83D\uDCC1 \${l.viewCount||0} 浏览 \u00B7 \u2B07 \${l.downloadCount||0} 下载</div>
     </div>
     \${secHtml}
-    \${relHtml}
     <div class="hint" style="margin-top:8px">\u2014 以下为小程序下载栏，预览中点击会提示效果 \u2014</div>
     <div style="height:70px"></div>
   \`;

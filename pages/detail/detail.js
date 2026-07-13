@@ -48,18 +48,6 @@ function buildSections(p) {
   return s;
 }
 
-// 相关推荐：优先同单元，其次同课型，凑足 6 条
-function buildRelated(plan) {
-  const all = (app.globalData.lessons || []);
-  const sameUnit = all.filter((l) => l.id !== plan.id && l.book === plan.book && l.unitNumber === plan.unitNumber);
-  const sameType = all.filter((l) => l.id !== plan.id && l.lessonType === plan.lessonType && l.book !== plan.book);
-  return sameUnit.concat(sameType).slice(0, 6).map((l) => ({
-    id: l.id,
-    title: l.title,
-    sub: '第' + l.unitNumber + '单元 · ' + l.lessonTypeName
-  }));
-}
-
 function fmtTime() {
   const d = new Date();
   const p = (n) => (n < 10 ? '0' + n : '' + n);
@@ -72,7 +60,6 @@ Page({
     pages: 0,
     desc: [],
     sections: [],
-    related: [],
     fmt: 'word',
     loading: true,
     generating: false,
@@ -91,7 +78,6 @@ Page({
       pages: calcPages(plan),
       desc: buildDesc(plan),
       sections: buildSections(plan),
-      related: buildRelated(plan),
       loading: false
     });
     wx.setNavigationBarTitle({ title: plan.lessonTypeName || '教案详情' });
@@ -165,14 +151,6 @@ Page({
       success: () => { wx.showToast({ title: '已复制本节', icon: 'none' }); },
       fail: () => { wx.showToast({ title: '复制失败', icon: 'none' }); }
     });
-  },
-
-  // 点击相关推荐跳转
-  openRelated(e) {
-    const id = e.currentTarget.dataset.id;
-    clouduser.addAction('recent', { lessonId: id });
-    analytics.track('open_related', { id });
-    wx.navigateTo({ url: '/pages/detail/detail?id=' + id });
   },
 
   onShareAppMessage() {

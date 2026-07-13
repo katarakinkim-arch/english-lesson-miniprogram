@@ -50,18 +50,6 @@
     <view wx:if="{{item.type==='pre'}}" class="pre-box">{{item.body}}</view>
   </view>
 
-  <!-- 相关推荐 -->
-  <view class="card relate" wx:if="{{related.length}}">
-    <view class="relate-h">📚 相关推荐</view>
-    <view class="relate-item" wx:for="{{related}}" wx:key="id" data-id="{{item.id}}" bindtap="openRelated">
-      <view class="relate-main">
-        <view class="relate-title">{{item.title}}</view>
-        <view class="relate-sub">{{item.sub}}</view>
-      </view>
-      <view class="relate-arrow">›</view>
-    </view>
-  </view>
-
   <view style="height:200rpx"></view>
 </view>
 

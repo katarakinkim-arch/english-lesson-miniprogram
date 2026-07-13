@@ -57,19 +57,6 @@
 }
 .section-copy:active { background: #d4e4fb; }
 
-/* 相关推荐 */
-.relate-h { font-size: 30rpx; font-weight: 700; color: #1a365d; margin-bottom: 16rpx; }
-.relate-item {
-  display: flex; align-items: center; padding: 22rpx 0;
-  border-top: 1rpx solid #f0f1f5;
-}
-.relate-item:first-of-type { border-top: none; }
-.relate-item:active { background: #f7f9fc; }
-.relate-main { flex: 1; min-width: 0; }
-.relate-title { font-size: 27rpx; color: #2d3142; font-weight: 600; line-height: 1.4; }
-.relate-sub { font-size: 22rpx; color: #9aa0ab; margin-top: 6rpx; }
-.relate-arrow { margin-left: 8rpx; font-size: 38rpx; color: #cfcfcf; flex-shrink: 0; }
-
 .section-body {
   font-size: 26rpx; color: #4a4a5a; line-height: 1.85;
   white-space: pre-wrap; word-break: break-word;
