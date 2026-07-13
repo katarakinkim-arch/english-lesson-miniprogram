@@ -1,487 +1,561 @@
 module.exports = [
-  {
+    {
     "id": "l-eng-b1-u1-ls",
     "lessonId": "l-eng-b1-u1-ls",
-    "title": "Listening and Speaking: Learn about School Clubs",
-    "grade": "高中",
-    "subject": "英语",
-    "textbook": "人教版（2019版）",
+    "title": "Listening and Speaking: Senior High Life & School Clubs",
     "book": "必修第一册",
     "unitNumber": 1,
     "unitTitle": "Teenage Life",
     "lessonType": "listening-speaking",
-    "lessonTypeName": "听与说课",
+    "lessonTypeName": "听与说",
     "lessonNumber": 1,
     "periodNumber": 1,
     "duration": 40,
+    "grade": "高一",
+    "subject": "英语",
     "tags": [
-      "听说",
+      "听与说",
+      "校园生活",
       "社团",
-      "无脑可用"
+      "人教版必修一U1",
+      "第一节课"
     ],
-    "overview": "本单元第一课时，对应教材 Listening and Speaking 板块。话题为\"学校社团\"，通过听力输入社团名称与招新信息，输出为\"选择并推荐一个社团\"的口语表达。\n\n【学情分析】高一新生刚入学，对\"社团\"话题有天然兴趣，但听力中社团名（ballet, calligraphy, debate, volunteer...）多为生词。A班敢于开口但易忽略听力细节；B班听力抓取慢、开口畏难。两班共同问题：听得懂单词但抓不住\"谁、什么社团、为什么\"的信息链条。\n\n本教案为\"无脑可用\"版，教师可直接打印上台，含教师台词、预设回答、板书时机、差异化提示。",
+    "textbookAnalysis": "本课为必修第一册 Unit 1 Teenage Life 第一课时（Listening and Speaking），属单元「导入+输入」环节。语篇为一段新生校园对话与一段社团招新广播，功能语境是「初入高中、认识校园、选择社团」。语言重点为校园设施与社团名称词汇（registration, campus, club, debate, volunteer...）及表达喜好意愿的句型（I'd like to... / I'm interested in...）。承接初中已学的 like doing / there be，为后续 Reading 的「高中生活」主题做词汇与话题预热。",
+    "overview": "【学情分析】A班：初中基础较好，能听懂慢速对话、主动表达意愿；但社团类词汇（volunteer, literature, herb）较生。B班：听力抓取关键信息能力弱、开口意愿低，需用图片与题支降低焦虑。共同问题：缺乏「自然表达加入社团意愿」的句型储备；易把 club 与 class 混淆。",
     "objectives": [
-      "语言能力：听懂并说出常见社团名称（ballet club, calligraphy club, debate club, volunteer club 等）",
-      "文化意识：了解中外高中社团文化的异同，理解社团对全面发展的意义",
-      "思维品质：从听力信息中归纳\"选择社团的理由\"，建立 reason-giving 思维",
-      "学习能力：掌握\"听前预测→听中抓关键词→听后模仿表达\"的听说策略"
+      "语言能力：听懂新生校园对话与社团广播的主旨与关键细节（社团名、活动时间），准确说出 6-8 个校园/社团词汇。",
+      "文化意识：了解中外高中社团文化异同，体会社团活动对青少年成长的积极意义。",
+      "思维品质：在听力中通过「听前读题支预测—听中验证」形成基本听力策略。",
+      "学习能力：能用 I'd prefer... / I'm keen on... 就社团选择做简短配对访谈，并记录同伴偏好。"
     ],
-    "keyPoints": "①社团名称词汇：ballet / calligraphy / debate / volunteer / photography\n②功能句式：I'd like to join... / because... / I'm good at... / I'm interested in...\n③听力策略：抓\"社团名 + 理由\"两个关键信息",
-    "difficulties": "①calligraphy（书法）、debate（辩论）等词发音与拼写对B班较难，需板书强化\n②学生容易只说\"I like it\"而给不出理由——需脚手架 \"because I'm good at / interested in\"",
-    "preparation": "【PPT课件】共8页\n01-封面：School Clubs + 社团剪影图\n02-导入：6张社团图标（舞蹈/书法/辩论/志愿/摄影/机器人）\n03-听前：预测问题（What clubs? Why join?）\n04-听力任务卡：表格（Club / Person / Reason）\n05-听力原文关键句呈现\n06-功能句式库\n07-小组活动框架\n08-总结+作业\n\n【实物教具】\n- 社团图标卡片（6张，每组一套）\n- 听力任务表打印件（每生一份）\n\n【音频】教材配套 Listening 音频（社团招新对话，约1分钟）",
+    "keyPoints": "① 核心词汇：registration, campus, club, debate, volunteer, literature, herb, prefer\n② 功能句型：I'd like to join... / I'm interested in... / Which club do you recommend?\n③ 听力策略：听前读题支预测，听中抓关键词（社团名+时间）。",
+    "difficulties": "① 易混词：club（社团）vs class（班级）；volunteer 动名同形。原因：中文无对应区分，需用例句固化。\n② 长句听写困难：广播语速快、信息密。原因：B班听觉工作记忆有限，需分层任务（先抓社团名再补细节）。\n③ 口语冷场：怕说错。原因：缺乏句式支架，需提供句型菜单降低焦虑。",
+    "teachingMethods": "① 任务型教学（TBL）：以「为新生办社团博览会」为终任务驱动。\n② 听前预测+听中验证：用题支作脚手架。\n③ 小组合作（Pair work + Group survey）：降低个体开口压力。\n④ 图片/实物支架：社团图标卡辅助词汇输入。",
+    "preparation": "【PPT课件】P1 单元封面；P2 校园地图（library/canteen/gym）；P3-6 八大社团图标+名称；P7 听力题支；P8 句型菜单；P9 小组任务单。\n【实物教具】社团图标卡 8 张（背面写名称，用于配对游戏）。\n【音频】教材 Listening 音频（校园对话+社团广播）两段。",
     "process": [
       {
-        "step": "一、Lead-in 导入——社团图标",
-        "time": 5,
-        "content": "【PPT 02 六张社团图标】\n\n【教师台词】\"Look at the pictures. What clubs do you know in our school?\"\n\n▲ 教师快速展示图标，学生说中文/英文。\n\n【预设回答】\"舞蹈社\" / \"Dancing club\" / \"书法\" / \"机器人\"\n\n【教师台词】\"Great! Today we learn more clubs in English. Let's see.\"\n\n▲ 板书课题：School Clubs"
+        "step": "Step 1 导入 Lead-in",
+        "time": "4分钟",
+        "content": "【PPT P2 校园地图】教师：「You are a freshman today. Where can you borrow books?」 预设回答：「Library!」 板书时机：地图旁板书 library / canteen / gym。差异化提示：B班先指图说中文再跟读；A班直接英文应答。易错点提醒：gym 读作 /dʒɪm/，注意 g 浊化。"
       },
       {
-        "step": "二、Pre-listening 听前预测",
-        "time": 4,
-        "content": "【PPT 03 预测问题】\n\n【教师台词】\"Before listening, guess: What clubs will the speakers talk about? And WHY do they want to join?\"\n\n▲ PPT展示两个问题。学生两人讨论30秒。\n\n【教师台词】\"Listen and check your guesses. Ready?\""
+        "step": "Step 2 听前预测 Pre-listening",
+        "time": "5分钟",
+        "content": "【PPT P7 题支】教师：「A new student is choosing a club. Guess: which club will he join?」 让学生圈可能答案。预设回答：「Maybe the Science Club.」 板书时机：黑板左侧列预测词。差异化提示：基础弱的学生只圈社团名；A班需说预测理由（because he likes...）。"
       },
       {
-        "step": "三、While-listening 听中抓信息",
-        "time": 14,
-        "content": "【PPT 04 听力任务卡】\n\n★ 第一遍：抓社团名\n【教师台词】\"Listen once. Write down the clubs you hear.\"\n▲ 播放音频。学生记录。\n【预设答案】ballet club, calligraphy club, debate club, volunteer club\n\n★ 第二遍：抓人物与理由\n【教师台词】\"Listen again. Fill the table: Who wants to join which club? Why?\"\n▲ PPT展示表格（Club / Person / Reason）。播放第二遍。\n【核对】\n【教师台词】\"Adam wants to join the volunteer club — why?\"\n【预设回答】\"Because he wants to help others.\" / \"他想帮助别人。\"\n\n▲ 板书关键词：ballet / calligraphy / debate / volunteer + 理由句式 because...\n\n【易错点提醒】calligraphy 发音难，教师带读2遍；debate 易与\"debate\"中文混淆，板书强调。"
+        "step": "Step 3 听力1 对话 While-listening",
+        "time": "10分钟",
+        "content": "【音频1】第一遍抓「去了哪个社团」（skimming）；第二遍填题支细节（社团+时间）。教师：「Listen for the club name and the day.」 预设回答：「He joined the Radio Club on Friday.」 易错点提醒：Friday 易误听为 「free day」，强调 /fraɪ/。差异化提示：B班用表格只填社团名；A班填社团+时间+原因。"
       },
       {
-        "step": "四、Post-listening 口语输出",
-        "time": 12,
-        "content": "【PPT 06 功能句式库】【PPT 07 小组框架】\n\n【教师台词】\"Now, in groups of four. Choose a club you like. Tell your group WHY.\"\n\n▲ PPT展示句式：\nI'd like to join the ___ club.\nBecause I'm good at ___ / interested in ___.\n\n▲ 小组活动4分钟。教师巡视。\n【预设回答示例】\n- \"I'd like to join the photography club, because I'm interested in taking pictures.\"\n- B班：\"I like dance club, because it's fun.\"（教师引导加 because 理由）\n\n【差异化提示】A班要求用2个理由；B班用1个理由+脚手架模板。"
+        "step": "Step 4 听力2 广播 While-listening",
+        "time": "9分钟",
+        "content": "【音频2 社团广播】任务：记录 3 个社团的名称与招新对象。教师：「Take notes: name + who can join.」 预设回答：「Debate Club — for students who like arguing!」 板书时机：黑板中央列社团矩阵（名称|对象|时间）。易错点提醒：volunteer 名词「志愿者」、动词「自愿做」，板书对比两种用法。"
       },
       {
-        "step": "五、Summary & Homework 总结与作业",
-        "time": 5,
-        "content": "【PPT 08】\n【教师台词】\"Today we learned club names and how to give reasons. Remember: when you choose, always say WHY.\"\n\n▲ 作业布置：\n【教师台词】\"Homework: Write 3 sentences — which club YOU want to join and why. Use because. Next class we share.\""
+        "step": "Step 5 口语输出 Pair work",
+        "time": "8分钟",
+        "content": "【PPT P8 句型菜单】两人一组：A 扮新生、B 扮社长，用菜单句型完成「入社咨询」。教师示范：「—Which club do you recommend? —I'd recommend the Literature Club, it's...」 预设回答：「I'm keen on photography, so I'll join the Photo Club.」 差异化提示：B班照读菜单；A班脱稿并追加理由。易错点提醒：recommend 后接名词或 doing，不接 to do。"
+      },
+      {
+        "step": "Step 6 小结+作业 Summary",
+        "time": "4分钟",
+        "content": "带学生回顾黑板社团矩阵，总结「表达意愿三句型」。作业见课后练习。板书时机：彩色笔圈出三句型。易错点提醒：下节课 Reading 会用到这些社团词，提醒复习。"
       }
     ],
-    "blackboard": "┌──────────────────────────────────────────┐\n│  School Clubs (听与说)                 │\n│                                        │\n│  Names:  ballet  calligraphy           │\n│          debate  volunteer  photo      │\n│                                        │\n│  Reason: I'd like to join ___ club.    │\n│          Because I'm good at /         │\n│          interested in ___.            │\n└──────────────────────────────────────────┘",
-    "exercises": "【基础作业】写3句话：你想加入哪个社团及理由，用 because。\n【提高作业】听音频跟读2遍，注意 calligraphy / debate 发音。\n【参考答案——教师用】社团名拼写：ballet, calligraphy, debate, volunteer, photography。",
-    "reflection": "✅ 亮点：社团图标导入迅速激活背景知识，学生参与度高。\n⚠️ 需改进：B班 calligraphy 发音需更多带读；部分学生只说\"I like it\"缺理由，下节课强化 because 脚手架。\n📌 衔接（读与思 The Freshman Challenge）：社团话题直接对应课文 Adam 加入 volunteer club 的情节。",
-    "aiModel": "AI辅助+人工审核",
-    "viewCount": 88,
-    "downloadCount": 12,
-    "createdAt": "2026-07-13T12:00:00Z"
+    "blackboard": "┌─ U1 Listening & Speaking ─┐\n│ Campus: lib / canteen / gym │\n│ Clubs (name | who)          │\n│  Radio — Fri / anyone       │\n│  Debate — lovers of argue   │\n│  Volunteer — helpers        │\n│ 表达意愿:                  │\n│  I'd like to join...        │\n│  I'm interested in...       │\n│  Which club recommend?      │\n└─────────────────────────────┘",
+    "exercises": "【基础作业】1. 听录音跟读听力文本 2 遍，圈出所有社团名称。2. 用 I'd like to... 写 3 句「我想加入的社团」。\n【提高作业】采访一位同学，记录他/她最想加入的社团及原因，下节课用 1 分钟英文汇报。\n【参考答案——教师用】基础2示例：I'd like to join the Photo Club. / I'm interested in the Volunteer Club. / I'd prefer the Literature Club. 提高作业评价：能说社团名+1个原因即满分；用 because / it helps me... 加分。",
+    "reflection": "✅ 亮点：社团图标卡+校园地图让词汇可触可感，B班开口率明显高于平时；听前预测有效降焦虑。\n⚠️ 需改进：听力2信息过密，部分B班生只抓到1个社团；下次应把广播拆成「先听名称、再听对象」两遍。\n📌 下节课衔接：Reading 课文主角 Adam 也面临「高中新生活」，可回扣本课社团词自然过渡。",
+    "aiModel": "claude-opus",
+    "viewCount": 0,
+    "downloadCount": 0,
+    "createdAt": "2026-07-13T16:00:00Z"
   },
   {
     "id": "l-eng-b1-u1-r1",
     "lessonId": "l-eng-b1-u1-r1",
-    "title": "Reading and Thinking: The Freshman Challenge (课文理解)",
-    "grade": "高中",
-    "subject": "英语",
-    "textbook": "人教版（2019版）",
+    "title": "Reading and Thinking: My First Day at Senior High (Ⅰ) — 整体理解",
     "book": "必修第一册",
     "unitNumber": 1,
     "unitTitle": "Teenage Life",
     "lessonType": "reading",
-    "lessonTypeName": "阅读课",
+    "lessonTypeName": "阅读",
     "lessonNumber": 2,
     "periodNumber": 2,
-    "duration": 40,
+    "duration": 45,
+    "grade": "高一",
+    "subject": "英语",
     "tags": [
       "阅读",
-      "文化",
-      "对比",
-      "无脑可用"
+      "读与思",
+      "记叙文",
+      "情感变化",
+      "人教版必修一U1",
+      "第二节课"
     ],
-    "overview": "本单元阅读课第一课时（读与思①），对应 Reading and Thinking 板块。课文 The Freshman Challenge 以第一人称讲述美国高一新生 Adam 的三重挑战。本课时聚焦\"文本结构与内容理解\"，第二课时（P3）聚焦语言点深度学习。\n\n【学情分析】高一新生与 Adam 处境高度一致，易共鸣。A班口语强但易跳读忽略细节；B班长难句需拆解。共同问题：缺乏自主文本分析能力。",
+    "textbookAnalysis": "本课为 Unit 1 第二课时（Reading and Thinking Ⅰ），语篇是新生 Adam 的博客式记叙文，记录高中第一天从紧张到开心的变化。文本类型为第一人称叙事，含时间顺序与心理描写，是训练「略读抓主旨、扫读抓细节」的 ideal 素材。语言承载「senior, challenge, confident, explore」等单元核心词，并为写作课的人物描写埋下范式。",
+    "overview": "【学情分析】A班：能略读抓主旨，但易忽略作者情感线索。B班：长句（含定语从句）读不懂，易卡在逐词翻译。共同问题：把「找主旨」等同于「翻译每段第一句」；对 implied feeling（隐含情感）不敏感。",
     "objectives": [
-      "语言能力：掌握 challenge, recommend, responsible, quit, sign up for, make the team 等核心词汇",
-      "文化意识：对比中美高中生活差异（选课、社团、学业评价）",
-      "思维品质：用 problem-solution 框架分析 Adam 的三重挑战",
-      "学习能力：掌握\"标题预测→速读抓框架→精读抓细节\"三步阅读法"
+      "语言能力：用略读获取博客主旨（Adam's first day），用扫读提取时间线与情感变化的关键信息。",
+      "文化意识：对比中外高中「第一天」的异同，理解「挑战即成长」的积极态度。",
+      "思维品质：梳理 Adam 情感变化弧线（nervous→happy），推断变化原因，培养逻辑梳理能力。",
+      "学习能力：借助「情感时间轴」图表自主梳理叙事结构，并复述课文要点。"
     ],
-    "keyPoints": "①Adam 的三重挑战及解决方案（courses / activities / studies）\n②核心词汇：challenge, recommend, responsible, make the team\n③文本总分结构",
-    "difficulties": "①make the team 直译误区（\"入选校队\"非\"制作团队\"）\n②从文本迁移到自身经历的口语输出（B班组织连贯语段困难）",
-    "preparation": "【PPT课件】共8页\n01-封面+校园图\n02-导入三幅图+问题\n03-速读任务卡\n04-精读Para2选课流程\n05-精读Para3课外活动时间线\n06-精读Para4学业对比\n07-讨论框架\n08-课堂检测+作业\n\n【实物教具】课文打印件（A班白/B班黄附注释）、思维导图模板、彩色记号笔",
+    "keyPoints": "① 阅读技能：skimming 抓主旨 / scanning 抓细节（情感+事件）。\n② 核心词汇：senior, challenge, confident, explore, look forward to。\n③ 文本结构：时间顺序 + 情感变化双线。",
+    "difficulties": "① 长难句：「The teachers are very enthusiastic women called Ms Li...」 含过去分词作后置定语。原因：B班未建立「分词修饰名词」意识，需拆解。\n② 隐含情感推断：学生常只找 explicit（明确）词。原因：缺乏「从行为推情感」的训练，需示范。\n③ 主旨概括过宽/过窄。原因：未区分 main idea 与 detail，需给句式支架。",
+    "teachingMethods": "① PWP 阅读模式（Pre/While/Post）。\n② 图表支架：情感时间轴（Timeline）可视化结构。\n③ 合作学习：两人互述情感变化，降低复述焦虑。\n④ 追问式提问：用 Why do you think so? 逼出推断依据。",
+    "preparation": "【PPT课件】P1 课文标题+作者视角（blog）；P2 略读任务（选主旨）；P3 情感时间轴空表；P4 长难句拆解；P5 讨论题。\n【实物教具】情感时间轴工作单（每人一份，用于 While-reading 填写）。\n【音频】课文朗读音频（供跟读）。",
     "process": [
       {
-        "step": "一、Lead-in 导入 CHALLENGE",
-        "time": 5,
-        "content": "【PPT 02】\n【教师台词】\"Think: What is your biggest challenge since school started? 30 seconds, ask your partner.\"\n▲ 写黑板大字 CHALLENGE。学生互问。\n【预设回答】\"Too much homework.\" / \"Making friends.\"\n【教师台词】\"An American student Adam had the same. Today: The Freshman Challenge. Page 4.\""
+        "step": "Step 1 导入 Lead-in",
+        "time": "4分钟",
+        "content": "【PPT P1】教师：「Your first day of senior high — how did you feel?」 请 2 生用中文/英文说一个词。预设回答：「Nervous! / Excited!」 板书时机：黑板左侧写 nervous / excited / curious。差异化提示：B班说中文词，A班说英文形容词。易错点提醒：senior 指「高年级/高中」，不是「老的」。"
       },
       {
-        "step": "二、Fast Reading 速读抓框架",
-        "time": 8,
-        "content": "【PPT 03】\n【教师台词】\"Read in 2 minutes. Who is Adam? How many challenges? What are they?\"\n▲ 计时2分钟。\n【核对】\n【预设回答】\"A freshman. Three. Courses, activities, studies.\"\n▲ 黑板写框架：1.Courses 2.Activities 3.Studies\n【易错点提醒】提醒 Skim，看每段首句，不逐字读。"
+        "step": "Step 2 读前预测 Pre-reading",
+        "time": "4分钟",
+        "content": "【PPT P2 标题】教师：「A blog titled 'My First Day at Senior High'. What will it talk about?」 预设回答：「His feelings / what he did.」 板书时机：黑板中部写预测框架（feelings / activities）。差异化提示：A班用英语预测；B班用「√/×」选是否包含某内容。易错点提醒：blog 是叙事而非说明，提醒看文体。"
       },
       {
-        "step": "三、Careful Reading 精读三段",
-        "time": 18,
-        "content": "【PPT 04/05/06】\n★ Para2 Courses（6分钟）：\n【教师台词】\"What did the adviser recommend? Why?\"\n【预设回答】\"advanced literature.\"\n▲ 板书：recommend that sb. (should) do（should可省）\n【易错点提醒】recommend that Adam take（非 takes）。\n★ Para3 Activities（6分钟）：\n【教师台词】\"What happened with the football team?\"\n【预设回答】\"didn't make the team.\"\n▲ 强调 make the team = 入选。板书：football→volunteer→happy\n★ Para4 Studies（6分钟）：\n【教师台词】\"How are studies different?\"\n【预设回答】\"Much harder. He is responsible.\"\n▲ 板书：study harder→responsible→confident\n【差异化提示】B班用黄色注释版；A班自画三栏表。"
+        "step": "Step 3 略读抓主旨 Skimming",
+        "time": "8分钟",
+        "content": "教师：「Read fast (2 min). What is the main idea?」 给三选项。预设回答：「A — Adam's first-day experience and feelings.」 板书时机：确认主旨写黑板中央。差异化提示：B班先看每段首句再选；A班限时2分钟盲选后验证。易错点提醒：区分 main idea（整体）与 detail（某段）。"
       },
       {
-        "step": "四、Post-reading 讨论",
-        "time": 7,
-        "content": "【PPT 07】\n【教师台词】\"My Challenge → Adam's Solution → My Action Plan. Groups of four, 4 minutes.\"\n▲ 小组讨论。\n【预设回答】\"My challenge is vocabulary. My plan: ask teacher, memorize 20 words/day.\"\n【教师收尾】\"Challenge is the starting point, not the problem.\""
+        "step": "Step 4 扫读情感线 Scanning",
+        "time": "14分钟",
+        "content": "【工作单 时间轴】教师：「Find: when did he feel nervous? when happy? why?」 学生填轴。预设回答：「Nervous at start (new school); happy after making friends & good teachers.」 板书时机：黑板画 ↘↗ 情感弧线并标注原因。差异化提示：B班只需标两个情绪词；A班补「原因句」。易错点提醒：enthusiastic 形容老师「热情的」，别误读为「精力」。"
       },
       {
-        "step": "五、Summary & Homework",
-        "time": 2,
-        "content": "【PPT 08】\n▲ 检测：recommend that Adam ___ (take). make the team ___ (make). responsible ___ (responsible).\n【作业】画 Adam 三重挑战思维导图（Challenge→Solution→Result）。"
+        "step": "Step 5 长难句拆解 Language focus",
+        "time": "9分钟",
+        "content": "【PPT P4】拆解 「The teachers are very enthusiastic women called Ms Li...」 教师：「called = who are called，修饰 women。」 预设回答：「Ms Li is an enthusiastic teacher.」 板书时机：黑板右下方写 「n. + called/ named + 名字」。差异化提示：B班仿写1句；A班用该结构描述自己老师。易错点提醒：called 过去分词表「被叫做」。"
+      },
+      {
+        "step": "Step 6 复述+作业 Post-reading",
+        "time": "6分钟",
+        "content": "两人一组用时间轴复述 Adam 的一天。教师巡视纠音。作业见课后练习。板书时机：留下情感弧线供复述参考。易错点提醒：复述用过去时，提醒动词变化。"
       }
     ],
-    "blackboard": "┌──────────────────────────────────────────┐\n│  U1 The Freshman Challenge (读①)        │\n│  CHALLENGE → SOLUTION → RESULT          │\n│  ① courses   adviser helped   happy     │\n│  ② activities volunteer        happy    │\n│  ③ studies   study harder     confident │\n│  Key: recommend that sb.(should) do     │\n│       make the team  be responsible for │\n└──────────────────────────────────────────┘",
-    "exercises": "【基础作业】画 Adam 三重挑战思维导图（含 Solution/Result），至少6个课堂词汇。\n【提高作业】写50词比较你与Adam挑战异同。\n【参考答案——教师用】思维导图评分：三重各1分+每重S/R各0.5分+词汇2分+书写2分=10分。",
-    "reflection": "✅ 亮点：CHALLENGE 导入自然；三问法深入。\n⚠️ 需改进：B班精读超时，下次标段落行号；make the team 未板书，下次加短语区。\n📌 衔接（P3语言点/语法）：从课文原句 \"a really big challenge\" 导入短语。",
-    "aiModel": "AI辅助+人工审核",
-    "viewCount": 210,
-    "downloadCount": 38,
-    "createdAt": "2026-07-13T12:00:00Z"
+    "blackboard": "┌─ My First Day @ Senior High ─┐\n│ Main: exp + feelings of D1  │\n│ Emotion arc:                │\n│  start: nervous (new)       │\n│   ↓ make friends            │\n│   ↓ good teachers           │\n│  end: happy / confident     │\n│ Key words:                 │\n│  senior / challenge         │\n│  confident / explore        │\n│  n. + called + name         │\n└──────────────────────────────┘",
+    "exercises": "【基础作业】1. 完成课本 Comprehension 第1题（判断Adam情感）。2. 抄写并背诵 senior/challenge/confident/explore 各2遍+1个例句。\n【提高作业】用「时间轴」写自己初中最后一天或高中第一天的 5 句话英文日记（用至少2个本课词汇）。\n【参考答案——教师用】基础1：T/F 判读依课文；提高作业评价：5句连贯、含情感变化、用对2词即满分；用 looked forward to 加分。",
+    "reflection": "✅ 亮点：情感时间轴把抽象「心理变化」变可视，B班也能说出变化原因；长难句拆解后 A班仿写质量高。\n⚠️ 需改进：Skimming 限时2分钟对B班偏紧，部分未读完；下次改为「先读首段+末段」再选主旨。\n📌 下节课衔接：下一节深入语言点（confident/explore 等），本课时间轴可作写作人物描写的雏形。",
+    "aiModel": "claude-opus",
+    "viewCount": 0,
+    "downloadCount": 0,
+    "createdAt": "2026-07-13T16:00:00Z"
   },
   {
     "id": "l-eng-b1-u1-r2",
     "lessonId": "l-eng-b1-u1-r2",
-    "title": "Reading and Thinking: Language Focus (语言点深度学习)",
-    "grade": "高中",
-    "subject": "英语",
-    "textbook": "人教版（2019版）",
+    "title": "Reading and Thinking: My First Day at Senior High (Ⅱ) — 语言深度",
     "book": "必修第一册",
     "unitNumber": 1,
     "unitTitle": "Teenage Life",
     "lessonType": "reading",
-    "lessonTypeName": "阅读课",
+    "lessonTypeName": "阅读",
     "lessonNumber": 3,
     "periodNumber": 3,
-    "duration": 40,
+    "duration": 45,
+    "grade": "高一",
+    "subject": "英语",
     "tags": [
       "阅读",
       "语言点",
-      "无脑可用"
+      "词汇",
+      "人教版必修一U1",
+      "第三节课"
     ],
-    "overview": "本单元阅读课第二课时（读与思②），在 P2 内容理解基础上聚焦语言知识与迁移输出。重点：长难句分析、核心词汇运用、读后仿写。\n\n【学情分析】A班能分析句子结构但输出易犯拼写/搭配错；B班能认词但不会用。本课用\"句式脚手架+仿写\"降低输出门槛。",
+    "textbookAnalysis": "本课为 Unit 1 第三课时（Reading and Thinking Ⅱ — Language Focus），在整体理解基础上聚焦语言内化。选取课文高频词与结构：senior, challenge, confident, enthusiastic, explore, look forward to, 及「n. + called/named」后置定语。目标是从「读懂」走向「能用」，为写作课输出人物描写储备语言。",
+    "overview": "【学情分析】A班：词汇接受快，但易「认识不会用」。B班：单词拼写与搭配易错（如 look forward to 后接 doing）。共同问题：把词汇当孤立中文对应；不知在写作中迁移。",
     "objectives": [
-      "语言能力：能在语境中运用 recommend, responsible, sign up for, make the team 等短语写句",
-      "思维品质：分析课文长难句结构（that 从句、不定式作定语）",
-      "学习能力：用\"替换关键词\"法仿写课文句式",
-      "文化意识：用英语描述自己的高中适应经历"
+      "语言能力：在语境中准确理解并运用 senior/challenge/confident/enthusiastic/explore 及 look forward to doing。",
+      "文化意识：体会「挑战」在成长叙事中的正面价值（challenge as opportunity）。",
+      "思维品质：归纳「called/named」作后置定语的规律，并迁移到新语境。",
+      "学习能力：建立个人「易混词+搭配」清单，养成整理习惯。"
     ],
-    "keyPoints": "①长难句：The adviser recommended that I (should) take... / I'm glad to be a volunteer.\n②词汇运用：recommend doing / be responsible for / sign up for\n③仿写框架",
-    "difficulties": "①that 从句中 should 省略后动词用原形，学生易加 -s\n②be responsible for 后接名词/动名词，B班易接动词原形",
-    "preparation": "【PPT课件】共7页\n01-封面：Language Focus\n02-长难句拆解（2句）\n03-词汇运用练习\n04-仿写框架\n05-小组展示\n06-互评checklist\n07-作业\n\n【实物教具】课文句子卡片、仿写模板纸",
+    "keyPoints": "① 搭配：look forward to doing（to 是介词）；be confident about。\n② 构词：en- 前缀（enlarge/enrich）+ -ous（enthusiastic）。\n③ 结构：n. + called/named + 名字（后置定语）。",
+    "difficulties": "① look forward to 后接 doing 而非 to do。原因：受 to do 惯性干扰，需反复造句固化。\n② confident（ adj）vs confidence（n）词性混淆。原因：未建「词性—句位」对应，需给例句对比。\n③ called/named 分词属性不清。原因：中文「叫做」无分词概念，需译「who is called」助理解。",
+    "teachingMethods": "① 语境教学法：所有词回课文原句再迁移。\n② 归纳法：让学生自己发现 called/named 规律。\n③ 搭配操练：句型转换+翻译小步子。\n④ 清单法：建易混点个人清单。",
+    "preparation": "【PPT课件】P1 词汇云（本课6词）；P2 课文原句回顾；P3 look forward to 搭配阶梯；P4 called/named 归纳表；P5 翻译练习。\n【实物教具】「易混词清单」空表（每人一张）。",
     "process": [
       {
-        "step": "一、Sentence Clinic 长难句拆解",
-        "time": 12,
-        "content": "【PPT 02】\n【教师台词】\"Yesterday we read. Today we dig into the LANGUAGE. Sentence 1:\"\n▲ 展示：The school adviser recommended that I (should) take advanced literature.\n【教师台词】\"Find the verb after 'recommended'. Is it 'takes'? No — 'take'. Why?\"\n【预设回答】\"虚拟语气，should省略。\"\n▲ 板书结构树。\n【教师台词】\"Sentence 2: I'm glad to be a volunteer. 'to be' 是什么成分？\"\n【预设回答】\"不定式作原因/状态。\""
+        "step": "Step 1 复习回顾 Warm-up",
+        "time": "5分钟",
+        "content": "【PPT P2】快速闪回课文原句，让学生说出加粗词含义。预设回答：「senior = 高中；challenge = 挑战。」 板书时机：黑板左侧列6词。差异化提示：B班说中文；A班英文释义。易错点提醒：challenge 可作名/动，此处为名。"
       },
       {
-        "step": "二、Vocabulary in Use 词汇运用",
-        "time": 10,
-        "content": "【PPT 03】\n【教师台词】\"Now use the words. Fill the blanks:\"\n① I ___ (recommend) that he (should) join the club.\n② You should ___ (sign up for) a sport.\n③ He is ___ (responsibility) for his study.\n【预设答案】recommend / sign up for / responsible\n【易错点提醒】responsible 是形容词，后接 for + 名词/doing。"
+        "step": "Step 2 搭配聚焦 look forward to",
+        "time": "12分钟",
+        "content": "【PPT P3 阶梯】教师：「I look forward to ___ (see) you.」 引导学生填 seeing。预设回答：「seeing — to 是介词！」 板书时机：黑板写 「look forward to + doing」 红笔标 to。差异化提示：B班先做「选词填空」；A班做「中译英」。易错点提醒：类似介词性 to 还有 be used to / prefer...to。"
       },
       {
-        "step": "三、Parallel Writing 仿写",
-        "time": 13,
-        "content": "【PPT 04】\n【教师台词】\"Copy the pattern: My challenge was ___. The teacher recommended that I (should) ___. Now I am responsible for ___. Write 3-4 sentences about YOU.\"\n▲ 独立写5分钟。\n【预设回答】\"My challenge was time. The teacher recommended that I should make a plan. Now I am responsible for my schedule.\"\n【差异化提示】A班自由写；B班用模板填空。"
+        "step": "Step 3 归纳 called/named",
+        "time": "10分钟",
+        "content": "【PPT P4】给出3句（课文+新例句），让学生发现规律。预设回答：「都表示『被叫做』，修饰前面名词。」 教师归纳：「n. + called/named + 名字 = 后置定语。」 板书时机：黑板中写公式+2例。差异化提示：B班仿写1句；A班用该结构描写母校。易错点提醒：called 过去分词，表被动。"
       },
       {
-        "step": "四、Peer Check & Homework",
-        "time": 5,
-        "content": "【PPT 06】互评：□用了recommend that... □responsible for □sign up for\n【作业】将仿写扩成80词短文《My Freshman Challenge》。"
+        "step": "Step 4 构词小站 Word building",
+        "time": "8分钟",
+        "content": "【PPT P1 词汇云】拆 enthusiastic = en- + thusiast + -ic；confident = con- + fid + -ent。教师：「en- 使…；-ous 形容词。」 预设回答：「enrich = 使丰富。」 板书时机：黑板右写构词公式。差异化提示：A班拓展 enrich/enlarge；B班只记 enthusiastic。易错点提醒：enthusiastic 双写 s？不，thu-si-ast。"
+      },
+      {
+        "step": "Step 5 产出+清单 Build & List",
+        "time": "10分钟",
+        "content": "用本课词写 3 句「介绍自己高中期待」。随后填「易混词清单」（confident/confidence, look forward to doing）。教师巡视。作业见课后练习。板书时机：留构词公式供参考。易错点提醒：清单要写「错在哪+正确例」。"
       }
     ],
-    "blackboard": "┌──────────────────────────────────────────┐\n│  Language Focus (读②)                   │\n│  recommend that sb.(should) do          │\n│  sign up for ___                        │\n│  be responsible for ___ (n./doing)      │\n│  Pattern:                               │\n│   My challenge was ___.                 │\n│   The teacher recommended that I ___.   │\n└──────────────────────────────────────────┘",
-    "exercises": "【基础作业】用 recommend / sign up for / responsible for 各造1句。\n【提高作业】写80词《My Freshman Challenge》短文。\n【参考答案——教师用】recommend 后 that 从句用原形；responsible 后接 for+名词/动名词。",
-    "reflection": "✅ 亮点：长难句拆解清晰，仿写脚手架有效。\n⚠️ 需改进：B班 responsible for 后仍接原形，下次加例句对比。\n📌 衔接（语法课）：recommend that 虚拟语气在语法课系统讲。",
-    "aiModel": "AI辅助+人工审核",
-    "viewCount": 156,
-    "downloadCount": 20,
-    "createdAt": "2026-07-13T12:00:00Z"
+    "blackboard": "┌─ Language Focus U1 ─┐\n│ 6 words:               │\n│  senior / challenge     │\n│  confident / explore    │\n│  enthusiastic / forward │\n│ look forward to + doing │\n│  (to = prep!)           │\n│ n. + called/named +名   │\n│ en- + thusiast + -ic    │\n│ 易混: confid(ent/ence)  │\n└─────────────────────────┘",
+    "exercises": "【基础作业】1. 用 look forward to doing 写 2 句；2. 用 called/named 结构写 1 句描述同学。\n【提高作业】用本课至少4个词写一段 60 词「我的高中期待」，下节课互评。\n【参考答案——教师用】基础1示例：I look forward to meeting my new teachers. 基础2：The boy called Tom is my deskmate. 提高评价：4词+连贯+无搭配错即满分。",
+    "reflection": "✅ 亮点：「to 是介词」用红笔+阶梯练习固化，当场造句正确率明显提升；called/named 让学生自己归纳，记忆深。\n⚠️ 需改进：构词部分B班跟不上 en- 规律，下节课前需补初中构词基础。\n📌 下节课衔接：语法课将系统讲短语，本课词汇可直接用作例句素材。",
+    "aiModel": "claude-opus",
+    "viewCount": 0,
+    "downloadCount": 0,
+    "createdAt": "2026-07-13T16:00:00Z"
   },
   {
     "id": "l-eng-b1-u1-g",
     "lessonId": "l-eng-b1-u1-g",
-    "title": "Discovering Useful Structures: Noun/Adjective/Adverb Phrases",
-    "grade": "高中",
-    "subject": "英语",
-    "textbook": "人教版（2019版）",
+    "title": "Discovering Useful Structures: Noun Phrases & Phrase Types",
     "book": "必修第一册",
     "unitNumber": 1,
     "unitTitle": "Teenage Life",
     "lessonType": "grammar",
-    "lessonTypeName": "语法课",
+    "lessonTypeName": "语法",
     "lessonNumber": 4,
     "periodNumber": 4,
-    "duration": 40,
+    "duration": 45,
+    "grade": "高一",
+    "subject": "英语",
     "tags": [
       "语法",
-      "含板书",
-      "无脑可用"
+      "短语",
+      "名词短语",
+      "人教版必修一U1",
+      "第四节课"
     ],
-    "overview": "本单元语法课时，聚焦短语（Phrases）：名词短语 NP、形容词短语 AdjP、副词短语 AdvP。系统化整理学生已有语感。\n\n【学情分析】学生大量使用短语但未正式学\"短语\"概念。难点在元语言认知。A班接受快；B班见术语紧张，需多实例。",
+    "textbookAnalysis": "本课为 Unit 1 第四课时（Discovering Useful Structures），系统梳理短语类型：名词短语（NP）、形容词短语（AdjP）、副词短语（AdvP）。教材以课文句子为起点，引导学生发现「中心词+修饰语」的短语构造，为后续写作的句式丰富打基础。重点在名词短语（head noun + modifiers），形容词/副词短语作延伸。",
+    "overview": "【学情分析】A班：初中接触过「名词短语」但无术语；能模仿造句。B班：分不清短语与句子，易把「名词短语」当「句子成分」。共同问题：知道例子但不会自主判别类型；写作仍只用单词。",
     "objectives": [
-      "语言能力：识别并构建 NP / AdjP / AdvP 三种短语",
-      "学习能力：用\"核心词→修饰词→短语\"三步法分析结构",
-      "思维品质：对比\"光杆词\"与\"短语\"的表达效果"
+      "语言能力：识别名词/形容词/副词短语，说出其中心词与修饰语；能在句中找出三类短语。",
+      "文化意识：（无显性文化点，渗透语言结构之美）。",
+      "思维品质：从具体例句中归纳「中心词+修饰语」的短语构造规律，发展形式观察力。",
+      "学习能力：在写作中有意识用短语替换单词，使表达更丰富准确。"
     ],
-    "keyPoints": "①NP以名词为核心，AdjP以形容词为核心，AdvP以副词为核心\n②短语=核心词+修饰词\n③课文实例：a really big challenge / very confused / quite well",
-    "difficulties": "①混淆短语与从句（短语无主谓）\n②形容词/副词修饰对象区分",
-    "preparation": "【PPT课件】共8页\n01-封面 Phrases\n02-课文原句回顾\n03-三种短语结构图\n04-课文短语寻宝\n05-扩展练习\n06-产出框架\n07-互评checklist\n08-总结+作业\n\n【实物教具】三色荧光笔、课文打印件",
+    "keyPoints": "① 名词短语 = 限定词+修饰语+中心名词（a smart senior student）。\n② 形容词短语 = 形容词+补足成分（good at English）。\n③ 副词短语 = 副词+修饰语（quite confidently）。",
+    "difficulties": "① 判定中心词：长修饰语中找 head noun 易错。原因：中文修饰语前置、英文后置，语序反差，需多练。\n② 形容词vs副词短语混淆。原因：只看词性不看功能，需强调「修饰谁」。\n③ 写作迁移弱。原因：缺乏「单词→短语」替换练习，需给脚手架。",
+    "teachingMethods": "① 归纳法：从课文例句自己发现规律。\n② 对比法：单词 vs 短语的表达力对比。\n③ 句型转换操练：word → phrase 替换。\n④ 同伴互判：交换句子标短语类型。",
+    "preparation": "【PPT课件】P1 课文原句（含三类短语标注）；P2 短语结构公式；P3 判别口诀；P4 转换练习；P5 写作任务。\n【实物教具】「短语类型」判别卡（NP/AdjP/AdvP 三色）。",
     "process": [
       {
-        "step": "一、Discovery 从课文回到短语",
-        "time": 8,
-        "content": "【PPT 02】\n【教师台词】\"Last class we read Adam. Look: Adam faced a really big challenge. Which word is the MOST important?\"\n【预设回答】\"Challenge!\"\n▲ 板书：NP = 修饰词 + 核心名词 (a really big challenge)\n【教师台词】\"Together they form a Noun Phrase.\""
+        "step": "Step 1 发现 Discover",
+        "time": "10分钟",
+        "content": "【PPT P1】呈现课文三句，让学生圈出「成块的词」。预设回答：「a new student / very kind / quite well。」 教师：「这些『块』叫短语。」 板书时机：黑板左写三类示例。差异化提示：B班只圈；A班标类型。易错点提醒：短语不含主谓，不是句子。"
       },
       {
-        "step": "二、Three Types 系统讲解",
-        "time": 10,
-        "content": "【PPT 03】\n▲ 板书三类：\nNP = (限定词)+(副词)+形容词+核心名词 → a really big challenge\nAdjP = (副词)+核心形容词 → very confused\nAdvP = (副词)+核心副词 → very hard\n【易错点提醒】really 修饰 big（形容词），整个 really big 再修饰 challenge（名词）——短语可嵌套！"
+        "step": "Step 2 归纳 Generalize",
+        "time": "12分钟",
+        "content": "【PPT P2 公式】教师引导：「名词短语的中心是名词，前面有限定词/形容词。」 学生补全形容词/副词公式。预设回答：「AdjP 中心是形容词，AdvP 中心是副词。」 板书时机：黑板中写三公式。差异化提示：A班自写例句验证；B班抄公式+1例。易错点提醒：very kind 中 very 修饰 kind（副修饰形）。"
       },
       {
-        "step": "三、Controlled Practice 控制练习",
-        "time": 12,
-        "content": "【PPT 04/05】\n★ 课文寻宝（4分钟）：找3 NP / 2 AdjP / 1 AdvP。\n【预设答案】NP: the school adviser / advanced literature；AdjP: very confused；AdvP: quite well\n★ 扩展（6分钟）：\n① Adam felt worried → Adam felt a bit worried about his future. (AdjP)\n② He studies → He studies very hard. (AdvP)\n【差异化提示】B班做①②；A班加自造含三类的句。"
+        "step": "Step 3 判别 Practice",
+        "time": "10分钟",
+        "content": "【PPT P4】给 6 个短语判类型，用三色卡举牌。教师：「Find the head word first!」 预设回答：「the confident boy → NP（boy是头）。」 板书时机：错例现场改。差异化提示：B班先说中心词；A班直接报类型。易错点提醒：a book on the desk 中心是 book 不是 desk。"
       },
       {
-        "step": "四、Productive & Summary 产出与总结",
-        "time": 10,
-        "content": "【PPT 06】写2-3句描述自己的挑战，至少含1 NP/1 AdjP/1 AdvP。\n【PPT 07/08】同伴互评+总结：phrases make language richer.\n▲ 板书最终：三类结构图+学生句子标注。"
+        "step": "Step 4 转换 Upgrade",
+        "time": "8分钟",
+        "content": "【PPT P5】把 「He is a student.」 升级为 「He is a confident senior student.」 教师示范单词→短语。预设回答：「加形容词和限定词。」 板书时机：黑板右写升级链。差异化提示：B班做1次升级；A班做2次并说明修饰语。易错点提醒：修饰语顺序 限定词→形→名。"
+      },
+      {
+        "step": "Step 5 产出+作业 Produce",
+        "time": "5分钟",
+        "content": "用至少2类短语写3句描述同学。作业见课后练习。板书时机：留公式供写时参考。易错点提醒：写后自判中心词。"
       }
     ],
-    "blackboard": "┌──────────────────────────────────────────┐\n│  Phrases (语法)                         │\n│  NP = 修饰词 + 核心名词  a really big   │\n│  AdjP= 副词 + 核心形容词 very confused  │\n│  AdvP= 副词 + 核心副词   very hard      │\n│  Single words → Phrases (richer)       │\n└──────────────────────────────────────────┘",
-    "exercises": "【基础作业】从课文找5个NP标核心名词；扩展3个简单句。\n【提高作业】写3-4句描述朋友，含2NP/1AdjP/1AdvP。\n【参考答案——教师用】NP例：a really big challenge(core:challenge)；嵌套：really big是AdjP，整体作NP修饰。",
-    "reflection": "✅ 亮点：\"火柴人→完整画面\"比喻好；课文寻宝降低抗拒。\n⚠️ 需改进：B班核心词概念慢；AdvP例子少，补课外例句。\n📌 衔接（写作课）：要求建议信用≥2短语。",
-    "aiModel": "AI辅助+人工审核",
-    "viewCount": 336,
-    "downloadCount": 61,
-    "createdAt": "2026-07-13T12:00:00Z"
+    "blackboard": "┌─ Phrases U1 ─┐\n│ NP: (det) adj N  │\n│  a confident boy  │\n│ AdjP: adj + compl │\n│  good at English  │\n│ AdvP: adv + mod   │\n│  quite confidently │\n│ 口诀:找中心词!   │\n└────────────────────┘",
+    "exercises": "【基础作业】1. 课本 Exercise 找出 5 个名词短语并标中心词。2. 把 「She is happy.」 升级为含形容词短语的句子。\n【提高作业】用三类短语各写 2 句描述「我的社团」，下节课互评类型。\n【参考答案——教师用】基础2示例：She is happy with her new club. 提高评价：三类各2句、中心词正确即满分；修饰语顺序错扣半分。",
+    "reflection": "✅ 亮点：「找中心词」口诀让B班也能判类型；单词→短语升级链直观体现表达力差异。\n⚠️ 需改进：AdjP/AdvP 对B班仍混，需下节课前用「修饰谁」再强化一次。\n📌 下节课衔接：听与谈将用到 be going to 短语，可回扣「短语」概念。",
+    "aiModel": "claude-opus",
+    "viewCount": 0,
+    "downloadCount": 0,
+    "createdAt": "2026-07-13T16:00:00Z"
   },
   {
     "id": "l-eng-b1-u1-lt",
     "lessonId": "l-eng-b1-u1-lt",
     "title": "Listening and Talking: Plan a Camp",
-    "grade": "高中",
-    "subject": "英语",
-    "textbook": "人教版（2019版）",
     "book": "必修第一册",
     "unitNumber": 1,
     "unitTitle": "Teenage Life",
     "lessonType": "listening-talking",
-    "lessonTypeName": "听与谈课",
+    "lessonTypeName": "听与谈",
     "lessonNumber": 5,
     "periodNumber": 5,
     "duration": 40,
+    "grade": "高一",
+    "subject": "英语",
     "tags": [
-      "听说",
+      "听与谈",
       "计划",
-      "无脑可用"
+      "建议",
+      "be going to",
+      "人教版必修一U1",
+      "第五节课"
     ],
-    "overview": "本单元听与谈课时，对应 Listening and Talking 板块。话题\"计划一次夏令营\"，听力输入为一段关于 camp 安排的对话，输出为小组合作制定 camp plan。\n\n【学情分析】学生在 P1 已接触社团话题，本课延伸到\"计划\"。功能句式 focus：Let's... / How about... / We can... / What if... A班能主导讨论；B班需句式脚手架。",
+    "textbookAnalysis": "本课为 Unit 1 第五课时（Listening and Talking），话题「计划一次露营」。输入为一段规划对话，输出目标为用 be going to / will 谈未来计划、用 Why don't we... / How about... 提建议。承接语法课的短语概念，并把「计划+建议」功能落到真实交际，是单元内「做中学」的口语高峰。",
+    "overview": "【学情分析】A班：能用 will 说计划，但提建议句式单一。B班：be going to 与 will 混用，开口怕错。共同问题：提建议只会 Shall we...；不会回应建议（Good idea / I'd rather...）。",
     "objectives": [
-      "语言能力：听懂 camp 安排信息（时间/地点/活动）；使用建议句式制定计划",
-      "文化意识：了解夏令营活动设计的多元性",
-      "思维品质：在讨论中权衡选项、达成共识",
-      "学习能力：掌握\"听信息→提建议→定方案\"的合作策略"
+      "语言能力：听懂规划对话中的打算与建议；用 be going to 说计划，用 Why don't we... / How about... 提建议并恰当回应。",
+      "文化意识：了解露营等户外活动的协作文化，体会「提议—协商」的沟通礼貌。",
+      "思维品质：在对话中听出「建议—接受/拒绝」的逻辑链，培养交际推理。",
+      "学习能力：小组合作完成一份露营计划，并做 1 分钟英文汇报。"
     ],
-    "keyPoints": "①建议句式：Let's... / How about... / We could... / What if...\n②计划要素：when / where / what to do / who\n③听力抓 camp 安排细节",
-    "difficulties": "①B班在讨论中沉默，需分配角色（记录员/发言人）\n②建议句式混用，需按功能归类",
-    "preparation": "【PPT课件】共7页\n01-封面 Plan a Camp\n02-听前：camp 图片+预测\n03-听力任务：camp安排表\n04-功能句式库\n05-小组计划模板\n06-展示评价\n07-作业\n\n【实物教具】camp 安排表、小组计划海报纸",
+    "keyPoints": "① 计划：be going to + v.（表打算）/ will（临场决定）。\n② 建议：Why don't we...? / How about...? / Let's...\n③ 回应：Good idea! / I'd rather... / That sounds great.",
+    "difficulties": "① be going to 与 will 混用。原因：未区分「事先打算」vs「当场决定」，需给情境对比。\n② 建议句式选择。原因：只记 Shall we，需扩展并练礼貌梯度。\n③ 拒绝建议不会委婉。原因：缺 I'd rather / Maybe next time 等，需给话轮。",
+    "teachingMethods": "① 任务型：以「设计班级露营」为终任务。\n② 听读结合：先听计划框架再产出。\n③ 角色扮演：组长/组员分工练建议—回应。\n④ 话轮支架：给建议—回应语块菜单。",
+    "preparation": "【PPT课件】P1 露营图；P2 听力题支；P3 be going to vs will 对比；P4 建议—回应菜单；P5 计划单。\n【实物教具】计划单（时间/地点/活动/分工 四栏）。\n【音频】规划对话音频。",
     "process": [
       {
-        "step": "一、Lead-in & Pre-listening",
-        "time": 6,
-        "content": "【PPT 02】\n【教师台词】\"Summer is coming. Would you like to go to a camp? What camp?\"\n【预设回答】\"Sports camp.\" / \"English camp.\"\n▲ 板书：Plan a Camp。预测：when/where/activities?"
+        "step": "Step 1 导入 Lead-in",
+        "time": "4分钟",
+        "content": "【PPT P1 露营图】教师：「If we camp, what do we need?」 预设回答：「Tent! Food!」 板书时机：黑板左列 camp 词汇。差异化提示：B班说中文词；A班英文。易错点提醒：tent 尾音 /t/ 轻。"
       },
       {
-        "step": "二、While-listening 听中",
-        "time": 12,
-        "content": "【PPT 03】\n【教师台词】\"Listen: What camp? When? What activities?\"\n▲ 播放对话2遍。\n【预设答案】\"A volunteer camp. In July. Plant trees, help kids.\"\n▲ 板书关键信息。\n【易错点提醒】July / June 易混，板书强调月份。"
+        "step": "Step 2 听力抓计划 While-listening",
+        "time": "12分钟",
+        "content": "【音频】听两遍：第一遍抓「他们打算去哪、做什么」；第二遍填计划单。教师：「Catch: be going to = 打算。」 预设回答：「They are going to camp by the lake.」 板书时机：黑板中写 be going to + v. 公式。差异化提示：B班只填地点；A班填地点+活动。易错点提醒：going 读 /ɡoʊɪŋ/ 注意双元音。"
       },
       {
-        "step": "三、Function Bank 句式库",
-        "time": 6,
-        "content": "【PPT 04】\n▲ 展示：Let's... / How about...? / We could... / What if we...?\n【教师台词】\"Use these to make your plan. Don't just say 'good'.\""
+        "step": "Step 3 听力抓建议 Catch suggestions",
+        "time": "8分钟",
+        "content": "【音频 重听】教师：「What suggestions did they make?」 预设回答：「Why don't we bring a map?」 板书时机：黑板写建议三句型。差异化提示：A班听后默写1句；B班听后圈出。易错点提醒：How about 后接 doing/名词，不接动词原形。"
       },
       {
-        "step": "四、Group Plan 小组制定计划",
-        "time": 12,
-        "content": "【PPT 05】\n【教师台词】\"In groups of four. Plan OUR camp: name, when, where, 3 activities. Use the sentences. 6 minutes.\"\n▲ 小组活动。教师巡视。\n【预设回答】\"Let's have a reading camp in August at school. We could read stories and act them out.\"\n【差异化提示】B班分配角色（一人记、一人说）；A班自由。"
+        "step": "Step 4 角色扮演 Role-play",
+        "time": "10分钟",
+        "content": "【PPT P4 菜单】四人一组：用建议—回应菜单设计班级露营。教师巡视纠音。预设回答：「—How about Friday? —Good idea!」 板书时机：留菜单参考。差异化提示：B班照菜单读；A班脱稿+追加理由。易错点提醒：回应要先接情绪词（Great!）再表态。"
       },
       {
-        "step": "五、Show & Homework",
-        "time": 4,
-        "content": "【PPT 06】2组展示。\n【作业】把小组 camp plan 写成5句英文。"
+        "step": "Step 5 汇报+作业 Report",
+        "time": "6分钟",
+        "content": "一组上台 1 分钟英文汇报计划。作业见课后练习。板书时机：留 be going to 公式。易错点提醒：汇报用 are going to 复数一致。"
       }
     ],
-    "blackboard": "┌──────────────────────────────────────────┐\n│  Plan a Camp (听与谈)                   │\n│  Elements: when / where / what / who    │\n│  Let's...  How about...?                │\n│  We could...  What if we...?            │\n└──────────────────────────────────────────┘",
-    "exercises": "【基础作业】写5句小组 camp plan。\n【提高作业】给 camp 设计一句英文口号。\n【参考答案——教师用】计划四要素齐全即达标；句式≥2种。",
-    "reflection": "✅ 亮点：角色分配让B班参与。\n⚠️ 需改进：讨论时间紧，下次给8分钟。\n📌 衔接（写作课）：plan 的 persuasion 可用于建议信。",
-    "aiModel": "AI辅助+人工审核",
-    "viewCount": 64,
-    "downloadCount": 9,
-    "createdAt": "2026-07-13T12:00:00Z"
+    "blackboard": "┌─ Plan a Camp ─┐\n│ plan: be going to + v │\n│  (打算, 事前)        │\n│ will (当场决定)       │\n│ suggest:             │\n│  Why don't we...?    │\n│  How about...?       │\n│ respond:             │\n│  Good idea! / Rather │\n└───────────────────────┘",
+    "exercises": "【基础作业】1. 听录音跟读对话 2 遍。2. 用 be going to 写 3 句「周末计划」。\n【提高作业】四人小组完成一份英文露营计划单（四栏齐全），下节课展示。\n【参考答案——教师用】基础2示例：I am going to visit my grandma. / We are going to play basketball. / She is going to read a book. 提高评价：四栏齐全、用对 be going to 即满分。",
+    "reflection": "✅ 亮点：建议—回应菜单让B班敢开口；计划单把抽象「计划」变具体任务，产出质量高。\n⚠️ 需改进：be going to vs will 仍有混，需下节课前补一段「事先vs当场」微视频。\n📌 下节课衔接：读写课将写人物简介，本课的「计划表达」可作人物目标描写素材。",
+    "aiModel": "claude-opus",
+    "viewCount": 0,
+    "downloadCount": 0,
+    "createdAt": "2026-07-13T16:00:00Z"
   },
   {
     "id": "l-eng-b1-u1-w1",
     "lessonId": "l-eng-b1-u1-w1",
-    "title": "Reading for Writing: A Letter of Advice ① 范文与句式",
-    "grade": "高中",
-    "subject": "英语",
-    "textbook": "人教版（2019版）",
+    "title": "Reading for Writing: A Student Profile (Ⅰ) — 读析与语料库",
     "book": "必修第一册",
     "unitNumber": 1,
     "unitTitle": "Teenage Life",
     "lessonType": "writing",
-    "lessonTypeName": "写作课",
+    "lessonTypeName": "写作",
     "lessonNumber": 6,
     "periodNumber": 6,
-    "duration": 40,
+    "duration": 45,
+    "grade": "高一",
+    "subject": "英语",
     "tags": [
-      "阅读",
       "写作",
-      "无脑可用"
+      "读与写",
+      "人物简介",
+      "人教版必修一U1",
+      "第六节课"
     ],
-    "overview": "本单元写作课第一课时（读写①），对应 Reading for Writing 板块。分析建议信范文结构（共情→建议→鼓励）并搭建功能句式库。第二课时（P7）完成起草与互评。\n\n【学情分析】学生初中写过建议作文，但建议空泛、不会共情、连接词单一。本课用范文三色标注+句式库解决。上节语法短语在此应用。",
+    "textbookAnalysis": "本课为 Unit 1 第六课时（Reading for Writing Ⅰ），属「以读促写」的输入阶段。范文为一篇学生自我介绍（profile），结构：基本信息→性格→爱好→能力→愿望。目标是拆解范文结构、提炼人物描写语块（personality adjectives, hobbies, can do），为下节课独立写作建「语料库」。",
+    "overview": "【学情分析】A班：能仿写但结构松散，缺过渡。B班：词汇贫乏，只会 I like...。共同问题：写人物=罗列句子，无段落逻辑；不知用本单元词汇（confident/explore）。",
     "objectives": [
-      "语言能力：掌握建议信功能句式（I understand.../I recommend that.../You should...）",
-      "学习能力：通过分析范文掌握建议信三段结构",
-      "思维品质：针对具体问题给具体可操作建议"
+      "语言能力：分析范文结构（4段式）与人物描写语块，积累性格/爱好/能力三类表达。",
+      "文化意识：理解「自我介绍」在中外校园社交中的功能差异。",
+      "思维品质：归纳 profile 的「总—分—愿」结构，培养篇章逻辑意识。",
+      "学习能力：建立个人「人物描写语块库」，为下节课写作直接调用。"
     ],
-    "keyPoints": "①结构：共情→建议(含理由)→鼓励\n②句式：I recommend that... / You should... / It would be a good idea to...\n③连接词升级",
-    "difficulties": "①建议具体性（避免\"study harder\"太空泛）\n②语气委婉（用 would/should 非 must）",
-    "preparation": "【PPT课件】共6页\n01-封面 A Letter of Advice\n02-导入情境三封求助信\n03-范文三色标注\n04-功能句式库\n05-连接词升级\n06-作业（预习构思）\n\n【实物教具】范文打印件、写作纸",
+    "keyPoints": "① 结构：Basic info → Personality → Hobbies → Abilities & Wishes。\n② 语块：I'm outgoing / I'm good at... / I want to explore...。\n③ 衔接：and / also / besides 连接句。",
+    "difficulties": "① 结构意识弱：学生易写成「流水账」。原因：未先画结构图，需强制提纲。\n② 语块贫乏：只会 like。原因：缺范文输入，需本课建库。\n③ 单元词不会迁移：原因：前两节词汇未激活，需明示「可用词」。",
+    "teachingMethods": "① 范文分析法：拆解结构+语块。\n② 语块银行：分类积累可直接调用的表达。\n③ 支架写作：下节课用本课提纲+语库。\n④ 同伴互评：结构互查。",
+    "preparation": "【PPT课件】P1 范文全文；P2 结构图（4段）；P3 语块银行（性格/爱好/能力三栏）；P4 可用单元词回顾；P5 下节课任务。\n【实物教具】语块银行空表（每人一张）。",
     "process": [
       {
-        "step": "一、Read the Model 范文分析",
-        "time": 12,
-        "content": "【PPT 02/03】\n【教师台词】\"Your friend: 'I'm so stressed, can't sleep.' What do you say?\"\n▲ 学生思考。\n【教师台词】\"Read Susan Luo's letter, page 8, 2 minutes.\"\n▲ 三色标注：蓝=共情 绿=建议 橙=鼓励。\n【教师台词】\"Part1 Empathy — she shows understanding first. Why?\"\n【预设回答】\"No empathy = no trust.\"\n▲ 板书：Empathy + Advice(reason) + Encouragement"
+        "step": "Step 1 读范文 Read",
+        "time": "10分钟",
+        "content": "【PPT P1】教师：「Read the profile. What sections does it have?」 预设回答：「Name, personality, hobbies, abilities.」 板书时机：黑板左写4段名。差异化提示：B班标段落大意；A班限时1分钟速读。易错点提醒：profile 读 /proʊfaɪl/ 不是「照片」。"
       },
       {
-        "step": "二、Language Bank 句式库",
-        "time": 14,
-        "content": "【PPT 04/05】\n▲ 句式表：\n共情: I understand that... / I know how you feel...\n建议: I recommend that you (should)... / You should... / It would be a good idea to...\n鼓励: I believe you can...\n▲ 连接词升级：and→besides/what's more；so→therefore；but→however\n【教师台词】\"Copy into notebook. Choose 2-3, don't use all.\"\n【差异化提示】B班每功能1-2句；A班≥3建议句型。"
+        "step": "Step 2 拆结构 Structure",
+        "time": "10分钟",
+        "content": "【PPT P2】师生共画结构图：基本信息→性格→爱好→能力愿望。教师：「Notice: each section = 1 paragraph.」 预设回答：「So 4 paragraphs!」 板书时机：黑板中画结构树。差异化提示：A班补「每节写什么」；B班只记4段名。易错点提醒：wishes 放末段作收尾，不混中段。"
       },
       {
-        "step": "三、Plan & Homework 构思与作业",
-        "time": 14,
-        "content": "【教师台词】\"Before writing, plan: Which situation? What empathy? 2 advice with reasons? 1 encouragement?\"\n▲ 学生列提纲10分钟。\n【作业】根据提纲，下节课起草100词建议信。"
+        "step": "Step 3 建语库 Bank",
+        "time": "12分钟",
+        "content": "【PPT P3】从范文抽语块分类：性格（outgoing, confident）、爱好（be keen on, be good at）、能力（can do, help with）。学生填空表。预设回答：「I'm confident and I'm good at drawing.」 板书时机：黑板右写三栏例。差异化提示：B班抄范文句；A班自加1个单元词（explore）。易错点提醒：be good at + doing。"
+      },
+      {
+        "step": "Step 4 激活单元词 Activate",
+        "time": "8分钟",
+        "content": "【PPT P4】回扣 U1 词：confident/explore/forward to。教师：「You can use them in your profile!」 预设回答：「I look forward to exploring the club.」 板书时机：标「可用词」星号。差异化提示：A班造1句含2单元词；B班认读即可。易错点提醒：look forward to + doing。"
+      },
+      {
+        "step": "Step 5 小结+作业 Wrap",
+        "time": "5分钟",
+        "content": "总结结构+语库。作业：完善语块银行，预习下节课写自己 profile。板书时机：留结构树。易错点提醒：下节课直接套用，别现编。"
       }
     ],
-    "blackboard": "┌──────────────────────────────────────────┐\n│  A Letter of Advice ① (读写①)          │\n│  Structure:                              │\n│   1 Empathy: I understand that...       │\n│   2 Advice: I recommend that...(why?)   │\n│   3 Encouragement: I believe you can... │\n│  Connectors: besides / however /        │\n│              therefore                   │\n└──────────────────────────────────────────┘",
-    "exercises": "【基础作业】列建议信提纲（共情1句+建议2条含理由+鼓励1句）。\n【提高作业】背诵5个核心句式。\n【参考答案——教师用】结构齐全即达标；建议须含理由。",
-    "reflection": "✅ 亮点：三色标注直观。\n⚠️ 需改进：连接词升级信息量大，下节课复习。\n📌 衔接（P7）：提纲→起草。",
-    "aiModel": "AI辅助+人工审核",
-    "viewCount": 97,
-    "downloadCount": 110,
-    "createdAt": "2026-07-13T12:00:00Z"
+    "blackboard": "┌─ Student Profile ─┐\n│ 1 Basic info       │\n│ 2 Personality      │\n│   outgoing/confident│\n│ 3 Hobbies          │\n│   keen on / good at│\n│ 4 Abilities&Wishes │\n│   can / look fwd to│\n│ 衔接: and/also/besid│\n└─────────────────────┘",
+    "exercises": "【基础作业】1. 抄写语块银行三栏各3条。2. 用 be good at doing 写 2 句。\n【提高作业】按4段结构列自己 profile 的提纲（每节2-3个要点），下节课写作用。\n【参考答案——教师用】基础2示例：I am good at swimming. / She is good at playing the piano. 提高评价：4段齐全、要点具体即满分；用单元词加分。",
+    "reflection": "✅ 亮点：语块银行把「写不出」变「选得出」，B班也有话写；结构树强制提纲，杜绝流水账。\n⚠️ 需改进：部分A班提纲过简，下节课需要求「每节≥2句」。\n📌 下节课衔接：直接用本课结构+语库写自己 profile，并同伴互评。",
+    "aiModel": "claude-opus",
+    "viewCount": 0,
+    "downloadCount": 0,
+    "createdAt": "2026-07-13T16:00:00Z"
   },
   {
     "id": "l-eng-b1-u1-w2",
     "lessonId": "l-eng-b1-u1-w2",
-    "title": "Reading for Writing: A Letter of Advice ② 起草与互评",
-    "grade": "高中",
-    "subject": "英语",
-    "textbook": "人教版（2019版）",
+    "title": "Reading for Writing: A Student Profile (Ⅱ) — 起草与互评",
     "book": "必修第一册",
     "unitNumber": 1,
     "unitTitle": "Teenage Life",
     "lessonType": "writing",
-    "lessonTypeName": "写作课",
+    "lessonTypeName": "写作",
     "lessonNumber": 7,
     "periodNumber": 7,
-    "duration": 40,
+    "duration": 45,
+    "grade": "高一",
+    "subject": "英语",
     "tags": [
       "写作",
+      "读与写",
+      "起草",
       "互评",
-      "无脑可用"
+      "人教版必修一U1",
+      "第七节课"
     ],
-    "overview": "本单元写作课第二课时（读写②），在 P6 提纲基础上完成建议信起草、同伴互评与修订。\n\n【学情分析】A班能写100词+3建议；B班需脚手架。互评 checklist 帮学生自查结构完整。",
+    "textbookAnalysis": "本课为 Unit 1 第七课时（Reading for Writing Ⅱ），写作产出阶段。学生基于上节课的结构图与语块银行，独立写一篇 80-100 词的学生自我介绍（profile），随后同伴互评（结构/语块/语法三维度），教师回收共性错误集中讲评。是单元「以读促写」的闭环。",
+    "overview": "【学情分析】A班：能写满但语法小错多（三单、介词）。B班：写不满80词，依赖语库照抄。共同问题：互评只会看字数，不会评结构；结尾愿望句易漏。",
     "objectives": [
-      "语言能力：写出100词建议信，含≥2短语、≥2建议句型",
-      "学习能力：用 checklist 互评并修订",
-      "思维品质：根据反馈改进建议的具体性"
+      "语言能力：按4段结构写出 80-100 词连贯 profile，正确运用本单元词汇与 be good at doing 等搭配。",
+      "文化意识：（渗透）清晰自我介绍是校园社交起点。",
+      "思维品质：用互评量表从结构/语块/语法三维审读同伴作文，培养元认知。",
+      "学习能力：依互评反馈修改自己的 profile，形成「写—评—改」闭环。"
     ],
-    "keyPoints": "①起草：Empathy→Advice→Encouragement 全覆盖\n②互评 checklist 七项\n③修订提升具体性",
-    "difficulties": "①建议仍空泛（\"be happy\"）→ 追问 HOW\n②B班词数不足",
-    "preparation": "【PPT课件】共5页\n01-写作任务（三情境）\n02-写作框架模板\n03-互评checklist\n04-优秀样例\n05-作业\n\n【实物教具】写作纸、互评checklist",
+    "keyPoints": "① 结构保真：4段不缺、每段≥2句。\n② 语块调用：至少用3个语库表达+1个单元词。\n③ 语法红线：三单、be good at doing、标点。",
+    "difficulties": "① 写不满/超字数。原因：提纲不细，需下课前限80-100词明示。\n② 三单漏用。原因：中文无单三，需互评重点查。\n③ 互评流于形式。原因：无量表，需给三维勾选表。",
+    "teachingMethods": "① 过程写作法：起草→互评→修改。\n② 量表互评：结构/语块/语法三维勾选。\n③ 教师集中讲评：回收共性错。\n④ 同伴支架：强弱配对互评。",
+    "preparation": "【PPT课件】P1 写作任务+字数要求；P2 互评量表（三维）；P3 共性错预警；P4 优秀句展示。\n【实物教具】互评量表（每人一份，评同伴用）；作文本。",
     "process": [
       {
-        "step": "一、Draft 起草",
-        "time": 18,
-        "content": "【PPT 01/02】\n▲ 三情境选一：选课焦虑/社团过多/室友矛盾。\n【教师台词】\"Write 100 words. Empathy→Advice(reason)→Encouragement. Use ≥2 phrases. 15 minutes.\"\n▲ 巡视：缺共情→提醒；空泛→追问HOW；未用短语→提示。\n【差异化提示】A班100词3建议；B班80词2建议用模板。"
+        "step": "Step 1 起草 Draft",
+        "time": "15分钟",
+        "content": "教师：「Use last lesson's structure + bank. 80-100 words, 4 paragraphs.」 学生静写。预设回答：（习作）「I'm Li Hua, a confident senior student...」 板书时机：黑板左写字数红线 80-100。差异化提示：B班可参考语库照填；A班脱稿+用2单元词。易错点提醒：三单（he goes / she likes）；be good at doing。"
       },
       {
-        "step": "二、Peer Review 互评",
-        "time": 12,
-        "content": "【PPT 03】\n▲ checklist：□共情 □≥2建议 □含理由 □≥2句型 □≥1短语 □鼓励 □80-120词\n【教师台词】\"Swap, tick, tell partner what's missing. 5 minutes.\"\n▲ 选1-2篇朗读点评。\n【优秀样例点评】\"quite well(AdvP) / really difficult(AdjP) / a responsible student(NP) — great phrases!\""
+        "step": "Step 2 互评 Peer review",
+        "time": "10分钟",
+        "content": "【量表 P2】同桌互换，按三维勾选：结构4段？语块≥3？语法（三单/介词）。教师：「Don't just count words!」 预设回答：「He missed the wishes paragraph.」 板书时机：黑板中写共性错。差异化提示：B班只查结构+字数；A班查三单+搭配。易错点提醒：互评用铅笔，留修改空间。"
       },
       {
-        "step": "三、Revise & Homework",
-        "time": 10,
-        "content": "【教师台词】\"Revise based on feedback. Final version on clean sheet. Handwriting + word count + 2 phrases.\"\n【作业】誊写终稿，下节课交。"
+        "step": "Step 3 修改 Revise",
+        "time": "10分钟",
+        "content": "学生据反馈改自己的稿。教师巡视。预设回答：「I add: I look forward to exploring clubs.」 板书时机：留量表参考。差异化提示：A班补单元词；B班补缺失段落。易错点提醒：改后重读一遍查三单。"
+      },
+      {
+        "step": "Step 4 讲评+展示 Feedback",
+        "time": "8分钟",
+        "content": "【P3 共性错】教师集中讲：三单漏、at doing 错。展示1-2优秀句。预设回答：「Oh! I wrote 'he like' — wrong.」 板书时机：黑板右写红线句。差异化提示：全体订正自己同类错。易错点提醒：讲评后本人稿再自查一遍。"
+      },
+      {
+        "step": "Step 5 结课 Wrap",
+        "time": "2分钟",
+        "content": "总结「写—评—改」闭环。作业：抄正终稿交。板书时机：留红线句。易错点提醒：终稿用规范书写。"
       }
     ],
-    "blackboard": "┌──────────────────────────────────────────┐\n│  A Letter of Advice ② (读写②)          │\n│  Draft → Peer Review → Revise          │\n│  Checklist: empathy / advice+reason /  │\n│  encouragement / phrases / 80-120w     │\n└──────────────────────────────────────────┘",
-    "exercises": "【基础作业】据互评修订并誊写建议信终稿（工整、100±20词、≥2短语）。\n【提高作业】给老师写50词建议信（如何让英语课有趣）。\n【参考答案——教师用】结构完整+建议具体+短语≥2即达标。",
-    "reflection": "✅ 亮点：互评有效，学生主动指出同伴建议空泛。\n⚠️ 需改进：B班15分钟紧，下次12写+3说；checklist减到5项。\n📌 衔接（U2）：共情-建议-鼓励结构可迁移旅行计划写作。",
-    "aiModel": "AI辅助+人工审核",
-    "viewCount": 71,
-    "downloadCount": 33,
-    "createdAt": "2026-07-13T12:00:00Z"
+    "blackboard": "┌─ Writing: Profile ─┐\n│ 80-100 words      │\n│ 4 paras:          │\n│  info/persona/hobby│\n│  /ability&wish    │\n│ 红线:             │\n│  三单! at doing!  │\n│ 互评3维:结/块/法  │\n└────────────────────┘",
+    "exercises": "【基础作业】将终稿 profile 抄正（80-100词，4段）交作业本。\n【提高作业】把 profile 扩成「给笔友的一封英文邮件」（加问候与落款），下节课可选读。\n【参考答案——教师用】评价量规：结构4段(40%)+语块≥3且正确(30%)+语法少错(30%)；单元词使用加分。典型错：he like→likes；good at play→playing。",
+    "reflection": "✅ 亮点：三维互评量表让「评」有抓手，B班也能指出结构缺失；过程写作闭环明显提升成稿质量。\n⚠️ 需改进：起草15分钟对B班偏紧，下节课可给「句型填空式」草稿纸。\n📌 下节课衔接：项目课将把 profile 用于制作班级手册，本稿可直接复用。",
+    "aiModel": "claude-opus",
+    "viewCount": 0,
+    "downloadCount": 0,
+    "createdAt": "2026-07-13T16:00:00Z"
   },
   {
     "id": "l-eng-b1-u1-p",
     "lessonId": "l-eng-b1-u1-p",
-    "title": "Project & Video Time: Teenage Health Booklet + 单元复习",
-    "grade": "高中",
-    "subject": "英语",
-    "textbook": "人教版（2019版）",
+    "title": "Project & Unit Review: Make a Teenage Life Brochure",
     "book": "必修第一册",
     "unitNumber": 1,
     "unitTitle": "Teenage Life",
     "lessonType": "project",
-    "lessonTypeName": "项目复习课",
+    "lessonTypeName": "项目复习",
     "lessonNumber": 8,
     "periodNumber": 8,
-    "duration": 40,
+    "duration": 45,
+    "grade": "高一",
+    "subject": "英语",
     "tags": [
       "项目",
-      "视频",
       "复习",
-      "无脑可用"
+      "视频",
+      "单元整合",
+      "人教版必修一U1",
+      "第八节课"
     ],
-    "overview": "本单元项目与复习课时，对应 Project（制作青少年健康手册）+ Video Time + Assessing Your Progress。整合本单元听、读、语法、写产出，做一本 Teenage Health 小册子，并复习单元重难点。\n\n【学情分析】项目课学生兴趣高但易流于热闹。需用明确产出物（booklet）和分工锚定目标。A班可做双语；B班以图文为主。",
+    "textbookAnalysis": "本课为 Unit 1 第八课时（Project + Video Time + Review），单元整合与产出。项目任务：小组制作「Teenage Life 班级手册」（含成员 profile、社团推荐、露营计划）。视频时间拓展文化视野，最后用自评表回顾单元目标（词汇/阅读/语法/写作）。是单元「输入—内化—输出」的总收口。",
+    "overview": "【学情分析】A班：项目推进快，但易忽略语言准确。B班：跟不上小组节奏，易「搭便车」。共同问题：复习只背单词，不会用单元自评表定位薄弱项。",
     "objectives": [
-      "语言能力：综合运用本单元词汇/短语/建议信结构完成健康手册",
-      "文化意识：探讨青少年健康（身体/心理/社交）的多维内涵",
-      "思维品质：将单元知识整合为可展示成果",
-      "学习能力：小组分工合作完成项目"
+      "语言能力：在项目中综合运用本单元词汇、短语、be going to、profile 写作；完成一份小组手册。",
+      "文化意识：通过 Video Time 了解其他国家青少年的校园生活，拓宽国际视野。",
+      "思维品质：用单元自评表诊断自己的薄弱板块，制定补强计划。",
+      "学习能力：小组协作完成真实任务，体验「做中学」的成就感。"
     ],
-    "keyPoints": "①项目产出：Teenage Health Booklet（4页：饮食/运动/心理/社交）\n②整合：建议信结构用于手册\"建议\"栏\n③单元复习：词汇+短语+虚拟语气",
-    "difficulties": "①分工不均，需明确角色\n②手册英文准确度，B班需模板",
-    "preparation": "【PPT课件】共6页\n01-封面 Project: Health Booklet\n02-项目要求与分工\n03-Video Time 引导问题\n04-手册模板（4栏）\n05-单元复习思维导图\n06-展示评价+作业\n\n【实物教具】A4折页纸、彩笔、单元词汇表",
+    "keyPoints": "① 项目产出：手册含 profile + 社团 + 计划三模块。\n② 视频拓展：提取中外校园生活异同。\n③ 自评：词汇/阅读/语法/写作四维勾选薄弱项。",
+    "difficulties": "① 小组分工不均：B班搭便车。原因：未明确角色，需设记录员/汇报员。\n② 项目语言不准：重结果轻语言。原因：需设「语言质检」环节。\n③ 复习无方向：原因：缺自评表，需给四维勾选。",
+    "teachingMethods": "① 项目式学习（PBL）：手册为终产品。\n② 角色分工：组长/记录/质检/汇报四角色。\n③ 视频探究：看后提取异同。\n④ 自评驱动：用量表定位薄弱。",
+    "preparation": "【PPT课件】P1 项目任务+手册模板；P2 角色分工表；P3 Video 思考问题；P4 单元自评表；P5 展示评价量规。\n【实物教具】A3 手册纸（每组一张）；自评表（每人一张）。\n【视频】Video Time 片段（外国校园生活）。",
     "process": [
       {
-        "step": "一、Project Launch 项目启动",
-        "time": 8,
-        "content": "【PPT 02】\n【教师台词】\"We make a Teenage Health Booklet — 4 pages: Diet, Sport, Mind, Friends. Groups of 4, one page each.\"\n▲ 分工：writer / designer / editor / presenter。\n▲ 板书要求：每页≥3英文建议句（用建议信结构）。"
+        "step": "Step 1 项目启动 Launch",
+        "time": "5分钟",
+        "content": "【PPT P1】教师：「Make a class brochure: profile + club + plan.」 分四角色。预设回答：「I'll be the recorder!」 板书时机：黑板左写三模块+四角色。差异化提示：B班先认角色；A班领任务。易错点提醒：手册用英语标题。"
       },
       {
-        "step": "二、Video Time 视频",
-        "time": 10,
-        "content": "【PPT 03】\n【教师台词】\"Watch the video. Answer: What are 3 tips for teenage health?\"\n▲ 播放 Video Time（约2分钟）。\n【预设答案】\"Sleep early. Exercise. Talk to friends.\"\n▲ 记入手册 Mind 页。"
+        "step": "Step 2 视频拓展 Video",
+        "time": "8分钟",
+        "content": "【视频】教师：「What's different from our school life?」 预设回答：「They have more clubs after school.」 板书时机：黑板中写异同。差异化提示：B班说1个异同；A班写2句英文。易错点提醒：video 信息快，提醒抓关键词。"
       },
       {
-        "step": "三、Make the Booklet 制作手册",
-        "time": 15,
-        "content": "【PPT 04】\n▲ 小组制作15分钟。教师巡视提供语言支持。\n【差异化提示】A班双语+插图；B班图文+模板句式。"
+        "step": "Step 3 小组制作 Make",
+        "time": "18分钟",
+        "content": "【A3纸】各组完成手册：profile（用写作课稿）+社团推荐（听与说词）+露营计划（听与谈句）。质检员查语言。教师巡视。预设产出：「Our club: Photo Club — we are going to...」 板书时机：留模块清单。差异化提示：B班填模板空；A班自由发挥+用单元词。易错点提醒：质检查三单/at doing。"
       },
       {
-        "step": "四、Showcase & Review 展示与单元复习",
-        "time": 7,
-        "content": "【PPT 05】2组展示手册。\n【PPT 05 复习】单元脑图：词汇(challenge/recommend/responsible) + 短语(NP/AdjP/AdvP) + 虚拟语气(recommend that sb do) + 建议信结构。\n【作业】完成手册终稿，单元自评。"
+        "step": "Step 4 展示评价 Show",
+        "time": "9分钟",
+        "content": "【P5 量规】2-3组上台展示。全班用量规评（内容/语言/合作）。预设回答：「Their profile used confident and explore — great!」 板书时机：留亮点句。差异化提示：每组汇报员脱稿1分钟。易错点提醒：展示用 are going to 复数。"
+      },
+      {
+        "step": "Step 5 单元自评 Review",
+        "time": "5分钟",
+        "content": "【P4 自评表】学生勾选四维薄弱项并写1条补强计划。作业见课后练习。板书时机：留自评维度。易错点提醒：自评要诚实，计划要具体（如「每天背5个单元词」）。"
       }
     ],
-    "blackboard": "┌──────────────────────────────────────────┐\n│  Project: Health Booklet (项目复习)     │\n│  4 pages: Diet / Sport / Mind / Friends │\n│  Use: I recommend that... / You should..│\n│  Review: vocabulary + phrases + subj.   │\n└──────────────────────────────────────────┘",
-    "exercises": "【基础作业】完成健康手册终稿（4页，每页≥3英文建议句）。\n【提高作业】写单元学习反思（3句：学到什么/还不会什么/下单元目标）。\n【参考答案——教师用】手册建议句用对建议结构即达标；单元脑图要素齐全。",
-    "reflection": "✅ 亮点：项目产出物明确，学生有成就感；视频激活真实语料。\n⚠️ 需改进：分工需更明确，1组出现\"一人做全员看\"。\n📌 衔接（U2 Travelling Around）：项目技能迁移。",
-    "aiModel": "AI辅助+人工审核",
-    "viewCount": 52,
-    "downloadCount": 7,
-    "createdAt": "2026-07-13T12:00:00Z"
+    "blackboard": "┌─ U1 Project & Review ─┐\n│ Brochure:             │\n│  profile / club / plan │\n│ Roles: lead/record/QA/ │\n│  report               │\n│ Video: 中外校园异同   │\n│ Self-check 4维:       │\n│  词/读/法/写          │\n└────────────────────────┘",
+    "exercises": "【基础作业】完成单元自评表，针对最弱一项写具体补强计划（如每天背5个单元词）。\n【提高作业】把小组手册拍照，用3句英文发班级群（或写给笔友）介绍本组手册。\n【参考答案——教师用】自评量规：四维各勾「已掌握/一般/薄弱」；补强计划须具体可测（非「好好学习」）。项目评价：内容完整(40%)+语言准确(40%)+合作(20%)。",
+    "reflection": "✅ 亮点：四角色分工基本消灭搭便车；手册把全单元语言「串成用」，学生成就感强。\n⚠️ 需改进：制作18分钟偏紧，部分组未完工；下次可课前发模板预填。\n📌 单元收口：自评表数据可用于下单元分层；薄弱项集中讲评一次。",
+    "aiModel": "claude-opus",
+    "viewCount": 0,
+    "downloadCount": 0,
+    "createdAt": "2026-07-13T16:00:00Z"
   },
   {
     "id": "l-eng-b1-u2-reading",

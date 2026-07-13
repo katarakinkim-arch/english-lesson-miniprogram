@@ -103,8 +103,8 @@ Page({
       if (tf !== 'all' && l.lessonType !== tf) return false;
       if (kw) {
         const hay = (
-          l.title + ' ' + l.unitTitle + ' ' + (l.tags || []).join(' ') + ' ' + (l.overview || '') + ' ' +
-          (l.keyPoints || '') + ' ' + (l.difficulties || '') + ' ' + (l.preparation || '') + ' ' +
+          l.title + ' ' + l.unitTitle + ' ' + (l.tags || []).join(' ') + ' ' + (l.textbookAnalysis || '') + ' ' + (l.overview || '') + ' ' +
+          (l.keyPoints || '') + ' ' + (l.difficulties || '') + ' ' + (l.teachingMethods || '') + ' ' + (l.preparation || '') + ' ' +
           (l.objectives || []).join(' ') + ' ' + (l.process || []).map((s) => s.step + ' ' + s.content).join(' ') + ' ' +
           (l.exercises || '') + ' ' + (l.reflection || '') + ' ' + (l.blackboard || '')
         ).toLowerCase();
@@ -114,7 +114,7 @@ Page({
     }).map((l) => ({
       id: l.id,
       title: l.title,
-      sub: l.book.replace('必修', '') + ' · ' + l.unitTitle + ' · ' + l.lessonTypeName,
+      sub: '第' + (l.periodNumber || '?') + '节 · ' + l.book.replace('必修', '') + ' · ' + l.unitTitle + ' · ' + l.lessonTypeName,
       duration: l.duration || 45,
       icon: ({ 'listening-speaking': '🎧', reading: '📖', grammar: '✏️', 'listening-talking': '💬', writing: '✍️', project: '🎯' }[l.lessonType] || '📄'),
       iconBg: ({ 'listening-speaking': '#6b46c1', reading: '#1a365d', grammar: '#1a6840', 'listening-talking': '#b7791f', writing: '#7b341e', project: '#2c5282' }[l.lessonType] || '#555')

@@ -403,10 +403,12 @@ function renderDetail() {
   const secs = [];
   let si = 0;
   const add = (name, payload) => { if (payload) { si++; secs.push(Object.assign({ no: CN[si - 1], name: name, key: name }, payload)); } };
-  add('教材分析与学情', l.overview && { body: l.overview });
+  add('教材分析', l.textbookAnalysis && { body: l.textbookAnalysis });
+  add('学情分析', l.overview && { body: l.overview });
   add('教学目标', l.objectives && l.objectives.length && { list: l.objectives });
   add('教学重点', l.keyPoints && { body: l.keyPoints });
   add('教学难点', l.difficulties && { body: l.difficulties });
+  add('教学方法', l.teachingMethods && { body: l.teachingMethods });
   add('课前准备', l.preparation && { body: l.preparation });
   add('教学过程', l.process && l.process.length && { steps: l.process.map((s, i) => ({ n: i + 1, name: s.step || s.name || ('步骤' + (i + 1)), time: s.time || '', content: s.content || '' })) });
   add('板书设计', l.blackboard && { body: l.blackboard });

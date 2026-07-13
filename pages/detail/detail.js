@@ -4,10 +4,12 @@ const analytics = require('../../utils/analytics.js');
 
 function calcPages(p) {
   const text = [
+    p.textbookAnalysis,
     p.overview,
     (p.objectives || []).join(''),
     p.keyPoints,
     p.difficulties,
+    p.teachingMethods,
     p.preparation,
     (p.process || []).map((s) => s.content).join(''),
     p.blackboard,
@@ -36,10 +38,12 @@ function buildSections(p) {
   const add = (key, name, type, payload) => {
     if (payload) { i++; s.push(Object.assign({ key: key, no: CN_NUM[i - 1], title: name, type: type }, payload)); }
   };
-  add('overview', '教材分析与学情', 'text', p.overview && { body: p.overview, copyText: p.overview || '' });
+  add('textbookAnalysis', '教材分析', 'text', p.textbookAnalysis && { body: p.textbookAnalysis, copyText: p.textbookAnalysis || '' });
+  add('overview', '学情分析', 'text', p.overview && { body: p.overview, copyText: p.overview || '' });
   add('objectives', '教学目标', 'list', p.objectives && p.objectives.length && { items: p.objectives, copyText: (p.objectives || []).join('\n') });
   add('keyPoints', '教学重点', 'text', p.keyPoints && { body: p.keyPoints, copyText: p.keyPoints || '' });
   add('difficulties', '教学难点', 'text', p.difficulties && { body: p.difficulties, copyText: p.difficulties || '' });
+  add('teachingMethods', '教学方法', 'text', p.teachingMethods && { body: p.teachingMethods, copyText: p.teachingMethods || '' });
   add('preparation', '课前准备', 'text', p.preparation && { body: p.preparation, copyText: p.preparation || '' });
   add('process', '教学过程', 'steps', p.process && p.process.length && { steps: p.process, copyText: (p.process || []).map((s) => s.step + '\n' + s.content).join('\n\n') });
   add('blackboard', '板书设计', 'pre', p.blackboard && { body: p.blackboard, copyText: p.blackboard || '' });
