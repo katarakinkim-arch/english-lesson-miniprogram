@@ -239,8 +239,8 @@ function renderIndex() {
     .join('');
 
   // 卡片列表（使用模板字符串避免引号地狱）
-  const TYPE_ICON = { reading:'📖', grammar:'✏️', writing:'✍️' };
-  const TYPE_BG = { reading:'#1a365d', grammar:'#1a6840', writing:'#7b341e' };
+  const TYPE_ICON = { 'listening-speaking':'🎧', reading:'📖', grammar:'✏️', 'listening-talking':'💬', writing:'✍️', project:'🎯' };
+  const TYPE_BG = { 'listening-speaking':'#6b46c1', reading:'#1a365d', grammar:'#1a6840', 'listening-talking':'#b7791f', writing:'#7b341e', project:'#2c5282' };
   const cards = list.map(l => {
     const fav = state.favorites.includes(l.id);
     const ico = TYPE_ICON[l.lessonType] || '📄';

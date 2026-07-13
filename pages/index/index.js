@@ -29,9 +29,12 @@ Page({
     ],
     types: [
       { value: 'all', label: '全部课型' },
+      { value: 'listening-speaking', label: '听与说' },
       { value: 'reading', label: '阅读' },
       { value: 'grammar', label: '语法' },
-      { value: 'writing', label: '写作' }
+      { value: 'listening-talking', label: '听与谈' },
+      { value: 'writing', label: '写作' },
+      { value: 'project', label: '项目复习' }
     ]
   },
 
@@ -113,8 +116,8 @@ Page({
       title: l.title,
       sub: l.book.replace('必修', '') + ' · ' + l.unitTitle + ' · ' + l.lessonTypeName,
       duration: l.duration || 45,
-      icon: ({ reading: '📖', grammar: '✏️', writing: '✍️' }[l.lessonType] || '📄'),
-      iconBg: ({ reading: '#1a365d', grammar: '#1a6840', writing: '#7b341e' }[l.lessonType] || '#555')
+      icon: ({ 'listening-speaking': '🎧', reading: '📖', grammar: '✏️', 'listening-talking': '💬', writing: '✍️', project: '🎯' }[l.lessonType] || '📄'),
+      iconBg: ({ 'listening-speaking': '#6b46c1', reading: '#1a365d', grammar: '#1a6840', 'listening-talking': '#b7791f', writing: '#7b341e', project: '#2c5282' }[l.lessonType] || '#555')
     }));
     this.setData({ list });
   },
