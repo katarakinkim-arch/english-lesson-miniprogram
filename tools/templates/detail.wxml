@@ -7,7 +7,7 @@
       <text class="hero-badge">PPT</text>
     </view>
     <view class="hero-title">{{plan.title}}</view>
-    <view class="hero-sub">{{plan.grade}} · {{plan.subject}} · {{plan.textbook}} · 第{{plan.unitNumber}}单元 · {{plan.lessonTypeName}}</view>
+    <view class="hero-sub">{{plan.grade}} · {{plan.subject}} · {{plan.book}} · 第{{plan.unitNumber}}单元 · {{plan.lessonTypeName}}</view>
     <view class="hero-stats">
       <view class="hero-stat"><view class="n">{{pages}}</view><view class="l">页数</view></view>
       <view class="hero-stat"><view class="n">{{plan.duration}}</view><view class="l">分钟</view></view>

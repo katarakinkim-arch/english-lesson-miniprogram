@@ -1,0 +1,50 @@
+<view class="page-wrap">
+  <view class="top-bar">
+    <view class="search-box">
+      <text class="search-ico">🔍</text>
+      <input class="search-input" value="{{keyword}}" placeholder="搜索教案 / 单元 / 关键词"
+             confirm-type="search" bindinput="onSearch" bindfocus="onSearchFocus" bindconfirm="onSearchConfirm" />
+      <text wx:if="{{keyword}}" class="search-clear" bindtap="clearSearch">✕</text>
+    </view>
+    <view wx:if="{{showHistory && history.length}}" class="hist-panel">
+      <view class="hist-h"><text>搜索历史</text><text class="hist-clear" catchtap="clearHistory">清空</text></view>
+      <view class="hist-tags">
+        <view wx:for="{{history}}" wx:key="*this" class="hist-tag" data-kw="{{item}}" catchtap="onHistoryTap">{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="filter-row">
+    <view wx:for="{{books}}" wx:key="value"
+          class="filter-chip {{bookFilter===item.value?'active':''}}"
+          data-v="{{item.value}}" bindtap="onBookTap">{{item.label}}</view>
+  </view>
+
+  <view class="list" wx:if="{{!loading && groups.length > 0}}">
+    <view class="unit-group" wx:for="{{groups}}" wx:key="key" wx:for-item="group">
+      <view class="unit-head">
+        <text class="unit-no">{{group.book}}</text>
+        <text class="unit-name">第{{group.unitNumber}}单元 · {{group.unitTitle}}</text>
+      </view>
+      <view class="doc-card" wx:for="{{group.lessons}}" wx:for-item="lesson" wx:key="id"
+            data-id="{{lesson.id}}" bindtap="openDetail" hover-class="card-hover">
+        <view class="doc-card-icon" style="background: linear-gradient(135deg, {{lesson.iconBg}}, {{lesson.iconBg}}dd)">{{lesson.icon}}</view>
+        <view class="doc-card-body">
+          <view class="doc-card-title">{{lesson.title}}</view>
+          <view class="doc-card-sub">{{lesson.sub}}</view>
+        </view>
+        <view class="doc-card-arrow">›</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="list">
+    <view class="doc-card skel" wx:for="{{[1,2,3,4]}}" wx:key="*this"></view>
+  </view>
+
+  <view wx:if="{{!loading && groups.length === 0}}" class="empty">
+    <view class="empty-ico">📭</view>
+    <view class="empty-text">没有找到匹配的教案</view>
+    <view class="empty-tip">换个关键词或筛选条件试试</view>
+  </view>
+</view>

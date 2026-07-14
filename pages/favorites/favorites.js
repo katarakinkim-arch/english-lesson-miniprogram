@@ -39,7 +39,9 @@ Page({
 
   openDetail(e) {
     const id = e.currentTarget.dataset.id;
-    wx.navigateTo({ url: '/pages/detail/detail?id=' + id });
+    const meta = app.getLessonById(id);
+    const root = app.subjectRoot(meta && meta.subject);
+    wx.navigateTo({ url: '/subpackages/' + root + '/pages/detail/detail?id=' + id });
   },
 
   removeFav(e) {

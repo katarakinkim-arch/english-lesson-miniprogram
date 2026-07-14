@@ -1,7 +1,12 @@
 {
-  "description": "高中英语教案小程序（人教版2019 必修一二册）",
+  "description": "高中全9科教案小程序（人教版2019 必修+选择性必修全套）",
   "packOptions": {
-    "ignore": []
+    "ignore": [
+      { "type": "folder", "value": "tools" },
+      { "value": "*.html" },
+      { "value": "data/lessons-*.js" },
+      { "value": "data/lessons.js" }
+    ]
   },
   "setting": {
     "urlCheck": false,
@@ -14,6 +19,6 @@
   "compileType": "miniprogram",
   "libVersion": "3.0.0",
   "appid": "touristappid",
-  "projectname": "english-lesson-plans",
+  "projectname": "highschool-lesson-plans",
   "condition": {}
 }

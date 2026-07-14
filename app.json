@@ -1,14 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/detail/detail",
     "pages/favorites/favorites",
     "pages/profile/profile",
     "pages/privacy/privacy"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1a365d",
-    "navigationBarTitleText": "英语教案库",
+    "navigationBarTitleText": "高中教案库",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f5f6fa",
     "enablePullDownRefresh": false
@@ -39,5 +38,16 @@
       }
     ]
   },
+  "subpackages": [
+    { "root": "subpackages/eng", "pages": ["pages/list/list", "pages/detail/detail"] },
+    { "root": "subpackages/cn", "pages": ["pages/list/list", "pages/detail/detail"] },
+    { "root": "subpackages/math", "pages": ["pages/list/list", "pages/detail/detail"] },
+    { "root": "subpackages/physics", "pages": ["pages/list/list", "pages/detail/detail"] },
+    { "root": "subpackages/chem", "pages": ["pages/list/list", "pages/detail/detail"] },
+    { "root": "subpackages/bio", "pages": ["pages/list/list", "pages/detail/detail"] },
+    { "root": "subpackages/his", "pages": ["pages/list/list", "pages/detail/detail"] },
+    { "root": "subpackages/pol", "pages": ["pages/list/list", "pages/detail/detail"] },
+    { "root": "subpackages/geo", "pages": ["pages/list/list", "pages/detail/detail"] }
+  ],
   "sitemapLocation": "sitemap.json"
 }
