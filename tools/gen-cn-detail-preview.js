@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const L = require('../data/lessons.js');
+const L = require('../data/lessons-cn.js');
 
-// 取必修一 U1 阅读第1课时作为详情页演示
-const lesson = L.find(l => l.id === 'l-eng-b1-u1-r1') || L[0];
+// 取必修上册 U1 第1课时（沁园春·长沙精读上）作为详情页演示
+const lesson = L.find(l => l.id === 'l-cn-bs-u1-1') || L[0];
 
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;')
@@ -142,7 +142,6 @@ body {
 body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; color:#1a1a2e; line-height:1.75; -webkit-font-smoothing:antialiased; }
 
 /* ===== 微信小程序外壳模拟 ===== */
-/* 状态栏 + 微信胶囊 */
 .phone { width:375px; max-width:100%; margin:0 auto; position:relative; height:100%; display:flex; flex-direction:column; background:#f0f2f5; }
 
 /* 状态栏 */
@@ -262,7 +261,7 @@ body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; col
   <!-- 微信导航栏（含胶囊） -->
   <div class="wxnav">
     <span class="back">‹</span>
-    <span class="title">教案详情</span>
+    <span class="title">语文教案</span>
     <div class="capsule">
       <div style="display:flex;gap:2px;align-items:center;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
       <div class="oval"></div>
@@ -273,7 +272,7 @@ body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; col
   <div class="screen">
 
 <div class="hero">
-  <div class="hero-badge">${esc(lesson.book)} · 单元${esc(lesson.unitNumber)} ${esc(lesson.unitTitle || '')}</div>
+  <div class="hero-badge">${esc(lesson.book)} · ${esc(lesson.taskGroup || '')} · 单元${esc(lesson.unitNumber)} ${esc(lesson.unitTitle || '')}</div>
   <h1>${esc(lesson.title)}</h1>
   <div class="hero-meta">
     ${[lesson.lessonTypeName, '第'+lesson.periodNumber+'课时', lesson.duration+'分钟'].concat((lesson.tags||[]).slice(0,4)).map(t=>'<span>'+esc(t)+'</span>').join('')}
@@ -355,6 +354,6 @@ body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; col
 
 </body></html>`;
 
-const out = path.join(__dirname, '..', 'preview-detail.html');
+const out = path.join(__dirname, '..', 'preview-cn-detail.html');
 fs.writeFileSync(out, html, 'utf8');
-console.log('OK: preview-detail.html (' + Buffer.byteLength(html) + ' bytes)');
+console.log('OK: preview-cn-detail.html (' + Buffer.byteLength(html) + ' bytes)');

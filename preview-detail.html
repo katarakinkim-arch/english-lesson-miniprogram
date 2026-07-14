@@ -5,24 +5,26 @@
 <style>
 <style>
 /* 手机模拟器外壳 */
-html { background:#e5e7eb; }
+html { background:#c7cdd4; }
 body {
-  max-width: 375px;
+  width: 375px;
+  max-width: 100%;
+  height: calc(100vh - 40px);
+  max-height: 812px;
   margin: 20px auto;
-  min-height:100vh;
-  box-shadow:0 0 40px rgba(0,0,0,.15);
-  border-radius:36px;
+  box-shadow:0 0 50px rgba(0,0,0,.25);
+  border-radius:44px;
   overflow:hidden;
   position:relative;
   background:#f0f2f5;
 }
 
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f0f2f5; color:#1a1a2e; line-height:1.75; -webkit-font-smoothing:antialiased; }
+body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; color:#1a1a2e; line-height:1.75; -webkit-font-smoothing:antialiased; }
 
 /* ===== 微信小程序外壳模拟 ===== */
 /* 状态栏 + 微信胶囊 */
-.phone { width:375px; max-width:100%; margin:0 auto; position:relative; min-height:100vh; display:flex; flex-direction:column; background:#f0f2f5; }
+.phone { width:375px; max-width:100%; margin:0 auto; position:relative; height:100%; display:flex; flex-direction:column; background:#f0f2f5; }
 
 /* 状态栏 */
 .statusbar { height:44px; background:#1a365d; display:flex; align-items:center; justify-content:space-between; padding:0 20px; color:#fff; font-size:14px; font-weight:600; flex-shrink:0; }
