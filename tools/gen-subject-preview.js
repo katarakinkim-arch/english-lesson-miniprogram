@@ -75,6 +75,34 @@ const html = `<!DOCTYPE html>
   .step .sn{ font-size:13px; font-weight:600; color:var(--brand); display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
   .step .st{ font-size:11px; color:#fff; background:var(--brand2); border-radius:7px; padding:1px 8px; margin-left:4px; }
   .step p{ margin:6px 0 0; font-size:12.5px; line-height:1.6; color:#444; white-space:pre-wrap; word-break:break-word; }
+  .sc-text{ font-size:12.5px; line-height:1.7; color:#374151; margin:5px 0; white-space:pre-wrap; word-break:break-word; }
+  .sc-block{ margin:7px 0; border-radius:10px; padding:8px 10px; font-size:12.5px; line-height:1.65; }
+  .sc-tag{ display:inline-block; font-weight:700; font-size:11.5px; margin-bottom:3px; }
+  .sc-bd{ white-space:pre-wrap; word-break:break-word; }
+  .sc-ppt{ background:#eff6ff; border-left:3px solid #2563eb; }
+  .sc-ppt .sc-tag{ color:#1e40af; }
+  .sc-audio{ background:#ecfeff; border-left:3px solid #0891b2; }
+  .sc-audio .sc-tag{ color:#0e7490; }
+  .sc-teacher{ background:#fef2f2; border-left:3px solid #dc2626; }
+  .sc-teacher .sc-tag{ color:#991b1b; }
+  .sc-ans{ background:#f0fdf4; border-left:3px solid #16a34a; }
+  .sc-ans .sc-tag{ color:#166534; }
+  .sc-board{ background:#fefce8; border-left:3px solid #ca8a04; }
+  .sc-board .sc-tag{ color:#854d0e; }
+  .sc-diff{ background:#f5f3ff; border-left:3px solid #7c3aed; }
+  .sc-diff .sc-tag{ color:#5b21b6; }
+  .sc-warn{ background:#fff7ed; border-left:3px solid #ea580c; }
+  .sc-warn .sc-tag{ color:#9a3412; }
+  .ex-block{ margin:10px 0; border-radius:12px; overflow:hidden; border:1px solid #eef2f7; }
+  .ex-h{ font-size:13px; font-weight:700; padding:8px 12px; color:#fff; }
+  .ex-bd{ padding:10px 12px; font-size:13px; line-height:1.8; white-space:pre-wrap; word-break:break-word; color:#334155; }
+  .ex-basic .ex-h{ background:#3b82f6; }
+  .ex-basic .ex-bd{ background:#eff6ff; }
+  .ex-adv .ex-h{ background:#8b5cf6; }
+  .ex-adv .ex-bd{ background:#f5f3ff; }
+  .ex-key .ex-h{ background:#22c55e; }
+  .ex-key .ex-bd{ background:#f0fdf4; }
+
   .dlbar{ position:sticky; bottom:0; background:#fff; border-top:1px solid var(--line); padding:10px 12px; display:flex; align-items:center; gap:8px; z-index:5; }
   .dlbar .fmts{ display:flex; gap:5px; }
   .dlbar .fmt{ font-size:12px; padding:7px 9px; border-radius:10px; background:var(--chip); color:var(--sub); cursor:pointer; }
@@ -158,8 +186,49 @@ function toast(msg) {
 
 function getLesson(id) { return LESSONS.find(function(l){ return l.id === id; }); }
 
+
+
 function escAttr(s) {
   return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function renderStepContent(raw) {
+  const s = (raw || '').trim();
+  if (!s) return '';
+  const MARK = /(【PPT[^】]*】|【音频[^】]*】|【教师[^】]*】|教师[:：]|【预设回答[^】]*】|预设回答[:：]|【板书时机[^】]*】|板书时机[:：]|【差异化提示[^】]*】|差异化提示[:：]|【易错点提醒[^】]*】|易错点提醒[:：])/g;
+  const parts = s.split(MARK);
+  let out = '';
+  if (parts[0] && parts[0].trim()) out += '<div class="sc-text">' + escAttr(parts[0].trim()) + '</div>';
+  for (let i = 1; i < parts.length; i += 2) {
+    const marker = parts[i];
+    const text = (parts[i + 1] || '').trim();
+    if (!marker) continue;
+    out += stepBlock(marker, text);
+  }
+  return out || ('<div class="sc-text">' + escAttr(s) + '</div>');
+}
+function stepBlock(marker, text) {
+  const t = marker.replace(/^【|】$/g, '');
+  if (/^PPT/.test(t)) return '<div class="sc-block sc-ppt"><span class="sc-tag">' + escAttr(marker) + '</span>' + (text ? '<div class="sc-bd">' + escAttr(text) + '</div>' : '') + '</div>';
+  if (/^音频/.test(t)) return '<div class="sc-block sc-audio"><span class="sc-tag">' + escAttr(marker) + '</span>' + (text ? '<div class="sc-bd">' + escAttr(text) + '</div>' : '') + '</div>';
+  if (/^教师/.test(t)) return '<div class="sc-block sc-teacher"><span class="sc-tag">' + escAttr(marker) + '</span><div class="sc-bd">' + escAttr(text) + '</div></div>';
+  if (/^预设回答/.test(t)) return '<div class="sc-block sc-ans"><span class="sc-tag">' + escAttr(marker) + '</span><div class="sc-bd">' + escAttr(text) + '</div></div>';
+  if (/^板书时机/.test(t)) return '<div class="sc-block sc-board"><span class="sc-tag">' + escAttr(marker) + '</span><div class="sc-bd">' + escAttr(text) + '</div></div>';
+  if (/^差异化提示/.test(t)) return '<div class="sc-block sc-diff"><span class="sc-tag">' + escAttr(marker) + '</span><div class="sc-bd">' + escAttr(text) + '</div></div>';
+  if (/^易错点提醒/.test(t)) return '<div class="sc-block sc-warn"><span class="sc-tag">' + escAttr(marker) + '</span><div class="sc-bd">' + escAttr(text) + '</div></div>';
+  return '<div class="sc-text">' + escAttr(marker + text) + '</div>';
+}
+function renderExercises(raw) {
+  const s = (raw || '').trim();
+  if (!s) return '';
+  const basic = s.match(/【基础作业】([^]*?)(?=【提高作业】|【参考答案|$)/);
+  const adv = s.match(/【提高作业】([^]*?)(?=【参考答案】|$)/);
+  const ans = s.match(/【参考答案[^】]*】([^]*?)$/);
+  let out = '';
+  if (basic) out += '<div class="ex-block ex-basic"><div class="ex-h">📝 基础作业</div><div class="ex-bd">' + escAttr(basic[1].trim()) + '</div></div>';
+  if (adv) out += '<div class="ex-block ex-adv"><div class="ex-h">🚀 提高作业</div><div class="ex-bd">' + escAttr(adv[1].trim()) + '</div></div>';
+  if (ans) out += '<div class="ex-block ex-key"><div class="ex-h">🔑 参考答案（教师用）</div><div class="ex-bd">' + escAttr(ans[1].trim()) + '</div></div>';
+  return out || ('<div class="sc-text">' + escAttr(s) + '</div>');
 }
 
 function setNav(title, showBack) {
@@ -252,9 +321,9 @@ function renderIndex() {
   const TYPE_ICON = { jingdu:'📖', qunwen:'🔗', xiezuo:'✍️', huodong:'🎯', fangfa:'🛠', new:'🆕', exercise:'✏️', review:'🔁', comprehensive:'🌟', reading:'📖', grammar:'✏️', listening:'🎧', speaking:'💬', writing:'✍️', project:'🎯' };
   const TYPE_BG = { jingdu:'#1a365d', qunwen:'#6b46c1', xiezuo:'#7b341e', huodong:'#2c5282', fangfa:'#1a6840', new:'#b7791f', exercise:'#2a4a7d', review:'#553c9a', comprehensive:'#0f766e', reading:'#1a365d', grammar:'#1a6840', listening:'#6b46c1', speaking:'#b7791f', writing:'#7b341e', project:'#2c5282' };
 
-  const bookChips = '<div class="chip ' + (state.filterBook ? '' : 'on') + '" onclick="setBook(&quot;&quot;)">全部</div>' +
+  const bookChips = '<div class="chip ' + (state.filterBook ? '' : 'on') + '" data-book="">全部</div>' +
     BOOKS.map(function(b) {
-      return '<div class="chip ' + (state.filterBook === b ? 'on' : '') + '" onclick="setBook(&quot;' + escAttr(b) + '&quot;)">' + escAttr(b) + '</div>';
+      return '<div class="chip ' + (state.filterBook === b ? 'on' : '') + '" data-book="' + escAttr(b) + '">' + escAttr(b) + '</div>';
     }).join('');
 
   const groupHtml = groups.map(function(g) {
@@ -263,7 +332,7 @@ function renderIndex() {
       const ico = TYPE_ICON[l.lessonType] || '📄';
       const bg = TYPE_BG[l.lessonType] || '#555';
       const star = fav ? '<div style="color:#e6a23c;font-size:20px">★</div>' : '';
-      return '<div class="card" onclick="openDetail(&quot;' + escAttr(l.id) + '&quot;)">' +
+      return '<div class="card" data-id="' + escAttr(l.id) + '">' +
         '<div class="row1">' +
           '<div class="docico" style="background:linear-gradient(135deg,' + bg + ',' + bg + 'dd)">' + ico + '</div>' +
           '<div style="flex:1">' +
@@ -283,11 +352,11 @@ function renderIndex() {
   }).join('');
 
   const histHtml = (!state.keyword.trim() && state.history.length)
-    ? '<div class="chips">' + state.history.map(function(h){ return '<div class="chip" onclick="onPrevHistory(&quot;' + escAttr(h) + '&quot;)">' + escAttr(h) + '</div>'; }).join('') + '</div>'
+    ? '<div class="chips">' + state.history.map(function(h){ return '<div class="chip" data-hist="' + escAttr(h) + '">' + escAttr(h) + '</div>'; }).join('') + '</div>'
     : '';
   const searchVal = escAttr(state.keyword);
   $('content').innerHTML =
-    '<div class="search">🔍 <input class="sin" placeholder="搜索教案/单元/关键词" value="' + searchVal + '" onchange="onPrevSearch(this.value)"> ' + (state.keyword ? '<span class="searchx" onclick="onPrevClear()">✕</span>' : '') + '</div>' +
+    '<div class="search">🔍 <input class="sin" placeholder="搜索教案/单元/关键词" value="' + searchVal + '"> ' + (state.keyword ? '<span class="searchx" data-clear="search">✕</span>' : '') + '</div>' +
     histHtml +
     '<div class="chips">' + bookChips + '</div>' +
     (groupHtml || '<div class="empty"><div class="e">📭</div><div class="t">没有匹配的教案</div><div class="p">换个关键词或筛选条件试试</div></div>');
@@ -312,10 +381,10 @@ function renderFavorites() {
   state.favorites.forEach(function(id) {
     const l = getLesson(id);
     if (!l) return;
-    cards += '<div class="card" onclick="openDetail(&quot;' + escAttr(l.id) + '&quot;)">' +
+    cards += '<div class="card" data-id="' + escAttr(l.id) + '">' +
       '<div class="row1"><div class="docico">📄</div>' +
       '<div style="flex:1"><div class="ttl">' + escAttr(l.title) + '</div><div class="sub">' + escAttr(l.book) + ' · ' + escAttr(l.unitTitle) + ' · ' + escAttr(l.lessonTypeName) + '</div></div>' +
-      '<div style="color:#c0392b;font-size:22px;cursor:pointer" onclick="event.stopPropagation();toggleFav(&quot;' + escAttr(l.id) + '&quot;)">✕</div>' +
+      '<div style="color:#c0392b;font-size:22px;cursor:pointer" data-fav-id="' + escAttr(l.id) + '">✕</div>' +
       '</div></div>';
   });
   $('content').innerHTML =
@@ -330,12 +399,12 @@ function renderProfile() {
   let dl = '';
   state.downloads.forEach(function(id) {
     const l = getLesson(id); if (!l) return;
-    dl += '<div class="favitem" onclick="openDetail(&quot;' + escAttr(l.id) + '&quot;)"><div class="fi">📄</div><div class="ft">' + escAttr(l.title) + '</div></div>';
+    dl += '<div class="favitem" data-id="' + escAttr(l.id) + '"><div class="fi">📄</div><div class="ft">' + escAttr(l.title) + '</div></div>';
   });
   let rl = '';
   state.recents.forEach(function(id) {
     const l = getLesson(id); if (!l) return;
-    rl += '<div class="favitem" onclick="openDetail(&quot;' + escAttr(l.id) + '&quot;)"><div class="fi">📄</div><div class="ft">' + escAttr(l.title) + '</div></div>';
+    rl += '<div class="favitem" data-id="' + escAttr(l.id) + '"><div class="fi">📄</div><div class="ft">' + escAttr(l.title) + '</div></div>';
   });
   let html = '';
   html += '<div class="phead"><div class="pavatar">' + (p.avatarUrl ? '<img src="' + escAttr(p.avatarUrl) + '">' : '👤') + '</div><div><div class="pname">' + escAttr(p.nickName) + '</div><div class="psub">微信用户 · 云端已同步</div></div></div>';
@@ -385,21 +454,23 @@ function renderDetail() {
   add('课前准备', l.preparation && { body: l.preparation });
   add('教学过程', l.process && l.process.length && { steps: l.process.map(function(s, i){ return { n: i + 1, name: s.step || s.name || ('步骤' + (i + 1)), time: s.time || '', content: s.content || '' }; }) });
   add('板书设计', l.blackboard && { body: l.blackboard });
-  add('课后练习', l.exercises && { body: l.exercises });
+  add('课后练习', l.exercises && { html: renderExercises(l.exercises) });
   add('教学反思', l.reflection && { body: l.reflection });
 
   let secHtml = '';
   secs.forEach(function(sec) {
     if (sec.list) {
-      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" onclick="copySection(&quot;' + escAttr(sec.key) + '&quot;)">复制</span></h3><ul>' + sec.list.map(function(x){ return '<li>' + escAttr(x) + '</li>'; }).join('') + '</ul></div>';
+      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" data-copy-key="' + escAttr(sec.key) + '">复制</span></h3><ul>' + sec.list.map(function(x){ return '<li>' + escAttr(x) + '</li>'; }).join('') + '</ul></div>';
     } else if (sec.steps) {
       let stepsHtml = '';
       sec.steps.forEach(function(s) {
-        stepsHtml += '<div class="step"><div class="sn"><span class="sno sm">' + s.n + '</span>' + escAttr(s.name) + '<span class="st">' + escAttr(s.time) + '</span></div><p>' + escAttr(s.content) + '</p></div>';
+        stepsHtml += '<div class="step"><div class="sn"><span class="sno sm">' + s.n + '</span>' + escAttr(s.name) + '<span class="st">' + escAttr(s.time) + '</span></div>' + renderStepContent(s.content) + '</div>';
       });
-      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" onclick="copySection(&quot;' + escAttr(sec.key) + '&quot;)">复制</span></h3>' + stepsHtml + '</div>';
+      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" data-copy-key="' + escAttr(sec.key) + '">复制</span></h3>' + stepsHtml + '</div>';
+    } else if (sec.html) {
+      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" data-copy-key="' + escAttr(sec.key) + '">复制</span></h3>' + sec.html + '</div>';
     } else {
-      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" onclick="copySection(&quot;' + escAttr(sec.key) + '&quot;)">复制</span></h3><p>' + escAttr(sec.body) + '</p></div>';
+      secHtml += '<div class="sec"><h3><span class="sno">' + sec.no + '</span>' + sec.name + '<span class="scopy" data-copy-key="' + escAttr(sec.key) + '">复制</span></h3><p>' + escAttr(sec.body) + '</p></div>';
     }
   });
 
@@ -423,13 +494,13 @@ function renderDetail() {
   bar = document.createElement('div');
   bar.className = 'dlbar';
   bar.innerHTML =
-    '<span class="fav" onclick="toggleFav(&quot;' + fid + '&quot;)">' + (fav ? '★' : '☆') + '</span>' +
+    '<span class="fav" data-fav-id="' + fid + '">' + (fav ? '★' : '☆') + '</span>' +
     '<div class="fmts">' +
-      '<span class="fmt ' + (state.favFmt === 'word' ? 'on' : '') + '" onclick="setFmt(&quot;word&quot;)">Word</span>' +
-      '<span class="fmt ' + (state.favFmt === 'pdf' ? 'on' : '') + '" onclick="setFmt(&quot;pdf&quot;)">PDF</span>' +
-      '<span class="fmt ' + (state.favFmt === 'ppt' ? 'on' : '') + '" onclick="setFmt(&quot;ppt&quot;)">PPT</span>' +
+      '<span class="fmt ' + (state.favFmt === 'word' ? 'on' : '') + '" data-fmt="word">Word</span>' +
+      '<span class="fmt ' + (state.favFmt === 'pdf' ? 'on' : '') + '" data-fmt="pdf">PDF</span>' +
+      '<span class="fmt ' + (state.favFmt === 'ppt' ? 'on' : '') + '" data-fmt="ppt">PPT</span>' +
     '</div>' +
-    '<div class="btn" onclick="doDownload(&quot;' + fid + '&quot;)">⬇ 下载 ' + state.favFmt.toUpperCase() + '</div>';
+    '<div class="btn" data-dl-id="' + fid + '">⬇ 下载 ' + state.favFmt.toUpperCase() + '</div>';
   $('content').appendChild(bar);
 }
 
@@ -454,6 +525,20 @@ function clearAll(kind) {
 
 // ===== 初始化演示数据 & 首次渲染 =====
 $('backBtn').addEventListener('click', goBack);
+$('content').addEventListener('click', function(e) {
+  var t = e.target.closest('[data-id]'); if (t) { openDetail(t.getAttribute('data-id')); return; }
+  var f = e.target.closest('[data-fav-id]'); if (f) { toggleFav(f.getAttribute('data-fav-id')); return; }
+  var c = e.target.closest('[data-copy-key]'); if (c) { copySection(c.getAttribute('data-copy-key')); return; }
+  var b = e.target.closest('[data-book]'); if (b) { setBook(b.getAttribute('data-book')); return; }
+  var h = e.target.closest('[data-hist]'); if (h) { onPrevHistory(h.getAttribute('data-hist')); return; }
+  var x = e.target.closest('[data-clear]'); if (x) { onPrevClear(); return; }
+  var m = e.target.closest('[data-fmt]'); if (m) { setFmt(m.getAttribute('data-fmt')); return; }
+  var d = e.target.closest('[data-dl-id]'); if (d) { doDownload(d.getAttribute('data-dl-id')); return; }
+});
+$('content').addEventListener('change', function(e) {
+  if (e.target.classList.contains('sin')) { onPrevSearch(e.target.value); }
+});
+
 state.downloads = LESSONS.slice(0, 2).map(function(l){ return l.id; });
 state.recents = LESSONS.slice(0, 3).map(function(l){ return l.id; });
 state.favorites = LESSONS.slice(0, 1).map(function(l){ return l.id; });
