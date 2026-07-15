@@ -361,24 +361,28 @@ def step_page(num, total, title, content_blocks, color, page_id):
     # 标题
     d.text((220, 70), title, font=ImageFont.truetype(r'C:/Windows/Fonts/msyhbd.ttc', 36), fill=DARK)
     d.text((220, 122), f'教学过程 · 步骤 {num}/{total}', font=F_SUBTITLE, fill=GRAY)
-    # 右侧进度条
-    bar_w = 380
+    # 右侧进度条（缩短避免溢出）
+    bar_w = 300
     d.rounded_rectangle([860, 90, 860+bar_w, 110], radius=10, fill=BORDER)
     d.rounded_rectangle([860, 90, 860+int(bar_w*num/total), 110], radius=10, fill=color)
-    d.text((860+bar_w+10, 86), f'{num}/{total}', font=F_LABEL, fill=GRAY)
-    # 内容区
-    y = 210
-    for block in content_blocks:
+    d.text((860+bar_w+12, 86), f'{num} / {total}', font=F_LABEL, fill=GRAY)
+    # 内容区（增大起始 Y 留出标题区呼吸空间）
+    y = 220
+    for bidx, block in enumerate(content_blocks):
         btype, btitle, bbody, bcolor = block
-        # 块标题
-        d.rounded_rectangle([60, y, 1220, y+34], radius=8, fill=bcolor)
-        d.text((78, y+5), btitle, font=F_LABEL, fill=WHITE)
-        y += 50
-        # 块内容
-        for line in wrap_text(d, bbody, F_BODY, 1140):
-            d.text((80, y), line, font=F_BODY, fill=DARK)
-            y += F_BODY.size + 6
-        y += 16
+        # 块标题（加高色条）
+        hdr_h = 40
+        d.rounded_rectangle([60, y, 1220, y+hdr_h], radius=8, fill=bcolor)
+        d.text((78, y+9), btitle, font=F_CARD_TITLE, fill=WHITE)
+        y += hdr_h + 12  # 标题到内容的间距
+        # 块内容（加大行间距 + 左内边距）
+        content_font = ImageFont.truetype(r'C:/Windows/Fonts/msyh.ttc', 21)
+        for line in wrap_text(d, bbody, content_font, 1120):
+            d.text((84, y), line, font=content_font, fill=DARK)
+            y += content_font.size + 11  # 行间距 32px（字体21 + 11）
+        # 块间间距（最后一块不加额外间距）
+        if bidx < len(content_blocks) - 1:
+            y += 20
     footer(d, page_id, 16, 'l-eng-b1-u2-ls')
     im.save(os.path.join(OUT, f'slide_{page_id:02d}_step{num}.png'), 'PNG', optimize=True)
 
