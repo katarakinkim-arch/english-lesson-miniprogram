@@ -1,4 +1,18 @@
 // utils/lessonView.js — 列表页 / 详情页 的通用 Page 配置工厂（主包提供，子包 require 复用）
+
+// 读取小程序包内二进制资源（图片/音频）-> Promise<Uint8Array>
+// 用于 PPT 生成时把真实媒体字节嵌入 OOXML。路径相对工程根（含子包前缀）。
+// 读取失败由调用方逐文件兜底（生成不含该媒体的 PPT），不会中断下载。
+function readPackageFile(relPath) {
+  return new Promise((resolve, reject) => {
+    wx.getFileSystemManager().readFile({
+      filePath: relPath,
+      success: (res) => resolve(new Uint8Array(res.data)),
+      fail: (err) => reject(err)
+    });
+  });
+}
+
 // 子包页面通过 getLessons() 传入本学科数据，避免主包直接 require 子包数据（微信限制）。
 const clouduser = require('./clouduser.js');
 const analytics = require('./analytics.js');
@@ -105,7 +119,8 @@ function makeDetailPage(getLessons) {
       wx.showLoading({ title: '生成中...' });
       try {
         const docgen = require('./docgen.js');
-        const filePath = await docgen.generateDoc(plan, fmt);
+        // ppt 走媒体感知入口：按 data/media.js 预载真实图片/音频字节嵌入
+        const filePath = await docgen.generateDocMedia(plan, fmt, readPackageFile);
         wx.hideLoading();
         wx.openDocument({
           filePath: filePath,

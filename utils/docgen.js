@@ -161,15 +161,23 @@ function buildPPTX(plan) {
   const sections = planSections(plan);
   const slides = [];
   slides.push({ title: cover.title, content: cover.sub, isTitle: true });
+  const media = plan.media || {};
+  const mediaImages = media.images || [];
+  const mediaAudios = media.audios || [];
   sections.forEach((s) => {
     if (s.type === 'steps') {
       s.steps.forEach((st, i) => {
-        slides.push({ title: s.title + '（步骤' + (i + 1) + '/' + s.steps.length + '）', content: '【' + (st.step || '') + '】 ' + (st.time ? '（' + st.time + '分钟）\n' : '') + (st.content || '') });
+        const slide = { title: s.title + '（步骤' + (i + 1) + '/' + s.steps.length + '）', content: '【' + (st.step || '') + '】 ' + (st.time ? '（' + st.time + '分钟）\n' : '') + (st.content || '') };
+        if (/【音频|音频/.test(st.content || '')) slide.media = { audios: mediaAudios };
+        slides.push(slide);
       });
     } else if (s.type === 'list') {
       slides.push({ title: s.title, content: s.items.map((o, i) => (i + 1) + '. ' + o).join('\n') });
     } else {
       slides.push({ title: s.title, content: s.body });
+      if (mediaImages.length && /课前准备/.test(s.title || '')) {
+        slides.push({ title: '课前准备 · 素材图示', content: mediaImages.map((m) => m.desc || '').join('　'), media: { images: mediaImages, layout: 'grid' } });
+      }
     }
   });
 
@@ -222,26 +230,83 @@ function buildPPTX(plan) {
   files.push({ name: 'ppt/viewProps.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:viewPr xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:normalViewPr><p:restoredLeft sz="15620"/><p:restoredTop sz="94660" autoAdjust="0"/></p:normalViewPr><p:slideViewPr><p:cSldViewPr><p:cViewPr varScale="1"><p:scale><a:sx n="64" d="100"/><a:sy n="64" d="100"/></p:scale><p:origin x="-1392" y="-96"/></p:cViewPr><p:guideLst/></p:cSldViewPr></p:slideViewPr></p:viewPr>') });
   files.push({ name: 'ppt/tableStyles.xml', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><a:tblStyleLst xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" def="{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}"/>') });
 
-  const slideLayoutRel = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/slideLayout1.xml"/></Relationships>';
+  // ---- 媒体部件（图片/音频）----
+  const mediaParts = [];
+  mediaImages.forEach((m, i) => {
+    if (!m || !m.data) return;
+    const ext = (m.file || '').split('.').pop().toLowerCase();
+    const pe = (ext === 'jpg' || ext === 'jpeg') ? 'jpeg' : 'png';
+    mediaParts.push({ name: 'ppt/media/image' + (i + 1) + '.' + pe, data: m.data, relType: 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/image' });
+  });
+  mediaAudios.forEach((m, i) => {
+    if (!m || !m.data) return;
+    const ext = (m.file || '').split('.').pop().toLowerCase();
+    mediaParts.push({ name: 'ppt/media/audio' + (i + 1) + '.' + ext, data: m.data, relType: 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/audio' });
+  });
+  // 内容类型：补齐图片/音频扩展名（直接更新已推入 files 的 [Content_Types].xml 条目）
+  {
+    const exts = {};
+    mediaParts.forEach((p) => { exts[p.name.split('.').pop().toLowerCase()] = true; });
+    let add = '';
+    if (exts.png) add += '<Default Extension="png" ContentType="image/png"/>';
+    if (exts.jpeg) add += '<Default Extension="jpeg" ContentType="image/jpeg"/>';
+    if (exts.jpg) add += '<Default Extension="jpg" ContentType="image/jpeg"/>';
+    if (exts.wav) add += '<Default Extension="wav" ContentType="audio/wav"/>';
+    if (exts.mp3) add += '<Default Extension="mp3" ContentType="audio/mpeg"/>';
+    if (add) {
+      const ctIdx = files.findIndex((f) => f.name === '[Content_Types].xml');
+      if (ctIdx >= 0) files[ctIdx].data = utf8Encode(ct.replace('</Types>', add + '</Types>'));
+    }
+  }
+
+  let mediaRid = 1000;
   for (let i = 0; i < slides.length; i++) {
     const s = slides[i];
     const titleSize = s.isTitle ? '4400' : '3600';
     const titleColor = s.isTitle ? 'FFFFFF' : BRAND;
     const titleXml = buildParas(s.title, titleSize, titleColor);
-    // 封面页白色文字 + 蓝色底；内容页深色文字
     const bg = s.isTitle
       ? '<p:bg><p:bgPr><a:solidFill><a:srgbClr val="' + BRAND + '"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>'
       : '<p:bg><p:bgPr><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>';
     const contentColor = s.isTitle ? 'FFFFFF' : '333333';
     const contentXml = buildParas(s.content, s.isTitle ? '2000' : '1800', contentColor);
-    const titleOff = s.isTitle ? '457200' : '457200';
     const titleExt = s.isTitle ? '8230125' : '8230125';
     const titleCy = s.isTitle ? '1600200' : '1143000';
     const contentOff = s.isTitle ? '1600200' : '1600200';
-    const slideXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">' + bg + '<p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="274638"/><a:ext cx="' + titleExt + '" cy="' + titleCy + '"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square" rtlCol="0"><a:spAutoFit/></a:bodyPr><a:lstStyle/>' + titleXml + '</p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Content"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="' + contentOff + '"/><a:ext cx="8230125" cy="4658375"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square" rtlCol="0"><a:spAutoFit/></a:bodyPr><a:lstStyle/>' + contentXml + '</p:txBody></p:sp></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>';
+    let mediaXml = '';
+    let relExtra = '';
+    if (s.media && s.media.images && s.media.images.length) {
+      const imgs = s.media.images.filter((x) => x && x.data);
+      const cols = 2, cw = 3535775, ch = 2651831, gx = 365125, gy = 365125;
+      const startX = 457200, startY = 1771650;
+      imgs.forEach((im, k) => {
+        const col = k % cols, row = Math.floor(k / cols);
+        const x = startX + col * (cw + gx);
+        const y = startY + row * (ch + gy);
+        const idx = mediaImages.indexOf(im) + 1;
+        const pe = ((im.file || '').split('.').pop().toLowerCase() === 'jpg' || (im.file || '').split('.').pop().toLowerCase() === 'jpeg') ? 'jpeg' : 'png';
+        mediaRid++;
+        const rId = 'rId' + mediaRid;
+        relExtra += '<Relationship Id="' + rId + '" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="../media/image' + idx + '.' + pe + '"/>';
+        mediaXml += '<p:pic><p:nvPicPr><p:cNvPr id="' + (100 + k) + '" name="img' + k + '"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr><p:blipFill><a:blip r:embed="' + rId + '"/><a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr><a:xfrm><a:off x="' + x + '" y="' + y + '"/><a:ext cx="' + cw + '" cy="' + ch + '"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>';
+      });
+    }
+    if (s.media && s.media.audios && s.media.audios.length) {
+      s.media.audios.filter((x) => x && x.data).forEach((au, k) => {
+        const idx = mediaAudios.indexOf(au) + 1;
+        const ext = (au.file || '').split('.').pop().toLowerCase();
+        mediaRid++;
+        const rId = 'rId' + mediaRid;
+        relExtra += '<Relationship Id="' + rId + '" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/audio" Target="../media/audio' + idx + '.' + ext + '"/>';
+        const ax = 7315200, ay = 5486400;
+        mediaXml += '<p:audio><p:nvPicPr><p:cNvPr id="' + (200 + k) + '" name="audio' + k + '"/><p:cNvPicPr/><p:nvPr><a:videoFile r:link="' + rId + '"/></p:nvPr></p:nvPicPr><p:spPr><a:xfrm><a:off x="' + ax + '" y="' + ay + '"/><a:ext cx="914400" cy="914400"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr><p:timing><p:tnLst><p:par><p:cTn id="' + (300 + k) + '" fill="hold"><p:stCondLst><p:cond evt="onBegin"/></p:stCondLst><p:childTnLst><p:audioEvt><p:cMediaNode vol="100000" mute="0"><p:embed r:embed="' + rId + '"/></p:cMediaNode></p:audioEvt></p:childTnLst></p:cTn></p:par></p:tnLst></p:timing></p:audio>';
+      });
+    }
+    const slideXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">' + bg + '<p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="274638"/><a:ext cx="' + titleExt + '" cy="' + titleCy + '"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square" rtlCol="0"><a:spAutoFit/></a:bodyPr><a:lstStyle/>' + titleXml + '</p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Content"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="' + contentOff + '"/><a:ext cx="8230125" cy="4658375"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spSp><p:txBody><a:bodyPr wrap="square" rtlCol="0"><a:spAutoFit/></a:bodyPr><a:lstStyle/>' + contentXml + '</p:txBody></p:sp>' + mediaXml + '</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>';
     files.push({ name: 'ppt/slides/slide' + (i + 1) + '.xml', data: utf8Encode(slideXml) });
-    files.push({ name: 'ppt/slides/_rels/slide' + (i + 1) + '.xml.rels', data: utf8Encode(slideLayoutRel) });
+    files.push({ name: 'ppt/slides/_rels/slide' + (i + 1) + '.xml.rels', data: utf8Encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/slideLayout1.xml"/>' + relExtra + '</Relationships>') });
   }
+  mediaParts.forEach((p) => files.push({ name: p.name, data: p.data }));
 
   return createZip(files);
 }
@@ -431,4 +496,34 @@ function generateDoc(plan, fmt) {
   return Promise.reject(new Error('unknown format: ' + fmt));
 }
 
-module.exports = { generateDoc, planSections, planCover };
+/* ============ 媒体感知下载（PPT 嵌入真实图片/音频） ============ */
+// media 清单：lesson id -> { images:[{file,desc}], audios:[{file,desc}] }
+const MEDIA = (function () { try { return require('../data/media.js'); } catch (e) { return {}; } })();
+
+// readFile(path) -> Promise<Uint8Array>；由调用方按运行环境注入（wx / fs）
+function loadMediaBytes(items, readFile) {
+  if (!items || !readFile) return Promise.resolve([]);
+  return Promise.all(items.map((m) => new Promise((res) => {
+    if (!m || !m.file) return res(null);
+    readFile(m.file).then((u8) => res(Object.assign({}, m, { data: u8 }))).catch(() => res(null));
+  })));
+}
+
+function buildPlanWithMedia(plan, readFile) {
+  const m = MEDIA[plan.id];
+  if (!m) return Promise.resolve(plan);
+  return loadMediaBytes(m.images, readFile).then((images) => {
+    return loadMediaBytes(m.audios, readFile).then((audios) => {
+      const media = { images: images.filter(Boolean), audios: audios.filter(Boolean) };
+      return Object.assign({}, plan, media.images.length || media.audios.length ? { media: media } : {});
+    });
+  });
+}
+
+// 异步入口：PPT 生成前预载媒体字节并注入 plan.media
+function generateDocMedia(plan, fmt, readFile) {
+  if (fmt !== 'ppt' || !readFile) return generateDoc(plan, fmt);
+  return buildPlanWithMedia(plan, readFile).then((p) => generateDoc(p, fmt));
+}
+
+module.exports = { generateDoc, generateDocMedia, planSections, planCover, buildPPTX };
