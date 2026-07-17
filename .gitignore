@@ -27,3 +27,34 @@ cloudfunctions/**/node_modules/
 *.temp
 *.log
 .cache/
+
+# === 大型预览产物 / 中间产物（不入库，避免仓库膨胀）===
+preview_v7/语文/
+preview_cn/
+cn_bs/
+cn_bs_pdfs/
+classroom_images/
+classroom_images_v2/
+cn_qyc_classroom/
+cn_qyc_classroom_v2/
+cn_qyc_classroom_v3/
+cn_qyc_classroom_v4/
+cn_qyc_magazine/
+cn_qyc_magazine_v2/
+cn_qyc_v3/
+design_preview/
+design_dir/
+experiment/
+
+# 根目录零散大文件（测试 / 旧产物，续做非必需）
+*.pdf
+*.html
+l-cn-bs-u1-1*.pptx
+_with_audio.pptx
+_cn_with_audio.pptx
+l-eng-b1-u2-ls.pptx
+pilot-l-eng-b1-u2-ls.pptx
+
+# Python
+__pycache__/
+*.pyc
