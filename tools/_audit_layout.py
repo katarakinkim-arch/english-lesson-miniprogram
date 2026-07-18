@@ -14,9 +14,31 @@ DPI = 110
 SCALE = DPI / 72.0
 EMU_PER_IN = 914400
 FONT_DIR = r"C:\Windows\Fonts"
+# Cross-platform CJK font fallbacks so the overflow estimate is accurate off-Windows.
+_MAC_FONTS = {
+    "msyh":   "/System/Library/Fonts/Hiragino Sans GB.ttc",
+    "simhei": "/System/Library/Fonts/STHeiti Medium.ttc",
+    "hei":    "/System/Library/Fonts/STHeiti Medium.ttc",
+    "simsun": "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "song":   "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "simkai": "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "kai":    "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "simfang":"/System/Library/Fonts/Supplemental/Songti.ttc",
+    "fang":   "/System/Library/Fonts/Supplemental/Songti.ttc",
+}
+_MAC_DEFAULT = "/System/Library/Fonts/STHeiti Medium.ttc"
 def _f(name, size_px, bold=False):
     path = os.path.join(FONT_DIR, name + (".ttc" if name in ("msyh","simsun") else ".ttf"))
     if not os.path.exists(path): path = os.path.join(FONT_DIR, "simhei.ttf")
+    if not os.path.exists(path):
+        # off-Windows: resolve a real CJK font by family key
+        key = name.lower()
+        path = None
+        for k, p in _MAC_FONTS.items():
+            if k in key and os.path.exists(p):
+                path = p; break
+        if not path:
+            path = _MAC_DEFAULT if os.path.exists(_MAC_DEFAULT) else None
     try: return ImageFont.truetype(path, size_px)
     except Exception: return ImageFont.load_default()
 def emu_px(v): return 0 if v is None else int(round(v/EMU_PER_IN*DPI))

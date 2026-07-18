@@ -33,6 +33,20 @@ FONT_MAP = {
     "song":   os.path.join(FONT_DIR, "simsun.ttc"),
     "hei":    os.path.join(FONT_DIR, "simhei.ttf"),
 }
+# Cross-platform CJK fallbacks (used when C:\Windows\Fonts is absent, e.g. macOS)
+_MAC_FONT_MAP = {
+    "msyh":   "/System/Library/Fonts/Hiragino Sans GB.ttc",
+    "msyhbd": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+    "simhei": "/System/Library/Fonts/STHeiti Medium.ttc",
+    "hei":    "/System/Library/Fonts/STHeiti Medium.ttc",
+    "simkai": "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "kai":    "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "simsun": "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "song":   "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "simfang":"/System/Library/Fonts/Supplemental/Songti.ttc",
+    "fang":   "/System/Library/Fonts/Supplemental/Songti.ttc",
+}
+_MAC_DEFAULT = "/System/Library/Fonts/STHeiti Medium.ttc"
 _fc = {}
 def font(name, size_px, bold=False):
     key = (name, size_px, bold)
@@ -40,6 +54,11 @@ def font(name, size_px, bold=False):
     path = FONT_MAP.get(name.lower())
     if not path or not os.path.exists(path):
         path = FONT_MAP["simhei"]
+    if not os.path.exists(path):
+        # off-Windows: resolve a real CJK font by family key
+        path = _MAC_FONT_MAP.get(name.lower())
+        if not path or not os.path.exists(path):
+            path = _MAC_DEFAULT if os.path.exists(_MAC_DEFAULT) else None
     try:
         f = ImageFont.truetype(path, size_px)
     except Exception:
