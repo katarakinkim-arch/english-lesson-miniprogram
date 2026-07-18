@@ -30,6 +30,11 @@ cloudfunctions/**/node_modules/
 
 # === 大型预览产物 / 中间产物（不入库，避免仓库膨胀）===
 preview_v7/**/_preview_*/
+preview_v7/_BATCH_RESULTS.json
+preview_v7/_batch_run*.log
+preview_v7/_qa/
+data/_all_lessons.json
+tools/_photo_cache/
 preview_v7/语文/
 preview_cn/
 cn_bs/
