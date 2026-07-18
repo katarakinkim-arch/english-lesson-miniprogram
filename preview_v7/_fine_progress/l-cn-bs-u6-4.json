@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bs-u6-4",
+  "subj": "cn",
+  "title": "反对党八股 精读——破立结合的批判文风",
+  "sources": [
+    "央视网 毛泽东《反对党八股》原文（1942）",
+    "党建网《反对党八股》导读：树立马克思主义文风"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_u6_4.py",
+  "note": "WebSearch核实来源；学科色块兜底"
+}

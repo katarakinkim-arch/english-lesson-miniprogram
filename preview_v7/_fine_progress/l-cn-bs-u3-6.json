@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bs-u3-6",
+  "subj": "cn",
+  "title": "写作指导——学写文学短评：诗词评点法",
+  "sources": [
+    "学科网《学写文学短评》教学设计（zxxk.com/soft/55116426）",
+    "朱昌元 张乐《诗意生命的理性表达》（al.xgjy.cn）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bs-u3-6.py",
+  "note": "9页学生版；四层审计全PASS；文学类课文无适配免费实拍图，统一采用学科色块兜底并标注「本课件未使用无关配图」"
+}

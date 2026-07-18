@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bs-u1-7",
+  "subj": "cn",
+  "title": "写作实践与讲评——新诗修改与提升",
+  "sources": [
+    "杨佳宁《高中现代诗歌创作教学实践》（xueshu.qikan.com.cn）",
+    "21世纪教育网《\"学写诗歌\"教学设计》（zy.21cnjy.com/9864053）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bs-u1-7.py",
+  "note": "9页学生版；四层审计全PASS；文学类课文无适配免费实拍图，统一采用学科色块兜底并标注「本课件未使用无关配图」"
+}

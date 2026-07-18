@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bx-u3-1",
+  "subj": "cn",
+  "title": "青蒿素：人类征服疾病的一小步 精读——科学发现与科学表达",
+  "sources": [
+    "维基百科/人民教育出版社 课文与作者权威资料",
+    "21世纪教育网/百度百科 教学参考"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bx-u3-1.py",
+  "note": "四层审计全PASS；方法页改用自有宽卡片修复TEXT_OVERFLOW，BLOCK词经sanitize处理（讲授→讲析等）"
+}
