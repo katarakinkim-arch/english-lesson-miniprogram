@@ -55,7 +55,6 @@ experiment/
 # 根目录零散大文件（测试 / 旧产物，续做非必需）
 *.pdf
 *.html
-l-cn-bs-u1-1*.pptx
 _with_audio.pptx
 _cn_with_audio.pptx
 l-eng-b1-u2-ls.pptx
