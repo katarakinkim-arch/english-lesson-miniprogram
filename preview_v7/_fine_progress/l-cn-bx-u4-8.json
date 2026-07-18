@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bx-u4-8",
+  "subj": "cn",
+  "title": "单元活动——跨媒介产品展示与反思",
+  "sources": [
+    "来源：人民教育出版社·统编教材必修下第四单元单元活动（跨媒介产品展示）",
+    "来源：统编教材教师用书·跨媒介阅读与交流"
+  ],
+  "photo": "wangfujing.jpg",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bx-u4-8.py",
+  "note": "WebSearch 核实跨媒介展示与反思；背景页用真实照 wangfujing.jpg（Wikimedia Commons，自由授权）。四层审计全 PASS。"
+}

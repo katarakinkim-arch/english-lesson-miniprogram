@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u1-3",
+  "subj": "bio",
+  "title": "孟德尔两对相对性状杂交与自由组合定律",
+  "sources": [
+    "Nature Education Scitable：Dihybrid Cross —— 两对相对性状的双因子杂交与 9:3:3:1。",
+    "genome.gov（美国国家人类基因组研究所）：Mendel's Peas —— 孟德尔豌豆杂交实验。"
+  ],
+  "photo": "色块兜底（本课件未使用无关配图）",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u1-3.py",
+  "note": "9 页学生版课堂 PPT；四层审计（口吻/遮罩/版面/越界）全 PASS；生物内容与现有语文照片不契合，按规范 §2.3 学科色块兜底。"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u5-2",
+  "subj": "bio",
+  "title": "基因重组与染色体变异",
+  "sources": [
+    "MedlinePlus: Cri du chat syndrome（5 号染色体短臂缺失）。",
+    "NCBI OMIM #123450：猫叫综合征（Lejeune 1963 首次描述）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u5-2.py",
+  "note": "9页学生版；四层审计全PASS（BLOCK清洁、WARN无、布局无溢出、画布内、无照片故遮罩天然PASS）；生物无适配自由授权实拍图，统一采用学科色块兜底并标注「本课件未使用无关配图」。"
+}

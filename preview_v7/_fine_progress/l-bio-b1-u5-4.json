@@ -1,0 +1,14 @@
+{
+  "id": "l-bio-b1-u5-4",
+  "subj": "bio",
+  "title": "细胞呼吸的过程与意义",
+  "sources": [
+    "Monash University:The process of aerobic respiration",
+    "LibreTexts:Cellular Respiration",
+    "总反应式C6H12O6+6O2→6CO2+6H2O+能量(教材)"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b1-u5-4.py",
+  "note": "9页学生版(封面/学习目标/背景与权威调研/重点/方法/难点/板书精华/作业/单元小结)。四层审计一次全PASS。生物课无契合自由授权照片,采用学科色块兜底并标注。"
+}

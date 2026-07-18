@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u6-3",
+  "subj": "bio",
+  "title": "共同进化与生物多样性",
+  "sources": [
+    "Ehrlich PR, Raven PH (1964) 提出协同进化（植物与植食昆虫的相互选择）。",
+    "Frontiers in Ecology and Evolution (2021): Coevolution review."
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u6-3.py",
+  "note": "9页学生版；四层审计全PASS（BLOCK清洁、WARN无、布局无溢出、画布内、无照片故遮罩天然PASS）；生物无适配自由授权实拍图，统一采用学科色块兜底并标注「本课件未使用无关配图」。"
+}

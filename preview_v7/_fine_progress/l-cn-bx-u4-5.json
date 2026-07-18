@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bx-u4-5",
+  "subj": "cn",
+  "title": "方法指导——学写跨媒介文案",
+  "sources": [
+    "来源：人民教育出版社·统编教材必修下第四单元《信息时代的语文生活》",
+    "来源：21世纪教育网·统编版必修下第四单元教学设计（跨媒介阅读与交流）"
+  ],
+  "photo": "typewriter.jpg",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bx-u4-5.py",
+  "note": "WebSearch 核实跨媒介文案写法；背景页用真实照 typewriter.jpg（Wikimedia Commons，自由授权）。四层审计全 PASS。"
+}

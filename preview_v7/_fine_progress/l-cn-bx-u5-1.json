@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bx-u5-1",
+  "subj": "cn",
+  "title": "在《人民报》创刊纪念会上的演说 精读——真理的力量与演说艺术",
+  "sources": [
+    "来源：人民教育出版社·统编教材必修下第五单元《在〈人民报〉创刊纪念会上的演说》课文解说",
+    "来源：马克思 1856 年 4 月 14 日于伦敦《人民报》创刊纪念会演说"
+  ],
+  "photo": "vintagemic.jpg",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bx-u5-1.py",
+  "note": "WebSearch 核实马克思 1856 年《人民报》演说背景与辩证法思路；背景页用真实照 vintagemic.jpg（Wikimedia Commons，自由授权）。四层审计全 PASS。"
+}

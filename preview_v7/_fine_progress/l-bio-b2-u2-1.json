@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u2-1",
+  "subj": "bio",
+  "title": "减数分裂和受精作用",
+  "sources": [
+    "Britannica：Sexual Reproduction —— 减数分裂使配子染色体数目减半。",
+    "武汉大学《普通生物学》：减数分裂与受精作用维持染色体数目恒定。"
+  ],
+  "photo": "色块兜底（本课件未使用无关配图）",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u2-1.py",
+  "note": "9 页学生版课堂 PPT；四层审计（口吻/遮罩/版面/越界）全 PASS；生物内容与现有语文照片不契合，按规范 §2.3 学科色块兜底。"
+}

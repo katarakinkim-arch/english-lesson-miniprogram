@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bx-u4-7",
+  "subj": "cn",
+  "title": "写作实践与讲评——跨媒介方案修改与提升",
+  "sources": [
+    "来源：人民教育出版社·统编教材必修下第四单元写作任务（跨媒介方案升格）",
+    "来源：统编教材教师用书·跨媒介阅读与交流"
+  ],
+  "photo": "typewriter.jpg",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bx-u4-7.py",
+  "note": "WebSearch 核实方案升格写法；背景页用真实照 typewriter.jpg（Wikimedia Commons，自由授权）。四层审计全 PASS。"
+}

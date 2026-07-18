@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u3-2",
+  "subj": "bio",
+  "title": "DNA分子的结构",
+  "sources": [
+    "genome.gov：DNA Double Helix —— 1953 年沃森与克里克提出双螺旋结构。",
+    "Nature Education Scitable：DNA Structure —— 碱基互补配对原则。"
+  ],
+  "photo": "色块兜底（本课件未使用无关配图）",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u3-2.py",
+  "note": "9 页学生版课堂 PPT；四层审计（口吻/遮罩/版面/越界）全 PASS；生物内容与现有语文照片不契合，按规范 §2.3 学科色块兜底。"
+}

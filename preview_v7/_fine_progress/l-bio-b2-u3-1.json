@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u3-1",
+  "subj": "bio",
+  "title": "DNA是主要的遗传物质",
+  "sources": [
+    "Nature Education Scitable：Griffith & Avery —— DNA 是遗传物质的证据。",
+    "genome.gov：Hershey–Chase Experiment —— 噬菌体实验确证 DNA 为遗传物质。"
+  ],
+  "photo": "色块兜底（本课件未使用无关配图）",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u3-1.py",
+  "note": "9 页学生版课堂 PPT；四层审计（口吻/遮罩/版面/越界）全 PASS；生物内容与现有语文照片不契合，按规范 §2.3 学科色块兜底。"
+}

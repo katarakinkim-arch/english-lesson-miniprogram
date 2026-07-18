@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bx-u5-3",
+  "subj": "cn",
+  "title": "群文阅读——演说的力量：鼓动与哀悼",
+  "sources": [
+    "来源：人民教育出版社·统编教材必修下第五单元（演说群文：鼓动与哀悼）",
+    "来源：统编教材教师用书·第五单元"
+  ],
+  "photo": "mic.jpg",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bx-u5-3.py",
+  "note": "WebSearch 核实演说群文（鼓动与哀悼）读法；背景页用真实照 mic.jpg（Wikimedia Commons，自由授权）。四层审计全 PASS。"
+}

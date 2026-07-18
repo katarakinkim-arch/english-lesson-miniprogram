@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bx-u4-6",
+  "subj": "cn",
+  "title": "写作指导——设计跨媒介宣传方案",
+  "sources": [
+    "来源：人民教育出版社·统编教材必修下第四单元「善用多媒介」",
+    "来源：21世纪教育网·统编版必修下第四单元教学设计（跨媒介宣传方案）"
+  ],
+  "photo": "wangfujing.jpg",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bx-u4-6.py",
+  "note": "WebSearch 核实跨媒介宣传方案教法；背景页用真实照 wangfujing.jpg（Wikimedia Commons，自由授权）。四层审计全 PASS。"
+}

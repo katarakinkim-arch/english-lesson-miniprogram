@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u3-3",
+  "subj": "bio",
+  "title": "DNA的复制",
+  "sources": [
+    "Nature Education Scitable：Meselson–Stahl Experiment —— DNA 半保留复制。",
+    "PubMed Central：DNA Replication —— 半保留复制的机制。"
+  ],
+  "photo": "色块兜底（本课件未使用无关配图）",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u3-3.py",
+  "note": "9 页学生版课堂 PPT；四层审计（口吻/遮罩/版面/越界）全 PASS；生物内容与现有语文照片不契合，按规范 §2.3 学科色块兜底。"
+}

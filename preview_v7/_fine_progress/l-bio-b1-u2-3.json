@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b1-u2-3",
+  "subj": "bio",
+  "title": "核酸是遗传信息的携带者",
+  "sources": [
+    "人民教育出版社《生物学·必修1·分子与细胞》第2章第5节（人教2019版）",
+    "21世纪教育网 同步学案：DNA/RNA 化学组成与分布对比（zy.21cnjy.com/13144133）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b1-u2-3.py",
+  "note": "生物细胞课题，无契合真实照，采用学科色块兜底（背景页已标注「本课件未使用无关配图」）。四层审计全 PASS（0 BLOCK / 0 WARN / 0 scrim / 0 overflow）。"
+}

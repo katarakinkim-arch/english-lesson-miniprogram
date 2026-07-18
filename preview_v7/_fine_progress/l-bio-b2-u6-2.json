@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u6-2",
+  "subj": "bio",
+  "title": "隔离与物种形成",
+  "sources": [
+    "Biology Insights: Postzygotic barriers & the sterile mule（马 64 · 驴 62 → 骡 63 不育）。",
+    "PMC: Genomic incompatibilities in the hybrid mule (Equus, 2022)."
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u6-2.py",
+  "note": "9页学生版；四层审计全PASS（BLOCK清洁、WARN无、布局无溢出、画布内、无照片故遮罩天然PASS）；生物无适配自由授权实拍图，统一采用学科色块兜底并标注「本课件未使用无关配图」。"
+}

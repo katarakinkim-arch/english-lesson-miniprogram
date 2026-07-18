@@ -1,0 +1,14 @@
+{
+  "id": "l-bio-b1-u5-5",
+  "subj": "bio",
+  "title": "光合作用的过程（捕获光能与光反应暗反应）",
+  "sources": [
+    "Khan Academy:Intro to photosynthesis",
+    "PMC Photosynthesis综述:光反应在类囊体膜,暗反应在基质;O2来自水光解",
+    "Visible Body:Light-Dependent & Light-Independent Reactions"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b1-u5-5.py",
+  "note": "9页学生版(封面/学习目标/背景与权威调研/重点/方法/难点/板书精华/作业/单元小结)。四层审计一次全PASS。生物课无契合自由授权照片,采用学科色块兜底并标注。"
+}

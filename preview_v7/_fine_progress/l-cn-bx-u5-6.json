@@ -1,0 +1,13 @@
+{
+  "id": "l-cn-bx-u5-6",
+  "subj": "cn",
+  "title": "方法指导——学写演讲稿与说理文",
+  "sources": [
+    "来源：人民教育出版社·必修下第五单元写作任务「学写演讲稿与说理文」",
+    "来源：统编教材教师用书·实用性阅读与交流（演讲稿写法）"
+  ],
+  "photo": "mic.jpg",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-cn-bx-u5-6.py",
+  "note": "WebSearch 核实演讲稿写法（针对性/开场白/鼓动性）；背景页用真实照 mic.jpg（Wikimedia Commons，自由授权）。四层审计全 PASS。"
+}

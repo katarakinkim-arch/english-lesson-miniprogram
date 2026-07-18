@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u2-2",
+  "subj": "bio",
+  "title": "基因在染色体上",
+  "sources": [
+    "中国科普博览 kepu.net.cn：摩尔根果蝇实验 —— 白眼基因位于 X 染色体。",
+    "Nature Education Scitable：Genes Are on Chromosomes —— 萨顿—摩尔根学说。"
+  ],
+  "photo": "色块兜底（本课件未使用无关配图）",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u2-2.py",
+  "note": "9 页学生版课堂 PPT；四层审计（口吻/遮罩/版面/越界）全 PASS；生物内容与现有语文照片不契合，按规范 §2.3 学科色块兜底。"
+}

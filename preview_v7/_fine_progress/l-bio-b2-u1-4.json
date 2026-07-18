@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-b2-u1-4",
+  "subj": "bio",
+  "title": "自由组合定律的实质与应用",
+  "sources": [
+    "Nature Education Scitable：Independent Assortment —— 非同源染色体自由组合。",
+    "Britannica：Gregor Mendel —— 孟德尔与遗传定律。"
+  ],
+  "photo": "色块兜底（本课件未使用无关配图）",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b2-u1-4.py",
+  "note": "9 页学生版课堂 PPT；四层审计（口吻/遮罩/版面/越界）全 PASS；生物内容与现有语文照片不契合，按规范 §2.3 学科色块兜底。"
+}

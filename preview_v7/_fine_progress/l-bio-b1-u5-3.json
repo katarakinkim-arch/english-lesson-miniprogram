@@ -1,0 +1,14 @@
+{
+  "id": "l-bio-b1-u5-3",
+  "subj": "bio",
+  "title": "ATP——细胞的能量通货",
+  "sources": [
+    "Britannica:Adenosine triphosphate(ATP)细胞能量通货",
+    "ATP结构简式A-P~P~P,末端高能磷酸键水解释放约30.5kJ/mol(科普中国)",
+    "Lipmann(1941)提出高能磷酸键,ATP为能量代谢中心分子"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-b1-u5-3.py",
+  "note": "9页学生版(封面/学习目标/背景与权威调研/重点/方法/难点/板书精华/作业/单元小结)。四层审计一次全PASS。生物课无契合自由授权照片,采用学科色块兜底并标注。"
+}

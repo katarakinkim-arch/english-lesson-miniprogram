@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx1-u1-2",
+  "subj": "bio",
+  "title": "内环境的稳态",
+  "sources": [
+    "yixue.com: 内环境稳态（Walter Cannon 1926 提出 homeostasis）。",
+    "Billman GE. Homeostasis. Front Physiol 2020（Bernard→Cannon 负反馈调节）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx1-u1-2.py",
+  "note": "9页学生版；四层审计全PASS（BLOCK清洁、WARN无、布局无溢出、画布内、无照片故遮罩天然PASS）；生物无适配自由授权实拍图，统一采用学科色块兜底并标注「本课件未使用无关配图」。"
+}
