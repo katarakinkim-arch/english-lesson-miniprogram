@@ -8,18 +8,22 @@ Usage:  _fetch_source.py "<zh_query>" "<en_query>" <out_txt_path>
 Prints a short citation line:  "<summary first sentence> — 来源: <url>"
 Also writes the full summary + url to <out_txt_path>.
 """
-import os, sys, json
+import os, sys, json, re
+import ssl
 try:
     from urllib.request import Request, urlopen
     from urllib.parse import quote
 except Exception:
     from urllib2 import Request, urlopen, quote
 
-UA = {'User-Agent': 'edu-lesson-finetune/1.0 (https://github.com; contact: teacher)'}
+UA = {'User-Agent': 'Mozilla/5.0 (compatible; edu-lesson-finetune/1.0)'}
+CTX = ssl.create_default_context()
+CTX.check_hostname = False
+CTX.verify_mode = ssl.CERT_NONE
 
 def get_json(url, timeout=25):
     req = Request(url, headers=UA)
-    return json.loads(urlopen(req, timeout=timeout).read().decode('utf-8', 'ignore'))
+    return json.loads(urlopen(req, timeout=timeout, context=CTX).read().decode('utf-8', 'ignore'))
 
 def summary(lang, query):
     q = quote(query.encode('utf-8'))

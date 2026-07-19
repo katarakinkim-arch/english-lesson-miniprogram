@@ -27,7 +27,7 @@ from _render_lesson import (
     p_homework, p_summary, photo_for,
 )
 
-def p_background_fine(s, les, photo, source_cite):
+def p_background_fine(s, les, photo, source_cite, photo_caption=None):
     """Background slide with the lesson's REAL photo + verified source citation."""
     L.bg(s)
     L.kicker(s, '课文背景', L.M, L.M, L.XIANG)
@@ -50,7 +50,8 @@ def p_background_fine(s, les, photo, source_cite):
     if photo and os.path.exists(photo):
         px = L.M + Inches(8.1); pw = Inches(4.5); ph = Inches(3.4)
         L.place_photo(s, photo, int(px), int(L.M + Inches(0.95)), int(pw), int(ph))
-        L.caption(s, "本课真实资料图（自由授权）", px, L.M + Inches(0.95) + ph + Inches(0.05), pw)
+        cap = photo_caption or "本课真实资料图（自由授权）"
+        L.caption(s, cap, px, L.M + Inches(0.95) + ph + Inches(0.05), pw)
     else:
         path, name = photo_for(les.get('_subj', 'cn'), 0)
         if os.path.exists(path):
@@ -65,10 +66,27 @@ def render(id_, photo=None, source_cite=''):
         print('NOT FOUND', id_); sys.exit(2)
     subj = les.get('_subj', 'cn')
     L.PAGE[0] = 0
+    # read CC attribution next to the photo (if present)
+    photo_caption = None
+    if photo and os.path.exists(photo):
+        attrib_path = photo + '.attrib.json'
+        if os.path.exists(attrib_path):
+            try:
+                a = json.load(open(attrib_path, encoding='utf-8'))
+                lic = a.get('license', '')
+                au = a.get('author', '')
+                cap = '真实资料图'
+                if lic:
+                    cap += ' · ' + lic
+                if au:
+                    cap += ' · ' + au
+                photo_caption = cap
+            except Exception:
+                pass
     prs, BLANK = L.new_presentation()
     s1 = L.new_slide(prs, BLANK); p_cover(s1, les)
     s2 = L.new_slide(prs, BLANK); p_objectives(s2, les)
-    s3 = L.new_slide(prs, BLANK); p_background_fine(s3, les, photo, source_cite)
+    s3 = L.new_slide(prs, BLANK); p_background_fine(s3, les, photo, source_cite, photo_caption)
     s4 = L.new_slide(prs, BLANK); p_keypoints(s4, les)
     s5 = L.new_slide(prs, BLANK); p_method(s5, les, subj, 1)
     s6 = L.new_slide(prs, BLANK); p_difficulties(s6, les)

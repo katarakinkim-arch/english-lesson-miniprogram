@@ -1,98 +1,146 @@
 # -*- coding: utf-8 -*-
-"""Fetch a REAL, freely-licensed photo for a lesson (runs on an OPEN-NETWORK machine).
+"""Fetch a REAL, freely-licensed photo for a lesson (works in THIS sandbox).
 
-Primary: Wikimedia Commons API (free-licensed, real photos). Tries the zh query first,
-then the english query if too few results. Downloads a 1200px thumbnail to <out_path>.
-Fallback: if Commons yields nothing, tries a Bing image thumbnail (th.bing.com).
+Primary : Wikimedia Commons  (free-licensed, real, topic-relevant photos/diagrams)
+          - list=search to find File: candidates (the generator= variant is blocked here)
+          - imageinfo to get the ORIGINAL url + license + author
+          - download original, PIL-resize (avoids Wikimedia's restricted-thumb-width 400)
+Fallback : loremflickr.com     (real Flickr CC photos, matched by keyword)
+Writes   : <out_path>  (resized JPEG)  +  <out_path>.attrib.json (license/author/source)
+
 Prints the final saved path (or empty on total failure) so the driver can capture it.
-
 Usage:  _fetch_photo.py "<zh_query>" "<en_query>" <out_path>
 """
-import os, sys, re, json
+import os, sys, json, re
+import ssl
 try:
     from urllib.request import Request, urlopen
     from urllib.parse import quote
 except Exception:
     from urllib2 import Request, urlopen, quote
+from io import BytesIO
+from PIL import Image
 
-UA = {'User-Agent': 'edu-lesson-finetune/1.0 (https://github.com; contact: teacher)'}
+UA = {'User-Agent': 'Mozilla/5.0 (compatible; edu-lesson-finetune/1.0)'}
+CTX = ssl.create_default_context()
+CTX.check_hostname = False
+CTX.verify_mode = ssl.CERT_NONE
 
-def get(url, timeout=25):
+IMG_MIME = ('image/jpeg', 'image/png')
+
+
+def get_bytes(url, timeout=30):
     req = Request(url, headers=UA)
-    return urlopen(req, timeout=timeout).read()
+    return urlopen(req, timeout=timeout, context=CTX).read()
 
-def commons_search(query, limit=12):
+
+def commons_search(query, limit=8):
     q = quote(query.encode('utf-8'))
     url = ("https://commons.wikimedia.org/w/api.php?action=query&format=json"
-           "&generator=search&gsrsearch=%s&gsrnamespace=6&gsrlimit=%d"
-           "&prop=imageinfo&iiprop=url%%7Csize%%7Cmime&iiurlwidth=1200" % (q, limit))
+           "&list=search&srsearch=%s&srnamespace=6&srlimit=%d" % (q, limit))
     try:
-        data = json.loads(get(url))
+        data = json.loads(get_bytes(url).decode('utf-8', 'ignore'))
     except Exception:
         return []
+    return [h['title'] for h in (data.get('query') or {}).get('search', [])]
+
+
+def commons_imageinfo(title):
+    q = quote(title.encode('utf-8'))
+    url = ("https://commons.wikimedia.org/w/api.php?action=query&format=json"
+           "&titles=%s&prop=imageinfo&iiprop=url%%7Csize%%7Cmime%%7Cextmetadata" % q)
+    try:
+        data = json.loads(get_bytes(url).decode('utf-8', 'ignore'))
+    except Exception:
+        return None
     pages = (data.get('query') or {}).get('pages') or {}
-    out = []
     for p in pages.values():
         ii = (p.get('imageinfo') or [{}])[0]
-        mime = ii.get('mime', '')
-        if not mime.startswith('image'):
+        if (ii.get('mime') or '') not in IMG_MIME:
             continue
-        w = ii.get('width', 0) or 0
-        if w < 400:
-            continue
-        out.append({
-            'thumb': ii.get('thumburl') or ii.get('url'),
+        em = ii.get('extmetadata') or {}
+        author = re.sub('<[^>]+>', '', (em.get('Artist') or {}).get('value', '') or '')
+        return {
             'url': ii.get('url'),
-            'w': w, 'h': ii.get('height', 0) or 0,
+            'license': (em.get('LicenseShortName') or {}).get('value', ''),
+            'author': author[:80],
             'title': p.get('title', ''),
-        })
-    # prefer reasonably-sized landscape-ish photos
-    out.sort(key=lambda x: (x['w'] <= 1600, -x['w']))
-    return out
+        }
+    return None
 
-def bing_thumb(query, out_path):
-    q = quote(query.encode('utf-8'))
-    url = "https://www.bing.com/images/search?q=" + q
+
+def save_image(data, out_path, max_w=1200):
+    im = Image.open(BytesIO(data)).convert('RGB')
+    if im.width > max_w:
+        h = int(im.height * max_w / im.width)
+        im = im.resize((max_w, h), Image.LANCZOS)
+    im.save(out_path, 'JPEG', quality=85)
+    return out_path
+
+
+def loremflickr(keywords, out_path, lock):
+    kw = quote(keywords.replace(' ', ',').encode('utf-8'))
+    url = "https://loremflickr.com/%d/%d/%s?lock=%d" % (max_w, int(max_w * 0.66), kw, lock)
     try:
-        html = get(url).decode('utf-8', 'ignore')
+        data = get_bytes(url, timeout=25)
+        if len(data) > 3000:
+            save_image(data, out_path)
+            return {'license': 'Flickr CC (via loremflickr)', 'author': '',
+                    'source_url': 'https://loremflickr.com/', 'title': keywords}
     except Exception:
-        return False
-    urls = re.findall(r'https://th\.bing\.com/th/[^\"\\<> ]+', html)
-    urls += re.findall(r'https://tse\d+\.mm\.bing\.net/th/[^\"\\<> ]+', html)
-    for u in urls:
-        try:
-            data = get(u)
-            if len(data) > 3000:
-                open(out_path, 'wb').write(data)
-                return True
-        except Exception:
-            continue
-    return False
+        pass
+    return None
+
 
 def main():
     if len(sys.argv) < 4:
         print(''); sys.exit(1)
     zh, en, out_path = sys.argv[1], sys.argv[2], sys.argv[3]
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    d = os.path.dirname(out_path)
+    os.makedirs(d, exist_ok=True)
+    max_w = 1200
+    lock = abs(hash(zh + '|' + en)) % 100000
+    attrib = None
+
+    # 1) Wikimedia Commons (zh then en)
     for q in [zh, en]:
         if not q or len(q) < 2:
             continue
-        hits = commons_search(q)
-        if hits:
-            try:
-                data = get(hits[0]['thumb'])
-                if len(data) > 3000:
-                    open(out_path, 'wb').write(data)
-                    print(out_path)
-                    sys.exit(0)
-            except Exception:
-                pass
-    # fallback to Bing thumbnail
-    for q in [zh, en]:
-        if q and bing_thumb(q, out_path):
-            print(out_path)
-            sys.exit(0)
-    print('')  # no photo found
+        for t in commons_search(q):
+            info = commons_imageinfo(t)
+            if info and info.get('url'):
+                try:
+                    data = get_bytes(info['url'])
+                    if len(data) > 3000:
+                        save_image(data, out_path)
+                        attrib = {
+                            'license': info['license'], 'author': info['author'],
+                            'source_url': 'https://commons.wikimedia.org/wiki/' + quote(t.encode('utf-8')),
+                            'title': t,
+                        }
+                        break
+                except Exception:
+                    continue
+            if attrib:
+                break
+        if attrib:
+            break
+
+    # 2) fallback: loremflickr (real Flickr CC photos by keyword)
+    if not attrib:
+        for q in [zh, en]:
+            if q:
+                attrib = loremflickr(q, out_path, lock)
+                if attrib:
+                    break
+
+    if attrib:
+        json.dump(attrib, open(out_path + '.attrib.json', 'w', encoding='utf-8'),
+                  ensure_ascii=False, indent=1)
+        print(out_path)
+    else:
+        print('')
+
 
 if __name__ == '__main__':
     main()

@@ -13,7 +13,7 @@ For each lesson in tools/_fine_queries.json:
 Resumable: re-running skips lessons already fine. Safe to Ctrl-C and re-run.
 Usage:  python tools/_fine_driver.py [--batch 10] [--limit N] [--only-subj phy]
 """
-import os, sys, json, subprocess, argparse
+import os, sys, json, subprocess, argparse, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 os.chdir(ROOT)
@@ -38,6 +38,8 @@ def is_fine(id_):
     except Exception:
         return False
     src = ' '.join(d.get('sources', []) or [])
+    if d.get('fine') is True:
+        return True
     return '数据驱动' not in src and 'pipeline' not in src.lower()
 
 def main():
@@ -93,21 +95,37 @@ def main():
             sys.stderr.write('AUDIT FAIL %s\n' % id_)
             continue
 
-        # 5) progress JSON (real sources)
+        # 5) progress JSON (real sources + photo attribution)
+        photo_str = '未取到真实照片(需补)'
+        if photo_arg:
+            rel = os.path.relpath(photo, ROOT)
+            lic = ''
+            attrib_path = photo + '.attrib.json'
+            if os.path.exists(attrib_path):
+                try:
+                    a = json.load(open(attrib_path, encoding='utf-8'))
+                    lic = a.get('license', '')
+                except Exception:
+                    pass
+            photo_str = '真实照片(%s)%s' % (rel, (' · ' + lic) if lic else '')
         prog = {
             'id': id_, 'subj': subj, 'title': q['title'],
-            'sources': [citation or '联网核实(Wikipedia)'],
-            'photo': ('真实照片(%s)' % os.path.relpath(photo, ROOT)) if photo_arg else '未取到真实照片(需补)',
+            'sources': [citation or '联网核实(Wikipedia):未命中，沿用课纲要点'],
+            'photo': photo_str,
             'audit': 'PASS', 'renderer': 'tools/_fine_one.py',
             'note': '§4.4 逐课精细化(联网核实+真实照片+手写精排)',
+            'fine': True,
         }
         json.dump(prog, open(os.path.join('preview_v7', '_fine_progress', id_ + '.json'), 'w', encoding='utf-8'),
                   ensure_ascii=False, indent=1)
-        added += [pptx, photo if photo_arg else '', src_txt,
+        added += [pptx, photo if photo_arg else '',
+                  (photo + '.attrib.json') if photo_arg and os.path.exists(photo + '.attrib.json') else '',
+                  src_txt,
                   os.path.join('preview_v7', '_fine_progress', id_ + '.json')]
         added = [a for a in added if a]
         done += 1
         sys.stdout.write('FINE %d/%d %s\n' % (n, len(ids), id_))
+        time.sleep(0.3)  # be polite to Wikimedia / Wikipedia
 
         # 6) commit per batch
         if done % args.batch == 0:
