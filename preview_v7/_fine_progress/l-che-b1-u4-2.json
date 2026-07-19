@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u4-2",
+  "subj": "che",
+  "title": "元素周期表",
+  "sources": [
+    "科普中国《化学元素表》：7 周期(电子层数)、18 纵列 16 族；原子序数=质子数=电子数。",
+    "门捷列夫.com：1869 年门捷列夫编制首张元素周期表。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u4-2.py",
+  "note": "text_block=0 scrim=0 layout_hard=0 bounds=0"
+}

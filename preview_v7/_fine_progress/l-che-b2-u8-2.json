@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u8-2",
+  "subj": "che",
+  "title": "化学品的合理使用与绿色化学",
+  "sources": [
+    "ACS/EPA：绿色化学12原则由Anastas与Warner于1998年提出，核心为源头预防污染、原子经济性",
+    "Britannica：绿色化学旨在从源头减少或消除有害物质"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u8-2.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

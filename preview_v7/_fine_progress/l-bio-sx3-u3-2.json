@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx3-u3-2",
+  "subj": "bio",
+  "title": "基因工程的基本操作程序",
+  "sources": [
+    "基因工程四步：获基因→建载体→导入受体→检测鉴定；表达载体含启动子（驱动转录）+终止子+标记基因（gaokaoq.com）。",
+    "导入依受体而异：植物农杆菌转化法、动物显微注射、微生物 Ca²⁺ 感受态（百度百科）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx3-u3-2.py",
+  "note": "四层审计全 PASS（文本无 BLOCK/WARN、scrim/layout/bounds 无 FAIL）；生物细胞工程/基因工程/安全伦理主题无契合自由授权真实照片，按 §2.3 学科色块兜底并标注「本课件未使用无关配图」；WebSearch 已核实权威来源。"
+}

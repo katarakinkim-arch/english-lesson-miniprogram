@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx2-u2-3",
+  "subj": "bio",
+  "title": "群落的演替",
+  "sources": [
+    "群落演替是优势种随时间被另一群落替代的过程；初生演替始于裸岩，次生演替始于保留土壤之地、速度更快（Britannica kids ecology）。",
+    "人类活动可加速、延缓或改变演替方向（如退耕还林促进正向演替）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx2-u2-3.py",
+  "note": "生物课无契合的自由授权照（禁止下载新图），采用学科色块兜底（湘碧）；四层审计全 PASS。"
+}

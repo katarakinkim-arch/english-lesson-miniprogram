@@ -117,7 +117,7 @@
 | 107 | l-bio-b2-u1-3 | 孟德尔两对相对性状杂交与自由组合定律 | Nature Education Scitable：Dihybrid Cross —— 两对相对性状的双因子杂交与 9:3:3:1。；genome.gov（美国 | 色块兜底（本课件未使用无关配图） | PASS×4 | tools/_render_l-bio-b2-u1-3.py |
 | 108 | l-bio-b2-u1-4 | 自由组合定律的实质与应用 | Nature Education Scitable：Independent Assortment —— 非同源染色体自由组合。；Britannica：Grego | 色块兜底（本课件未使用无关配图） | PASS×4 | tools/_render_l-bio-b2-u1-4.py |
 | 109 | l-bio-b2-u2-1 | 减数分裂和受精作用 | Britannica：Sexual Reproduction —— 减数分裂使配子染色体数目减半。；武汉大学《普通生物学》：减数分裂与受精作用维持染色体数目恒定 | 色块兜底（本课件未使用无关配图） | PASS×4 | tools/_render_l-bio-b2-u2-1.py |
-| 110 | l-bio-b2-u2-2 | 基因在染色体上 | 中国科普博览 kepu.net.cn：摩尔根果蝇实验 —— 白眼基因位于 X 染色体。；Nature Education Scitable：Genes Are  | 色块兜底（本课件未使用无关配图） | PASS×4 | tools/_render_l-bio-b2-u2-2.py |
+| 110 | l-bio-b2-u2-2 | 基因在染色体上 | 中国科普博览 kepu.net.cn：摩尔根果蝇实验 —— 白眼基因位于 X 染色体。；Nature Education Scitable：Genes Are | 色块兜底（本课件未使用无关配图） | PASS×4 | tools/_render_l-bio-b2-u2-2.py |
 | 111 | l-bio-b2-u2-3 | 伴性遗传（一）概念与红绿色盲 | 百度百科：红绿色盲 —— X 连锁隐性遗传的典型实例。；美国国家眼科研究所 NEI：Color Blindness —— 色觉缺陷的遗传基础。 | 色块兜底（本课件未使用无关配图） | PASS×4 | tools/_render_l-bio-b2-u2-3.py |
 | 112 | l-bio-b2-u2-4 | 伴性遗传（二）类型与应用 | LibreTexts Biology：Sex-Linked Inheritance —— X 连锁显性与 Y 连锁遗传。；MedlinePlus：Genetic | 色块兜底（本课件未使用无关配图） | PASS×4 | tools/_render_l-bio-b2-u2-4.py |
 | 113 | l-bio-b2-u3-1 | DNA是主要的遗传物质 | Nature Education Scitable：Griffith & Avery —— DNA 是遗传物质的证据。；genome.gov：Hershey–C | 色块兜底（本课件未使用无关配图） | PASS×4 | tools/_render_l-bio-b2-u3-1.py |
@@ -169,6 +169,64 @@
 | 159 | l-cn-bx-u8-6 | 方法指导——学写议论文（立论·论据·论证） | 来源：《中国教育报》2022-12-23 第9版《参透教材，提升思辨能力》（jyb.cn）——议论文框架含典型结构；论证方法可模仿《劝学》比喻论证、《师说》对比 | 色块兜底 | PASS×4 | tools/_render_l-cn-bx-u8-6.py |
 | 160 | l-cn-bx-u8-7 | 写作实践与讲评——议论文修改与提升 | 来源：广东教育资源平台《聚焦逻辑升格，助力作文备考》（zy.gdedu.gov.cn）——「原文呈现—问题诊断—逻辑优化—升格示范」四步流程，让「论点—论据—论 | 色块兜底 | PASS×4 | tools/_render_l-cn-bx-u8-7.py |
 | 161 | l-cn-bx-u8-8 | 单元活动——思辨论坛与理性表达反思 | 来源：myzxsx.com《淬炼思想的锋刃：在论述的疆场培育理性精神》——以「青年思辨论坛」为总情境：解构大师论证「兵法」、建立思维「模型库」、现场论辩并复盘。 | 色块兜底 | PASS×4 | tools/_render_l-cn-bx-u8-8.py |
+| 162 | l-bio-sx1-u5-1 | 植物生长素（发现与生理作用） | Darwin 与 Darwin（1880）用胚芽鞘实验证明：感光在尖端、弯曲在下部，并推测尖端产生可下传的“影响”（Phototropism: Bending  | 色块兜底 | PASS×4 | tools/_render_l-bio-sx1-u5-1.py |
+| 163 | l-bio-sx1-u5-2 | 生长素的生理作用特点与其他植物激素 | 五大类植物激素（auxin / cytokinin / gibberellin / ethylene / abscisic acid）及其协同拮抗关系（Univ | 色块兜底 | PASS×4 | tools/_render_l-bio-sx1-u5-2.py |
+| 164 | l-bio-sx1-u5-3 | 环境因素对植物生命活动的调节 | 植物通过激素与光受体（如光敏色素 phytochrome）协同感知并响应光、重力等环境信号（Britannica; OERTX Plant Sensory Sy | 色块兜底 | PASS×4 | tools/_render_l-bio-sx1-u5-3.py |
+| 165 | l-bio-sx2-u1-1 | 种群的数量特征 | 种群是同一区域同种生物的全部个体；种群变化 ΔN=(B+I)−(D+E)（Albert.io AP Biology Population Ecology）。；种 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx2-u1-1.py |
+| 166 | l-bio-sx2-u1-2 | 种群数量的变化 | 指数增长 J 型：dN/dt=rmax·N；逻辑斯蒂 S 型：dN/dt=rmax·N·(K−N)/K，增速在 K/2 处最大（Albert.io；learnh | 色块兜底 | PASS×4 | tools/_render_l-bio-sx2-u1-2.py |
+| 167 | l-bio-sx2-u1-3 | 影响种群数量变化的因素 | 密度制约因素（竞争、传染病）作用随密度增大而增强；非密度制约因素（寒潮、干旱）与密度无关（Albert.io；eagri Lecture 9）。；种群数量围绕  | 色块兜底 | PASS×4 | tools/_render_l-bio-sx2-u1-3.py |
+| 168 | l-bio-sx2-u2-1 | 群落的结构 | 群落是一定区域内各种生物种群的集合（含植物、动物、微生物）；物种经竞争、捕食、寄生、互利共生相互作用（Britannica community-biology） | 色块兜底 | PASS×4 | tools/_render_l-bio-sx2-u2-1.py |
+| 169 | l-bio-sx2-u2-2 | 群落的主要类型 | 荒漠、草原、森林、湿地等群落类型由水热组合决定；荒漠极旱、森林湿润且分层最丰富（Britannica ecology）。；湿地为水陆交错带，生物多样性高，具净化 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx2-u2-2.py |
+| 170 | l-bio-sx2-u2-3 | 群落的演替 | 群落演替是优势种随时间被另一群落替代的过程；初生演替始于裸岩，次生演替始于保留土壤之地、速度更快（Britannica kids ecology）。；人类活动可 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx2-u2-3.py |
+| 171 | l-bio-sx2-u3-1 | 生态系统的结构 | 生态系统 = 生物群落 + 无机环境；组成含非生物物质能量、生产者、消费者、分解者（Britannica ecosystem / Trophic-levels） | 色块兜底 | PASS×4 | tools/_render_l-bio-sx2-u3-1.py |
+| 172 | l-bio-sx3-u2-1 | 植物细胞工程 | 细胞全能性由德国植物学家 Haberlandt 于 1902 年提出；1958 年 Steward 以胡萝卜游离细胞培养成完整植株印证（plantscience | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u2-1.py |
+| 173 | l-bio-sx3-u2-2 | 动物细胞工程 | 1997 年英国罗斯林研究所 Ian Wilmut 团队在《Nature》发表体细胞克隆羊「多莉」（worldscience.cn）。；单克隆抗体由 Milst | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u2-2.py |
+| 174 | l-bio-sx3-u2-3 | 胚胎工程 | 1978 年英国剑桥 Robert Edwards 以体外受精-胚胎移植（IVF-ET）培育世界首例试管婴儿，获 2010 年诺贝尔奖（gdpmaa.com）。 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u2-3.py |
+| 175 | l-bio-sx3-u3-1 | 重组DNA技术的基本工具 | 限制酶（分子手术刀）主要从原核生物分离，识别特定序列切断磷酸二酯键，如 EcoRⅠ 识别 GAATTC（21cnjy；百度百科）。；DNA 连接酶恢复磷酸二酯键 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u3-1.py |
+| 176 | l-bio-sx3-u3-2 | 基因工程的基本操作程序 | 基因工程四步：获基因→建载体→导入受体→检测鉴定；表达载体含启动子（驱动转录）+终止子+标记基因（gaokaoq.com）。；导入依受体而异：植物农杆菌转化法、 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u3-2.py |
+| 177 | l-bio-sx3-u3-3 | 基因工程的应用 | 1982 年 FDA 批准重组大肠杆菌生产人胰岛素，为世界首例商业化转基因药品（农民日报）。；乳腺生物反应器：药用蛋白基因连乳腺特异启动子，2009 年 FDA | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u3-3.py |
+| 178 | l-bio-sx3-u3-4 | 蛋白质工程 | 蛋白质工程以结构-功能关系为基础定向改造蛋白质，称「第二代基因工程」（百度百科）。；思路为逆中心法则；酶的定向进化可提升热稳定性与活性（人民网科普中国）。 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u3-4.py |
+| 179 | l-bio-sx3-u4-1 | 转基因生物的安全性 | 我国对农业转基因生物实行分级、分阶段安全评价，含食用安全与环境安全（caas.cn；moa.gov.cn）。；经安全评价批准上市的转基因食品与传统食品同等安全； | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u4-1.py |
+| 180 | l-bio-sx3-u4-2 | 关注生殖性克隆与人性克隆 | 生殖性克隆以复制完整个体为目的，国际社会普遍禁止；2005 年联合国《关于人的克隆宣言》（联合国新闻；Britannica）。；治疗性克隆经核移植获取胚胎干细胞 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u4-2.py |
+| 181 | l-bio-sx3-u4-3 | 生物武器与生物技术伦理 | 《禁止生物武器公约》（BWC，1972 签署、1975 生效）全面禁止生物与毒素武器，为首部禁整类大规模杀伤性武器条约（un.org）。；生物武器具传染性强、传 | 色块兜底 | PASS×4 | tools/_render_l-bio-sx3-u4-3.py |
+| 182 | l-che-b1-u1-1 | 物质的分类 | 胶体与丁达尔效应：英国物理学家约翰·丁达尔(John Tyndall)于1869年发现并命名；胶体粒子直径约1–100 nm，小于可见光波长(400–760 n | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u1-1.py |
+| 183 | l-che-b1-u1-2 | 物质的转化 | 物质的转化遵循类别决定路径：金属→碱性氧化物→碱→盐，非金属→酸性氧化物→酸→盐（chemguide / 高中化学教材）。；价-类二维图以横轴类别、纵轴价态表示 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u1-2.py |
+| 184 | l-che-b1-u1-3 | 电解质的电离 | “电解质(electrolyte)”一词由迈克尔·法拉第(Michael Faraday)于1834年提出，研究电解定律时创立（RSC 图书章节 / 百度百科） | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u1-3.py |
+| 185 | l-che-b1-u1-4 | 离子反应与离子方程式 | 阿伦尼乌斯1884年的电离(电解分离)理论说明溶液中存在离子，奠定离子反应的本质——离子之间的反应（台大CASE / askiitians）。；离子方程式用实际 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u1-4.py |
+| 186 | l-che-b1-u1-5 | 氧化还原反应的概念 | 拉瓦锡(Antoine Lavoisier)1774年确立“氧化=与氧化合”的概念，现代氧化还原反应定义为电子转移（Britannica / 台大CASE）。； | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u1-5.py |
+| 187 | l-che-b1-u1-6 | 氧化还原反应方程式的配平 | 1880年O.C. Johnson初步建立化合价变化法(离子-电子法)用于配平氧化还原反应方程式（北京大学《大学化学》）。；氧化数概念经IUPAC规范，以“得失 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u1-6.py |
+| 188 | l-che-b1-u2-1 | 钠的性质 | 钠由英国化学家汉弗里·戴维(Humphry Davy)于1807年通过电解熔融氢氧化钠首次制得，并以拉丁文Natrium得名Na（台大CASE / 百度百科）。 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u2-1.py |
+| 189 | l-che-b1-u2-2 | 钠的化合物 | 过氧化钠Na₂O₂能与CO₂、H₂O反应放出O₂（2Na₂O₂+2CO₂=2Na₂CO₃+O₂），用作呼吸面具、潜水艇的供氧剂（MITCHEM / 1010ji | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u2-2.py |
+| 190 | l-che-b1-u2-3 | 氯气的化学性质 | 氯气由瑞典化学家舍勒(Carl Wilhelm Scheele)于1774年用软锰矿与浓盐酸加热制得；戴维1810年确证其为元素并命名为chlorine（希腊语 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u2-3.py |
+| 191 | l-che-b1-u2-4 | 氯气的实验室制法与氯离子检验 | 实验室用MnO₂与浓盐酸加热制Cl₂：MnO₂+4HCl(浓)=MnCl₂+Cl₂↑+2H₂O，原理最早由舍勒发现（1010jiajiao / jsccn）。； | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u2-4.py |
+| 192 | l-che-b1-u2-5 | 物质的量 摩尔质量 | 科普中国《物质的量》：n=N/NA，2019 国际计量大会改用阿伏伽德罗常数定义摩尔。；NIST：1 mol 精确含 6.02214076×10^23 个基本单 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u2-5.py |
+| 193 | l-che-b1-u2-6 | 气体摩尔体积 物质的量浓度 | 科普中国《气体摩尔体积》：标况(0℃,101.325kPa) Vm≈22.4 L/mol，决定于分子间平均距离。；百度百科《标准状况》：STP 为 0℃、101 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u2-6.py |
+| 194 | l-che-b1-u3-1 | 铁的单质与铁的氧化物 | 百度百科《铁》：2Fe+3Cl2=2FeCl3；3Fe+2O2=Fe3O4。；高中化学考点：与 Cl2 得 +3、与 S/H+ 得 +2。 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u3-1.py |
+| 195 | l-che-b1-u3-4 | 金属材料的应用与新型合金 | 科普中国《不锈钢》：铬≥10.5% 形成致密钝化膜 Cr2O3，可自愈。；材料化学：镍稳定奥氏体，协同增强耐蚀。 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u3-4.py |
+| 196 | l-che-b1-u4-1 | 原子结构 核外电子排布 | LibreTexts：中性原子电子数=质子数；同位素同 Z 异 N；14C 定年(半衰期 5730 年)。；IAEA：同位素化学性质几乎相同，物理性质因质量不同 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u4-1.py |
+| 197 | l-che-b1-u4-2 | 元素周期表 | 科普中国《化学元素表》：7 周期(电子层数)、18 纵列 16 族；原子序数=质子数=电子数。；门捷列夫.com：1869 年门捷列夫编制首张元素周期表。 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u4-2.py |
+| 198 | l-che-b1-u4-3 | 碱金属与卤族元素 | 英国皇家化学会 RSC：碱金属向下更活泼，卤素向下反应性减弱。；ChemistryMadeEasy：同因素(半径/屏蔽)驱动两族相反方向。 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u4-3.py |
+| 199 | l-che-b1-u4-4 | 元素周期律 | 百度百科《元素周期律》：门捷列夫 1869 提出，同周期金属性减、非金属性增。；科普中国《化学元素表》：1913 年莫斯莱依原子序数(核电荷)排表。 | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u4-4.py |
+| 200 | l-che-b1-u4-5 | 化学键 离子键与共价键 | OpenStax《Chemistry 2e》7.2 Covalent Bonding（共价键：非金属间共用电子对）；Chemistry LibreTexts《I | 色块兜底 | PASS×4 | tools/_render_l-che-b1-u4-5.py |
+| 201 | l-che-b2-u5-1 | 硫单质与二氧化硫 | Encyclopædia Britannica: Sulfur dioxide（SO₂ 为无色有毒气体，大气污染物与酸雨前体）；教材分析：SO₂ 为酸性氧化物， | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u5-1.py |
+| 202 | l-che-b2-u5-2 | 硫酸 | 科普/教材：浓硫酸具吸水性、脱水性、强氧化性；Cu+2H₂SO₄(浓)→CuSO₄+SO₂↑+2H₂O（加热，见 arjunschool 等权威整理） | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u5-2.py |
+| 203 | l-che-b2-u5-3 | 氮的氧化物与酸雨 | UCAR Science Education: Nitrogen Oxides（NO 无色、NO₂ 红棕；燃烧生成，致酸雨）；Britannica《Chemis | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u5-3.py |
+| 204 | l-che-b2-u5-4 | 氨和铵盐 | 21世纪教育 高一化学人教版必修2 氨和铵盐 课件（喷泉实验、NH₄⁺ 检验）；Ammonia Fountain demonstration（NH₃ 极易溶于水 | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u5-4.py |
+| 205 | l-che-b2-u5-5 | 硝酸 | Chemca / Wikipedia: Nitric Acid（浓硝酸还原产物 NO₂、稀硝酸 NO；浓硝酸使 Fe、Al 钝化）；奥斯特瓦尔德过程：NH₃ → | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u5-5.py |
+| 206 | l-che-b2-u5-6 | 无机非金属材料 | 科普中国·科学百科：二氧化硅 SiO₂（原子晶体，光导纤维原料）；石英玻璃：高纯 SiO₂ 特种玻璃（“玻璃之王”） | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u5-6.py |
+| 207 | l-che-b2-u6-1 | 化学反应与热能 | Khan Academy: Endothermic vs exothermic reactions（断键吸能、成键放能；ΔH=断键能−成键能）；Save My  | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u6-1.py |
+| 208 | l-che-b2-u6-2 | 原电池 | Chemistry LibreTexts: Galvanic Cells（负极氧化、正极还原，电子由负极流向正极）；丹尼尔电池 Zn\|ZnSO₄\|\|CuS | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u6-2.py |
+| 209 | l-che-b2-u6-3 | 化学反应速率与限度 | 碰撞理论/化学平衡：速率受浓度·温度·压强·催化剂·表面积影响；勒夏特列原理：可逆反应达动态平衡 v正=v逆≠0（百度百科 化学平衡） | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u6-3.py |
+| 210 | l-che-b2-u7-1 | 认识有机化合物——甲烷 | OpenStax《有机化学》：甲烷正四面体、键角109.5°、碳sp³杂化（Linus Pauling, 1931）；Chemistry LibreTexts： | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u7-1.py |
+| 211 | l-che-b2-u7-2 | 乙烯与加成反应 | Chem LibreTexts《乙烯的聚合》：n CH₂=CH₂→–(CH₂CH₂)–n，双键打开成链得聚乙烯；有机化学教材：加成反应特征为双键π键断裂、原子加 | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u7-2.py |
+| 212 | l-che-b2-u7-3 | 乙醇 | 中学化学教学资料：乙醇与钠2CH₃CH₂OH+2Na→2CH₃CH₂ONa+H₂↑，比水缓和；催化氧化得乙醛；人教版必修二第七章：羟基(–OH)决定乙醇主要性质 | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u7-3.py |
+| 213 | l-che-b2-u7-4 | 乙酸 | Master Organic Chemistry：Fischer酯化(1895 Emil Fischer)为酸催化可逆平衡RCOOH+R'OH⇌RCOOR'+H | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u7-4.py |
+| 214 | l-che-b2-u7-5 | 基本营养物质 | Vedantu食物检测：淀粉遇碘变蓝黑；还原糖与新制Cu(OH)₂生成砖红Cu₂O；双缩脲检蛋白显紫；GCSE生物笔记：油脂=甘油+脂肪酸；蛋白质由氨基酸经肽键 | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u7-5.py |
+| 215 | l-che-b2-u8-1 | 自然资源的开发利用 | CIE iGCSE金属冶炼：活泼金属(K~Al)电解；中等(Zn~Cu)热还原；不活泼(Hg~Ag)热分解；冰晶石降Al₂O₃熔点至约950℃；Hall–Hér | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u8-1.py |
+| 216 | l-che-b2-u8-2 | 化学品的合理使用与绿色化学 | ACS/EPA：绿色化学12原则由Anastas与Warner于1998年提出，核心为源头预防污染、原子经济性；Britannica：绿色化学旨在从源头减少或消 | 色块兜底 | PASS×4 | tools/_render_l-che-b2-u8-2.py |
+| 217 | l-che-sx1-u1-1 | 反应热 焓变 | Chem LibreTexts/大学化学教材：ΔH=H(生成物)−H(反应物)为状态函数；放热ΔH<0；ΔH≈Σ断键能−Σ成键能；标准压力100 kPa；焓变只 | 色块兜底 | PASS×4 | tools/_render_l-che-sx1-u1-1.py |
+| 218 | l-che-sx1-u1-2 | 热化学方程式 | 中学化学教学：热化学方程式须注明物质状态(s/l/g/aq)；系数表物质的量可用分数；ΔH与计量数成正比、逆反应变号；Chem LibreTexts：状态不同反 | 色块兜底 | PASS×4 | tools/_render_l-che-sx1-u1-2.py |
+| 219 | l-che-sx1-u1-3 | 燃烧热 中和热与能源 | Studysmarter：标准燃烧热指101 kPa下1 mol可燃物完全燃烧生成稳定氧化物(CO₂(g)、H₂O(l))，恒放热；Vedantu：强酸强碱中和 | 色块兜底 | PASS×4 | tools/_render_l-che-sx1-u1-3.py |
 
 | 2 | l-cn-bs-u2-3 | 以工匠精神雕琢时代品质 新闻评论 | 人民日报2016原文+搜狐全文解读+7331字课堂实录(jiaoxueshilu)+名师论文(郑洁/黄碧俊) | 制琴师精修(CC BY 2.5)+人民日报社(CC BY-SA 3.0)+瑞士机芯(CC BY-SA 2.0) | PASS×4 | _render_u2_3.py |
 | 3 | l-cn-bs-u2-4 | 芣苢·文氏外孙入村收麦 古诗群文 | 方玉润《诗经原始》"群歌互答"+闻一多/朱熹植物训诂争议+苏辙生平退居颍川 | 车前草真照(CC BY 4.0)+麦收金田(CC BY-SA 4.0)+中国稻田(PD) | PASS×4 | _render_u2_4.py |

@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u5-6",
+  "subj": "che",
+  "title": "无机非金属材料",
+  "sources": [
+    "科普中国·科学百科：二氧化硅 SiO₂（原子晶体，光导纤维原料）",
+    "石英玻璃：高纯 SiO₂ 特种玻璃（“玻璃之王”）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u5-6.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u8-1",
+  "subj": "che",
+  "title": "自然资源的开发利用",
+  "sources": [
+    "CIE iGCSE金属冶炼：活泼金属(K~Al)电解；中等(Zn~Cu)热还原；不活泼(Hg~Ag)热分解；冰晶石降Al₂O₃熔点至约950℃",
+    "Hall–Héroult法(1886)：电解熔融Al₂O₃(冰晶石)制铝"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u8-1.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u1-5",
+  "subj": "che",
+  "title": "氧化还原反应的概念",
+  "sources": [
+    "拉瓦锡(Antoine Lavoisier)1774年确立“氧化=与氧化合”的概念，现代氧化还原反应定义为电子转移（Britannica / 台大CASE）。",
+    "氧化数(oxidation number)由IUPAC规范，用于追踪电子转移、判断氧化与还原，是配平氧化还原反应的工具（Britannica / IUPAC）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u1-5.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

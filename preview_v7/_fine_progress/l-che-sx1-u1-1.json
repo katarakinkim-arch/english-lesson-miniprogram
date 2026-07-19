@@ -1,0 +1,13 @@
+{
+  "id": "l-che-sx1-u1-1",
+  "subj": "che",
+  "title": "反应热 焓变",
+  "sources": [
+    "Chem LibreTexts/大学化学教材：ΔH=H(生成物)−H(反应物)为状态函数；放热ΔH<0；ΔH≈Σ断键能−Σ成键能",
+    "标准压力100 kPa；焓变只与始末态有关（盖斯定律）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-sx1-u1-1.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

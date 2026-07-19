@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx1-u5-3",
+  "subj": "bio",
+  "title": "环境因素对植物生命活动的调节",
+  "sources": [
+    "植物通过激素与光受体（如光敏色素 phytochrome）协同感知并响应光、重力等环境信号（Britannica; OERTX Plant Sensory Systems）。",
+    "根向地与茎背地同源（近地侧生长素多），结果相反只因根对生长素比茎敏感得多（权威综述与教材一致）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx1-u5-3.py",
+  "note": "生物课无契合的自由授权照（禁止下载新图），采用学科色块兜底（湘碧）；四层审计全 PASS。"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u5-5",
+  "subj": "che",
+  "title": "硝酸",
+  "sources": [
+    "Chemca / Wikipedia: Nitric Acid（浓硝酸还原产物 NO₂、稀硝酸 NO；浓硝酸使 Fe、Al 钝化）",
+    "奥斯特瓦尔德过程：NH₃ → NO → NO₂ → HNO₃"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u5-5.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

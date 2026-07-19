@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u4-3",
+  "subj": "che",
+  "title": "碱金属与卤族元素",
+  "sources": [
+    "英国皇家化学会 RSC：碱金属向下更活泼，卤素向下反应性减弱。",
+    "ChemistryMadeEasy：同因素(半径/屏蔽)驱动两族相反方向。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u4-3.py",
+  "note": "text_block=0 scrim=0 layout_hard=0 bounds=0"
+}

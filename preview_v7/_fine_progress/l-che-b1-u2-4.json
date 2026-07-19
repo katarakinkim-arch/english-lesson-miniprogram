@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u2-4",
+  "subj": "che",
+  "title": "氯气的实验室制法与氯离子检验",
+  "sources": [
+    "实验室用MnO₂与浓盐酸加热制Cl₂：MnO₂+4HCl(浓)=MnCl₂+Cl₂↑+2H₂O，原理最早由舍勒发现（1010jiajiao / jsccn）。",
+    "检验Cl⁻：先加稀HNO₃酸化排除CO₃²⁻等干扰，再加AgNO₃得白色AgCl沉淀（人教版必修第一册 / jsccn）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u2-4.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

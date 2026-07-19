@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u2-5",
+  "subj": "che",
+  "title": "物质的量 摩尔质量",
+  "sources": [
+    "科普中国《物质的量》：n=N/NA，2019 国际计量大会改用阿伏伽德罗常数定义摩尔。",
+    "NIST：1 mol 精确含 6.02214076×10^23 个基本单元。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u2-5.py",
+  "note": "text_block=0 scrim=0 layout_hard=0 bounds=0"
+}

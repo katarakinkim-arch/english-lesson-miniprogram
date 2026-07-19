@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u7-2",
+  "subj": "che",
+  "title": "乙烯与加成反应",
+  "sources": [
+    "Chem LibreTexts《乙烯的聚合》：n CH₂=CH₂→–(CH₂CH₂)–n，双键打开成链得聚乙烯",
+    "有机化学教材：加成反应特征为双键π键断裂、原子加在双键两端"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u7-2.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

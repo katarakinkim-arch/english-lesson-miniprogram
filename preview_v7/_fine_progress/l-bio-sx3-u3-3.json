@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx3-u3-3",
+  "subj": "bio",
+  "title": "基因工程的应用",
+  "sources": [
+    "1982 年 FDA 批准重组大肠杆菌生产人胰岛素，为世界首例商业化转基因药品（农民日报）。",
+    "乳腺生物反应器：药用蛋白基因连乳腺特异启动子，2009 年 FDA 批准首个转基因动物药物 ATryn（life.smxz.com.cn）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx3-u3-3.py",
+  "note": "四层审计全 PASS（文本无 BLOCK/WARN、scrim/layout/bounds 无 FAIL）；生物细胞工程/基因工程/安全伦理主题无契合自由授权真实照片，按 §2.3 学科色块兜底并标注「本课件未使用无关配图」；WebSearch 已核实权威来源。"
+}

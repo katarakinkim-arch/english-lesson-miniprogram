@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx3-u4-2",
+  "subj": "bio",
+  "title": "关注生殖性克隆与人性克隆",
+  "sources": [
+    "生殖性克隆以复制完整个体为目的，国际社会普遍禁止；2005 年联合国《关于人的克隆宣言》（联合国新闻；Britannica）。",
+    "治疗性克隆经核移植获取胚胎干细胞用于医疗，受严格监管（联合国大学报告；CCTV）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx3-u4-2.py",
+  "note": "四层审计全 PASS（文本无 BLOCK/WARN、scrim/layout/bounds 无 FAIL）；生物细胞工程/基因工程/安全伦理主题无契合自由授权真实照片，按 §2.3 学科色块兜底并标注「本课件未使用无关配图」；WebSearch 已核实权威来源。"
+}

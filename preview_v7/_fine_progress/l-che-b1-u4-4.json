@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u4-4",
+  "subj": "che",
+  "title": "元素周期律",
+  "sources": [
+    "百度百科《元素周期律》：门捷列夫 1869 提出，同周期金属性减、非金属性增。",
+    "科普中国《化学元素表》：1913 年莫斯莱依原子序数(核电荷)排表。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u4-4.py",
+  "note": "text_block=0 scrim=0 layout_hard=0 bounds=0"
+}

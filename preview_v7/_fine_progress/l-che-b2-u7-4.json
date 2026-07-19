@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u7-4",
+  "subj": "che",
+  "title": "乙酸",
+  "sources": [
+    "Master Organic Chemistry：Fischer酯化(1895 Emil Fischer)为酸催化可逆平衡RCOOH+R'OH⇌RCOOR'+H₂O",
+    "有机化学教材：酯化机理\"酸脱羟基、醇脱氢\"，水中氧来自羧基"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u7-4.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

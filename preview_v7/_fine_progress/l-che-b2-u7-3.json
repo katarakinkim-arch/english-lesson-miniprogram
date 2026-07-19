@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u7-3",
+  "subj": "che",
+  "title": "乙醇",
+  "sources": [
+    "中学化学教学资料：乙醇与钠2CH₃CH₂OH+2Na→2CH₃CH₂ONa+H₂↑，比水缓和；催化氧化得乙醛",
+    "人教版必修二第七章：羟基(–OH)决定乙醇主要性质"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u7-3.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

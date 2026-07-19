@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u5-1",
+  "subj": "che",
+  "title": "硫单质与二氧化硫",
+  "sources": [
+    "Encyclopædia Britannica: Sulfur dioxide（SO₂ 为无色有毒气体，大气污染物与酸雨前体）",
+    "教材分析：SO₂ 为酸性氧化物，漂白为化合可逆、非氧化"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u5-1.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

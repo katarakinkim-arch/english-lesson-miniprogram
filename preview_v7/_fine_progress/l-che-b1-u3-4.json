@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u3-4",
+  "subj": "che",
+  "title": "金属材料的应用与新型合金",
+  "sources": [
+    "科普中国《不锈钢》：铬≥10.5% 形成致密钝化膜 Cr2O3，可自愈。",
+    "材料化学：镍稳定奥氏体，协同增强耐蚀。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u3-4.py",
+  "note": "text_block=0 scrim=0 layout_hard=0 bounds=0"
+}

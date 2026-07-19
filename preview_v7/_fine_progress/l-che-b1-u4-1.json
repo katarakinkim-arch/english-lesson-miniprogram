@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u4-1",
+  "subj": "che",
+  "title": "原子结构 核外电子排布",
+  "sources": [
+    "LibreTexts：中性原子电子数=质子数；同位素同 Z 异 N；14C 定年(半衰期 5730 年)。",
+    "IAEA：同位素化学性质几乎相同，物理性质因质量不同。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u4-1.py",
+  "note": "text_block=0 scrim=0 layout_hard=0 bounds=0"
+}

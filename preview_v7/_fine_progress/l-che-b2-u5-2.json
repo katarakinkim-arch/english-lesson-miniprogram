@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u5-2",
+  "subj": "che",
+  "title": "硫酸",
+  "sources": [
+    "科普/教材：浓硫酸具吸水性、脱水性、强氧化性",
+    "Cu+2H₂SO₄(浓)→CuSO₄+SO₂↑+2H₂O（加热，见 arjunschool 等权威整理）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u5-2.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

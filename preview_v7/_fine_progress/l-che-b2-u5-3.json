@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u5-3",
+  "subj": "che",
+  "title": "氮的氧化物与酸雨",
+  "sources": [
+    "UCAR Science Education: Nitrogen Oxides（NO 无色、NO₂ 红棕；燃烧生成，致酸雨）",
+    "Britannica《Chemistry of acid deposition》（SO₂、NOx 与水生成硫酸、硝酸）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u5-3.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

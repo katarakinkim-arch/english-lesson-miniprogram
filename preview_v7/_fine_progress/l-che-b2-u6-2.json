@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u6-2",
+  "subj": "che",
+  "title": "原电池",
+  "sources": [
+    "Chemistry LibreTexts: Galvanic Cells（负极氧化、正极还原，电子由负极流向正极）",
+    "丹尼尔电池 Zn|ZnSO₄||CuSO₄|Cu：E°cell=E°cathode−E°anode"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u6-2.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u1-6",
+  "subj": "che",
+  "title": "氧化还原反应方程式的配平",
+  "sources": [
+    "1880年O.C. Johnson初步建立化合价变化法(离子-电子法)用于配平氧化还原反应方程式（北京大学《大学化学》）。",
+    "氧化数概念经IUPAC规范，以“得失电子守恒”确定系数比例，是化合价升降法配平的核心依据（IUPAC / 人教版必修第一册）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u1-6.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

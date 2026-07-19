@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u1-2",
+  "subj": "che",
+  "title": "物质的转化",
+  "sources": [
+    "物质的转化遵循类别决定路径：金属→碱性氧化物→碱→盐，非金属→酸性氧化物→酸→盐（chemguide / 高中化学教材）。",
+    "价-类二维图以横轴类别、纵轴价态表示物质转化，是元素化合物学习的核心认知工具（人教版必修第一册）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u1-2.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

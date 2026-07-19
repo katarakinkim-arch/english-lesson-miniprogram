@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u2-2",
+  "subj": "che",
+  "title": "钠的化合物",
+  "sources": [
+    "过氧化钠Na₂O₂能与CO₂、H₂O反应放出O₂（2Na₂O₂+2CO₂=2Na₂CO₃+O₂），用作呼吸面具、潜水艇的供氧剂（MITCHEM / 1010jiajiao）。",
+    "Na₂CO₃与NaHCO₃在溶解性、热稳定性、与酸反应速率上差异显著，是鉴别碳酸钠与碳酸氢钠的依据（人教版必修第一册）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u2-2.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

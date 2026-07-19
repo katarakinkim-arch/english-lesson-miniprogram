@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx3-u2-1",
+  "subj": "bio",
+  "title": "植物细胞工程",
+  "sources": [
+    "细胞全能性由德国植物学家 Haberlandt 于 1902 年提出；1958 年 Steward 以胡萝卜游离细胞培养成完整植株印证（plantscience.cn）。",
+    "植物组织培养流程「外植体→脱分化→愈伤组织→再分化→植株」；脱/再分化概念见百度百科「脱分化」，激素比例调控分化方向。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx3-u2-1.py",
+  "note": "四层审计全 PASS（文本无 BLOCK/WARN、scrim/layout/bounds 无 FAIL）；生物细胞工程/基因工程/安全伦理主题无契合自由授权真实照片，按 §2.3 学科色块兜底并标注「本课件未使用无关配图」；WebSearch 已核实权威来源。"
+}

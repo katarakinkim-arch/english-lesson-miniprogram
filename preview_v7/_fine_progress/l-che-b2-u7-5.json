@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u7-5",
+  "subj": "che",
+  "title": "基本营养物质",
+  "sources": [
+    "Vedantu食物检测：淀粉遇碘变蓝黑；还原糖与新制Cu(OH)₂生成砖红Cu₂O；双缩脲检蛋白显紫",
+    "GCSE生物笔记：油脂=甘油+脂肪酸；蛋白质由氨基酸经肽键连接"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u7-5.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx2-u1-1",
+  "subj": "bio",
+  "title": "种群的数量特征",
+  "sources": [
+    "种群是同一区域同种生物的全部个体；种群变化 ΔN=(B+I)−(D+E)（Albert.io AP Biology Population Ecology）。",
+    "种群密度是最基本的数量特征；年龄结构可预测趋势，而非直接决定密度（Britannica / 高中生物教材）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx2-u1-1.py",
+  "note": "生物课无契合的自由授权照（禁止下载新图），采用学科色块兜底（湘碧）；四层审计全 PASS。"
+}

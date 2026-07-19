@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u7-1",
+  "subj": "che",
+  "title": "认识有机化合物——甲烷",
+  "sources": [
+    "OpenStax《有机化学》：甲烷正四面体、键角109.5°、碳sp³杂化（Linus Pauling, 1931）",
+    "Chemistry LibreTexts：甲烷四根C–H键完全等价，最简单有机物"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u7-1.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

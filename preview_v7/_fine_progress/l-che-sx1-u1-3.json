@@ -1,0 +1,13 @@
+{
+  "id": "l-che-sx1-u1-3",
+  "subj": "che",
+  "title": "燃烧热 中和热与能源",
+  "sources": [
+    "Studysmarter：标准燃烧热指101 kPa下1 mol可燃物完全燃烧生成稳定氧化物(CO₂(g)、H₂O(l))，恒放热",
+    "Vedantu：强酸强碱中和热约−57.3 kJ/mol，本质H⁺(aq)+OH⁻(aq)→H₂O(l)"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-sx1-u1-3.py",
+  "note": "四层审计全PASS（text/scrim/layout/bounds）。化学无契合真实照，按规范§2.3以学科色块兜底，封面与背景页标注「本课件未使用无关配图」。WebSearch已核实权威来源。"
+}

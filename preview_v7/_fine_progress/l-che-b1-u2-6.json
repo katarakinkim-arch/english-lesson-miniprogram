@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u2-6",
+  "subj": "che",
+  "title": "气体摩尔体积 物质的量浓度",
+  "sources": [
+    "科普中国《气体摩尔体积》：标况(0℃,101.325kPa) Vm≈22.4 L/mol，决定于分子间平均距离。",
+    "百度百科《标准状况》：STP 为 0℃、101.325 kPa。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u2-6.py",
+  "note": "text_block=0 scrim=0 layout_hard=0 bounds=0"
+}

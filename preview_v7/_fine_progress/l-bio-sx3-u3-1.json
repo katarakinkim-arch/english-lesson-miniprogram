@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx3-u3-1",
+  "subj": "bio",
+  "title": "重组DNA技术的基本工具",
+  "sources": [
+    "限制酶（分子手术刀）主要从原核生物分离，识别特定序列切断磷酸二酯键，如 EcoRⅠ 识别 GAATTC（21cnjy；百度百科）。",
+    "DNA 连接酶恢复磷酸二酯键；载体多为质粒——具自我复制能力的环状双链 DNA（Vedantu）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx3-u3-1.py",
+  "note": "四层审计全 PASS（文本无 BLOCK/WARN、scrim/layout/bounds 无 FAIL）；生物细胞工程/基因工程/安全伦理主题无契合自由授权真实照片，按 §2.3 学科色块兜底并标注「本课件未使用无关配图」；WebSearch 已核实权威来源。"
+}

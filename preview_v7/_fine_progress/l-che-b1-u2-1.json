@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u2-1",
+  "subj": "che",
+  "title": "钠的性质",
+  "sources": [
+    "钠由英国化学家汉弗里·戴维(Humphry Davy)于1807年通过电解熔融氢氧化钠首次制得，并以拉丁文Natrium得名Na（台大CASE / 百度百科）。",
+    "钠原子最外层仅1个电子(3s¹)，极易失去，因此具强还原性、化学性质极活泼（百度百科 / 人教版必修第一册）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u2-1.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

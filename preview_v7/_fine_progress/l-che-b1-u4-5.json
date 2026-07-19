@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u4-5",
+  "subj": "che",
+  "title": "化学键 离子键与共价键",
+  "sources": [
+    "OpenStax《Chemistry 2e》7.2 Covalent Bonding（共价键：非金属间共用电子对）",
+    "Chemistry LibreTexts《Ionic and Covalent Bonding》（离子键：阴、阳离子间静电作用）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u4-5.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

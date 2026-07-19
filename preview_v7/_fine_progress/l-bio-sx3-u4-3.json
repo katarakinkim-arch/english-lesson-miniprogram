@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx3-u4-3",
+  "subj": "bio",
+  "title": "生物武器与生物技术伦理",
+  "sources": [
+    "《禁止生物武器公约》（BWC，1972 签署、1975 生效）全面禁止生物与毒素武器，为首部禁整类大规模杀伤性武器条约（un.org）。",
+    "生物武器具传染性强、传播途径多、成本低、难防控等特点（un.org/disarmament）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx3-u4-3.py",
+  "note": "四层审计全 PASS（文本无 BLOCK/WARN、scrim/layout/bounds 无 FAIL）；生物细胞工程/基因工程/安全伦理主题无契合自由授权真实照片，按 §2.3 学科色块兜底并标注「本课件未使用无关配图」；WebSearch 已核实权威来源。"
+}

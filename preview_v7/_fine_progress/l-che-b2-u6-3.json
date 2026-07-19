@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u6-3",
+  "subj": "che",
+  "title": "化学反应速率与限度",
+  "sources": [
+    "碰撞理论/化学平衡：速率受浓度·温度·压强·催化剂·表面积影响",
+    "勒夏特列原理：可逆反应达动态平衡 v正=v逆≠0（百度百科 化学平衡）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u6-3.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

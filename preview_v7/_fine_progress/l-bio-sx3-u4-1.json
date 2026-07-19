@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx3-u4-1",
+  "subj": "bio",
+  "title": "转基因生物的安全性",
+  "sources": [
+    "我国对农业转基因生物实行分级、分阶段安全评价，含食用安全与环境安全（caas.cn；moa.gov.cn）。",
+    "经安全评价批准上市的转基因食品与传统食品同等安全；OECD/WHO/FAO 共识（moa.gov.cn 院士访谈）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx3-u4-1.py",
+  "note": "四层审计全 PASS（文本无 BLOCK/WARN、scrim/layout/bounds 无 FAIL）；生物细胞工程/基因工程/安全伦理主题无契合自由授权真实照片，按 §2.3 学科色块兜底并标注「本课件未使用无关配图」；WebSearch 已核实权威来源。"
+}

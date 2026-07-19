@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u2-3",
+  "subj": "che",
+  "title": "氯气的化学性质",
+  "sources": [
+    "氯气由瑞典化学家舍勒(Carl Wilhelm Scheele)于1774年用软锰矿与浓盐酸加热制得；戴维1810年确证其为元素并命名为chlorine（希腊语“黄绿色”）（Britannica / 百度百科）。",
+    "氯原子最外层7个电子，反应中易得电子，故Cl₂具强氧化性，能把Fe、Cu氧化到高价氯化物（人教版必修第一册）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u2-3.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

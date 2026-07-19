@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u1-4",
+  "subj": "che",
+  "title": "离子反应与离子方程式",
+  "sources": [
+    "阿伦尼乌斯1884年的电离(电解分离)理论说明溶液中存在离子，奠定离子反应的本质——离子之间的反应（台大CASE / askiitians）。",
+    "离子方程式用实际参加反应的离子表示，揭示同一类反应的本质；写、拆、删、查为常用步骤（人教版必修第一册）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u1-4.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

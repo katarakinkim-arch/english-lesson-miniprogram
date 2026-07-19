@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx3-u2-3",
+  "subj": "bio",
+  "title": "胚胎工程",
+  "sources": [
+    "1978 年英国剑桥 Robert Edwards 以体外受精-胚胎移植（IVF-ET）培育世界首例试管婴儿，获 2010 年诺贝尔奖（gdpmaa.com）。",
+    "体外受精-胚胎移植将精卵取出体外受精、培养为早期胚胎后移入子宫（MedlinePlus）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx3-u2-3.py",
+  "note": "四层审计全 PASS（文本无 BLOCK/WARN、scrim/layout/bounds 无 FAIL）；生物细胞工程/基因工程/安全伦理主题无契合自由授权真实照片，按 §2.3 学科色块兜底并标注「本课件未使用无关配图」；WebSearch 已核实权威来源。"
+}

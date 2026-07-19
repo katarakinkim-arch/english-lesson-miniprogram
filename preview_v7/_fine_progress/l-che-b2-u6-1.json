@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u6-1",
+  "subj": "che",
+  "title": "化学反应与热能",
+  "sources": [
+    "Khan Academy: Endothermic vs exothermic reactions（断键吸能、成键放能；ΔH=断键能−成键能）",
+    "Save My Exams: Bond breaking & forming（放热/吸热判定）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u6-1.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

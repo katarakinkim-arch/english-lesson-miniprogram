@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b2-u5-4",
+  "subj": "che",
+  "title": "氨和铵盐",
+  "sources": [
+    "21世纪教育 高一化学人教版必修2 氨和铵盐 课件（喷泉实验、NH₄⁺ 检验）",
+    "Ammonia Fountain demonstration（NH₃ 极易溶于水、溶液呈碱性）"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b2-u5-4.py",
+  "note": "化学无契合自由授权照片，采用学科色块兜底（规范§2.3），背景页标注「本课件未使用无关配图」；WebSearch 已逐课核实权威来源（Britannica/Khan/OpenStax/LibreTexts/科普中国等）。"
+}

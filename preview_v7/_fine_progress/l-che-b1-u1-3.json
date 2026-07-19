@@ -1,0 +1,13 @@
+{
+  "id": "l-che-b1-u1-3",
+  "subj": "che",
+  "title": "电解质的电离",
+  "sources": [
+    "“电解质(electrolyte)”一词由迈克尔·法拉第(Michael Faraday)于1834年提出，研究电解定律时创立（RSC 图书章节 / 百度百科）。",
+    "阿伦尼乌斯(Svante Arrhenius)1884年提出电离理论：电解质溶于水会自发离解成自由移动的离子，无需通电；1903年获诺贝尔化学奖（台大CASE / Britannica）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-che-b1-u1-3.py",
+  "note": "四层审计全PASS（_audit_text/_check_bounds/_audit_scrim/_audit_layout）；无化学专属自由授权照片，按§2.3以学科配色块呈现并标注「本课件未使用无关配图」。WebSearch已核实权威来源（法拉第/阿伦尼乌斯/拉瓦锡/戴维/舍勒等史实与胶体、电离、氧化还原定义）。"
+}

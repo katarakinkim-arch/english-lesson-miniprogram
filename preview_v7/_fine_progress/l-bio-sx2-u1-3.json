@@ -1,0 +1,13 @@
+{
+  "id": "l-bio-sx2-u1-3",
+  "subj": "bio",
+  "title": "影响种群数量变化的因素",
+  "sources": [
+    "密度制约因素（竞争、传染病）作用随密度增大而增强；非密度制约因素（寒潮、干旱）与密度无关（Albert.io；eagri Lecture 9）。",
+    "种群数量围绕 K 上下波动，是负反馈调节的结果（Britannica / 生态学教材）。"
+  ],
+  "photo": "色块兜底",
+  "audit": "PASS",
+  "renderer": "tools/_render_l-bio-sx2-u1-3.py",
+  "note": "生物课无契合的自由授权照（禁止下载新图），采用学科色块兜底（湘碧）；四层审计全 PASS。"
+}
