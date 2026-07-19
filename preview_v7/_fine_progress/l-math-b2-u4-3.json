@@ -1,0 +1,1 @@
+{"id": "l-math-b2-u4-3", "subj": "math", "title": "用数字特征描述数据(平均数、方差)", "sources": ["数据驱动生成(pipeline,未逐课联网调研)"], "photo": "学科配图/色块兜底", "audit": "PASS", "renderer": "tools/_render_lesson.py", "note": "§4.4 pipeline render"}

@@ -1,0 +1,1 @@
+{"id": "l-math-b2-u3-4", "subj": "math", "title": "点、直线、平面之间的位置关系", "sources": ["数据驱动生成(pipeline,未逐课联网调研)"], "photo": "学科配图/色块兜底", "audit": "PASS", "renderer": "tools/_render_lesson.py", "note": "§4.4 pipeline render"}
