@@ -28,7 +28,7 @@ git add tools/_driver_render_remaining.sh preview_v7/_titles.json tools/_classro
 git commit -q -m "chore: resumable pipeline driver + titles cache" 2>/dev/null || true
 
 CHUNKS=""
-for c in $(seq -w 000 085); do CHUNKS="$CHUNKS $c"; done
+for i in $(seq 0 85); do CHUNKS="$CHUNKS $(printf '%03d' $i)"; done
 
 TOTAL=0; DONE=0; FAILS=""
 for c in $CHUNKS; do
