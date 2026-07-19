@@ -170,7 +170,7 @@ def step_card(slide, x, y, w, h, num, title, body_lines, accent=FROST):
     nb_size = 16 if len(str(num)) <= 2 else 12
     textbox(slide, x + Inches(0.18), y + Inches(0.24), Inches(0.5), Inches(0.42),
             [{'text': str(num), 'size': nb_size, 'color': WHITE, 'bold': True, 'font': HEI, 'align': PP_ALIGN.CENTER}])
-    textbox(slide, x + Inches(0.8), y + Inches(0.18), w - Inches(1.0), Inches(0.5),
+    textbox(slide, x + Inches(0.8), y + Inches(0.18), w - Inches(1.0), Inches(0.7),
             [{'text': title, 'size': 17, 'color': INK, 'bold': True, 'font': HEI}])
     bl = [{'text': t, 'size': 14, 'color': INK, 'font': KAI, 'line': 1.4, 'space_after': 4} for t in body_lines]
-    textbox(slide, x + Inches(0.8), y + Inches(0.72), w - Inches(1.0), h - Inches(0.85), bl)
+    textbox(slide, x + Inches(0.8), y + Inches(0.95), w - Inches(1.0), h - Inches(1.1), bl)
