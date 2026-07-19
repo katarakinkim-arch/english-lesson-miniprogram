@@ -60,12 +60,12 @@ for c in $CHUNKS; do
   if [ ${#ADDED[@]} -gt 0 ]; then
     git add "${ADDED[@]}"
     if git commit -q -m "fine(pipeline): chunk_$c 数据驱动精细化渲染（§4.4 四层审计PASS）"; then
-      env -u HTTP_PROXY -u HTTPS_PROXY git push git@github.com:katarakinkim-arch/english-lesson-miniprogram.git main >/dev/null 2>&1 || echo "PUSH FAIL $c"
+      env -u HTTP_PROXY -u HTTPS_PROXY GIT_SSH_COMMAND="ssh -o ConnectTimeout=30 -o ServerAliveInterval=20 -o ServerAliveCountMax=3" git push git@github.com:katarakinkim-arch/english-lesson-miniprogram.git main >/dev/null 2>&1 || echo "PUSH FAIL $c"
     else
       echo "commit skip $c (nothing new)"
     fi
   fi
   echo "CHUNK $c done (total=$TOTAL done=$DONE added=${#ADDED[@]})"
 done
-env -u HTTP_PROXY -u HTTPS_PROXY git push git@github.com:katarakinkim-arch/english-lesson-miniprogram.git main >/dev/null 2>&1 || echo "FINAL PUSH FAIL"
+env -u HTTP_PROXY -u HTTPS_PROXY GIT_SSH_COMMAND="ssh -o ConnectTimeout=30 -o ServerAliveInterval=20 -o ServerAliveCountMax=3" git push git@github.com:katarakinkim-arch/english-lesson-miniprogram.git main >/dev/null 2>&1 || echo "FINAL PUSH FAIL"
 echo "==== SUMMARY TOTAL=$TOTAL DONE=$DONE FAILS=$FAILS ===="
